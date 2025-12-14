@@ -12,7 +12,7 @@ export default function InvestmentTabs() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   /* -------------------------------
-     TAB CONTENT FADE (EXISTING)
+     TAB CONTENT FADE
   -------------------------------- */
   useEffect(() => {
     setIsVisible(false);
@@ -26,7 +26,6 @@ export default function InvestmentTabs() {
   useEffect(() => {
     const container = scrollContainerRef.current;
     const activeButton = tabRefs.current[activeTab];
-
     if (!container || !activeButton) return;
 
     const containerWidth = container.offsetWidth;
@@ -53,114 +52,112 @@ export default function InvestmentTabs() {
           observer.disconnect();
         }
       },
-      {
-        threshold: 0.15,
-        rootMargin: '0px 0px -80px 0px',
-      }
+      { threshold: 0.15, rootMargin: '0px 0px -80px 0px' }
     );
 
     observer.observe(node);
     return () => observer.disconnect();
   }, []);
 
-  // 🔒 ORIGINAL CONTENT — UNTOUCHED
+  // 🔒 CONTENT UNTOUCHED
   const tabs = [
-    {
-      label: 'Global Equities',
-      overview:
-        'Our Global Equities practice is built on deep fundamental research and a bottom-up security selection process. We believe that despite market efficiency, information asymmetry and behavioral biases create pockets of value. Our teams analyze corporate balance sheets, management quality, and industry dynamics to identify high-quality businesses trading at a discount to their intrinsic value.',
-      columns: [
-        {
-          title: 'International Markets',
-          text:
-            'We look beyond domestic borders to capture growth in developed economies across Europe, Asia-Pacific, and North America. By diversifying across mature markets, we mitigate single-country risk while accessing established global leaders in technology, healthcare, and industrials.',
-        },
-        {
-          title: 'Emerging Markets',
-          text:
-            'The next wave of global growth is driven by developing economies. Our specialized team navigates the volatility of emerging markets to identify nations and sectors undergoing structural transformation. We focus on demographic shifts, urbanization, and the rising middle class to capture high-alpha opportunities in regions that are often under-researched.',
-        },
-        {
-          title: 'Event & Sector Trades',
-          text:
-            'Markets often misprice securities during periods of corporate change or specific industry cycles. We utilize tactical strategies to capitalize on distinct catalysts such as mergers and acquisitions, spin-offs, regulatory shifts, and sector-specific rotation. This opportunistic approach allows us to generate returns that are uncorrelated to the broader market indices.',
-        },
-      ],
-    },
-    {
-      label: 'Global Macro',
-      overview:
-        'Our Global Macro strategy takes a top-down view of the financial world. We analyze the complex interplay between geopolitics, central bank policies, economic indicators, and global trade flows. By understanding the "big picture," we position capital to benefit from systemic trends and macroeconomic dislocations.',
-      columns: [
-        {
-          title: 'Foreign Exchange (FX)',
-          text:
-            'Currencies are the lifeblood of the global economy. We trade major and cross-currency pairs to capitalize on interest rate differentials, purchasing power parity, and geopolitical shifts.',
-        },
-        {
-          title: 'Commodities',
-          text:
-            'We view commodities as an essential hedge against inflation and a portfolio diversifier. Our exposure spans energy (oil, natural gas) and metals (gold, silver, copper).',
-        },
-        {
-          title: 'Equity Indices',
-          text:
-            'Rather than betting on single stocks, we utilize equity indices to express views on entire economies or sectors.',
-        },
-        {
-          title: 'Fixed Income',
-          text:
-            'We navigate the global debt markets with a focus on yield generation and capital preservation.',
-        },
-      ],
-    },
-    {
-      label: 'Virtual Assets',
-      overview:
-        'As finance undergoes a digital revolution, we provide institutional-grade access to the digital asset ecosystem.',
-      columns: [
-        {
-          title: 'Cryptocurrencies',
-          text:
-            'We offer exposure to established digital currencies such as Bitcoin and Ethereum.',
-        },
-      ],
-    },
-    {
-      label: 'Real Assets',
-      overview:
-        'Tangible assets are the bedrock of wealth preservation.',
-      columns: [
-        {
-          title: 'Real Estate Advisory',
-          text:
-            'We provide bespoke consultancy services for clients looking to acquire, develop, or divest property.',
-        },
-        {
-          title: 'Real Estate Investments',
-          text:
-            'Our firm actively manages direct investments in residential, commercial, and industrial properties.',
-        },
-      ],
-    },
-    {
-      label: 'Private Wealth',
-      overview:
-        'True wealth management extends beyond investment returns; it is about securing a legacy.',
-      columns: [
-        {
-          title: 'Wealth Planning',
-          text:
-            'We build comprehensive roadmaps that cover liquidity management and retirement planning.',
-        },
-        {
-          title: 'Portfolio Structuring',
-          text:
-            'Every individual has a unique risk tolerance and liquidity requirement.',
-        },
-      ],
-    },
-  ];
+  {
+    label: 'Global Equities',
+    overview:
+      'Our Global Equities practice is built on deep fundamental research and a bottom-up security selection process. We believe that despite market efficiency, information asymmetry and behavioral biases create pockets of value. Our teams analyze corporate balance sheets, management quality, and industry dynamics to identify high-quality businesses trading at a discount to their intrinsic value.',
+    columns: [
+      {
+        title: 'International Markets',
+        text:
+          'We look beyond domestic borders to capture growth in developed economies across Europe, Asia-Pacific, and North America. By diversifying across mature markets, we mitigate single-country risk while accessing established global leaders in technology, healthcare, and industrials.',
+      },
+      {
+        title: 'Emerging Markets',
+        text:
+          'The next wave of global growth is driven by developing economies. Our specialized team navigates the volatility of emerging markets to identify nations and sectors undergoing structural transformation. We focus on demographic shifts, urbanization, and the rising middle class to capture high-alpha opportunities in regions that are often under-researched.',
+      },
+      {
+        title: 'Event & Sector Trades',
+        text:
+          'Markets often misprice securities during periods of corporate change or specific industry cycles. We utilize tactical strategies to capitalize on distinct catalysts such as mergers and acquisitions, spin-offs, regulatory shifts, and sector-specific rotation. This opportunistic approach allows us to generate returns that are uncorrelated to the broader market indices.',
+      },
+    ],
+  },
+  {
+    label: 'Global Macro',
+    overview:
+      'Our Global Macro strategy takes a top-down view of the financial world. We analyze the complex interplay between geopolitics, central bank policies, economic indicators, and global trade flows. By understanding the "big picture," we position capital to benefit from systemic trends and macroeconomic dislocations.',
+    columns: [
+      {
+        title: 'Foreign Exchange (FX)',
+        text:
+          'Currencies are the lifeblood of the global economy. We trade major and cross-currency pairs to capitalize on interest rate differentials, purchasing power parity, and geopolitical shifts.',
+      },
+      {
+        title: 'Commodities',
+        text:
+          'We view commodities as an essential hedge against inflation and a portfolio diversifier. Our exposure spans energy (oil, natural gas) and metals (gold, silver, copper).',
+      },
+      {
+        title: 'Equity Indices',
+        text:
+          'Rather than betting on single stocks, we utilize equity indices to express views on entire economies or sectors.',
+      },
+      {
+        title: 'Fixed Income',
+        text:
+          'We navigate the global debt markets with a focus on yield generation and capital preservation.',
+      },
+    ],
+  },
+  {
+    label: 'Virtual Assets',
+    overview:
+      'As finance undergoes a digital revolution, we provide institutional-grade access to the digital asset ecosystem.',
+    columns: [
+      {
+        title: 'Cryptocurrencies',
+        text:
+          'We offer exposure to established digital currencies such as Bitcoin and Ethereum.',
+      },
+    ],
+  },
+  {
+    label: 'Real Assets',
+    overview:
+      'Tangible assets are the bedrock of wealth preservation.',
+    columns: [
+      {
+        title: 'Real Estate Advisory',
+        text:
+          'We provide bespoke consultancy services for clients looking to acquire, develop, or divest property.',
+      },
+      {
+        title: 'Real Estate Investments',
+        text:
+          'Our firm actively manages direct investments in residential, commercial, and industrial properties.',
+      },
+    ],
+  },
+  {
+    label: 'Private Wealth',
+    overview:
+      'True wealth management extends beyond investment returns; it is about securing a legacy.',
+    columns: [
+      {
+        title: 'Wealth Planning',
+        text:
+          'We build comprehensive roadmaps that cover liquidity management and retirement planning.',
+      },
+      {
+        title: 'Portfolio Structuring',
+        text:
+          'Every individual has a unique risk tolerance and liquidity requirement.',
+      },
+    ],
+  },
+];
+
 
   return (
     <section
@@ -175,7 +172,8 @@ export default function InvestmentTabs() {
     >
       <div className="container-responsive">
         <div className="flex flex-col md:flex-row gap-8">
-          {/* Tabs */}
+
+          {/* TABS */}
           <div className="w-full md:w-64">
             <div
               ref={scrollContainerRef}
@@ -184,9 +182,7 @@ export default function InvestmentTabs() {
               {tabs.map((tab, i) => (
                 <button
                   key={tab.label}
-                  ref={(el) => {
-                    tabRefs.current[i] = el;
-                  }}
+                  ref={(el) => { tabRefs.current[i] = el; }}
                   onClick={() => setActiveTab(i)}
                   className={`px-4 py-3 text-left text-sm whitespace-nowrap border-b-4 md:border-b-0 md:border-l-4 transition ${
                     activeTab === i
@@ -200,7 +196,7 @@ export default function InvestmentTabs() {
             </div>
           </div>
 
-          {/* Content */}
+          {/* CONTENT */}
           <div
             className="flex-1"
             style={{
@@ -216,18 +212,52 @@ export default function InvestmentTabs() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {tabs[activeTab].columns.map((column) => (
-                <div key={column.title}>
-                  <h3 className="font-brand text-section-content text-primary mb-3 md:mb-4">
+                <div
+                  key={column.title}
+                  className="
+                    relative group
+                    pl-4 md:pl-6
+                  "
+                >
+                  {/* background motion layer */}
+                  <div
+                    className="
+                      absolute inset-0 -z-10
+                      translate-y-2 opacity-0
+                      transition-all duration-[900ms]
+                      [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]
+                      group-hover:translate-y-0 group-hover:opacity-100
+                    "
+                  />
+
+                  {/* title */}
+                  <h3
+                    className="
+                      font-brand text-section-content text-primary mb-3 md:mb-4
+                      transition-transform duration-[700ms]
+                      [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]
+                      group-hover:-translate-y-2
+                    "
+                  >
                     {column.title}
                   </h3>
-                  <p className="text-stat-disc color-grey leading-relaxed">
+
+                  {/* body */}
+                  <p
+                    className="
+                      text-stat-disc color-grey leading-relaxed
+                      transition-all duration-[900ms] delay-100
+                      [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]
+                      group-hover:-translate-y-1 group-hover:opacity-95
+                    "
+                  >
                     {column.text}
                   </p>
                 </div>
               ))}
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
     </section>
