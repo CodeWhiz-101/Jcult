@@ -9,25 +9,27 @@ export default function InvestmentTabs() {
 
   const sectionRef = useRef<HTMLElement | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-  const tabRefs = useRef<HTMLButtonElement[]>([]);
 
   /* -------------------------------
      TAB CONTENT FADE
   -------------------------------- */
   useEffect(() => {
     setIsVisible(false);
-    const timer = setTimeout(() => setIsVisible(true), 50);
-    return () => clearTimeout(timer);
+    const t = setTimeout(() => setIsVisible(true), 50);
+    return () => clearTimeout(t);
   }, [activeTab]);
 
   /* -------------------------------
      AUTO-CENTER ACTIVE TAB
+     (NO CALLBACK REFS)
   -------------------------------- */
   useEffect(() => {
     const container = scrollContainerRef.current;
-    const activeButton = tabRefs.current[activeTab];
+    if (!container) return;
 
-    if (!container || !activeButton) return;
+    const buttons = container.querySelectorAll<HTMLButtonElement>('button');
+    const activeButton = buttons[activeTab];
+    if (!activeButton) return;
 
     const containerWidth = container.offsetWidth;
     const buttonLeft = activeButton.offsetLeft;
@@ -96,7 +98,8 @@ export default function InvestmentTabs() {
       style={{
         opacity: hasEnteredView ? 1 : 0,
         transform: hasEnteredView ? 'translateY(0)' : 'translateY(24px)',
-        transition: 'opacity 900ms cubic-bezier(0.22,1,0.36,1), transform 900ms cubic-bezier(0.22,1,0.36,1)',
+        transition:
+          'opacity 900ms cubic-bezier(0.22,1,0.36,1), transform 900ms cubic-bezier(0.22,1,0.36,1)',
       }}
     >
       <div className="container-responsive">
@@ -111,9 +114,6 @@ export default function InvestmentTabs() {
               {tabs.map((tab, i) => (
                 <button
                   key={tab.label}
-                  ref={(el) => {
-                    if (el) tabRefs.current[i] = el;
-                  }}
                   onClick={() => setActiveTab(i)}
                   className={`px-4 py-3 text-left text-sm whitespace-nowrap transition border-b-4 md:border-b-0 md:border-l-4 ${
                     activeTab === i
@@ -133,7 +133,8 @@ export default function InvestmentTabs() {
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateX(0)' : 'translateX(-20px)',
-              transition: 'opacity 600ms cubic-bezier(0.25,1,0.5,1), transform 600ms cubic-bezier(0.25,1,0.5,1)',
+              transition:
+                'opacity 600ms cubic-bezier(0.25,1,0.5,1), transform 600ms cubic-bezier(0.25,1,0.5,1)',
             }}
           >
             <p className="text-stat-disc color-grey mb-8">
