@@ -180,7 +180,10 @@ export default function InvestmentTabs() {
               {tabs.map((tab, i) => (
                 <button
                   key={i}
-                  ref={(el) => (tabRefs.current[i] = el)}
+                  ref={(el) => {
+  tabRefs.current[i] = el;
+}}
+
                   onClick={() => setActiveTab(i)}
                   className={`px-4 py-3 text-left text-sm whitespace-nowrap border-b-4 md:border-b-0 md:border-l-4 transition ${
                     activeTab === i
