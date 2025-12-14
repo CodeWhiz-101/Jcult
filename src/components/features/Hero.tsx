@@ -85,7 +85,8 @@ export default function Hero({ videoSrc, imageSrc, title, description }: HeroPro
           <div
             className="absolute inset-0"
             style={{
-              background: 'rgba(27, 94, 32, 0.7)',
+             background: 'var(--brand-green-gradient)',
+
               backdropFilter: 'blur(12px)',
               WebkitBackdropFilter: 'blur(12px)',
               border: '1px solid rgba(255, 255, 255, 0.18)'

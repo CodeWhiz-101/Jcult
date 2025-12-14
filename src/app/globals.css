@@ -1,16 +1,30 @@
+/*Read only do not modify*/
+
 @import "tailwindcss";
 
 /* ========================================
    CSS VARIABLES
 ======================================== */
 :root {
+  /* Solid brand green (text, borders, buttons) */
   --brand-green: #1B5E20;
+
+  /* Brand green gradient (backgrounds only) */
+--brand-green-gradient: linear-gradient(
+  90deg,
+  #0B3D1A 0%,
+  #0F4A22 30%,
+  #145A2A 60%,
+  #1B5E20 100%
+);
+
   --white: #FFFFFF;
   --white-alt: #F5F5F5;
   --black: #212121;
   --grey-text: #68717a;
   --grey-bg: #BEC2C5;
 }
+
 
 /* ========================================
    BASE STYLES
@@ -36,15 +50,23 @@ body {
 
 .bg-white { background: var(--white); }
 .bg-white-alt { background: var(--white-alt); }
-.bg-brand { background: var(--brand-green); }
+
+/* 🔥 GREEN BACKGROUNDS → GRADIENT */
+.bg-brand {
+  background: var(--brand-green-gradient);
+}
+
+.bg-primary {
+  background: var(--brand-green-gradient);
+}
+
 .bg-black { background: var(--black); }
 .bg-grey { background: var(--grey-bg); }
 
-/* Legacy aliases for existing code */
+/* Legacy aliases */
 .text-primary { color: var(--brand-green); }
 .text-main { color: var(--black); }
 .bg-main { background: var(--white); }
-.bg-primary { background: var(--brand-green); }
 .bg-tertiary { background: var(--white-alt); }
 
 /* ========================================
@@ -65,21 +87,6 @@ body {
   border-color: var(--brand-green);
 }
 
-.btn-white {
-  background: var(--white-alt);
-  color: var(--black);
-  border: 2px solid var(--white-alt);
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: all 400ms ease;
-}
-
-.btn-white:hover {
-  background: transparent;
-  color: var(--white-alt);
-  border-color: var(--white-alt);
-}
-
 /* Legacy button aliases */
 .btn-primary {
   background: var(--brand-green);
@@ -91,82 +98,26 @@ body {
   cursor: pointer;
   transition: all 400ms ease;
 }
+
 .btn-primary:hover {
   background: #D4AF37;
   border-color: #D4AF37;
   color: #000000;
 }
 
-.btn-secondary {
-  background-color: #D4AF37;
-  color: #000000;
-  padding: 0.5rem 1rem;
-  border-radius: 0;
-  font-weight: 500;
-  border: 2px solid #D4AF37;
-  cursor: pointer;
-}
-.btn-secondary:hover {
-  background-color: var(--brand-green);
-  border-color: var(--brand-green);
-  color: white;
-}
-
-.btn-tertiary {
-  background-color: #000000;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0;
-  font-weight: 500;
-  border: 2px solid #000000;
-  cursor: pointer;
-}
-.btn-tertiary:hover {
-  background-color: #D4AF37;
-  border-color: #D4AF37;
-  color: #000000;
-}
-
-.btn-outline-primary {
-  background-color: transparent;
+/* ========================================
+   HOVER STATES (DON’T USE GRADIENTS HERE)
+======================================== */
+.hover\:text-primary:hover {
   color: var(--brand-green);
-  padding: 0.5rem 1rem;
-  border-radius: 0;
-  font-weight: 500;
-  border: 2px solid var(--brand-green);
-  cursor: pointer;
-}
-.btn-outline-primary:hover {
-  background-color: var(--brand-green);
-  color: white;
 }
 
-.btn-outline-secondary {
-  background-color: transparent;
-  color: #D4AF37;
-  padding: 0.5rem 1rem;
-  border-radius: 0;
-  font-weight: 500;
-  border: 2px solid #D4AF37;
-  cursor: pointer;
-}
-.btn-outline-secondary:hover {
-  background-color: #D4AF37;
-  color: #000000;
+.hover\:bg-primary:hover {
+  background: #165018;
 }
 
-.btn-outline-tertiary {
-  background-color: transparent;
-  color: #000000;
-  padding: 0.5rem 1rem;
-  border-radius: 0;
-  font-weight: 500;
-  border: 2px solid #000000;
-  cursor: pointer;
-}
-.btn-outline-tertiary:hover {
-  background-color: #000000;
-  color: white;
+.hover\:bg-secondary:hover {
+  background-color: #165018;
 }
 
 /* ========================================
@@ -261,8 +212,8 @@ body {
 
 /* Section Title (Pioneering) */
 .text-section-title {
-  font-size: 40px;
-  font-weight: 600;
+  font-size: 38px;
+  font-weight: 400;
 }
 @media (min-width: 768px) {
   .text-section-title { font-size: 40px; }
