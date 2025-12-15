@@ -44,10 +44,7 @@ export default function Hero({ videoSrc, imageSrc, title, description }: HeroPro
 
       {/* Title */}
       <div className="absolute inset-x-0 z-20">
-        <div className="
-          container-responsive
-          pt-28 md:pt-32 lg:pt-40 xl:pt-44
-        ">
+        <div className="container-responsive pt-28 md:pt-32 lg:pt-40 xl:pt-44">
           <h1
             className={`
               text-white max-w-[340px] md:max-w-[520px] lg:max-w-[640px]
@@ -82,14 +79,14 @@ export default function Hero({ videoSrc, imageSrc, title, description }: HeroPro
             ${loaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}
           `}
         >
+          {/* ✅ BRAND GREEN GRADIENT (SYSTEM-LEVEL) */}
           <div
             className="absolute inset-0"
             style={{
-             background: 'var(--brand-green-gradient)',
-
+              background: 'var(--brand-green-gradient)',
               backdropFilter: 'blur(12px)',
               WebkitBackdropFilter: 'blur(12px)',
-              border: '1px solid rgba(255, 255, 255, 0.18)'
+              border: '1px solid rgba(255, 255, 255, 0.18)',
             }}
           />
 
