@@ -12,11 +12,10 @@
   /* Brand green gradient (backgrounds only) */
 --brand-green-gradient: linear-gradient(
   90deg,
-  #0B3D1A 0%,
-  #0F4A22 30%,
-  #145A2A 60%,
-  #1B5E20 100%
+  rgb(11, 62, 39),
+  rgb(25, 113, 73)
 );
+
 
   --white: #FFFFFF;
   --white-alt: #F5F5F5;
