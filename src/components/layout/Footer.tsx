@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="bg-tertiary text-black py-10 xl:py-20">
+    <footer className="bg-tertiary text-black py-10 xl:py-12">
       <div className="container-responsive">
 
         {/* Top Section */}
@@ -43,7 +43,7 @@ export default function Footer() {
           <div className="relative flex flex-col gap-6 lg:flex-row justify-between items-center">
 
             {/* Legal Links */}
-            <div className="flex gap-5 text-[11.5px] tracking-wide text-black/70">
+            <div className="flex gap-5 text-[10.5px] tracking-wide text-black/70">
               <a href="/privacy" className="hover:text-primary">Privacy</a>
               <a href="/terms-of-use" className="hover:text-primary">Terms</a>
               <a href="/notices" className="hover:text-primary">Notices</a>
