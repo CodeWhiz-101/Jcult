@@ -31,39 +31,39 @@ export default function Accordion({ regions }: { regions: Region[] }) {
           return (
             <div key={i} className="border-b border-primary pb-6">
               {/* HEADER */}
-              <div className="flex items-center justify-between">
-                <h2 className="text-4xl font-serif text-primary">
-                  {region.title}
-                </h2>
+<div
+  onClick={() => setOpenIndex(isOpen ? null : i)}
+  className="
+    flex items-center justify-between cursor-pointer group
+  "
+  aria-expanded={isOpen}
+  aria-controls={`region-${i}-content`}
+>
+  <h2 className="text-4xl font-serif text-primary">
+    {region.title}
+  </h2>
 
-                <button
-                  onClick={() => setOpenIndex(isOpen ? null : i)}
-                  aria-expanded={isOpen}
-                  aria-controls={`region-${i}-content`}
-                  aria-label={
-                    isOpen
-                      ? `Collapse ${region.title}`
-                      : `Expand ${region.title}`
-                  }
-                  className="
-                    p-3 border-2 border-[#1B5E20] rounded-full 
-                    transition group 
-                    hover:bg-[#1B5E20] hover:border-[#1B5E20]
-                  "
-                >
-                  {isOpen ? (
-                    <IoRemove
-                      size={22}
-                      className="text-primary group-hover:!text-white transition-colors"
-                    />
-                  ) : (
-                    <IoAdd
-                      size={22}
-                      className="text-primary group-hover:!text-white transition-colors"
-                    />
-                  )}
-                </button>
-              </div>
+  <div
+    className="
+      p-3 border-2 border-[#1B5E20] rounded-full 
+      transition 
+      group-hover:bg-[#1B5E20] group-hover:border-[#1B5E20]
+    "
+  >
+    {isOpen ? (
+      <IoRemove
+        size={22}
+        className="text-primary group-hover:!text-white transition-colors"
+      />
+    ) : (
+      <IoAdd
+        size={22}
+        className="text-primary group-hover:!text-white transition-colors"
+      />
+    )}
+  </div>
+</div>
+
 
               {/* EXPANDED CONTENT */}
               <div

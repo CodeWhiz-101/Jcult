@@ -79,9 +79,18 @@ export default function NewsSection({ title, description, items }: NewsSectionPr
                       </p>
                     )}
 
-                    <h3 className="text-base md:text-lg text-primary group-hover:underline font-primary">
-                      {item.title}
-                    </h3>
+                    <h3
+  className="
+    font-primary text-base md:text-lg text-primary
+    gold-hover
+  "
+>
+  {item.title}
+</h3>
+
+
+
+
                   </div>
 
                   <ArrowRight

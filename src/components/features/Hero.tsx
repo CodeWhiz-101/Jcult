@@ -12,10 +12,10 @@ interface HeroProps {
 export default function Hero({ videoSrc, imageSrc, title, description }: HeroProps) {
   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    const t = setTimeout(() => setLoaded(true), 100);
-    return () => clearTimeout(t);
-  }, []);
+ useEffect(() => {
+  requestAnimationFrame(() => setLoaded(true));
+}, []);
+
 
   return (
     <section className="relative h-[480px] md:h-[530px] lg:h-[680px] xl:h-[760px] overflow-hidden">
@@ -29,11 +29,13 @@ export default function Hero({ videoSrc, imageSrc, title, description }: HeroPro
       {/* Background image */}
       {imageSrc && (
         <div
-          className={`
-            absolute inset-0 z-0 transition-transform duration-[1800ms] ease-out
-            ${loaded ? 'scale-100' : 'scale-[1.05]'}
-          `}
-        >
+  className={`
+    absolute inset-0 z-0
+    transition-all duration-[1800ms] ease-out
+    ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-[1.08]'}
+  `}
+>
+
           <img
             src={imageSrc}
             alt=""
@@ -55,7 +57,8 @@ export default function Hero({ videoSrc, imageSrc, title, description }: HeroPro
               tracking-[-0.02em]
               pl-2 drop-shadow-lg
               transition-all duration-[1200ms] ease-out
-              ${loaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}
+              ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
+
             `}
           >
             {title}
