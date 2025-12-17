@@ -36,12 +36,13 @@ export default function Footer() {
          <div className="relative flex flex-col gap-6 md:gap-10 lg:gap-0 lg:flex-row justify-between items-start md:items-center">
 
             {/* Legal Links - Left */}
-            <div className="flex flex-row gap-8 items-center">
-  <a href="/privacy" className="text-[14px] hover:text-primary">Privacy</a>
-  <a href="/terms-of-use" className="text-[14px] hover:text-primary">Terms of Use</a>
-  <a href="/notices" className="text-[14px] hover:text-primary">Notices</a>
-  <a href="/disclosure" className="text-[14px] hover:text-primary">Disclosure</a>
+           <div className="flex flex-row gap-6 items-center">
+  <a href="/privacy" className="text-[12.5px] tracking-wide hover:text-primary">Privacy</a>
+  <a href="/terms-of-use" className="text-[12.5px] tracking-wide hover:text-primary">Terms of Use</a>
+  <a href="/notices" className="text-[12.5px] tracking-wide hover:text-primary">Notices</a>
+  <a href="/disclosure" className="text-[12.5px] tracking-wide hover:text-primary">Disclosure</a>
 </div>
+
 
             
             {/* Copyright - Center */}
