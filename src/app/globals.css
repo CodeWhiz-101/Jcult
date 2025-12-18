@@ -236,28 +236,17 @@ body {
 /* Hero Title */
 /* Hero Title — Premium */
 .text-hero-title {
-  font-size: 26px;
-  font-weight: 450;
-  line-height: 1.02;
-  letter-spacing: -0.02em;
+  font-size: 40px;
+  font-weight:400;
 }
-
 @media (min-width: 768px) {
-  .text-hero-title {
-    font-size: 60px;
-  }
+  .text-hero-title { font-size: 48px; }
 }
-
 @media (min-width: 1024px) {
-  .text-hero-title {
-    font-size: 76px;
-  }
+  .text-hero-title { font-size: 64px; }
 }
-
 @media (min-width: 1440px) {
-  .text-hero-title {
-    font-size: 88px;
-  }
+  .text-hero-title { font-size: 70px; }
 }
 
 
