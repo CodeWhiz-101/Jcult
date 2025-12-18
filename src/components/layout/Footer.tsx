@@ -25,7 +25,7 @@ export default function Footer() {
               { label: 'Who We Are', href: '/who-we-are' },
               { label: 'What We Do', href: '/what-we-do' },
               { label: 'News', href: '/news' },
-              { label: 'Career', href: '/career' },
+              { label: 'Careers', href: '/career' },
             ].map((link) => (
               <a
                 key={link.label}
