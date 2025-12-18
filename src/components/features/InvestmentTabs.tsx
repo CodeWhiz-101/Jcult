@@ -99,13 +99,14 @@ export default function AssetManagement() {
       }}
     >
       {/* NAVBAR */}
-      <div className="border-b border-white/25">
+      <div className="border-b border-white/25 pt-9">
+
         <div className="container-responsive flex overflow-x-auto">
           {tabs.map((tab, i) => (
             <button
               key={tab.label}
               onClick={() => setActive(i)}
-              className={`relative px-6 py-4 text-sm font-brand tracking-wide transition-all
+              className={`relative px-10 py-4 text-sm font-brand tracking-wide transition-all
                 ${i === active
                   ? 'bg-white text-black'
                   : 'text-white/80 hover:bg-white/10'}
