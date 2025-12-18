@@ -4,25 +4,25 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function AssetManagement() {
   const [active, setActive] = useState(0);
-  const [hovered, setHovered] = useState<number | null>(null);
-  const [inView, setInView] = useState(false);
+  const [entered, setEntered] = useState(false);
 
-  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
-  // ✅ SCROLL-BASED ANIMATION (IntersectionObserver)
+  /* -------------------------------
+     SCROLL REVEAL (ONCE)
+  -------------------------------- */
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setInView(true);
+          setEntered(true);
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
-
     return () => observer.disconnect();
   }, []);
 
@@ -49,15 +49,24 @@ export default function AssetManagement() {
     },
     {
       label: 'Global Macro',
-      overview:
-        'Our Global Macro strategy takes a top-down view of the financial world. We analyze the complex interplay between geopolitics, central bank policies, economic indicators, and global trade flows. By understanding the big picture, we position capital to benefit from systemic trends and macroeconomic dislocations.',
-      columns: [
-        { title: 'Foreign Exchange (FX)', text: 'Currencies are the lifeblood of the global economy. We trade major and cross-currency pairs to capitalize on interest rate differentials, purchasing power parity, and geopolitical shifts.' },
-        { title: 'Commodities', text: 'We view commodities as an essential hedge against inflation and a portfolio diversifier. Our exposure spans energy and metals.' },
-        { title: 'Equity Indices', text: 'We utilize equity indices to express views on entire economies or sectors.' },
-        { title: 'Fixed Income', text: 'We navigate the global debt markets with a focus on yield generation and capital preservation.' },
-      ],
-    },
+
+      overview:
+
+        'Our Global Macro strategy takes a top-down view of the financial world. We analyze the complex interplay between geopolitics, central bank policies, economic indicators, and global trade flows. By understanding the big picture, we position capital to benefit from systemic trends and macroeconomic dislocations.',
+
+      columns: [
+
+        { title: 'Foreign Exchange (FX)', text: 'Currencies are the lifeblood of the global economy. We trade major and cross-currency pairs to capitalize on interest rate differentials, purchasing power parity, and geopolitical shifts.' },
+
+        { title: 'Commodities', text: 'We view commodities as an essential hedge against inflation and a portfolio diversifier. Our exposure spans energy and metals.' },
+
+        { title: 'Equity Indices', text: 'We utilize equity indices to express views on entire economies or sectors.' },
+
+        { title: 'Fixed Income', text: 'We navigate the global debt markets with a focus on yield generation and capital preservation.' },
+
+      ],
+
+    },
     {
       label: 'Virtual Assets',
       overview:
@@ -70,17 +79,8 @@ export default function AssetManagement() {
       label: 'Real Assets',
       overview: 'Tangible assets are the bedrock of wealth preservation.',
       columns: [
-        { title: 'Real Estate Advisory', text: 'We provide bespoke consultancy services for property acquisition, development, and divestment.' },
-        { title: 'Real Estate Investments', text: 'We actively manage direct investments across asset classes.' },
-      ],
-    },
-    {
-      label: 'Private Wealth',
-      overview:
-        'True wealth management extends beyond investment returns; it is about securing a legacy.',
-      columns: [
-        { title: 'Wealth Planning', text: 'We build comprehensive roadmaps covering liquidity and retirement planning.' },
-        { title: 'Portfolio Structuring', text: 'Every individual has a unique risk tolerance and liquidity requirement.' },
+        { title: 'Real Estate Advisory', text: 'We provide bespoke consultancy services.' },
+        { title: 'Real Estate Investments', text: 'We actively manage direct investments.' },
       ],
     },
   ];
@@ -90,84 +90,64 @@ export default function AssetManagement() {
   return (
     <section
       ref={sectionRef}
-      className="relative text-white"
-      style={{ background: 'var(--brand-green-gradient)' }}
+      className="relative"
+      style={{
+        background: 'var(--brand-green-gradient)',
+        opacity: entered ? 1 : 0,
+        transform: entered ? 'translateY(0)' : 'translateY(28px)',
+        transition: 'all 900ms cubic-bezier(0.22,1,0.36,1)',
+      }}
     >
-      {/* NAV */}
-      <div className="container-responsive pt-16">
-        <nav className="flex gap-10 border-b border-white/30">
-          {tabs.map((tab, i) => {
-            const isActive = i === active;
-            const isHovered = hovered === i;
-
-            return (
-              <button
-                key={tab.label}
-                onClick={() => setActive(i)}
-                onMouseEnter={() => setHovered(i)}
-                onMouseLeave={() => setHovered(null)}
-                className="relative pb-4 text-sm tracking-wide font-brand text-white/80 hover:text-white transition-colors"
-              >
-                {tab.label}
-
-                {/* underline animation */}
-                <span
-                  className={`absolute left-0 -bottom-[1px] h-[1px] transition-all duration-300
-                    ${isActive || isHovered ? 'w-full' : 'w-0'}
-                  `}
-                  style={{
-                    /* 👇 CHANGE COLOR HERE LATER */
-                    backgroundColor: 'rgba(255,255,255,0.85)',
-                  }}
-                />
-              </button>
-            );
-          })}
-        </nav>
+      {/* NAVBAR */}
+      <div className="border-b border-white/25">
+        <div className="container-responsive flex overflow-x-auto">
+          {tabs.map((tab, i) => (
+            <button
+              key={tab.label}
+              onClick={() => setActive(i)}
+              className={`relative px-6 py-4 text-sm font-brand tracking-wide transition-all
+                ${i === active
+                  ? 'bg-white text-black'
+                  : 'text-white/80 hover:bg-white/10'}
+              `}
+            >
+              {tab.label} &gt;
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* CONTENT */}
-      <div className="container-responsive py-24">
-        {/* Title */}
-        <h2
-          className={`font-brand text-[44px] md:text-[60px] leading-tight mb-10 transition-all duration-700
-            ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
-          `}
-        >
+      {/* CONTENT — key={active} forces fade on tab switch */}
+      <div key={active} className="container-responsive py-24 animate-header-reveal">
+        <h1 className="font-brand text-[44px] md:text-[60px] text-white mb-8">
           {current.label}
-        </h2>
+        </h1>
 
-        {/* Overview */}
-        <p
-          className={`max-w-[920px] text-white/90 leading-[1.8] text-[15.5px] mb-24 transition-all duration-700 delay-150
-            ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
-          `}
-        >
+        <p className="max-w-[900px] text-white/90 leading-[1.8] text-[15.5px] mb-20">
           {current.overview}
         </p>
 
-        {/* Columns */}
-        <div
-          className="grid gap-16"
-          style={{
-            gridTemplateColumns: `repeat(${current.columns.length}, minmax(0, 1fr))`,
-          }}
-        >
+        {/* CARDS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
           {current.columns.map((col, idx) => (
             <div
               key={col.title}
-              className={`
-                pr-12
-                transition-all duration-700
-                ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
-                ${idx !== current.columns.length - 1 ? 'border-r border-white/25' : ''}
-              `}
-              style={{ transitionDelay: `${idx * 120}ms` }}
+              className="
+                relative
+                backdrop-blur-xl
+                bg-white/10
+                border border-white/20
+                p-7
+                transition-all duration-300
+                hover:scale-[1.03]
+                hover:bg-white/15
+                hover:shadow-2xl
+              "
             >
-              <h3 className="font-brand text-[18px] mb-5">
+              <h3 className="font-brand text-[20px] mb-4 text-white">
                 {col.title}
               </h3>
-              <p className="text-white/85 leading-[1.7] text-[14.5px]">
+              <p className="text-[14.5px] leading-[1.7] text-white/90">
                 {col.text}
               </p>
             </div>
