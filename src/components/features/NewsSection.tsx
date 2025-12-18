@@ -23,11 +23,16 @@ export default function NewsSection({ title, description, items }: NewsSectionPr
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.25 }
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.2 }
     );
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
     return () => observer.disconnect();
   }, []);
 
@@ -35,37 +40,29 @@ export default function NewsSection({ title, description, items }: NewsSectionPr
     <section ref={sectionRef} className="py-6 md:py-8 lg:py-16">
       <div className="container-responsive">
         <div className="flex flex-col gap-5 md:flex-row items-start">
-
-          {/* LEFT: TITLE + DESCRIPTION */}
-          <div
-            className={`
-              w-2/3 md:mb-0 pr-2
-              transition-all duration-900 ease-in-out
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
-            `}
-          >
-            <h2 className="leading-[53px] font-primary text-primary mb-8 text-section-title">
+          {/* Left: Title and Description */}
+          <div className={`w-2/3 md:mb-0 pr-2 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+          }`}>
+            <h2 className="leading-[53px] font-primary  text-primary mb-8 text-section-title">
               {title}
             </h2>
-
             <p className="color-grey leading-relaxed text-section-content">
               {description}
             </p>
           </div>
 
-          {/* RIGHT: NEWS ITEMS */}
+          {/* Right: News Items */}
           <div className="w-full lg:pl-2">
             <div className="divide-y border-t border-b">
               {items.map((item, i) => (
                 <a
                   key={i}
                   href={item.href}
-                  className={`
-                    group flex justify-between items-start py-4 md:py-6
-                    transition-all duration-700 ease-in-out
-                    ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
-                  `}
-                  style={{ transitionDelay: `${200 + i * 120}ms` }}
+                  className={`group flex justify-between py-4 md:py-6 items-start transition-all duration-1000 ${
+                    isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+                  }`}
+                  style={{ transitionDelay: `${300 + i * 150}ms` }}
                 >
                   <div className="space-y-1 flex-1">
                     <p className="text-xs md:text-sm text-charcoal uppercase tracking-wide">
@@ -79,32 +76,16 @@ export default function NewsSection({ title, description, items }: NewsSectionPr
                       </p>
                     )}
 
-                    <h3
-  className="
-    font-primary text-base md:text-lg text-primary
-    gold-hover
-  "
->
-  {item.title}
-</h3>
-
-
-
-
+                    <h3 className="text-base md:text-lg  text-primary group-hover:underline font-primary">
+                      {item.title}
+                    </h3>
                   </div>
 
-                  <ArrowRight
-                    className="
-                      h-5 w-5 text-primary ml-4
-                      transition-transform duration-300
-                      group-hover:translate-x-1
-                    "
-                  />
+                  <ArrowRight className="h-5 w-5 text-primary group-hover:translate-x-1 transition ml-4" />
                 </a>
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>
