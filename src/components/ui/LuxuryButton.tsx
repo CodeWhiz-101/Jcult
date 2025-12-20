@@ -9,52 +9,65 @@ interface LuxuryButtonProps {
   className?: string;
 }
 
-export default function LuxuryButton({ 
-  children, 
-  onClick, 
+export default function LuxuryButton({
+  children,
+  onClick,
   variant = 'primary',
-  className = 'border-1' 
+  className = '',
 }: LuxuryButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
 
-  const getStyles = () => {
-    const baseStyle = {
-      padding: '0.75rem 1.5rem',
-      fontWeight: 500,
-      position: 'relative' as const,
-      zIndex: 10,
-      cursor: 'pointer',
-      transition: 'all 400ms ease'
-    };
+  const baseStyle = {
+    padding: '0.75rem 1.5rem',
+    fontWeight: 500,
+    position: 'relative' as const,
+    zIndex: 10,
+    cursor: 'pointer',
+    transition: 'all 400ms ease',
+  };
 
+  const getInlineStyles = () => {
     switch (variant) {
       case 'white':
-        return {
-          ...baseStyle,
-          backgroundColor: isHovered ? 'transparent' : '#FFFFFF',
-          color: isHovered ? '#FFFFFF' : '#1B5E20',
-          borderColor: '#FFFFFF'
-        };
-      case 'primary-outline':
-        return {
-          ...baseStyle,
-          backgroundColor: isHovered ? 'transparent' : '#1B5E20',
-          color: '#FFFFFF',
-          borderColor: '#1B5E20'
-        };
+  return {
+    ...baseStyle,
+     color: isHovered ? '#FFFFFF' : '#1B5E20',
+    border: `1px solid ${isHovered ? '#FFFFFF' : '#1B5E20'}`,
+    backgroundColor: isHovered ? 'transparent' : '#FFFFFF',
+  };
+
+
       case 'gold':
         return {
           ...baseStyle,
           backgroundColor: '#D4AF37',
           color: '#000000',
-          borderColor: '#D4AF37'
+          border: '1px solid #D4AF37',
         };
-      default:
+
+      case 'outline':
         return {
           ...baseStyle,
-          backgroundColor: isHovered ? 'transparent' : '#1B5E20',
+          backgroundColor: 'transparent',
+          color: '#1B5E20',
+          border: '1px solid #1B5E20',
+        };
+
+      case 'primary-outline':
+        return {
+          ...baseStyle,
+          backgroundColor: 'transparent',
+          color: '#1B5E20',
+          border: '1px solid #1B5E20',
+        };
+
+      default:
+        // PRIMARY — inline styles only for text/border
+        return {
+          ...baseStyle,
           color: isHovered ? '#1B5E20' : '#FFFFFF',
-          borderColor: '#1B5E20'
+          border: '1px solid #1B5E20',
+          backgroundColor: isHovered ? '#FFFFFF' : 'transparent',
         };
     }
   };
@@ -62,10 +75,13 @@ export default function LuxuryButton({
   return (
     <button
       onClick={onClick}
-      style={getStyles()}
+      style={getInlineStyles()}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={className}
+      className={`
+        ${variant === 'primary' && !isHovered ? 'bg-primary' : ''}
+        ${className}
+      `}
     >
       {children}
     </button>

@@ -10,11 +10,12 @@ export default function Career() {
   return (
     <div className="min-h-screen bg-main">
       <main className="pt-20">
-        <Hero 
-          imageSrc="/images/group table conference.JPG"
-          title="Career"
-          description="Join our team of exceptional professionals and shape the future of finance. We offer challenging opportunities and a culture of excellence."
-        />
+          <Hero 
+  imageSrc="/images/group table conference.JPG"
+  title="Career"
+  description="Join our team of exceptional professionals and shape the future of finance. We offer challenging opportunities and a culture of excellence."
+  className="bg-primary"
+/>
 
         {/* Image Left, Title & Para Right */}
         <FadeUp>

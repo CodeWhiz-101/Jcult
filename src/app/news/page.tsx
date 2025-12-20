@@ -26,7 +26,7 @@ export default function News() {
         <section className="relative overflow-visible mb-8 md:mb-16">
           <div className="bg-primary">
             <div className="container-responsive">
-              <div className="min-h-[60vh] md:min-h-[70vh] flex items-start pt-24 md:pt-32 lg:pt-40">
+              <div className="min-h-[60vh] md:min-h-[70vh] flex items-start pt-12 md:pt-16 lg:pt-20">
                 <h1 className="font-brand text-section-title text-white">
                   News
                 </h1>
@@ -49,13 +49,9 @@ export default function News() {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
                 <a href="/news/featured-in">
-                  <LuxuryButton
-  variant="primary"
-  className="bg-primary"
->
-  View All News
-</LuxuryButton>
-
+                  <LuxuryButton variant="primary">
+                    View All News
+                  </LuxuryButton>
                 </a>
               </div>
 
