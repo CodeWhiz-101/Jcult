@@ -1,8 +1,7 @@
 "use client";
-
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { MapContainer, TileLayer, Marker, Popup, ZoomControl } from 'react-leaflet';
 
 // Fix for default markers
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -35,20 +34,29 @@ interface OfficeMapProps {
 
 export default function OfficeMap({ locations }: OfficeMapProps) {
   return (
-    <MapContainer
-      center={[25.1772, 55.3753]}
-      zoom={12}
-      style={{ height: '400px', width: '100%' }}
-      className="rounded-lg"
-      worldCopyJump={false}
-      minZoom={2}
-    >
+ <MapContainer
+  center={[20,0]}
+
+  zoom={2}
+  minZoom={2}
+  maxZoom={6}
+  style={{ width: '100%', aspectRatio: '2.5 / 1' }}
+  className="rounded-lg"
+  scrollWheelZoom={true}
+  worldCopyJump={false}
+  zoomControl={false}
+
+>
+<ZoomControl position="bottomright" />
+
+
       <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        noWrap={true}
-        bounds={[[-90, -180], [90, 180]]}
-      />
+  url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+  attribution="&copy; OpenStreetMap &copy; CARTO"
+  noWrap={true}
+  bounds={[[-90, -180], [90, 180]]}
+/>
+
       <Marker
         position={[25.1772, 55.3753]}
         icon={greenIcon}
