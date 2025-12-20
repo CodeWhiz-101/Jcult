@@ -13,71 +13,94 @@ export default function Contact() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
 
               {/* LEFT — INFORMATION */}
-              <FadeUp>
-                <div>
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl text-primary mb-6">
-                    Get in Touch
-                  </h1>
+             <FadeUp>
+  <div className="h-full flex flex-col justify-between">
 
-                  <p className="text-lg text-main opacity-75 max-w-xl leading-relaxed mb-10">
-                    We'd love to hear from you. Reach out to us for inquiries,
-                    partnerships, or career opportunities.
-                  </p>
+    {/* TOP — TITLE + TEXT */}
+    <div>
+      <h1 className="text-4xl md:text-5xl lg:text-6xl text-primary mb-6">
+        Get in Touch
+      </h1>
 
-                  <div className="space-y-6 mb-14">
-                    <p className="text-main">
-                      jculttrader.inquiry@gmail.com
-                    </p>
+      <p className="text-lg text-main opacity-75 max-w-xl leading-relaxed mb-10">
+        We'd love to hear from you. Reach out to us for inquiries,
+        partnerships, or career opportunities.
+      </p>
 
-                    <p className="text-main leading-relaxed">
-                      DSO-IFZA, IFZA Properties<br />
-                      Dubai Silicon Oasis<br />
-                      Dubai, Dubayy (AE-DU)<br />
-                      UAE
-                    </p>
+      {/* EMAIL + ADDRESS */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-14">
+        <div>
+          <p className="text-xs uppercase tracking-wider text-grey mb-2">
+            Email
+          </p>
+          <p className="text-main">
+            jculttrader.inquiry@gmail.com
+          </p>
+        </div>
 
-                    <a
-                      href="/career"
-                      className="inline-block text-primary hover:text-gold transition"
-                    >
-                      View Open Positions
-                    </a>
-                  </div>
+        <div>
+          <p className="text-xs uppercase tracking-wider text-grey mb-2">
+            Address
+          </p>
+          <p className="text-main leading-relaxed">
+            DSO-IFZA, IFZA Properties<br />
+            Dubai Silicon Oasis<br />
+            Dubai, Dubayy (AE-DU)<br />
+            UAE
+          </p>
+        </div>
+      </div>
+    </div>
 
-                  {/* SUPPORT COLUMNS */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-20">
-                    <div>
-                      <h3 className="font-medium text-main mb-3">
-                        Customer Support
-                      </h3>
-                      <p className="text-sm text-grey leading-relaxed">
-                        Our support team is available around the clock to address
-                        any concerns or queries you may have.
-                      </p>
-                    </div>
+    {/* BOTTOM — GREEN BOXES (ALIGNED WITH FORM) */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {[
+        {
+          title: 'Customer Support',
+          text:
+            'Our support team is available around the clock to address any concerns or queries you may have.',
+        },
+        {
+          title: 'Feedback And Suggestions',
+          text:
+            'We value your feedback and are continuously working to improve our services.',
+        },
+        {
+          title: 'Media Inquiries',
+          text:
+            'For media-related questions or press inquiries, please reach out to us directly.',
+        },
+      ].map((item, i) => (
+       <div
+  key={i}
+  className="
+    aspect-square
+    bg-[linear-gradient(180deg,var(--brand-green-1),var(--brand-green-2))]
+    p-3
+    flex flex-col
+    items-center        /* 👈 horizontal center */
+    justify-center      /* 👈 vertical center */
+    text-center         /* 👈 text center */
+    text-white
+    transition-transform duration-300
+    hover:scale-[1.04]
+  "
+>
+  <h3 className="text-base font-medium mb-3">
+    {item.title}
+  </h3>
 
-                    <div>
-                      <h3 className="font-medium text-main mb-3">
-                        Feedback and Suggestions
-                      </h3>
-                      <p className="text-sm text-grey leading-relaxed">
-                        We value your feedback and are continuously working to
-                        improve our services.
-                      </p>
-                    </div>
+  <p className="text-sm leading-relaxed opacity-90">
+    {item.text}
+  </p>
+</div>
 
-                    <div>
-                      <h3 className="font-medium text-main mb-3">
-                        Media Inquiries
-                      </h3>
-                      <p className="text-sm text-grey leading-relaxed">
-                        For media-related questions or press inquiries, please
-                        reach out to us directly.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </FadeUp>
+      ))}
+    </div>
+
+  </div>
+</FadeUp>
+
 
               {/* RIGHT — FORM */}
               <FadeLeft delay={200}>
@@ -123,11 +146,24 @@ export default function Contact() {
                     />
 
                     <button
-                      type="submit"
-                      className="w-full bg-primary text-white py-3 transition hover:opacity-90"
-                    >
-                      Send Message
-                    </button>
+  type="submit"
+  className="
+    w-full
+    py-3
+    text-white
+    font-medium
+    transition-all duration-300
+    hover:scale-[1.02]
+    hover:shadow-lg
+    active:scale-[0.98]
+  "
+  style={{
+    background: 'var(--brand-green-gradient)',
+  }}
+>
+  Send Message
+</button>
+
 
                     <p className="text-xs text-grey text-center">
                       By contacting us, you agree to our{' '}
