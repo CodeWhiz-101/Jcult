@@ -11,6 +11,7 @@ import LuxuryButton from '@/components/ui/LuxuryButton';
 import { newsArticles } from '@/data/newsData';
 import { useEffect, useRef, useState } from 'react';
 
+import Link from 'next/link';
 function AnimatedTalentSection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -33,34 +34,106 @@ function AnimatedTalentSection() {
   }, [isVisible]);
 
   return (
-    <section ref={sectionRef} className="py-12 md:py-16 lg:py-10 xl:py-24 bg-tertiary">
+    <section
+      ref={sectionRef}
+      className="py-12 md:py-16 lg:py-10 xl:py-24 bg-tertiary"
+    >
       <div className="container-responsive">
-        <div className="flex flex-col lg:flex-row items-start mb-10 mb:mb-20 lg:mb-14 xl:mb-28">
-          <div className={`flex-2 lg:mb-0 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            <h2 className="text-section-title leading-tight mb-3 md:mb-4 lg:mb-8 text-primary">Engage With Elite Talent</h2>
+        <div
+          className="
+            flex flex-col lg:flex-row items-start
+            mb-10 md:mb-20 lg:mb-14 xl:mb-28
+            gap-30 lg:gap-55   /* 👈 THIS CONTROLS GAP BETWEEN LEFT & RIGHT (increase/decrease here) */
+          "
+        >
+          {/* LEFT TITLE */}
+          <div
+            className={`flex-2 transition-all duration-1000 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
+            <h2
+              className="
+                font-brand
+                text-[42px] md:text-[48px] lg:text-[54px]
+                leading-[1.1]
+              "
+            >
+              <span className="block mb-2 md:mb-3 lg:mb-4 text-[var(--brand-green-1)]">
+                Engage With
+              </span>
+              <span className="block text-[var(--brand-green-2)]">
+                Elite Talent
+              </span>
+            </h2>
           </div>
-          <div className={`flex-3 lg:pl-16 transition-all duration-1000 delay-300 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            <p className="text-base md:text-lg lg:text-xl font-raleway mb-4 md:mb-6 lg:mb-8 leading-relaxed text-section-content color-grey">
-              Here, the collective fuels your growth. People learn side by side, sharpening each other's
-              skills and building extraordinary careers together.
+
+          {/* RIGHT CONTENT */}
+          <div
+            className={`flex-3 transition-all duration-1000 delay-300 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
+         <p
+  className="
+    text-sm md:text-base lg:text-[17px]
+    font-raleway
+    mb-6 lg:mb-8
+    leading-relaxed
+    color-grey
+    max-w-[600px] 
+  "
+>
+
+
+              Here, the collective fuels your growth. People learn side by side,
+              sharpening each other's skills and building extraordinary careers together.
             </p>
-            <a href="/career"><LuxuryButton variant="primary">Explore Career Possibilities</LuxuryButton></a>
+
+            {/* EXACT BUTTON YOU REQUESTED */}
+            <div
+              className={`flex ${
+                isVisible ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{ transitionDelay: '240ms' }}
+            >
+              <Link
+                href="/career"
+                className="
+                  inline-flex items-center justify-center
+                  px-8 py-3.5 text-sm font-medium
+                  no-underline
+
+                  text-white
+                  border border-transparent
+
+                  bg-[linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))]
+                  hover:bg-none hover:bg-white
+
+                  transition-all duration-300
+
+                  hover:text-[var(--brand-green-1)]
+                  hover:border-[var(--brand-green-1)]
+                "
+              >
+                Explore Career Possibilities
+              </Link>
+            </div>
           </div>
         </div>
-        <div className={`overflow-hidden transition-all duration-1000 delay-600 ${
-          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-        }`}>
-          <div className="bg-grey w-full h-[200px] mb:h-[400px] lg:h-[500px] xl:h-[700px]"></div>
+
+        {/* IMAGE / PLACEHOLDER */}
+        <div
+          className={`overflow-hidden transition-all duration-1000 delay-600 ${
+            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+          }`}
+        >
+          <div className="bg-grey w-full h-[200px] md:h-[400px] lg:h-[500px] xl:h-[700px]" />
         </div>
       </div>
     </section>
   );
 }
-
 function AnimatedMeritocraticSection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -85,18 +158,51 @@ function AnimatedMeritocraticSection() {
   return (
     <section ref={sectionRef} className="pt-12 md:pt-16 lg:pt-24">
       <div className="container-responsive">
-        <div className="flex flex-col md:flex-row items-start">
-          <div className={`flex-1 mb-4 md:mb-6 lg:mb-0 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 -translate-x-0' : 'opacity-0 -translate-x-10'
-          }`}>
-            <h2 className="leading-tight text-primary text-section-title">
-              The Meritocratic Code That Shapes Our Collective
+        <div
+          className="
+            flex flex-col md:flex-row items-start
+            gap-6 lg:gap-12   /* 👈 INCREASE / DECREASE LEFT–RIGHT GAP HERE */
+          "
+        >
+          {/* LEFT TITLE */}
+          <div
+            className={`flex-1 mb-4 md:mb-6 lg:mb-0 transition-all duration-1000 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+            }`}
+          >
+            <h2
+              className="
+                font-brand
+                text-section-title
+                leading-[1.1]
+              "
+            >
+              <span className="block text-[var(--brand-green-1)]">
+                The Meritocratic Code
+              </span>
+
+              <span className="block text-[var(--brand-green-2)]">
+                That Shapes Our Collective
+              </span>
             </h2>
           </div>
-          <div className={`flex-1 md:pl-8 lg:pl-16 transition-all duration-1000 delay-300 ${
-            isVisible ? 'opacity-100 -translate-x-0' : 'opacity-0 -translate-x-10'
-          }`}>
-            <p className="text-base md:text-lg lg:text-xl font-raleway leading-relaxed opacity-75 text-section-content color-grey">
+
+          {/* RIGHT CONTENT */}
+          <div
+            className={`flex-1 transition-all duration-1000 delay-300 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+            }`}
+          >
+            <p
+              className="
+                text-sm md:text-base lg:text-[17px]
+                font-raleway
+                leading-relaxed
+                opacity-75
+                color-grey
+                max-w-[520px]
+              "
+            >
               A culture where every perspective strengthens our purpose. From seasoned experts to
               rising talent, each member fuels the intelligence that drives our performance. United, we
               achieve what others consider out of reach.
@@ -107,6 +213,7 @@ function AnimatedMeritocraticSection() {
     </section>
   );
 }
+
 
 function AnimatedGreenSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -164,27 +271,92 @@ function AnimatedGreenSection() {
   );
 }
 
+
 function AnimatedSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="py-12 md:py-30 lg:py-34 xl:py-32 bg-tertiary">
+    <section
+      ref={sectionRef}
+      className={`
+        py-12 md:py-24 bg-tertiary
+        transition-opacity duration-1000
+        ${isVisible ? 'opacity-100' : 'opacity-0'}
+      `}
+    >
       <div className="container-responsive">
-        <div className="flex flex-col lg:flex-row items-stretch">
-          <div className="flex-1 flex flex-col items-start mb-2 md:mb-4 lg:mb-0 md:pr-8 lg:pr-12 relative">
-            <h3 className="text-section-label tracking-wider text-primary mb-3 md:mb-4 lg:mb-8">Who We Are</h3>
+        <div className="flex flex-col lg:flex-row items-start">
+
+          {/* LEFT LABEL */}
+          <div className="w-full lg:w-[22%] mb-6 lg:mb-0">
+            <h3 className="text-sm tracking-wide text-primary">
+              Who We Are
+            </h3>
           </div>
-          <div className="flex-4 pl-2 relative">
-            <div className="absolute left-0 top-0 bottom-0 w-[0.25px] bg-grey"></div>
-            <p className="text-primary text-section-para font-brand leading-tight pl-4 lg:pl-8">
+
+          {/* RIGHT CONTENT */}
+          <div className="relative w-full lg:w-[78%] pl-6 lg:pl-12">
+
+            {/* DIVIDER */}
+            <div className="absolute left-0 top-0 bottom-0 w-px bg-black/20" />
+
+            {/* PARAGRAPH */}
+            <p
+              className="
+                font-brand
+                text-[19px] md:text-[20px] lg:text-[22px]
+                leading-[1.45]
+                text-[#0B3E27]
+                max-w-[820px]
+                mb-8
+              "
+            >
               We aspire to establish an unprecedented legacy as the premier investment entity in
               history. Our mandate is to rigorously discern optimal capital allocation strategies,
               thereby delivering exceptional, sustainable value to an elite clientele of private
               capital stewards and global investors.
             </p>
+
+            {/* BUTTON */}
+            <Link
+              href="/who-we-are"
+              className="
+                inline-flex items-center justify-center
+                px-7 py-4 text-sm font-medium
+                text-white
+                bg-[linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))]
+                transition-all duration-300
+                hover:bg-none hover:bg-white
+                hover:text-[var(--brand-green-1)]
+                hover:border hover:border-[var(--brand-green-1)]
+              "
+            >
+              Explore Who We Are
+            </Link>
+
           </div>
         </div>
       </div>
     </section>
-  );}
+  );
+}
+
+
 
 
 export default function Home() {

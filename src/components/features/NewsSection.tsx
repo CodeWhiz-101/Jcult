@@ -20,6 +20,7 @@ interface NewsSectionProps {
 export default function NewsSection({ title, description, items }: NewsSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+const [titlePart1, titlePart2] = title.split("&");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,53 +40,134 @@ export default function NewsSection({ title, description, items }: NewsSectionPr
   return (
     <section ref={sectionRef} className="py-6 md:py-8 lg:py-16">
       <div className="container-responsive">
-        <div className="flex flex-col gap-5 md:flex-row items-start">
+<div className="flex flex-col md:flex-row items-start gap-8 lg:gap-16">
+
           {/* Left: Title and Description */}
           <div className={`w-2/3 md:mb-0 pr-2 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           }`}>
-            <h2 className="leading-[53px] font-primary  text-primary mb-8 text-section-title">
-              {title}
-            </h2>
+           <h2
+  className="
+    font-brand
+    mb-8
+    text-[42px] md:text-[48px] lg:text-[54px]
+    leading-[1.1] md:leading-snug lg:leading-[60px]
+  "
+>
+  <span className="block text-[#0B3E27]">
+    Insights
+  </span>
+
+  <span className="block text-[#197149]">
+    & Perspectives
+  </span>
+</h2>
+
             <p className="color-grey leading-relaxed text-section-content">
               {description}
             </p>
           </div>
+{/* Right: News Items */}
+<div className="w-full">
+  <div className="border-b border-black/20">
+    {items.map((item, i) => (
+     <a
+  key={i}
+  href={item.href}
+  className={`
+    group
+    flex
+    items-center
+    justify-between
+    gap-10
+    pt-0
+    pb-10
+    transition-all
+    duration-700
+    ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}
+  `}
+  style={{ transitionDelay: `${300 + i * 150}ms` }}
+>
 
-          {/* Right: News Items */}
-          <div className="w-full lg:pl-2">
-            <div className="divide-y border-t border-b">
-              {items.map((item, i) => (
-                <a
-                  key={i}
-                  href={item.href}
-                  className={`group flex justify-between py-4 md:py-6 items-start transition-all duration-1000 ${
-                    isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-                  }`}
-                  style={{ transitionDelay: `${300 + i * 150}ms` }}
-                >
-                  <div className="space-y-1 flex-1">
-                    <p className="text-xs md:text-sm text-charcoal uppercase tracking-wide">
-                      {item.category}
-                    </p>
+        {/* LEFT CONTENT */}
+  <div className="flex-1">
+  <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+    {(item.date || item.source) && (
+      <div className="flex items-center whitespace-nowrap">
+        {/* DATE — GREEN */}
+        {item.date && (
+          <span className="text-[12px] font-normal text-primary">
+            {item.date}
+          </span>
+        )}
 
-                    {(item.date || item.source) && (
-                      <p className="text-xs text-charcoal/70">
-                        {item.date}
-                        {item.source && <> | {item.source}</>}
-                      </p>
-                    )}
+        {/* VERTICAL DIVIDER — CITADEL STYLE */}
+        {item.date && item.source && (
+          <span className="mx-2 h-[28px] w-px bg-black/30" />
+        )}
 
-                    <h3 className="text-base md:text-lg  text-primary group-hover:underline font-primary">
-                      {item.title}
-                    </h3>
-                  </div>
+        {/* SOURCE — GREY */}
+        {item.source && (
+          <span className="text-[12px] font-normal text-black/60">
+            {item.source}
+          </span>
+        )}
+      </div>
+    )}
 
-                  <ArrowRight className="h-5 w-5 text-primary group-hover:translate-x-1 transition ml-4" />
-                </a>
-              ))}
-            </div>
-          </div>
+    {/* TITLE */}
+    <h3
+      className="
+        font-brand
+        font-medium
+        text-[22px] md:text-[24px]
+        leading-snug
+        text-primary
+      "
+    >
+      {item.title}
+    </h3>
+  </div>
+</div>
+
+
+
+        {/* RIGHT ARROW (BRAND GREEN) */}
+        <div
+  className="
+    flex
+    items-center
+    justify-center
+    w-10
+    h-10
+    rounded-full
+    border
+    border-[1px]
+    border-primary
+    transition-all
+    duration-300
+    group-hover:bg-primary
+  "
+>
+  <ArrowRight
+    strokeWidth={1.25}
+    className="
+      w-5
+      h-5
+      text-primary
+      transition-all
+      duration-300
+      group-hover:text-white
+      group-hover:translate-x-0.5
+    "
+  />
+</div>
+
+      </a>
+    ))}
+  </div>
+</div>
+
         </div>
       </div>
     </section>
