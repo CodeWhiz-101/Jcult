@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 import FadeUp from '@/components/animation/FadeUp';
 import FadeLeft from '@/components/animation/FadeLeft';
 import ScaleIn from '@/components/animation/ScaleIn';
-import ExploreMore from '@/components/features/ExploreMore';
+
 
 const OfficeMap = dynamic(() => import('@/components/map/OfficeMap'), {
   ssr: false,
@@ -29,7 +29,7 @@ export default function OfficeLocations() {
           <FadeUp>
             <div className="bg-primary">
               <div className="container-responsive">
-                <div className="min-h-[60vh] flex items-start py-8 md:py-16">
+                <div className="min-h-[60vh] md:min-h-[70vh] flex items-start pt-24 md:pt-32 lg:pt-40">
                   <FadeLeft>
                     <h1 className="text-hero-title font-brand text-white">
                       Our Global Base
@@ -121,7 +121,6 @@ export default function OfficeLocations() {
         </section>
         
         {/* Cards similar to culture route end */}
-        <ExploreMore />
       </main>
     </div>
   );
