@@ -9,7 +9,7 @@ export interface Job {
 }
 
 export const jobs: Job[] = [
-  {
+  /*{
     id: 'senior-trader-dubai',
     title: 'Senior Commodities Trader',
     experienceLevel: 'Experienced Professionals',
@@ -80,5 +80,5 @@ export const jobs: Job[] = [
     location: 'New York',
     description: 'Comprehensive training program for aspiring traders with mentorship.',
     posted: 'Dec 20, 2023'
-  }
+  }*/
 ];

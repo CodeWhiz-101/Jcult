@@ -1,50 +1,75 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { jobs } from '@/data/jobsData';
-import Link from 'next/link';
+import { useState } from 'react';
+import { Search } from 'lucide-react';
 
-function OpenOpportunitiesContent() {
-  const searchParams = useSearchParams();
+const experienceLevels = [
+  'Experienced Professionals',
+  'Internship',
+  'New Graduates',
+];
+
+const roleTypes = [
+  'Business Operations',
+  'Engineering',
+  'Investing',
+  'Quantitative Research',
+];
+
+const officeLocations = ['Dubai'];
+
+export default function CareersPage() {
+  const [search, setSearch] = useState('');
+
+  const [open, setOpen] = useState({
+    experience: true,
+    role: true,
+    location: true,
+  });
+
   const [selectedExperience, setSelectedExperience] = useState<string[]>([]);
-  const [selectedRoleType, setSelectedRoleType] = useState<string[]>([]);
-  const [selectedLocation, setSelectedLocation] = useState<string[]>([]);
+  const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
+  const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
 
-  useEffect(() => {
-    const experienceParam = searchParams.get('experience');
-    if (experienceParam) {
-      setSelectedExperience(experienceParam.split(','));
-    }
-  }, [searchParams]);
-
-  const experienceLevels = ['Internship', 'Graduates'];
-  const roleTypes = ['Trading', 'Technology', 'Operations', 'Research', 'Risk Management'];
-  const locations = ['Dubai'];
-
-  const toggleFilter = (value: string, selected: string[], setter: (val: string[]) => void) => {
-    if (selected.includes(value)) {
-      setter(selected.filter(v => v !== value));
-    } else {
-      setter([...selected, value]);
-    }
+  const toggle = (
+    value: string,
+    list: string[],
+    setList: (v: string[]) => void
+  ) => {
+    setList(
+      list.includes(value)
+        ? list.filter(v => v !== value)
+        : [...list, value]
+    );
   };
 
-  const filteredJobs = jobs.filter(job => {
-    const matchExperience = selectedExperience.length === 0 || selectedExperience.includes(job.experienceLevel);
-    const matchRole = selectedRoleType.length === 0 || selectedRoleType.includes(job.roleType);
-    const matchLocation = selectedLocation.length === 0 || selectedLocation.includes(job.location);
-    return matchExperience && matchRole && matchLocation;
-  });
+  const selectAll = (
+    values: string[],
+    setList: (v: string[]) => void
+  ) => setList(values);
+
+  const clearAll = () => {
+    setSelectedExperience([]);
+    setSelectedRoles([]);
+    setSelectedLocations([]);
+    setSearch('');
+  };
+
+  const chips = [
+    ...selectedExperience,
+    ...selectedRoles,
+    ...selectedLocations,
+  ];
 
   return (
     <div className="min-h-screen bg-main">
-      <main className="pt-20">
-        {/* Hero Section */}
-        <section className="relative overflow-visible mb-8 md:mb-16">
+      <main className="pt-[88px]">
+
+        {/* ================= HERO (UNCHANGED) ================= */}
+        <section className="relative overflow-visible">
           <div className="bg-primary">
             <div className="container-responsive">
-              <div className="min-h-[60vh] md:min-h-[70vh] flex items-start pt-12 md:pt-16 lg:pt-20">
+              <div className="min-h-[60vh] md:min-h-[70vh] flex items-start pt-24 md:pt-32 lg:pt-40">
                 <h1 className="text-section-title font-brand text-white">
                   Open Opportunities
                 </h1>
@@ -53,146 +78,171 @@ function OpenOpportunitiesContent() {
           </div>
         </section>
 
-        {/* Filters and Jobs */}
-        <section className="py-6 md:py-8 lg:py-16">
-          <div className="container-responsive">
-            <div className="flex flex-col md:flex-row gap-8">
-              {/* Filters - Left */}
-              <div className="w-full md:w-1/4 space-y-6">
-                {/* Experience Level */}
-                <div>
-                  <h3 className="text-lg font-lora  text-primary mb-4">Experience Level</h3>
-                  <div className="space-y-2">
-                    {experienceLevels.map(level => (
-                      <label key={level} className="flex items-center cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={selectedExperience.includes(level)}
-                          onChange={() => toggleFilter(level, selectedExperience, setSelectedExperience)}
-                          className="mr-3 w-4 h-4 accent-primary"
-                        />
-                        <span className="text-sm font-raleway text-main">{level}</span>
-                      </label>
-                    ))}
-                  </div>
+        {/* ========== FILTERS + RESULTS (FIXED SPACING) ========= */}
+        <section className="container-responsive pt-12 md:pt-16 pb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-16">
+            {/* ================= LEFT FILTERS ================= */}
+            <aside>
+              {/* SEARCH */}
+              <div className="mb-8">
+                <div className="relative bg-gray-100 px-4 py-2">
+                  <input
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                    placeholder="Search"
+                    className="bg-transparent w-full outline-none text-sm"
+                  />
+                  <Search className="absolute right-4 top-2.5 h-4 w-4 text-gray-500" />
                 </div>
-
-                {/* Role Type */}
-                {/* <div>
-                  <h3 className="text-lg font-lora  text-primary mb-4">Role Type</h3>
-                  <div className="space-y-2">
-                    {roleTypes.map(role => (
-                      <label key={role} className="flex items-center cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={selectedRoleType.includes(role)}
-                          onChange={() => toggleFilter(role, selectedRoleType, setSelectedRoleType)}
-                          className="mr-3 w-4 h-4 accent-primary"
-                        />
-                        <span className="text-sm font-raleway text-main">{role}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div> */}
-
-                {/* Office Location */}
-                <div>
-                  <h3 className="text-lg font-lora  text-primary mb-4">Office Location</h3>
-                  <div className="space-y-2">
-                    {locations.map(location => (
-                      <label key={location} className="flex items-center cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={selectedLocation.includes(location)}
-                          onChange={() => toggleFilter(location, selectedLocation, setSelectedLocation)}
-                          className="mr-3 w-4 h-4 accent-primary"
-                        />
-                        <span className="text-sm font-raleway text-main">{location}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Clear Filters */}
-                {(selectedExperience.length > 0 || selectedRoleType.length > 0 || selectedLocation.length > 0) && (
-                  <button
-                    onClick={() => {
-                      setSelectedExperience([]);
-                      setSelectedRoleType([]);
-                      setSelectedLocation([]);
-                    }}
-                    className="text-sm font-raleway text-gold hover:underline"
-                  >
-                    Clear All Filters
-                  </button>
-                )}
+                <div className="border-b border-gray-300 mt-4" />
               </div>
 
-              {/* Job Cards - Right */}
-              <div className="w-full md:w-3/4">
-                <p className="text-sm font-raleway text-secondary mb-6">
-                  {filteredJobs.length} {filteredJobs.length === 1 ? 'opportunity' : 'opportunities'} found
-                </p>
-                
-                <div className="space-y-4">
-                  {filteredJobs.map(job => (
-                    <div key={job.id} className="card-hover border-l-2 border-gold p-6 bg-tertiary">
-                      <div className="flex justify-between items-start mb-3">
-                        <h3 className="text-xl md:text-2xl font-lora  text-primary">
-                          {job.title}
-                        </h3>
-                        <span className="text-xs font-raleway text-secondary">{job.posted}</span>
-                      </div>
-                      
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        <span className="px-3 py-1 bg-primary text-white text-xs font-raleway">
-                          {job.experienceLevel}
-                        </span>
-                        <span className="px-3 py-1 bg-gold text-charcoal text-xs font-raleway">
-                          {job.roleType}
-                        </span>
-                        <span className="px-3 py-1 border border-primary text-primary text-xs font-raleway">
-                          {job.location}
-                        </span>
-                      </div>
-                      
-                      <p className="text-base font-raleway text-main leading-relaxed mb-4 opacity-75">
-                        {job.description}
-                      </p>
-                      
-                      <Link 
-                        href={`#`}
-                        className="text-gold font-raleway font-semibold hover:underline inline-flex items-center"
+              {/* OPPORTUNITIES + CLEAR */}
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-sm">Opportunities (0)</span>
+                <button
+                  onClick={clearAll}
+                  className="text-sm text-primary"
+                >
+                  Clear All Filters
+                </button>
+              </div>
+
+              {/* SELECTED FILTER CHIPS */}
+              {chips.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {chips.map(chip => (
+                    <span
+                      key={chip}
+                      className="bg-primary text-white text-xs px-3 py-1 rounded-full flex items-center gap-2"
+                    >
+                      {chip}
+                      <button
+                        onClick={() => {
+                          setSelectedExperience(prev =>
+                            prev.filter(v => v !== chip)
+                          );
+                          setSelectedRoles(prev =>
+                            prev.filter(v => v !== chip)
+                          );
+                          setSelectedLocations(prev =>
+                            prev.filter(v => v !== chip)
+                          );
+                        }}
                       >
-                        View Details
-                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
-                    </div>
+                        ×
+                      </button>
+                    </span>
                   ))}
                 </div>
+              )}
 
-                {filteredJobs.length === 0 && (
-                  <div className="text-center py-12">
-                    <p className="text-lg font-raleway text-secondary">
-                      No opportunities match your selected filters. Try adjusting your criteria.
-                    </p>
+              {/* FILTER SECTIONS */}
+              {[
+                {
+                  title: 'Experience Level',
+                  key: 'experience',
+                  values: experienceLevels,
+                  selected: selectedExperience,
+                  setSelected: setSelectedExperience,
+                },
+                {
+                  title: 'Role Type',
+                  key: 'role',
+                  values: roleTypes,
+                  selected: selectedRoles,
+                  setSelected: setSelectedRoles,
+                },
+                {
+                  title: 'Office Location',
+                  key: 'location',
+                  values: officeLocations,
+                  selected: selectedLocations,
+                  setSelected: setSelectedLocations,
+                },
+              ].map(section => (
+                <div key={section.key} className="mb-10">
+                  <button
+                    onClick={() =>
+                      setOpen(o => ({
+                        ...o,
+                        [section.key]:
+                          !o[section.key as keyof typeof o],
+                      }))
+                    }
+                    className="flex justify-between w-full text-left mb-3 text-sm font-medium"
+                  >
+                    {section.title}
+                    <span>
+                      {open[section.key as keyof typeof open]
+                        ? '–'
+                        : '+'}
+                    </span>
+                  </button>
+
+                  <div
+                    className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                      open[section.key as keyof typeof open]
+                        ? 'max-h-96 opacity-100'
+                        : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <button
+                      onClick={() =>
+                        selectAll(
+                          section.values,
+                          section.setSelected
+                        )
+                      }
+                      className="text-sm text-primary mb-3"
+                    >
+                      Select All
+                    </button>
+
+                    <div className="space-y-2">
+                      {section.values.map(v => (
+                        <label
+                          key={v}
+                          className="flex items-center text-sm"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={section.selected.includes(v)}
+                            onChange={() =>
+                              toggle(
+                                v,
+                                section.selected,
+                                section.setSelected
+                              )
+                            }
+                            className="mr-3"
+                          />
+                          {v}
+                        </label>
+                      ))}
+                    </div>
                   </div>
-                )}
-              </div>
-            </div>
+
+                  <div className="border-b border-gray-200 mt-6" />
+                </div>
+              ))}
+            </aside>
+
+            {/* ================= RIGHT RESULTS ================= */}
+            <section className="bg-gray-100 p-12">
+              <p className="text-sm mb-4">Viewing 0</p>
+
+              <p className="text-lg mb-6">
+                None of our open positions match your search.
+                Try adjusting your filters for additional
+                results.
+              </p>
+
+              <div className="border-b border-gray-300" />
+            </section>
           </div>
         </section>
       </main>
     </div>
-  );
-}
-
-export default function OpenOpportunities() {
-  return (
-    <Suspense fallback={<div className="min-h-screen bg-main pt-20">Loading...</div>}>
-      <OpenOpportunitiesContent />
-    </Suspense>
   );
 }
