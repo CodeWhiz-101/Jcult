@@ -4,16 +4,14 @@ import { useState } from 'react';
 import { Search } from 'lucide-react';
 
 const experienceLevels = [
-  'Experienced Professionals',
+  'Full time',
   'Internship',
-  'New Graduates',
 ];
 
 const roleTypes = [
   'Business Operations',
   'Engineering',
   'Investing',
-  'Quantitative Research',
 ];
 
 const officeLocations = ['Dubai'];
