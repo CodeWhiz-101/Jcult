@@ -70,6 +70,7 @@ export default function CareersPage() {
           <div className="bg-primary">
             <div className="container-responsive">
               <div className="min-h-[60vh] md:min-h-[70vh] flex items-start pt-24 md:pt-32 lg:pt-40">
+
                 <h1 className="text-section-title font-brand text-white">
                   Open Opportunities
                 </h1>
