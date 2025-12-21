@@ -10,18 +10,17 @@ export default function Career() {
   return (
     <div className="min-h-screen bg-main">
       <main className="pt-20">
-          <Hero 
-  imageSrc="/images/group table conference.JPG"
-  title="Career"
-  description="Join our team of exceptional professionals and shape the future of finance. We offer challenging opportunities and a culture of excellence."
-  className="bg-primary"
-/>
+        <Hero 
+          imageSrc="/images/group table conference.JPG"
+          title="Career"
+          description="Join our team of exceptional professionals and shape the future of finance. We offer challenging opportunities and a culture of excellence."
+        />
 
         {/* Image Left, Title & Para Right */}
         <FadeUp>
           <section className="py-6 md:py-8 lg:py-16">
             <div className="container-responsive">
-              <div className="min-h-[60vh] md:min-h-[70vh] flex items-start pt-24 md:pt-32 lg:pt-40">
+              <div className="flex flex-col md:flex-row items-start">
                 <div className="flex-1 mb-6 md:mb-0">
                   <ImageReveal 
                     src="/images/group disscusion.JPG"
