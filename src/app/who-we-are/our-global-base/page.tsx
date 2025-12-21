@@ -41,28 +41,29 @@ export default function OfficeLocations() {
           </FadeUp>
         </section>
         
-        {/* Title left with paragraph right */}
-        <section className="bg-tertiary py-8 md:py-16">
-          <div className="container-responsive">
-            <div className="flex flex-col md:flex-row items-start">
-              <div className="flex-1 mb-6 md:mb-0">
-                <FadeLeft>
-                  <h2 className="text-section-title font-brand text-primary">
-                    Explore Our Headquarters
-                  </h2>
-                </FadeLeft>
-              </div>
-              <div className="flex-1 md:pl-16">
-                <FadeLeft delay={200}>
-                <p className="text-section-content color-grey">
-                  Our firm is rooted in a city defined by opportunity, culture, and momentum, making it an
-                  outstanding place to build a career.
-                </p>
-                </FadeLeft>
-              </div>
-            </div>
-          </div>
-        </section>
+       {/* Title left with paragraph right */}
+<section className="bg-tertiary py-8 md:py-16 -mt-16 md:-mt-24 lg:-mt-32">
+  <div className="container-responsive pt-16 md:pt-24 lg:pt-32">
+    <div className="flex flex-col md:flex-row items-start">
+      <div className="flex-1 mb-6 md:mb-0">
+        <FadeLeft>
+          <h2 className="text-section-title font-brand text-primary">
+            Explore Our Headquarters
+          </h2>
+        </FadeLeft>
+      </div>
+      <div className="flex-1 md:pl-16">
+        <FadeLeft delay={200}>
+          <p className="text-section-content color-grey">
+            Our firm is rooted in a city defined by opportunity, culture, and momentum, making it an
+            outstanding place to build a career.
+          </p>
+        </FadeLeft>
+      </div>
+    </div>
+  </div>
+</section>
+
         
         {/* Interactive Map */}
         <section className="py-6 md:py-8 lg:py-16 bg-tertiary">
@@ -108,17 +109,18 @@ export default function OfficeLocations() {
         </section>
         
         {/* Full width image with margins */}
-        <section className="py-6 md:py-8 lg:py-16 bg-tertiary">
-          <div className="container-responsive">
-            <ScaleIn>
-              <img 
-                src="/images/building.JPG"
-                alt="Our global offices"
-                className="w-full h-48 md:h-64 lg:h-96 object-cover"
-              />
-            </ScaleIn>
-          </div>
-        </section>
+<section className="py-6 md:py-8 lg:py-16 bg-white">
+  <div className="container-responsive">
+    <ScaleIn>
+      <img 
+        src="/images/building.JPG"
+        alt="Our global offices"
+        className="w-full h-48 md:h-64 lg:h-96 object-cover"
+      />
+    </ScaleIn>
+  </div>
+</section>
+
         
         {/* Cards similar to culture route end */}
       </main>

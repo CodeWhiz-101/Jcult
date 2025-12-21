@@ -1,4 +1,5 @@
 "use client";
+
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup, ZoomControl } from 'react-leaflet';
@@ -18,7 +19,7 @@ const greenIcon = new L.Icon({
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
-  shadowSize: [41, 41]
+  shadowSize: [41, 41],
 });
 
 interface Location {
@@ -34,36 +35,29 @@ interface OfficeMapProps {
 
 export default function OfficeMap({ locations }: OfficeMapProps) {
   return (
- <MapContainer
-  center={[20,0]}
-
-  zoom={2}
-  minZoom={2}
-  maxZoom={6}
-  style={{ width: '100%', aspectRatio: '2.5 / 1' }}
-  className="rounded-lg"
-  scrollWheelZoom={true}
-  worldCopyJump={false}
-  zoomControl={false}
-
->
-<ZoomControl position="bottomright" />
-
+    <MapContainer
+      center={[23.5, 54.5]}   // ✅ UAE-centered
+      zoom={3.2}              // ✅ tighter default zoom
+      minZoom={2}
+      maxZoom={6}
+      className="w-full rounded-lg"
+      style={{ aspectRatio: '2.5 / 1' }}
+      scrollWheelZoom
+      worldCopyJump={false}
+      zoomControl={false}
+    >
+      <ZoomControl position="bottomright" />
 
       <TileLayer
-  url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-  attribution="&copy; OpenStreetMap &copy; CARTO"
-  noWrap={true}
-  bounds={[[-90, -180], [90, 180]]}
-/>
+        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+        attribution="&copy; OpenStreetMap &copy; CARTO"
+        noWrap
+      />
 
-      <Marker
-        position={[25.1772, 55.3753]}
-        icon={greenIcon}
-      >
+      <Marker position={[25.1772, 55.3753]} icon={greenIcon}>
         <Popup autoClose={false} closeOnClick={false}>
           <div className="p-2">
-            <h3 className=" text-base mb-2 text-primary">Dubai</h3>
+            <h3 className="text-base mb-2 text-primary">Dubai</h3>
             <p className="text-sm text-gray-700 leading-relaxed">
               DSO-IFZA, IFZA Properties<br />
               Dubai Silicon Oasis<br />

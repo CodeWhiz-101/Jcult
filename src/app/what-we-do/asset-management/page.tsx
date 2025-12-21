@@ -27,7 +27,8 @@ export default function Commodities() {
         </section>
 
         {/* Title left, paragraph right */}
-        <section className="py-6 md:py-8 lg:py-16 bg-tertiary">
+        <section className="py-6 md:py-8 lg:py-16 bg-tertiary -mt-16 md:-mt-24 lg:-mt-32">
+
           <div className="container-responsive">
             <div className="flex flex-col md:flex-row items-start">
               <div className="flex-1 mb-4 md:mb-6 lg:mb-0">
