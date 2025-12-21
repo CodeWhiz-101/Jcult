@@ -65,12 +65,11 @@ export default function CareersPage() {
     <div className="min-h-screen bg-main">
       <main className="pt-[88px]">
 
-        {/* ================= HERO (UNCHANGED) ================= */}
+        {/* ================= HERO ================= */}
         <section className="relative overflow-visible">
           <div className="bg-primary">
             <div className="container-responsive">
               <div className="min-h-[60vh] md:min-h-[70vh] flex items-start pt-24 md:pt-32 lg:pt-40">
-
                 <h1 className="text-section-title font-brand text-white">
                   Open Opportunities
                 </h1>
@@ -79,11 +78,13 @@ export default function CareersPage() {
           </div>
         </section>
 
-        {/* ========== FILTERS + RESULTS (FIXED SPACING) ========= */}
+        {/* ========== FILTERS + RESULTS ========== */}
         <section className="container-responsive pt-12 md:pt-16 pb-16">
           <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-16">
+
             {/* ================= LEFT FILTERS ================= */}
             <aside>
+
               {/* SEARCH */}
               <div className="mb-8">
                 <div className="relative bg-gray-100 px-4 py-2">
@@ -91,23 +92,27 @@ export default function CareersPage() {
                     value={search}
                     onChange={e => setSearch(e.target.value)}
                     placeholder="Search"
-                    className="bg-transparent w-full outline-none text-sm"
+                    className="bg-transparent w-full outline-none text-[13px]"
                   />
                   <Search className="absolute right-4 top-2.5 h-4 w-4 text-gray-500" />
                 </div>
                 <div className="border-b border-gray-300 mt-4" />
               </div>
 
-              {/* OPPORTUNITIES + CLEAR */}
-              <div className="flex justify-between items-center mb-4">
-                <span className="text-sm">Opportunities (0)</span>
-                <button
-                  onClick={clearAll}
-                  className="text-sm text-primary"
-                >
-                  Clear All Filters
-                </button>
-              </div>
+              {/* OPPORTUNITIES + CLEAR (ONLY IF FILTERED) */}
+              {chips.length > 0 && (
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-[13px]">
+                    Opportunities (0)
+                  </span>
+                  <button
+                    onClick={clearAll}
+                    className="text-[13px] text-primary"
+                  >
+                    Clear All Filters
+                  </button>
+                </div>
+              )}
 
               {/* SELECTED FILTER CHIPS */}
               {chips.length > 0 && (
@@ -115,7 +120,7 @@ export default function CareersPage() {
                   {chips.map(chip => (
                     <span
                       key={chip}
-                      className="bg-primary text-white text-xs px-3 py-1 rounded-full flex items-center gap-2"
+                      className="bg-primary text-white text-[12px] px-3 py-1 rounded-full flex items-center gap-2"
                     >
                       {chip}
                       <button
@@ -163,6 +168,7 @@ export default function CareersPage() {
                 },
               ].map(section => (
                 <div key={section.key} className="mb-10">
+
                   <button
                     onClick={() =>
                       setOpen(o => ({
@@ -171,13 +177,11 @@ export default function CareersPage() {
                           !o[section.key as keyof typeof o],
                       }))
                     }
-                    className="flex justify-between w-full text-left mb-3 text-sm font-medium"
+                    className="flex justify-between w-full text-left mb-3 text-[14px] font-medium"
                   >
                     {section.title}
                     <span>
-                      {open[section.key as keyof typeof open]
-                        ? '–'
-                        : '+'}
+                      {open[section.key as keyof typeof open] ? '–' : '+'}
                     </span>
                   </button>
 
@@ -190,12 +194,9 @@ export default function CareersPage() {
                   >
                     <button
                       onClick={() =>
-                        selectAll(
-                          section.values,
-                          section.setSelected
-                        )
+                        selectAll(section.values, section.setSelected)
                       }
-                      className="text-sm text-primary mb-3"
+                      className="text-[13px] text-primary mb-3"
                     >
                       Select All
                     </button>
@@ -204,17 +205,13 @@ export default function CareersPage() {
                       {section.values.map(v => (
                         <label
                           key={v}
-                          className="flex items-center text-sm"
+                          className="flex items-center text-[13px]"
                         >
                           <input
                             type="checkbox"
                             checked={section.selected.includes(v)}
                             onChange={() =>
-                              toggle(
-                                v,
-                                section.selected,
-                                section.setSelected
-                              )
+                              toggle(v, section.selected, section.setSelected)
                             }
                             className="mr-3"
                           />
@@ -231,16 +228,16 @@ export default function CareersPage() {
 
             {/* ================= RIGHT RESULTS ================= */}
             <section className="bg-gray-100 p-12">
-              <p className="text-sm mb-4">Viewing 0</p>
+              <p className="text-[13px] mb-4">Viewing 0</p>
 
-              <p className="text-lg mb-6">
+              <p className="text-[15px] mb-6 leading-relaxed">
                 None of our open positions match your search.
-                Try adjusting your filters for additional
-                results.
+                Try adjusting your filters for additional results.
               </p>
 
               <div className="border-b border-gray-300" />
             </section>
+
           </div>
         </section>
       </main>
