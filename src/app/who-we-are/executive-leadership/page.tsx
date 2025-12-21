@@ -15,6 +15,7 @@ export default function LeadershipTeam() {
     // { name: "Jeyanandh Dhivaharan", title: "Founder, CEO", image: "/images/office.webp" },
     // { name: "Jeyanandh Dhivaharan", title: "Founder, CEO", image: "/images/office.webp" },
   ];
+const leader = teamMembers[0];
 
   return (
     <div className="min-h-screen">
@@ -59,35 +60,76 @@ export default function LeadershipTeam() {
           </div>
         </section>
         
-        <section className="py-6 md:py-8 lg:py-16">
-          <div className="container-responsive">
-            <FadeLeft>
-              <h2 className="text-section-title font-brand text-primary mb-8 md:mb-10 lg:mb-12">
-                Our Team
-              </h2>
-            </FadeLeft>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {teamMembers.map((member, index) => (
-                <FadeLeft key={index} delay={index * 200}>
-                  <div className="border-l-2 border-secondary pl-4 md:pl-6">
-                  <h3 className="text-section-content font-brand text-primary mb-2">
-                    {member.name}
-                  </h3>
-                  <p className="text-button text-main mb-3 md:mb-4 color-grey">
-                    {member.title}
-                  </p>
-                  <img 
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-40 md:h-48 object-cover"
-                  />
-                  </div>
-                </FadeLeft>
-              ))}
-            </div>
+       <section className="py-12 md:py-16 lg:py-24">
+  <div className="container-responsive">
+
+    {/* SECTION TITLE */}
+    <FadeLeft>
+      <h2 className="
+        text-section-title
+        font-brand
+        text-primary
+        text-center
+        mb-12 md:mb-16
+      ">
+        Our Leader
+      </h2>
+    </FadeLeft>
+
+    {/* LEADER CARD */}
+    <FadeLeft delay={200}>
+      <div className="flex justify-center">
+        <div
+          className="
+            group
+            max-w-[360px]
+            text-center
+          "
+        >
+          {/* IMAGE */}
+          <div className="
+            w-full
+            aspect-[4/5]
+            overflow-hidden
+            mb-6
+          ">
+            <img
+              src={leader.image}
+              alt={leader.name}
+              className="
+                w-full h-full
+                object-cover
+                transition-transform duration-500
+                group-hover:scale-[1.05]
+              "
+            />
           </div>
-        </section>
+
+          {/* NAME */}
+          <h3 className="
+            text-section-content
+            font-brand
+            text-primary
+            mb-1
+          ">
+            {leader.name}
+          </h3>
+
+          {/* TITLE */}
+          <p className="
+            text-button
+            text-grey
+            tracking-wide
+          ">
+            {leader.title}
+          </p>
+        </div>
+      </div>
+    </FadeLeft>
+
+  </div>
+</section>
+
         
         {/* <section className="py-6 md:py-8 lg:py-16 bg-main">
           <div className="container-responsive">
