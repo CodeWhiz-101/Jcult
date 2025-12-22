@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import LuxuryButton from '@/components/ui/LuxuryButton';
 
 export default function Header() {
   const DISCLAIMER_HEIGHT = 40;
@@ -60,21 +61,24 @@ export default function Header() {
       {!isMenuOpen && (
         <div
           className="fixed left-0 right-0 z-[200] transition-transform duration-500"
-          style={{
-            transform: isVisible
-              ? 'translateY(0)'
-              : `translateY(-${DISCLAIMER_HEIGHT + HEADER_HEIGHT}px)`
-          }}
+         style={{
+  minHeight: `${DISCLAIMER_HEIGHT}px`,
+  background: 'linear-gradient(180deg,#F6F7F9,#ECEEF1)',
+  borderBottom: '1px solid #E2E4E8'
+}}
+
+
         >
           {/* DISCLAIMER */}
-          <div
-            className="text-center text-[13px] px-4 py-2"
-            style={{
-              height: `${DISCLAIMER_HEIGHT}px`,
-              background: 'linear-gradient(180deg,#F6F7F9,#ECEEF1)',
-              borderBottom: '1px solid #E2E4E8'
-            }}
-          >
+        <div
+  className="text-center text-[13px] px-4 py-2"
+  style={{
+    minHeight: `${DISCLAIMER_HEIGHT}px`,
+    background: 'linear-gradient(180deg,#F6F7F9,#ECEEF1)',
+    borderBottom: '1px solid #E2E4E8'
+  }}
+>
+
             The firm does not currently operate under regulatory authorisation;
             however, all requisite measures are being undertaken to achieve
             regulatory compliance.
@@ -161,16 +165,12 @@ export default function Header() {
                     hasLoaded ? 'animate-header-reveal' : 'opacity-0'
                   }`}
                 >
-                  <Link
-                    href="/contact"
-                    className="px-6 py-2.5 text-sm font-medium text-white"
-                    style={{
-                      background:
-                        'linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))'
-                    }}
-                  >
-                    Contact Us
-                  </Link>
+                 <Link href="/contact" className="no-underline">
+  <LuxuryButton variant="primary">
+    Contact Us
+  </LuxuryButton>
+</Link>
+
                 </div>
 
                 {/* MOBILE BUTTON */}
