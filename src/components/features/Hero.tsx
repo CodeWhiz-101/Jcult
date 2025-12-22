@@ -25,7 +25,7 @@ export default function Hero({
 
   return (
     <section
-      className={`relative h-[480px] md:h-[530px] lg:h-[680px] xl:h-[760px] overflow-hidden ${className}`}
+       className={`relative h-[560px] md:h-[530px] lg:h-[680px] xl:h-[760px] overflow-hidden ${className}`}
     >
       {/* Background Grey */}
       <div

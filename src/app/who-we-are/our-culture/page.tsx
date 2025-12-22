@@ -14,7 +14,7 @@ import ExploreMore from '@/components/features/ExploreMore';
 export default function OurCulture() {
   return (
     <div className="min-h-screen">
-      <main className="pt-20">
+      <main className="pt-[160px] md:pt-[180px]">
         <section className="relative overflow-visible mb-20">
           <FadeUp>
             <div className="bg-primary">

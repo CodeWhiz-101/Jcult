@@ -237,7 +237,7 @@ function AnimatedGreenSection() {
   }, [isVisible]);
 
   return (
-    <section ref={sectionRef} className="bg-primary py-12 md:py-16 lg:py-24 lg:mb-30 xl:h-[1180px]" style={{ color: '#f5f5f5' }}>
+    <section ref={sectionRef}  className="bg-primary pt-20 md:pt-16 py-12 md:py-16 lg:py-24 lg:mb-30 xl:h-[1180px]" style={{ color: '#f5f5f5' }}>
       <div className="container-responsive">
         <div className="flex flex-col lg:flex-row items-start mb-6 md:mb-8">
           <div className={`flex-2 mb-2 lg:mb-0 transition-all duration-1000 ${
@@ -291,14 +291,16 @@ function AnimatedSection() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className={`
-        py-12 md:py-24 bg-tertiary
-        transition-opacity duration-1000
-        ${isVisible ? 'opacity-100' : 'opacity-0'}
-      `}
-    >
+   <section
+  ref={sectionRef}
+  className={`
+    py-12 md:py-24 bg-tertiary
+    overflow-hidden
+    transition-opacity duration-1000
+    ${isVisible ? 'opacity-100' : 'opacity-0'}
+  `}
+>
+
       <div className="container-responsive">
         <div className="flex flex-col lg:flex-row items-start">
 
@@ -363,7 +365,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-main">
       <main>
-        <div className="pt-24">
+       <div className="pt-[160px] md:pt-[180px]">
           <Hero 
             title="United, we convert aspiration into strategic execution"
             description="Built on the pursuit of identifying under-recognised market opportunities and empowering
@@ -399,24 +401,25 @@ talented individuals to execute their boldest, highest-conviction ideas with pre
 
         <AnimatedSection />
 
-        <div>
-          <Stats 
-            stats={[
-              {
-                number: "2025",
-                description: "Date founded by Managing Director Jeyanandh Dhivaharan"
-              },
-              {
-                number: "$10M",
-                description: "Assets Under Management",
-              },
-              {
-                number: "1000+",
-                description: "Investor Trusts Us"
-              }
-            ]}
-          />
-        </div>
+        <div className="mb-16 md:mb-24">
+  <Stats 
+    stats={[
+      {
+        number: "2025",
+        description: "Date founded by Managing Director Jeyanandh Dhivaharan"
+      },
+      {
+        number: "$10M",
+        description: "Assets Under Management",
+      },
+      {
+        number: "1000+",
+        description: "Investor Trusts Us"
+      }
+    ]}
+  />
+</div>
+
 
         <AnimatedGreenSection />
         
