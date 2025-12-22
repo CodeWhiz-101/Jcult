@@ -116,17 +116,34 @@ const [titlePart1, titlePart2] = title.split("&");
     )}
 
     {/* TITLE */}
-    <h3
-      className="
-        font-brand
-        font-medium
-        text-[22px] md:text-[24px]
-        leading-snug
-        text-primary
-      "
-    >
-      {item.title}
-    </h3>
+   <h3
+  className="
+    relative
+    inline-block
+    font-brand
+    font-medium
+    text-[22px] md:text-[24px]
+    leading-snug
+text-[var(--brand-green-2)]
+  "
+>
+  {item.title}
+
+ <span
+  className="
+    absolute
+    left-0
+    -bottom-[4px]
+    h-[1px]
+    w-0
+    transition-all
+    duration-300
+    group-hover:w-full
+  "
+  style={{ backgroundColor: 'var(--brand-green-1)' }}
+/>
+</h3>
+
   </div>
 </div>
 

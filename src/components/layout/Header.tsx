@@ -16,6 +16,8 @@ export default function Header() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+const [dropdownKey, setDropdownKey] = useState(0);
+
 const hasAnimatedRef = useRef(false);
 
   const pathname = usePathname();
@@ -62,31 +64,39 @@ useEffect(() => {
   };
 
   return (
-    <>
- <div
-  className="fixed top-0 left-0 right-0 z-[200]
-             text-center text-[13px] leading-relaxed
-             px-4 py-2 md:py-2"
-  style={{
-    background: 'linear-gradient(180deg, #F6F7F9 0%, #ECEEF1 100%)',
-    color: '#1A1A1A',
-    borderBottom: '1px solid #E2E4E8'
-  }}
->
-  The firm does not currently operate under regulatory authorisation; however,
-  all requisite measures are being undertaken to achieve regulatory compliance.
-</div>
+  <>
+  <div
+    className="fixed left-0 right-0 z-[200] transition-transform duration-500"
+    style={{
+      transform: isVisible ? 'translateY(0)' : `translateY(-${DISCLAIMER_HEIGHT + HEADER_HEIGHT}px)`
+    }}
+  >
+    {/* DISCLAIMER */}
+    <div
+      className="text-center text-[13px] leading-relaxed px-4 py-2"
+      style={{
+        height: `${DISCLAIMER_HEIGHT}px`,
+        background: 'linear-gradient(180deg, #F6F7F9 0%, #ECEEF1 100%)',
+        color: '#1A1A1A',
+        borderBottom: '1px solid #E2E4E8'
+      }}
+    >
+      The firm does not currently operate under regulatory authorisation; however,
+      all requisite measures are being undertaken to achieve regulatory compliance.
+    </div>
 
-   <header
-  className="w-full fixed left-0 right-0 z-[100] transition-all duration-500"
-style={{
-  top: isVisible ? 'var(--disclaimer-offset)' : `-${HEADER_HEIGHT}px`,
+    {/* HEADER */}
+    <header
+      className="w-full transition-all duration-500"
+      style={{
+        height: `${HEADER_HEIGHT}px`,
+        backgroundColor: '#FFFFFF',
+        borderBottom: isScrolled ? '1px solid #E8E8E8' : 'none'
+      }}
+      onMouseLeave={() => setHoveredTab(null)}
+    >
+      {/* 🔥 KEEP YOUR EXISTING HEADER CONTENT EXACTLY SAME */}
 
-    backgroundColor: '#FFFFFF',
-    borderBottom: isScrolled ? '1px solid #E8E8E8' : 'none'
-  }}
-  onMouseLeave={() => setHoveredTab(null)}
->
 
       {/* TOP HEADER */}
       <div
@@ -135,21 +145,22 @@ style={{
     ? 'var(--brand-green-1)'
     : 'var(--brand-green-2)'
 }}
-
-                      onMouseEnter={() => {
+onMouseEnter={() => {
   setHoveredTab(label);
   setIsDropdownVisible(true);
+  setDropdownKey(prev => prev + 1); // 🔥 force re-animation
 }}
                     >
                       {label}
 
                       {/* underline animation */}
-                      <span
+                  <span
   className={`absolute left-0 -bottom-0 h-[1px] transition-all duration-300 ${
     active || hovered ? 'w-full' : 'w-0'
   }`}
   style={{ backgroundColor: 'var(--brand-green-1)' }}
 />
+
 
                     </Link>
                   </li>
@@ -312,7 +323,7 @@ style={{
 
             {/* RIGHT COLUMN LINKS */}
             <div className="flex-1 pl-6 pt-2 relative z-[10]">
-              <div className="space-y-6">
+              <div key={dropdownKey} className="space-y-6">
                 {(tabContent[hoveredTab]|| []).map(
                   (item, index) => {
                     const base = linkFor(hoveredTab);
@@ -320,7 +331,7 @@ style={{
                     const href = `${base}/${slug}`;
 
                     return (
-                      <Link
+                   <Link
   key={index}
   href={href}
   className="
@@ -332,26 +343,27 @@ style={{
   "
   style={{
     color: 'var(--brand-green-2)',
-
-    /* 🔥 KEEP YOUR EXISTING ANIMATION */
-    animation: `slideInFromLeft 0.45s cubic-bezier(0.22, 1, 0.36, 1)`,
-    animationDelay: `${index * 120}ms`,
-    animationFillMode: 'both',
-    opacity: 0
+    animationName: 'slideInFromLeft',
+    animationDuration: '0.45s',
+    animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    animationDelay: `${160 + index * 120}ms`,
+    animationFillMode: 'both'
   }}
 >
   {item}
 
-  <span
-    className="
-      absolute left-0 -bottom-[2px]
-      h-[1px]
-      bg-[var(--brand-green-1)]
-      w-0
-      transition-all duration-300
-      group-hover:w-full
-    "
-  />
+<span
+  className="
+    absolute left-0 -bottom-[2px]
+    h-[1px]
+    w-0
+    transition-all duration-300
+    group-hover:w-full
+  "
+  style={{ backgroundColor: 'var(--brand-green-1)' }}
+/>
+
+
 </Link>
 
                     );
@@ -448,18 +460,41 @@ style={{
           </div>
 
           <div className="pt-6 border-t mt-6">
-            <Link
-              href="/contact"
-              className="block text-center bg-[#1B5E20] text-white px-6 py-3 no-underline"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact Us
-            </Link>
+         <Link
+  href="/contact"
+  className="
+    relative inline-flex items-center justify-center
+    px-6 py-2.5 text-sm font-medium
+    text-white no-underline
+    overflow-hidden
+    isolate
+  "
+>
+  {/* GRADIENT LAYER */}
+  <span
+    aria-hidden
+    className="absolute inset-0"
+    style={{
+      backgroundImage:
+        'linear-gradient(90deg, var(--brand-green-1), var(--brand-green-2))',
+      width: '105%',
+      left: '-2.5%',
+      top: 0
+    }}
+  />
+
+  {/* TEXT */}
+  <span className="relative z-10">
+    Contact Us
+  </span>
+</Link>
+
+
           </div>
         </div>
       )}
     </header>
-   
+   </div>
     </>
   );
 }

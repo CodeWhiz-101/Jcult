@@ -9,6 +9,7 @@ import Link from 'next/link';
 export default function Career() {
   return (
     <div className="min-h-screen bg-main">
+      
       <main className="pt-20">
         <Hero 
           imageSrc="/images/group table conference.JPG"
