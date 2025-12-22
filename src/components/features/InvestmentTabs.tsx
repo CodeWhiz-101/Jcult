@@ -1,14 +1,15 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function AssetManagement() {
   const [active, setActive] = useState(0);
   const [entered, setEntered] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  /* -------------------------------
+  /* --------------------------------
      SCROLL REVEAL (ONCE)
   -------------------------------- */
   useEffect(() => {
@@ -26,8 +27,10 @@ export default function AssetManagement() {
     return () => observer.disconnect();
   }, []);
 
-  // 🔒 CONTENT — UNCHANGED
-  const tabs = [
+  /* --------------------------------
+     DATA — UNCHANGED
+  -------------------------------- */
+    const tabs = [
   {
     label: 'Global Equities',
     overview:
@@ -119,71 +122,210 @@ export default function AssetManagement() {
   return (
     <section
       ref={sectionRef}
-      className="relative"
+      className="relative overflow-hidden"
       style={{
         background: 'var(--brand-green-gradient)',
         opacity: entered ? 1 : 0,
-        transform: entered ? 'translateY(0)' : 'translateY(28px)',
+        transform: entered ? 'translateY(0)' : 'translateY(36px)',
         transition: 'all 900ms cubic-bezier(0.22,1,0.36,1)',
       }}
     >
-      {/* NAVBAR */}
-      <div className="border-b border-white/25 pt-9">
+      {/* ======================================================
+          TOP — CENTERED SEGMENTED NAV (RESPONSIVE)
+      ====================================================== */}
+      <div className="container-responsive pt-20 pb-24">
+        <div className="flex justify-center">
+          <div
+            className="
+              relative
+              inline-flex
+              bg-white/10
+              backdrop-blur-xl
+              rounded-full
+              p-1
+              overflow-x-auto
+              max-w-full
+            "
+          >
+            {tabs.map((tab, i) => (
+              <button
+                key={tab.label}
+                onClick={() => {
+                  setActive(i);
+                  setHoveredIndex(null);
+                }}
+                className={`
+                  relative z-10
+                  px-5 md:px-8
+                  py-3
+                  text-xs md:text-sm
+                  font-brand
+                  whitespace-nowrap
+                  transition-colors duration-300
+                  rounded-full
+                  ${i === active ? 'text-black' : 'text-white/80'}
+                `}
+              >
+                {tab.label}
+              </button>
+            ))}
 
-        <div className="container-responsive flex overflow-x-auto">
-          {tabs.map((tab, i) => (
-            <button
-              key={tab.label}
-              onClick={() => setActive(i)}
-              className={`relative px-10 py-4 text-sm font-brand tracking-wide transition-all
-                ${i === active
-                  ? 'bg-white text-black'
-                  : 'text-white/80 hover:bg-white/10'}
-              `}
-            >
-              {tab.label} &gt;
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* CONTENT — key={active} forces fade on tab switch */}
-      <div key={active} className="container-responsive py-24 animate-header-reveal">
-        <h1 className="font-brand text-[44px] md:text-[60px] text-white mb-8">
-          {current.label}
-        </h1>
-
-        <p className="max-w-[900px] text-white/90 leading-[1.8] text-[15.5px] mb-20">
-          {current.overview}
-        </p>
-
-        {/* CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-          {current.columns.map((col, idx) => (
-            <div
-              key={col.title}
+            {/* ACTIVE PILL */}
+            <span
               className="
-                relative
-                backdrop-blur-xl
-                bg-white/10
-                border border-white/20
-                p-7
-                transition-all duration-300
-                hover:scale-[1.03]
-                hover:bg-white/15
-                hover:shadow-2xl
+                absolute
+                top-1
+                bottom-1
+                bg-white
+                rounded-full
+                transition-all
+                duration-500
+                pointer-events-none
               "
-            >
-              <h3 className="font-brand text-[20px] mb-4 text-white">
-                {col.title}
-              </h3>
-              <p className="text-[14.5px] leading-[1.7] text-white/90">
-                {col.text}
-              </p>
-            </div>
-          ))}
+              style={{
+                width: `${100 / tabs.length}%`,
+                left: `${(100 / tabs.length) * active}%`,
+                minWidth: '120px',
+              }}
+            />
+          </div>
         </div>
       </div>
+
+      {/* ======================================================
+          MAIN CONTENT GRID
+      ====================================================== */}
+      <div
+        key={active}
+        className="
+          container-responsive
+          grid
+          grid-cols-1
+          lg:grid-cols-[1.15fr_1fr]
+          gap-24
+          pb-36
+          animate-header-reveal
+        "
+      >
+        {/* ---------------- LEFT COLUMN ---------------- */}
+        <div>
+          <h1 className="font-brand text-[48px] md:text-[64px] leading-[1.05] text-white mb-10">
+            {current.label}
+          </h1>
+
+          <p className="max-w-[720px] text-white/85 leading-[1.9] text-[16px]">
+            {current.overview}
+          </p>
+        </div>
+
+        {/* ---------------- RIGHT COLUMN (VERTICAL TOGGLE) ---------------- */}
+        <div className="space-y-6">
+          {current.columns.map((col, index) => {
+            const isActiveItem = hoveredIndex === index;
+
+            return (
+              <div
+                key={col.title}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() =>
+                  setHoveredIndex(isActiveItem ? null : index)
+                }
+                className="
+                  relative
+                  cursor-pointer
+                  border-l
+                  border-white/25
+                  pl-8
+                  py-6
+                  transition-all
+                  duration-500
+                  hover:border-white
+                "
+              >
+                {/* TITLE */}
+                <div className="flex items-center justify-between">
+                  <h3
+                    className="
+                      font-brand
+                      text-[22px]
+                      text-white
+                      transition-transform
+                      duration-300
+                    "
+                    style={{
+                      transform: isActiveItem
+                        ? 'translateX(4px)'
+                        : 'translateX(0)',
+                    }}
+                  >
+                    {col.title}
+                  </h3>
+
+                  <span
+                    className="
+                      text-white/60
+                      text-sm
+                      transition-transform
+                      duration-300
+                    "
+                    style={{
+                      transform: isActiveItem
+                        ? 'rotate(90deg)'
+                        : 'rotate(0deg)',
+                    }}
+                  >
+                    ›
+                  </span>
+                </div>
+
+                {/* CONTENT */}
+                <div
+                  className="
+                    overflow-hidden
+                    transition-all
+                    duration-500
+                    ease-out
+                  "
+                  style={{
+                    maxHeight: isActiveItem ? '440px' : '0px',
+                    opacity: isActiveItem ? 1 : 0,
+                  }}
+                >
+                  <p className="mt-4 text-[14.8px] leading-[1.85] text-white/85">
+                    {col.text}
+                  </p>
+                </div>
+
+                {/* ACTIVE BAR */}
+                <span
+                  className="
+                    absolute
+                    left-[-1px]
+                    top-0
+                    h-full
+                    w-[2px]
+                    bg-white
+                    transition-transform
+                    duration-500
+                    origin-top
+                  "
+                  style={{
+                    transform: isActiveItem
+                      ? 'scaleY(1)'
+                      : 'scaleY(0)',
+                  }}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ======================================================
+          BOTTOM FADE (POLISH)
+      ====================================================== */}
+      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
     </section>
   );
 }

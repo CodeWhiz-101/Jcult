@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useRef } from 'react';
+import LuxuryButton from '@/components/ui/LuxuryButton';
+
 
 export default function Header() {
   const DISCLAIMER_HEIGHT = 40;
@@ -176,27 +178,12 @@ onMouseEnter={() => {
   }`}
   style={{ animationDelay: '240ms' }}
 >
- <Link
-  href="/contact"
-  className="
-    inline-flex items-center justify-center
-    px-6 py-2.5 text-sm font-medium
-    no-underline
-
-    text-white
-    border border-transparent
-
-    bg-[linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))]
-    hover:bg-none hover:bg-white
-
-    transition-all duration-300
-
-    hover:text-[var(--brand-green-1)]
-    hover:border-[var(--brand-green-1)]
-  "
->
-  Contact Us
+<Link href="/contact" className="no-underline">
+  <LuxuryButton variant="primary">
+    Contact Us
+  </LuxuryButton>
 </Link>
+
 
 
 
