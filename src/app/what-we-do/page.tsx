@@ -17,7 +17,8 @@ export default function WhatWeDo() {
 
   return (
     <div className="min-h-screen bg-main">
-      <main className="pt-20">
+      <main className="pt-[160px] md:pt-[180px]">
+
         {/* Hero Section with Image */}
         <Hero 
           imageSrc="/images/group disscusion.JPG"

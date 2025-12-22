@@ -10,7 +10,8 @@ export default function Career() {
   return (
     <div className="min-h-screen bg-main">
       
-      <main className="pt-20">
+      <main className="pt-[160px] md:pt-[180px]">
+
         <Hero 
           imageSrc="/images/group table conference.JPG"
           title="Career"
