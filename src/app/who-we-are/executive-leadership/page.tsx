@@ -24,7 +24,7 @@ const leader = teamMembers[0];
           <FadeUp>
             <div className="bg-primary">
               <div className="container-responsive">
-                <div className="min-h-[60vh] md:min-h-[70vh] flex items-start pt-12 md:pt-16 lg:pt-20">
+                <div className="min-h-[60vh] md:min-h-[70vh] flex items-start pt-24 md:pt-32 lg:pt-40">
                   <FadeLeft>
                     <h1 className="text-hero-title font-brand text-white">
                       Executive Leadership
