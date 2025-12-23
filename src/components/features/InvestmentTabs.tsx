@@ -133,64 +133,64 @@ export default function AssetManagement() {
       {/* ======================================================
           TOP — CENTERED SEGMENTED NAV (RESPONSIVE)
       ====================================================== */}
-      <div className="container-responsive pt-20 pb-24">
-        <div className="flex justify-center">
-          <div
-            className="
-              relative
-              inline-flex
-              bg-white/10
-              backdrop-blur-xl
-              rounded-full
-              p-1
-              overflow-x-auto
-              max-w-full
-            "
-          >
-            {tabs.map((tab, i) => (
-              <button
-                key={tab.label}
-                onClick={() => {
-                  setActive(i);
-                  setHoveredIndex(null);
-                }}
-                className={`
-                  relative z-10
-                  px-5 md:px-8
-                  py-3
-                  text-xs md:text-sm
-                  font-brand
-                  whitespace-nowrap
-                  transition-colors duration-300
-                  rounded-full
-                  ${i === active ? 'text-black' : 'text-white/80'}
-                `}
-              >
-                {tab.label}
-              </button>
-            ))}
+    {/* ======================================================
+    TOP — CENTERED SEGMENTED NAV (FIXED & RESPONSIVE)
+====================================================== */}
+<div className="container-responsive pt-16 md:pt-20 pb-20 md:pb-24">
+  <div className="flex justify-center">
+    <div
+      className="
+        flex
+        gap-3
+        overflow-x-auto
+        snap-x snap-mandatory
+        px-1
+        max-w-full
+        [-ms-overflow-style:none]
+        [scrollbar-width:none]
+        [&::-webkit-scrollbar]:hidden
+      "
+    >
+      {tabs.map((tab, i) => {
+        const isActive = i === active;
 
-            {/* ACTIVE PILL */}
-            <span
-              className="
-                absolute
-                top-1
-                bottom-1
-                bg-white
-                rounded-full
-                transition-all
-                duration-500
-                pointer-events-none
-              "
-              style={{
-                width: `${100 / tabs.length}%`,
-                left: `${(100 / tabs.length) * active}%`,
-                minWidth: '120px',
-              }}
-            />
-          </div>
-        </div>
-      </div>
+        return (
+          <button
+            key={tab.label}
+            onClick={() => {
+              setActive(i);
+              setHoveredIndex(null);
+            }}
+            className={`
+              snap-start
+              min-w-[140px]
+              sm:min-w-[160px]
+              md:min-w-[180px]
+              h-[56px]
+              flex
+              items-center
+              justify-center
+              font-brand
+              text-xs sm:text-sm
+              rounded-lg
+              transition-all
+              duration-300
+              ${
+                isActive
+                  ? 'bg-white text-black shadow-md'
+                  : 'bg-white/10 text-white/80 hover:bg-white/20'
+              }
+            `}
+          >
+            {tab.label}
+          </button>
+        );
+      })}
+    </div>
+  </div>
+</div>
+
+
 
       {/* ======================================================
           MAIN CONTENT GRID

@@ -23,17 +23,18 @@ export default function News() {
       <main className="pt-20">
 
         {/* Hero Section */}
-        <section className="relative overflow-visible mb-8 md:mb-16">
-          <div className="bg-primary">
-            <div className="container-responsive">
-              <div className="min-h-[60vh] md:min-h-[70vh] flex items-start pt-24 md:pt-32 lg:pt-40">
-                <h1 className="font-brand text-section-title text-white">
-                  News
-                </h1>
-              </div>
-            </div>
-          </div>
-        </section>
+      <section className="relative overflow-visible mb-8 md:mb-16">
+  <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
+    <div className="container-responsive">
+      <div className="min-h-[60vh] md:min-h-[70vh] flex items-start pt-24 md:pt-32 lg:pt-40">
+        <h1 className="font-brand text-section-title text-white">
+          News
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* Latest Updates */}
         <section className="py-6 md:py-8 lg:py-16">
