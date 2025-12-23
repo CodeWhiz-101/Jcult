@@ -144,14 +144,15 @@ export default function Accordion({ regions }: { regions: Region[] }) {
 
                 {/* RIGHT COLUMN — IMAGE */}
                 <div className="col-span-5">
-                  <div className="w-full h-[420px] relative rounded-lg overflow-hidden">
-                    <Image
-                      src={region.cities[selectedCityIndex].image}
-                      alt="city"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+                  <div className="w-full relative rounded-lg overflow-hidden aspect-[3/4] md:aspect-[4/5]">
+  <Image
+    src={region.cities[selectedCityIndex].image}
+    alt="city"
+    fill
+    className="object-contain bg-transparent"
+  />
+</div>
+
                 </div>
               </div>
             </div>
