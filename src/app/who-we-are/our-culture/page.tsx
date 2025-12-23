@@ -18,19 +18,7 @@ export default function OurCulture() {
           <FadeUp>
             <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
               <div className="container-responsive">
-               <div
-  className="
-    min-h-[60vh]
-    md:min-h-[70vh]
-    flex
-    flex-col
-    items-start
-    pt-36          /* 👈 more breathing room on mobile */
-    sm:pt-32
-    md:pt-36
-    lg:pt-40
-  "
->
+                <div className="flex flex-col md:flex-row min-h-[60vh] md:min-h-[70vh] pt-24 md:pt-32 lg:pt-40">
 
                   {/* LEFT CONTENT */}
                   <div className="flex-1 flex flex-col gap-4 md:gap-6">
