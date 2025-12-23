@@ -244,8 +244,16 @@ function AnimatedGreenSection() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <div className='flex flex-row gap-2 lg:flex-col'>
-            <h2 className="font-brand text-section-title  leading-tight">Pioneering the</h2>
-            <h2 className="font-brand text-section-title  leading-tight mb-1 lg:mb-8 text-green-500">Future of Finance</h2>
+            <h2 className="font-brand text-section-title leading-tight text-white">
+  <span className="block">
+    Pioneering the
+  </span>
+
+  <span className="block text-green-500">
+    Future of Finance
+  </span>
+</h2>
+
             </div>
           </div>
           <div className={`flex-3 lg:pl-16 transition-all duration-1000 delay-300 ${
