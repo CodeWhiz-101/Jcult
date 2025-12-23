@@ -65,19 +65,23 @@ export default function Stats({ stats, title, className = "" }: StatsProps) {
 <div className="ml-6 md:ml-10 lg:ml-70 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
 
           {stats.map((stat, index) => (
-<div key={index} className="relative pl-6">
+<div key={index} className="relative pl-6 pb-8">
+
 
               {/* VERTICAL DIVIDER — grows bottom → top */}
              <span
   className={`
-    absolute left-0 top-0 w-px bg-black/25
-    transition-[height]
+    absolute left-0 top-0 bottom-8 w-px bg-black/25
+    transition-[clip-path]
     duration-[700ms]
     ease-[cubic-bezier(.22,.61,.36,1)]
-    ${isVisible ? 'h-[190px] md:h-[210px]' : 'h-0'}
+    ${isVisible
+      ? '[clip-path:inset(0%_0_0%_0)]'
+      : '[clip-path:inset(100%_0_0%_0)]'}
   `}
   style={{ transitionDelay: `${200 + index * 200}ms` }}
 />
+
 
               {/* NUMBER — masked reveal */}
               <div className="overflow-hidden">

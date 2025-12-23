@@ -60,15 +60,9 @@ export default function Header() {
       {/* ================= HEADER + DISCLAIMER ================= */}
       {!isMenuOpen && (
         <div
-          className="fixed left-0 right-0 z-[200] transition-transform duration-500"
-         style={{
-  minHeight: `${DISCLAIMER_HEIGHT}px`,
-  background: 'linear-gradient(180deg,#F6F7F9,#ECEEF1)',
-  borderBottom: '1px solid #E2E4E8'
-}}
+  className="fixed left-0 right-0 z-[200] transition-transform duration-500"
+>
 
-
-        >
           {/* DISCLAIMER */}
         <div
   className="text-center text-[13px] px-4 py-2"
