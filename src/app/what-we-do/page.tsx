@@ -179,7 +179,7 @@ export default function WhatWeDo() {
             {/* 3 Columns */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 pt-6 md:pt-10">
               <FadeLeft delay={400}>
-                <div className="relative px-6">
+                <div className="relative px-0 md:px-6">
                 <div className="absolute top-0 left-0 h-full w-px bg-white/30 hidden md:block"></div>
                 <div className="absolute top-0 right-0 h-full w-px bg-white/30 hidden md:block"></div>
                 <h4 className="text-section-content font-brand text-white mb-4">
@@ -193,7 +193,7 @@ export default function WhatWeDo() {
                 </div>
               </FadeLeft>
               <FadeLeft delay={600}>
-                <div className="relative pr-6">
+                <div className="relative pr-0 md:pr-6">
                 <div className="absolute top-0 right-0 h-full w-px bg-white/30 hidden md:block"></div>
                 <h4 className="text-section-content font-brand text-white mb-4">
                   Uncompromising Risk Standards

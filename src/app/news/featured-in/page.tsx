@@ -10,9 +10,9 @@ export default function InTheMedia() {
   const [showMore, setShowMore] = useState(false);
 
   const newsDataByYear: Record<string, typeof newsArticles> = {
-    '2024': newsArticles,
+    '2025': newsArticles,
+    '2024': [],
     '2023': [],
-    '2022': [],
   };
 
   const currentYearData = newsDataByYear[selectedYear] || [];
@@ -28,7 +28,18 @@ export default function InTheMedia() {
         <section className="relative overflow-visible mb-8 md:mb-16">
           <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
             <div className="container-responsive">
-              <div className="min-h-[60vh] md:min-h-[70vh] flex flex-col items-start pt-24 md:pt-32 lg:pt-40">
+              <div className="
+  min-h-[60vh]
+  md:min-h-[70vh]
+  flex
+  flex-col
+  items-start
+  pt-28
+  sm:pt-32
+  md:pt-36
+  lg:pt-40
+">
+
 
                 {/* Breadcrumb */}
                 <PageBreadcrumb

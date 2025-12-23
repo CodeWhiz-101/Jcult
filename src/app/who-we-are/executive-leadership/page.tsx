@@ -23,7 +23,18 @@ export default function LeadershipTeam() {
           <FadeUp>
             <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
               <div className="container-responsive">
-                <div className="min-h-[60vh] md:min-h-[70vh] pt-24 md:pt-32 lg:pt-40">
+               <div className="
+  min-h-[60vh]
+  md:min-h-[70vh]
+  flex
+  flex-col
+  items-start
+  pt-28
+  sm:pt-32
+  md:pt-36
+  lg:pt-40
+">
+
 
                   {/* Breadcrumb */}
                   <PageBreadcrumb
@@ -115,7 +126,8 @@ export default function LeadershipTeam() {
         </section>
 
         {/* ================= CTA ================= */}
-        <section className="pt-6 md:pt-8 lg:pt-16">
+        <section className="pt-6 pb-16 md:pt-8 md:pb-24 lg:pt-16 lg:pb-32">
+
           <div className="container-responsive">
             <div className="flex flex-col md:flex-row items-start">
 
