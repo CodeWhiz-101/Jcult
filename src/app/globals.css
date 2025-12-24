@@ -8,6 +8,13 @@
    CSS VARIABLES
 ======================================== */
 
+@font-face {
+  font-family: 'TT Commons';
+  src: url('/fonts/TTCommons-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --brand-green-1: rgb(11, 62, 39); /* dark */
@@ -125,7 +132,7 @@ html {
 body {
   background: var(--white);
   color: var(--black);
-  font-family: var(--font-tt-commons), sans-serif;
+  font-family: 'TT Commons', sans-serif;
 }
 
 /* ========================================
@@ -214,8 +221,9 @@ body {
    FONT FAMILY CLASSES
 ======================================== */
 .font-base {
-  font-family: var(--font-tt-commons), sans-serif;
+  font-family: 'TT Commons', sans-serif;
 }
+
 
 .font-brand {
   font-family: var(--font-raleway), sans-serif;

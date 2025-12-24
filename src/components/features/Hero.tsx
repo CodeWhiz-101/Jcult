@@ -25,7 +25,8 @@ export default function Hero({
 
   return (
     <section
-       className={`relative h-[560px] md:h-[530px] lg:h-[680px] xl:h-[760px] overflow-hidden ${className}`}
+       className={`relative h-[420px] md:h-[460px] lg:h-[520px] xl:h-[560px]
+ overflow-hidden ${className}`}
     >
       {/* Background Grey */}
       <div
@@ -72,8 +73,9 @@ export default function Hero({
         <div
           className="
             relative
-            pt-16 md:pt-18 lg:pt-20
-            pb-4 md:pb-6 lg:pb-8
+           pt-6 md:pt-7 lg:pt-8
+pb-2 md:pb-3 lg:pb-4
+
             overflow-hidden
           "
         >
@@ -93,14 +95,15 @@ export default function Hero({
             }}
           />
 
-          <div className="container-responsive relative z-10 h-full flex items-center">
+          <div className="container-responsive relative z-10 flex items-center">
             <p
               className={`
                 text-white
                 max-w-[620px]
                 text-hero-subtitle
                 leading-relaxed
-                translate-y-[-18px]
+                leading-[1.4]
+
                 transition-opacity duration-700
                 delay-[900ms]
                 ${loaded ? 'opacity-100' : 'opacity-0'}
