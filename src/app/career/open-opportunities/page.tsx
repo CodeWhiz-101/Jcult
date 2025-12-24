@@ -58,19 +58,8 @@ export default function CareersPage() {
         <section className="relative overflow-visible">
           <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
             <div className="container-responsive">
-             <div
-  className="
-    min-h-[60vh]
-    md:min-h-[70vh]
-    flex
-    flex-col
-    items-start
-    pt-36          /* 👈 more breathing room on mobile */
-    sm:pt-32
-    md:pt-36
-    lg:pt-40
-  "
->
+             <div className="flex items-start pt-24 md:pt-32 lg:pt-40 pb-48 md:pb-52 lg:pb-56">
+
 
 
                 {/* 🔥 BREADCRUMB */}

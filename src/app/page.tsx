@@ -74,16 +74,17 @@ function AnimatedTalentSection() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-         <p
+       <p
   className="
     text-sm md:text-base lg:text-[17px]
-    font-raleway
+    font-TT commons font-normal
     mb-6 lg:mb-8
     leading-relaxed
     color-grey
-    max-w-[600px] 
+    max-w-[600px]
   "
 >
+
 
 
               Here, the collective fuels your growth. People learn side by side,
@@ -97,27 +98,12 @@ function AnimatedTalentSection() {
               }`}
               style={{ transitionDelay: '240ms' }}
             >
-              <Link
-                href="/career"
-                className="
-                  inline-flex items-center justify-center
-                  px-8 py-3.5 text-sm font-medium
-                  no-underline
+             <Link href="/career" className="no-underline">
+  <LuxuryButton variant="primary">
+    Explore Career Possibilities
+  </LuxuryButton>
+</Link>
 
-                  text-white
-                  border border-transparent
-
-                  bg-[linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))]
-                  hover:bg-none hover:bg-white
-
-                  transition-all duration-300
-
-                  hover:text-[var(--brand-green-1)]
-                  hover:border-[var(--brand-green-1)]
-                "
-              >
-                Explore Career Possibilities
-              </Link>
             </div>
           </div>
         </div>
@@ -193,16 +179,17 @@ function AnimatedMeritocraticSection() {
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
           >
-            <p
-              className="
-                text-sm md:text-base lg:text-[17px]
-                font-raleway
-                leading-relaxed
-                opacity-75
-                color-grey
-                max-w-[520px]
-              "
-            >
+           <p
+  className="
+    text-sm md:text-base lg:text-[17px]
+    font-ttcommons font-normal
+    leading-relaxed
+    opacity-75
+    color-grey
+    max-w-[520px]
+  "
+>
+
               A culture where every perspective strengthens our purpose. From seasoned experts to
               rising talent, each member fuels the intelligence that drives our performance. United, we
               achieve what others consider out of reach.
@@ -259,11 +246,12 @@ function AnimatedGreenSection() {
           <div className={`flex-3 lg:pl-16 transition-all duration-1000 delay-300 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <p className="text-section-content leading-relaxed mb-4 md:mb-6 lg:mb-8">
-              Innovation is the core of our competitive advantage. We tirelessly reimagine our approach
-              to the markets, systematically enhancing our trading models and execution capabilities to
-              generate outsized returns in an ever-changing landscape.
-            </p>
+           <p className="text-section-content font-ttcommons font-normal leading-relaxed mb-4 md:mb-6 lg:mb-8">
+  Innovation is the core of our competitive advantage. We tirelessly reimagine our approach
+  to the markets, systematically enhancing our trading models and execution capabilities to
+  generate outsized returns in an ever-changing landscape.
+</p>
+
             <a href="/what-we-do"><LuxuryButton variant="white">Explore What We Do</LuxuryButton></a>
           </div>
         </div>
@@ -314,50 +302,47 @@ function AnimatedSection() {
 
           {/* LEFT LABEL */}
           <div className="w-full lg:w-[22%] mb-6 lg:mb-0">
-            <h3 className="text-sm tracking-wide text-primary">
-              Who We Are
-            </h3>
+         <h3 className="text-sm tracking-wide text-[var(--brand-green-1)]">
+  Who We Are
+</h3>
+
           </div>
 
           {/* RIGHT CONTENT */}
-          <div className="relative w-full lg:w-[78%] pl-6 lg:pl-12">
+          <div className="relative w-full lg:w-[78%] pl-3 lg:pl-6">
 
             {/* DIVIDER */}
             <div className="absolute left-0 top-0 bottom-0 w-px bg-black/20" />
 
             {/* PARAGRAPH */}
-            <p
-              className="
-                font-brand
-                text-[19px] md:text-[20px] lg:text-[22px]
-                leading-[1.45]
-                text-[#0B3E27]
-                max-w-[820px]
-                mb-8
-              "
-            >
-              We aspire to establish an unprecedented legacy as the premier investment entity in
-              history. Our mandate is to rigorously discern optimal capital allocation strategies,
-              thereby delivering exceptional, sustainable value to an elite clientele of private
-              capital stewards and global investors.
-            </p>
+           <p
+  className="
+    font-brand
+    text-[23px] md:text-[24px] lg:text-[26px]
+    font-medium
+    leading-[1.45]
+    text-[#0B3E27]
+    max-w-[820px]
+    mb-8
+  "
+>
+  We aspire to establish an unprecedented legacy as the premier investment entity in
+  history. Our mandate is to rigorously discern optimal capital allocation strategies,
+  thereby delivering exceptional, sustainable value to an elite clientele of private
+  capital stewards and global investors.
+</p>
+
 
             {/* BUTTON */}
-            <Link
-              href="/who-we-are"
-              className="
-                inline-flex items-center justify-center
-                px-7 py-4 text-sm font-medium
-                text-white
-                bg-[linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))]
-                transition-all duration-300
-                hover:bg-none hover:bg-white
-                hover:text-[var(--brand-green-1)]
-                hover:border hover:border-[var(--brand-green-1)]
-              "
-            >
-              Explore Who We Are
-            </Link>
+          <Link href="/who-we-are" className="no-underline">
+  <LuxuryButton
+    variant="primary"
+    className="py-5"
+  >
+    Explore Who We Are
+  </LuxuryButton>
+</Link>
+
 
           </div>
         </div>
@@ -434,6 +419,7 @@ talented individuals to execute their boldest, highest-conviction ideas with pre
         <AnimatedMeritocraticSection />
 
             <Stats 
+            className="mb-24 lg:mb-32"
             stats={[
               {
                 number: "60%+",
@@ -450,30 +436,7 @@ talented individuals to execute their boldest, highest-conviction ideas with pre
             ]}
             />
 
-        {/* <section className="py-6 md:py-8 lg:py-16">
-          <div className="container-responsive">
-            <div className="flex flex-col md:flex-row items-start mb-6 md:mb-8">
-              <div className="flex-1 mb-4 md:mb-6 lg:mb-0">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-lora  leading-tight mb-3 md:mb-4 lg:mb-8 text-primary">Engage With Elite Talent</h2>
-              </div>
-              <div className="flex-1 md:pl-8 lg:pl-16">
-                <p className="text-base md:text-lg lg:text-xl font-raleway mb-4 md:mb-6 lg:mb-8 leading-relaxed text-main opacity-75">
-                  Here, the collective fuels your growth. People learn side by side, sharpening each other’s
-                  skills and building extraordinary careers together.
-                </p>
-                <LuxuryButton variant="primary">Explore Career Possibilities</LuxuryButton>
-              </div>
-            </div>
-            <div className="ml-0 md:ml-4 lg:ml-8">
-              <ImageReveal 
-                src="/office.webp" 
-                alt="Office" 
-                className="w-full h-auto"
-              />
-            </div>
-          </div>
-        </section> */}
-
+   
         <AnimatedTalentSection />
 
         <NewsSection 

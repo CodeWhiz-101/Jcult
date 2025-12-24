@@ -65,13 +65,13 @@ export default function Stats({ stats, title, className = "" }: StatsProps) {
 <div className="ml-6 md:ml-10 lg:ml-70 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
 
           {stats.map((stat, index) => (
-<div key={index} className="relative pl-6 pb-8">
+<div key={index} className="relative pl-4 pt-0 pb-4">
 
 
               {/* VERTICAL DIVIDER — grows bottom → top */}
              <span
   className={`
-    absolute left-0 top-0 bottom-8 w-px bg-black/25
+    absolute left-0 -top-8 -bottom-30 w-px bg-black/25
     transition-[clip-path]
     duration-[700ms]
     ease-[cubic-bezier(.22,.61,.36,1)]
@@ -84,12 +84,13 @@ export default function Stats({ stats, title, className = "" }: StatsProps) {
 
 
               {/* NUMBER — masked reveal */}
-              <div className="overflow-hidden">
+              <div className="overflow-hidden -mt-15">
                 <div
                   className={`
                     font-brand
-text-[50px] md:text-[58px] lg:text-[64px]
-                    leading-none
+                    font-medium
+    text-[80px] md:text-[88px] lg:text-[96px]
+  
                     text-primary
                     transition-[clip-path]
                     duration-[900ms]
@@ -116,6 +117,7 @@ text-[50px] md:text-[58px] lg:text-[64px]
 <div className="overflow-hidden mt-10 lg:mt-14">
                 <p
                   className={`
+                    font-ttcommons
                     text-[15px] md:text-[15.5px]
                     leading-[1.45]
                     text-black/65

@@ -150,35 +150,29 @@ text-[var(--brand-green-2)]
 
 
         {/* RIGHT ARROW (BRAND GREEN) */}
-        <div
+    <div
   className="
-    flex
-    items-center
-    justify-center
-    w-10
-    h-10
+    flex items-center justify-center
+    w-10 h-10
     rounded-full
     border
-    border-[1px]
-    border-primary
-    transition-all
-    duration-300
-    group-hover:bg-primary
+    transition-all duration-300
+    text-[var(--brand-green-2)]
+    border-[var(--brand-green-2)]
+    group-hover:bg-[var(--brand-green-2)]
+    group-hover:text-white
   "
 >
   <ArrowRight
     strokeWidth={1.25}
     className="
-      w-5
-      h-5
-      text-primary
-      transition-all
-      duration-300
-      group-hover:text-white
+      w-5 h-5
+      transition-transform duration-300
       group-hover:translate-x-0.5
     "
   />
 </div>
+
 
       </a>
     ))}
