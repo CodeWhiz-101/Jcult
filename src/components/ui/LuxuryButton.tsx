@@ -5,7 +5,7 @@ import { useState } from 'react';
 interface LuxuryButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
-  variant?: 'primary' | 'gold' | 'outline' | 'white' | 'primary-outline';
+  variant?: 'primary' | 'white' | 'gold' | 'outline';
   className?: string;
 }
 
@@ -15,73 +15,68 @@ export default function LuxuryButton({
   variant = 'primary',
   className = '',
 }: LuxuryButtonProps) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
-  const baseStyle = {
+  const baseStyle: React.CSSProperties = {
     padding: '0.75rem 1.5rem',
+    fontSize: '0.875rem',
     fontWeight: 500,
-    position: 'relative' as const,
-    zIndex: 10,
     cursor: 'pointer',
-    transition: 'all 400ms ease',
+    transition: 'all 300ms ease',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   };
 
-  const getInlineStyles = () => {
-    switch (variant) {
-      case 'white':
-  return {
-    ...baseStyle,
-     color: isHovered ? '#FFFFFF' : '#1B5E20',
-    border: `1px solid ${isHovered ? '#FFFFFF' : '#1B5E20'}`,
-    backgroundColor: isHovered ? 'transparent' : '#FFFFFF',
-  };
+  const stylesByVariant: Record<string, React.CSSProperties> = {
+    /* ================= PRIMARY (GRADIENT) ================= */
+    primary: {
+      ...baseStyle,
+      color: hovered ? 'var(--brand-green-1)' : '#FFFFFF',
+      background: hovered
+        ? 'transparent'
+        : 'linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))',
+      boxShadow: hovered
+        ? 'inset 0 0 0 1px var(--brand-green-1)'
+        : 'inset 0 0 0 0 transparent',
+    },
 
+    /* ================= WHITE (FIXED) ================= */
+    white: {
+      ...baseStyle,
+      color: hovered ? '#FFFFFF' : 'var(--brand-green-1)',
+      background: hovered ? 'transparent' : '#FFFFFF',
+      boxShadow: hovered
+        ? 'inset 0 0 0 1px #FFFFFF'   // 👈 WHITE border on hover
+        : 'inset 0 0 0 1px var(--brand-green-1)', // green when idle
+    },
 
-      case 'gold':
-        return {
-          ...baseStyle,
-          backgroundColor: '#D4AF37',
-          color: '#000000',
-          border: '1px solid #D4AF37',
-        };
+    /* ================= OUTLINE ================= */
+    outline: {
+      ...baseStyle,
+      color: hovered ? '#FFFFFF' : 'var(--brand-green-1)',
+      background: hovered
+        ? 'linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))'
+        : 'transparent',
+      boxShadow: 'inset 0 0 0 1px var(--brand-green-1)',
+    },
 
-      case 'outline':
-        return {
-          ...baseStyle,
-          backgroundColor: 'transparent',
-          color: '#1B5E20',
-          border: '1px solid #1B5E20',
-        };
-
-      case 'primary-outline':
-        return {
-          ...baseStyle,
-          backgroundColor: 'transparent',
-          color: '#1B5E20',
-          border: '1px solid #1B5E20',
-        };
-
-      default:
-        // PRIMARY — inline styles only for text/border
-        return {
-          ...baseStyle,
-          color: isHovered ? '#1B5E20' : '#FFFFFF',
-          border: '1px solid #1B5E20',
-          backgroundColor: isHovered ? '#FFFFFF' : 'transparent',
-        };
-    }
+    /* ================= GOLD ================= */
+    gold: {
+      ...baseStyle,
+      background: '#D4AF37',
+      color: '#000000',
+      boxShadow: 'inset 0 0 0 1px #D4AF37',
+    },
   };
 
   return (
     <button
       onClick={onClick}
-      style={getInlineStyles()}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`
-        ${variant === 'primary' && !isHovered ? 'bg-primary' : ''}
-        ${className}
-      `}
+      style={stylesByVariant[variant]}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className={className}
     >
       {children}
     </button>
