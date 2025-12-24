@@ -71,7 +71,7 @@ export default function CareersPage() {
 
 
                 {/* TITLE */}
-                <h1 className="mt-4 text-hero-title font-hero fw-normal text-white leading-[1.05] tracking-[-0.01em]">
+                <h1 className="mt-4 text-hero-title font-hero fw-normal text-white leading-[1.08] tracking-[-0.005em]">
   Open Opportunities
 </h1>
 
