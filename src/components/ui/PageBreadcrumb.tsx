@@ -8,9 +8,9 @@ interface PageBreadcrumbProps {
 
 export default function PageBreadcrumb({ items }: PageBreadcrumbProps) {
   return (
-    <div className="mb-6">
-      <div className="flex items-center gap-2 text-[13px] tracking-wide text-white">
-        {items.map((item, i) => (
+    <div className="mb-3">
+      <div className="flex items-center gap-2 breadcrumb-text text-white">
+          {items.map((item, i) => (
           <span key={i} className="flex items-center gap-2">
 
             {item.href ? (

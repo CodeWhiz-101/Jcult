@@ -239,10 +239,46 @@ body {
 .fw-bold { font-weight: 700; }
 
 /* ========================================
+   HERO BREADCRUMB (Citadel-style)
+======================================== */
+
+/* Breadcrumb typography — Citadel-like */
+.breadcrumb-text {
+  font-size: 20px;      /* 👈 THIS IS THE ONE YOU CHANGE */
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  opacity: 0.85;
+}
+
+
+
+.breadcrumb-hero a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+}
+
+.breadcrumb-hero a:hover {
+  text-decoration: underline;
+}
+
+
+/* ========================================
    RESPONSIVE FONT SIZE CLASSES
 ======================================== */
 /* Hero Title */
 /* Hero Title — Premium */
+
+/* Ensure hero title NEVER inherits breadcrumb casing */
+.text-hero-title {
+  text-transform: none;
+}
+
+
+.font-hero {
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
 .text-hero-title {
   font-size: 40px;
   font-weight:400;
@@ -254,7 +290,7 @@ body {
   .text-hero-title { font-size: 64px; }
 }
 @media (min-width: 1440px) {
-  .text-hero-title { font-size: 70px; }
+  .text-hero-title { font-size: 74px; }
 }
 
 

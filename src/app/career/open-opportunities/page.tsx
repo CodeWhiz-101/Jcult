@@ -58,22 +58,23 @@ export default function CareersPage() {
         <section className="relative overflow-visible">
           <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
             <div className="container-responsive">
-             <div className="flex items-start pt-24 md:pt-32 lg:pt-40 pb-48 md:pb-52 lg:pb-56">
-
-
-
+             <div className="pt-24 md:pt-28 lg:pt-32 pb-44 md:pb-48 lg:pb-52">
                 {/* 🔥 BREADCRUMB */}
-                <PageBreadcrumb
-                   items={[
-    { label: 'Careers', href: '/career' },
-    { label: 'Open Opportunities', href: '/career/open-opportunities' }, // 👈 same page
-  ]}
-                />
+               <div className="breadcrumb-hero">
+  <PageBreadcrumb
+    items={[
+      { label: 'Careers', href: '/career' },
+      { label: 'Open Opportunities', href: '/career/open-opportunities' },
+    ]}
+  />
+</div>
+
 
                 {/* TITLE */}
-                <h1 className="mt-6 text-section-title font-brand text-white">
-                  Open Opportunities
-                </h1>
+                <h1 className="mt-4 text-hero-title font-hero fw-normal text-white leading-[1.05] tracking-[-0.01em]">
+  Open Opportunities
+</h1>
+
 
               </div>
             </div>
