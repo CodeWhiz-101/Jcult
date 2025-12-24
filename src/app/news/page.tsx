@@ -60,27 +60,58 @@ export default function News() {
               <div className="w-full md:w-2/3 md:pl-8 lg:pl-16">
                 <div className="divide-y border-t border-b">
                   {newsItems.slice(0, 6).map((item, i) => (
-                    <a
-                      key={i}
-                      href={item.href}
-                      className="group flex justify-between py-4 md:py-6 items-start transition"
-                    >
-                      <div className="space-y-1 flex-1">
-                        <p className="text-xs md:text-sm text-charcoal uppercase tracking-wide">
-                          {item.category}
-                        </p>
-                        {(item.date || item.source) && (
-                          <p className="text-xs text-charcoal/70">
-                            {item.date}
-                            {item.source && <> | {item.source}</>}
-                          </p>
-                        )}
-                        <h3 className="text-base md:text-lg text-primary group-hover:underline">
-                          {item.title}
-                        </h3>
-                      </div>
-                      <ArrowRight className="h-5 w-5 text-primary group-hover:translate-x-1 transition ml-4" />
-                    </a>
+                   <a
+  key={i}
+  href={item.href}
+  className="group flex justify-between py-4 md:py-6 items-start"
+>
+  {/* LEFT TEXT */}
+  <div className="space-y-1 flex-1">
+    <p className="text-xs md:text-sm text-charcoal uppercase tracking-wide">
+      {item.category}
+    </p>
+
+    {(item.date || item.source) && (
+      <p className="text-xs text-charcoal/70">
+        {item.date}
+        {item.source && <> | {item.source}</>}
+      </p>
+    )}
+
+    {/* TITLE WITH FADE UNDERLINE */}
+    <h3 className="text-base md:text-lg text-primary">
+      <span className="relative inline-block">
+        {item.title}
+        <span
+          className="
+            absolute left-0 -bottom-[2px]
+            h-[1px] w-0
+            bg-primary
+            transition-all duration-300
+            group-hover:w-full
+          "
+        />
+      </span>
+    </h3>
+  </div>
+
+  {/* ARROW WITH CIRCLE */}
+<div
+  className="
+    ml-4
+    flex items-center justify-center
+    w-9 h-9
+    rounded-full
+    border border-primary
+    transition-all duration-300
+    group-hover:translate-x-1
+  "
+>
+  <ArrowRight className="h-4 w-4 text-primary" />
+</div>
+
+</a>
+
                   ))}
                 </div>
               </div>

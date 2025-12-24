@@ -62,15 +62,18 @@ export default function Hero({ videoSrc, imageSrc, title, description }: HeroPro
   </div>
 
   {/* GREEN / GRADIENT TEXT BOX */}
-  <div
-    className="
-      absolute
-      bottom-6 md:bottom-10 lg:bottom-14 xl:bottom-20
-      left-0 right-0 z-10
-      ml-7 md:ml-10 lg:ml-12 xl:ml-14
-      mr-9 md:mr-13 lg:mr-17
-    "
-  >
+ {/* GREEN / GRADIENT TEXT BOX */}
+<div
+  className="
+    absolute
+    bottom-6 md:bottom-10 lg:bottom-14 xl:bottom-20
+    left-0 right-0 z-10
+    ml-7 md:ml-10 lg:ml-12 xl:ml-14
+    mr-9 md:mr-13 lg:mr-17
+    bg-[#F6F6F6]          /* ✅ Citadel grey */
+  "
+>
+
     <div
       className="
         relative
@@ -96,18 +99,21 @@ export default function Hero({ videoSrc, imageSrc, title, description }: HeroPro
       />
 
       <div className="container-responsive relative z-10 h-full flex items-center">
-        <p
-          className={`
-            text-white
-            max-w-[620px]
-            text-hero-subtitle
-            leading-relaxed
-            translate-y-[-18px]
-            transition-opacity duration-700
-            delay-[900ms]
-            ${loaded ? 'opacity-100' : 'opacity-0'}
-          `}
-        >
+       <p
+  className={`
+    font-ttcommons font-normal
+    text-white
+    max-w-[620px]
+text-[16px] md:text-[17px] lg:text-[19px]
+    leading-relaxed
+    translate-y-[-18px]
+    transition-opacity duration-700
+    delay-[900ms]
+    ${loaded ? 'opacity-100' : 'opacity-0'}
+  `}
+  style={{ fontFamily: 'TT Commons, sans-serif' }}
+>
+
           {description}
         </p>
       </div>

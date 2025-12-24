@@ -27,16 +27,18 @@ export default function Career() {
 
     {/* Grey background extender */}
     <div
-      className="
-        absolute
-        top-[-120px] md:top-[-160px] lg:top-[-200px]
-        left-0
-        w-full
-        h-[120px] md:h-[160px] lg:h-[200px]
-        bg-tertiary
-        z-0
-      "
-    />
+  className="
+    min-h-[60vh]
+    md:min-h-[70vh]
+    flex
+    flex-col
+    items-start
+    pt-36          /* 👈 more breathing room on mobile */
+    sm:pt-32
+    md:pt-36
+    lg:pt-40
+  "
+>
 
     {/* Centered content */}
     <div className="relative z-10 container-responsive">
