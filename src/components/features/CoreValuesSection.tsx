@@ -40,7 +40,7 @@ export default function CoreValuesSection() {
         <FadeLeft>
           <div className="relative w-full h-[320px] md:h-[360px] -mt-32">
           <img
-            src="/images/meeting.JPG"
+            src="/images/ourculture2.JPG"
             alt="Team collaboration"
             className="w-full h-full object-cover"
           />

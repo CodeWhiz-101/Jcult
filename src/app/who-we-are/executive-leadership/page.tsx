@@ -136,7 +136,7 @@ export default function LeadershipTeam() {
               <div className="flex-1 mb-6 md:mb-0">
                 <FadeLeft>
                   <img
-                    src="/images/woman smiling and handshake.JPG"
+                    src="/images/executiveledership2.JPG"
                     alt="Leadership impact"
                     className="w-full h-64 md:h-80 lg:h-96 object-cover"
                   />

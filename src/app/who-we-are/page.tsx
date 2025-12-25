@@ -101,7 +101,7 @@ clientele.
               <div className="flex-1 mb-6 md:mb-0 w-full md:w-auto">
                 <FadeLeft>
                   <ImageReveal 
-                    src="/images/leader standup.JPG"
+                    src="/images/whoweare2.JPG"
                     alt="Our team"
                     className="w-full h-48 md:h-64 lg:h-80"
                   />
