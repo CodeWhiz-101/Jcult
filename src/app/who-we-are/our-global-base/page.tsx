@@ -147,11 +147,15 @@ export default function OfficeLocations() {
         <section className="py-6 md:py-8 lg:py-16 bg-white">
           <div className="container-responsive">
             <ScaleIn>
-              <img
-                src="/images/building.JPG"
-                alt="Our global offices"
-                className="w-full h-48 md:h-64 lg:h-96 object-cover"
-              />
+              <video
+  src="/videos/globalbase1.mp4"
+  className="w-full h-48 md:h-64 lg:h-96 object-cover"
+  autoPlay
+  muted
+  loop
+  playsInline
+/>
+
             </ScaleIn>
           </div>
         </section>

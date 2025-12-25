@@ -161,7 +161,7 @@ export default function WhatWeDo() {
               <div className="flex-1 mb-6 md:mb-0 relative md:-mt-24 lg:-mt-32">
                 <FadeLeft>
                 <img 
-                  src="/images/whatwedo2.JPG"
+                  src="/images/whatwedo2.jpg"
                   alt="Our values"
                   className="w-full h-64 md:h-80 object-cover"
                 />
@@ -247,7 +247,7 @@ export default function WhatWeDo() {
               <div className="flex-1 mb-6 md:mb-0 container-responsive">
                 <FadeLeft>
                   <img 
-                    src="/images/whatwedo3.JPG"
+                    src="/images/whatwedo3.jpg"
                     alt="Join our team"
                     className="w-full h-64 md:h-80 lg:h-96 object-cover"
                   />
