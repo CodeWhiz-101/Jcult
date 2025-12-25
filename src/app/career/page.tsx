@@ -13,6 +13,7 @@ export default function Career() {
       <main className="pt-[160px] md:pt-[180px]">
 
        <div className="relative z-20">
+        
  <Hero 
   videoSrc="/videos/career1.mp4"
   title="Career"
@@ -23,43 +24,77 @@ export default function Career() {
 
 
 
-    <FadeUp>
- <section className="relative pt-2 md:pt-4 lg:pt-6 pb-6 md:pb-8 lg:pb-16 bg-tertiary">
+   <FadeUp>
+  <section className="relative -mt-[160px] md:-mt-[180px] pt-[160px] md:pt-[180px] pb-6 md:pb-8 lg:pb-16 bg-tertiary overflow-visible">
 
-    {/* Grey background extender */}
-    <div
-      className="
-        absolute
-        top-[-120px] md:top-[-160px] lg:top-[-200px]
-        left-0
-        w-full
-        h-[120px] md:h-[160px] lg:h-[200px]
-        bg-tertiary
-        z-0
-      "
-    />
+    {/* CONTENT WRAPPER */}
+    <div className="relative z-10 flex flex-col md:flex-row">
 
-    {/* Centered content */}
-    <div className="relative z-10 container-responsive">
-      <div className="flex flex-col md:flex-row items-center">
-        <div className="flex-1 mb-6 md:mb-0">
-          <ImageReveal
-  src="/images/career2.jpg"
-  alt="Career at JCULT"
-  className="w-full h-64 md:h-80 lg:h-96"
-/>
+      {/* IMAGE — FULL LEFT, OVERLAPS DOWN INTO WHITE */}
+      <div
+        className="
+          relative
+          w-full md:w-[48%]
+          mb-[-96px] md:mb-[-128px] lg:mb-[-160px]
+          z-20
+        "
+      >
+        <ImageReveal
+          src="/images/career2.jpg"
+          alt="Career at JCULT"
+          className="w-full h-64 md:h-80 lg:h-96 object-cover"
+        />
+      </div>
 
-        </div>
+      {/* TEXT — NORMAL FLOW */}
+      <div className="w-full md:w-[52%]">
+        <div className="container-responsive h-full flex items-start">
+         <div className="py-12 md:py-0 md:pl-6 lg:pl-10">
 
-        <div className="flex-1 md:pl-8 lg:pl-16 self-start">
-          <h2 className="text-section-title fw-semibold leading-[1.15] tracking-tight text-primary mb-4 md:mb-6">
-            Build Your Career With Us
-          </h2>
-          <p className="text-section-content color-grey leading-relaxed">
-            We believe in nurturing talent and providing opportunities for growth. Our team members work on challenging projects that shape the future of financial markets.
-          </p>
+
+  {/* HEADING */}
+  <h2 className="font-brand text-primary leading-[1.05] mb-6">
+    <span
+      className="block fw-semibold"
+      style={{
+        fontSize: '44px',
+        letterSpacing: '-0.02em',
+      }}
+    >
+      Build Your Career
+    </span>
+
+    <span
+      className="block fw-medium"
+      style={{
+        fontSize: '40px',
+        letterSpacing: '-0.015em',
+      }}
+    >
+      With Us
+    </span>
+  </h2>
+
+  {/* DESCRIPTION */}
+  <p
+    className="text-section-content color-grey"
+    style={{
+      fontSize: '20px',
+      lineHeight: '1.7',
+      maxWidth: '460px',
+    }}
+  >
+    We believe in nurturing talent and providing opportunities for growth.
+    Our team members work on challenging projects that shape the future of
+    financial markets.
+  </p>
+
+</div>
+
+
         </div>
       </div>
+
     </div>
   </section>
 </FadeUp>
@@ -67,17 +102,16 @@ export default function Career() {
 
 
 
-     <FadeUp delay={100}>
-  <section className="py-6 md:py-8 lg:py-16">
+
+<FadeUp delay={100}>
+  + <section className="pt-[80px] md:pt-[120px] lg:pt-[150px] pb-6 md:pb-8 lg:pb-16">
     <div className="container-responsive">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
 
         {/* Internship */}
         <div className="relative pl-4 md:pl-6">
-          {/* Divider — thin grey hairline */}
           <div className="absolute left-0 top-0 bottom-0 w-px bg-black/20" />
 
-          {/* TITLE */}
           <h3
             className="
               font-brand
@@ -91,8 +125,8 @@ export default function Career() {
             Internships
           </h3>
 
-          {/* SUB CONTENT */}
-          <p className="text-[14px] md:text-[15px] color-grey leading-[1.5] mb-3">
+          {/* ⬇️ NOTICEABLY BIGGER */}
+          <p className="text-[16px] md:text-[18px] color-grey leading-[1.65] mb-4">
             Gain hands-on experience and work alongside industry experts. Our
             internship programs offer real-world projects and mentorship
             opportunities.
@@ -100,7 +134,7 @@ export default function Career() {
 
           <Link
             href="/career/open-opportunities?experience=Internship"
-            className="group inline-flex items-center gap-2 font-raleway fw-medium text-[15px]"
+            className="group inline-flex items-center gap-2 font-raleway fw-medium text-[17px] md:text-[18px]"
             style={{ color: 'var(--brand-green-2)' }}
           >
             <span className="relative inline-block">
@@ -134,10 +168,8 @@ export default function Career() {
 
         {/* Full Time */}
         <div className="relative pl-4 md:pl-6">
-          {/* Divider — thin grey hairline */}
           <div className="absolute left-0 top-0 bottom-0 w-px bg-black/20" />
 
-          {/* TITLE */}
           <h3
             className="
               font-brand
@@ -151,8 +183,8 @@ export default function Career() {
             Full-Time Roles
           </h3>
 
-          {/* SUB CONTENT */}
-          <p className="text-[14px] md:text-[15px] color-grey leading-[1.5] mb-3">
+          {/* ⬇️ SAME SIZE HERE */}
+          <p className="text-[16px] md:text-[18px] color-grey leading-[1.65] mb-4">
             Join our team of exceptional professionals. We offer challenging
             roles across trading, technology, research, and operations with
             competitive benefits.
@@ -160,7 +192,7 @@ export default function Career() {
 
           <Link
             href="/career/open-opportunities?experience=Experienced Professionals,Graduates"
-            className="group inline-flex items-center gap-2 font-raleway fw-medium text-[15px]"
+            className="group inline-flex items-center gap-2 font-raleway fw-medium text-[17px] md:text-[18px]"
             style={{ color: 'var(--brand-green-2)' }}
           >
             <span className="relative inline-block">
@@ -196,6 +228,8 @@ export default function Career() {
     </div>
   </section>
 </FadeUp>
+
+
 
 
 

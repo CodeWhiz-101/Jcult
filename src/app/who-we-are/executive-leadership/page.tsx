@@ -33,7 +33,7 @@ export default function LeadershipTeam() {
                  <PageBreadcrumb
                    items={[
                      { label: 'Who We Are', href: '/who-we-are' },
-                     { label: 'Leadership', href: '/who-we-are/Executive Leadership' },
+                     { label: 'Leadership', href: '/who-we-are/executive-leadership' },
                    ]}
                  />
                </div>
