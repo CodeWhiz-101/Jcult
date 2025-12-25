@@ -446,7 +446,12 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-main">
       <main>
-       <div className="pt-[160px] md:pt-[180px]">
+       <div
+  style={{
+    paddingTop: 'calc(120px + var(--disclaimer-offset, 0px))'
+  }}
+>
+
           <Hero 
           videoSrc="/videos/lp1.mp4"
             title="United, we convert aspiration into strategic execution"

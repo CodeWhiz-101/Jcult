@@ -25,10 +25,20 @@ const hasAnimatedRef = useRef(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
 useEffect(() => {
-  if (!isHome) {
+  if (isHome && disclaimerRef.current) {
+    setDisclaimerHeight(disclaimerRef.current.offsetHeight);
+  } else {
     setDisclaimerHeight(0);
   }
 }, [isHome]);
+
+useEffect(() => {
+  document.documentElement.style.setProperty(
+    '--disclaimer-offset',
+    isHome ? `${disclaimerHeight}px` : '0px'
+  );
+}, [isHome, disclaimerHeight]);
+
 
   const HEADER_HEIGHT = 120;useEffect(() => {
   /* ===============================
@@ -267,7 +277,8 @@ transform: isVisible
       {/* OVERLAY (behind dropdown) */}
       {hoveredTab && (
         <div
-          className="hidden lg:block fixed inset-0 bg-black/20"
+          className="hidden lg:block fixed inset-0 bg-transparent"
+
           style={{
 top: `${disclaimerHeight + HEADER_HEIGHT}px`,
   zIndex: 50

@@ -13,11 +13,12 @@ export default function Career() {
       <main className="pt-[160px] md:pt-[180px]">
 
        <div className="relative z-20">
-  <Hero 
-    imageSrc="/images/group table conference.JPG"
-    title="Career"
-    description="Join our team of exceptional professionals and shape the future of finance. We offer challenging opportunities and a culture of excellence."
-  />
+ <Hero 
+  videoSrc="/videos/career1.mp4"
+  title="Career"
+  description="Join our team of exceptional professionals and shape the future of finance. We offer challenging opportunities and a culture of excellence."
+/>
+
 </div>
 
 
@@ -43,10 +44,11 @@ export default function Career() {
       <div className="flex flex-col md:flex-row items-center">
         <div className="flex-1 mb-6 md:mb-0">
           <ImageReveal
-            src="/images/group disscusion.JPG"
-            alt="Our workplace"
-            className="w-full h-64 md:h-80 lg:h-96"
-          />
+  src="/images/career2.jpg"
+  alt="Career at JCULT"
+  className="w-full h-64 md:h-80 lg:h-96"
+/>
+
         </div>
 
         <div className="flex-1 md:pl-8 lg:pl-16 self-start">
