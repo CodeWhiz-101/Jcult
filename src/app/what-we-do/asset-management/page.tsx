@@ -94,7 +94,7 @@ export default function Commodities() {
               <div className="flex-1 mb-6 md:mb-0">
                 <FadeLeft>
                   <img
-                    src="/images/woman working.JPG"
+                    src="/images/assetmanagement1.JPG"
                     alt="Join our team"
                     className="w-full h-64 md:h-80 lg:h-96 object-cover"
                   />

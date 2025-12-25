@@ -33,7 +33,7 @@ export default function WhoWeAre() {
       <main className="pt-[160px] md:pt-[180px]">
 
         <Hero 
-          imageSrc="/images/building.JPG"
+          videoSrc="/videos/whoweare1.mp4"
           title="Who We Are"
           description="To empower our clients with expert financial guidance, innovative investment strategies, and transparent wealth management services that build lasting prosperity and financial security"
         />
