@@ -102,7 +102,8 @@ export default function CareersPage() {
             <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr]">
 
               {/* ================= LEFT FILTERS ================= */}
-              <aside className="pt-14 md:pt-16 pr-8 md:pr-10 lg:pr-12">
+              <aside className="pt-8 md:pt-10 pr-8 md:pr-10 lg:pr-12">
+
 
 
 
