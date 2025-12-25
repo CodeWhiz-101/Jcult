@@ -229,7 +229,7 @@ export default function CareersPage() {
                         {section.values.map(v => (
                           <label
                             key={v}
-                            className="flex items-center text-[18px] text-primary">
+                            className="flex items-center text-[15px] text-primary">
                           
                             <input
                               type="checkbox"
