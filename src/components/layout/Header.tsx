@@ -20,10 +20,16 @@ const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 const [dropdownKey, setDropdownKey] = useState(0);
 const disclaimerRef = useRef<HTMLDivElement>(null);
 const [disclaimerHeight, setDisclaimerHeight] = useState(0);
-
 const hasAnimatedRef = useRef(false);
 
   const pathname = usePathname();
+  const isHome = pathname === '/';
+useEffect(() => {
+  if (!isHome) {
+    setDisclaimerHeight(0);
+  }
+}, [isHome]);
+
   const HEADER_HEIGHT = 120;useEffect(() => {
   /* ===============================
      HEADER LOAD ANIMATION (ONCE)
@@ -97,25 +103,22 @@ transform: isVisible
     }}
   >
     {/* DISCLAIMER */}
-<div
-  ref={disclaimerRef}
-  className="
-    text-center text-[16px] leading-relaxed px-4 py-2
-    font-ttcommons
-  "
-  style={{
-    backgroundColor: '#F6F6F6',
-    color: '#1A1A1A',
-    borderBottom: '1px solid #E2E4E8',
-    fontFamily: 'TT Commons, sans-serif',
-    fontWeight: 400
-  }}
->
-
-
-      The firm does not currently operate under regulatory authorisation; however,
-      all requisite measures are being undertaken to achieve regulatory compliance.
-    </div>
+{isHome && (
+  <div
+    ref={disclaimerRef}
+    className="text-center text-[16px] leading-relaxed px-4 py-2 font-ttcommons"
+    style={{
+      backgroundColor: '#F6F6F6',
+      color: '#1A1A1A',
+      borderBottom: '1px solid #E2E4E8',
+      fontFamily: 'TT Commons, sans-serif',
+      fontWeight: 400
+    }}
+  >
+    The firm does not currently operate under regulatory authorisation; however,
+    all requisite measures are being undertaken to achieve regulatory compliance.
+  </div>
+)}
 
     {/* HEADER */}
     <header
@@ -171,7 +174,7 @@ transform: isVisible
                   <li key={label} className="relative">
                   <Link
   href={href}
-  className="inline-block whitespace-nowrap no-underline text-[15px] tracking-wide transition-colors duration-200"
+  className="inline-block whitespace-nowrap no-underline text-[18px] tracking-wide transition-colors duration-200"
   style={{
     color: active
       ? 'var(--brand-green-2)' // ACTIVE = LIGHT
@@ -366,7 +369,7 @@ top: `${disclaimerHeight + HEADER_HEIGHT}px`,
   href={href}
   className="
     group relative block w-fit
-    text-[15px] tracking-wide
+    text-[18px] tracking-wide
     no-underline
     transition-colors duration-300
   "

@@ -47,22 +47,25 @@ function AnimatedTalentSection() {
           "
         >
           {/* LEFT TITLE */}
-          <div
-            className={`flex-2 transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
+      <div
+    className={`
+      transition-transform duration-[900ms]
+      ease-[cubic-bezier(.22,.61,.36,1)]
+      ${isVisible ? 'translate-x-0' : '-translate-x-[120%]'}
+    `}
+  >
+
             <h2
               className="
-                font-brand
+                font-brand font-medium
                 text-[42px] md:text-[48px] lg:text-[54px]
                 leading-[1.1]
               "
             >
-              <span className="block mb-2 md:mb-3 lg:mb-4 text-[var(--brand-green-1)]">
+              <span className="block font-medium mb-2 md:mb-3 lg:mb-4 text-[var(--brand-green-1)]">
                 Engage With
               </span>
-              <span className="block text-[var(--brand-green-2)]">
+              <span className="block font-medium text-[var(--brand-green-2)]">
                 Elite Talent
               </span>
             </h2>
@@ -74,16 +77,19 @@ function AnimatedTalentSection() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-       <p
+     <p
   className="
-    text-sm md:text-base lg:text-[17px]
-    font-TT commons font-normal
+    font-ttcommons font-normal
+    text-[17px] md:text-[18px] lg:text-[19px]
+    leading-[1.55]
+    text-[#68717A]
     mb-6 lg:mb-8
-    leading-relaxed
-    color-grey
     max-w-[600px]
   "
 >
+
+
+  
 
 
 
@@ -98,8 +104,14 @@ function AnimatedTalentSection() {
               }`}
               style={{ transitionDelay: '240ms' }}
             >
-             <Link href="/career" className="no-underline">
-  <LuxuryButton variant="primary">
+           <Link href="/career" className="no-underline">
+  <LuxuryButton
+    variant="primary"
+    className="
+      px-10 py-5
+      text-[16px] md:text-[17px] lg:text-[18px]
+    "
+  >
     Explore Career Possibilities
   </LuxuryButton>
 </Link>
@@ -114,7 +126,20 @@ function AnimatedTalentSection() {
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}
         >
-          <div className="bg-grey w-full h-[200px] md:h-[400px] lg:h-[500px] xl:h-[700px]" />
+<div
+  className="
+    relative
+    w-full
+    h-[200px] md:h-[400px] lg:h-[500px] xl:h-[700px]
+    overflow-hidden
+  "
+>
+  <img
+    src="/videos/lp3.jpg"
+    alt="Elite Talent"
+    className="w-full h-full object-cover"
+  />
+</div>
         </div>
       </div>
     </section>
@@ -151,27 +176,32 @@ function AnimatedMeritocraticSection() {
           "
         >
           {/* LEFT TITLE */}
-          <div
-            className={`flex-1 mb-4 md:mb-6 lg:mb-0 transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-            }`}
-          >
-            <h2
-              className="
-                font-brand
-                text-section-title
-                leading-[1.1]
-              "
-            >
-              <span className="block text-[var(--brand-green-1)]">
-                The Meritocratic Code
-              </span>
+          <div className="flex-1 mb-4 md:mb-6 lg:mb-0 overflow-hidden">
+  <div
+    className={`
+      transition-transform duration-[900ms]
+      ease-[cubic-bezier(.22,.61,.36,1)]
+      ${isVisible ? 'translate-x-0' : '-translate-x-[120%]'}
+    `}
+  >
+    <h2
+      className="
+        font-brand
+        text-section-title
+        leading-[1.1]
+      "
+    >
+      <span className="block font-medium text-[var(--brand-green-1)]">
+        The Meritocratic Code
+      </span>
 
-              <span className="block text-[var(--brand-green-2)]">
-                That Shapes Our Collective
-              </span>
-            </h2>
-          </div>
+      <span className="block font-medium text-[var(--brand-green-2)]">
+        That Shapes Our Collective
+      </span>
+    </h2>
+  </div>
+</div>
+
 
           {/* RIGHT CONTENT */}
           <div
@@ -179,21 +209,20 @@ function AnimatedMeritocraticSection() {
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
           >
-           <p
+        <p
   className="
-    text-sm md:text-base lg:text-[17px]
     font-ttcommons font-normal
-    leading-relaxed
-    opacity-75
-    color-grey
+    text-[17px] md:text-[18px] lg:text-[19px]
+    leading-[1.55]
+    text-[#68717A]
     max-w-[520px]
   "
 >
+  A culture where every perspective strengthens our purpose. From seasoned experts to
+  rising talent, each member fuels the intelligence that drives our performance. United, we
+  achieve what others consider out of reach.
+</p>
 
-              A culture where every perspective strengthens our purpose. From seasoned experts to
-              rising talent, each member fuels the intelligence that drives our performance. United, we
-              achieve what others consider out of reach.
-            </p>
           </div>
         </div>
       </div>
@@ -224,35 +253,69 @@ function AnimatedGreenSection() {
   }, [isVisible]);
 
   return (
-    <section ref={sectionRef}  className="bg-primary pt-20 md:pt-16 py-12 md:py-16 lg:py-24 lg:mb-30 xl:h-[1180px]" style={{ color: '#f5f5f5' }}>
+    <section ref={sectionRef}  className="bg-primary pt-20 md:pt-16 py-12 md:py-16 lg:py-24 lg:mb-30 xl:h-[1180px]" style={{ color: '#f6f6f6' }}>
       <div className="container-responsive">
         <div className="flex flex-col lg:flex-row items-start mb-6 md:mb-8">
-          <div className={`flex-2 mb-2 lg:mb-0 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            <div className='flex flex-row gap-2 lg:flex-col'>
-            <h2 className="font-brand text-section-title leading-tight text-white">
-  <span className="block">
+         <div className="flex-2 mb-2 lg:mb-0 overflow-hidden">
+  <div
+    className={`
+      transition-all
+      duration-[1000ms]
+      ease-[cubic-bezier(.22,.61,.36,1)]
+
+      ${isVisible
+        ? 'opacity-100 translate-x-0'
+        : 'opacity-0 -translate-x-24'}
+    `}
+  >
+    <div className="flex flex-row gap-2 lg:flex-col">
+   <h2 className="font-brand text-section-title text-[1.25em] leading-tight text-white">
+  <span className="block font-medium">
     Pioneering the
   </span>
 
-  <span className="block text-green-500">
+  <span
+    className="block font-medium"
+    style={{ color: '#187049' }}
+  >
     Future of Finance
   </span>
 </h2>
 
-            </div>
-          </div>
+
+
+    </div>
+  </div>
+</div>
+
           <div className={`flex-3 lg:pl-16 transition-all duration-1000 delay-300 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-           <p className="text-section-content font-ttcommons font-normal leading-relaxed mb-4 md:mb-6 lg:mb-8">
-  Innovation is the core of our competitive advantage. We tirelessly reimagine our approach
+<p
+  className="
+    font-ttcommons
+    text-[18px] md:text-[19px] lg:text-[20px]
+    leading-[1.5]
+ 
+
+  "
+>  Innovation is the core of our competitive advantage. We tirelessly reimagine our approach
   to the markets, systematically enhancing our trading models and execution capabilities to
   generate outsized returns in an ever-changing landscape.
 </p>
 
-            <a href="/what-we-do"><LuxuryButton variant="white">Explore What We Do</LuxuryButton></a>
+<a href="/what-we-do" className="mt-4 md:mt-5 lg:mt-6 inline-block">
+  <LuxuryButton
+    variant="white"
+    className="
+      px-8 md:px-10
+      py-4 md:py-4.5
+      text-[15px] md:text-[16px]
+    "
+  >
+    Explore What We Do
+  </LuxuryButton>
+</a>
           </div>
         </div>
       </div>
@@ -260,7 +323,30 @@ function AnimatedGreenSection() {
         <div className={`relative transition-all duration-1000 delay-600 ${
           isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
         }`}>
-          <div className="bg-grey w-full h-[380px] md:h-[480px] md:mb-0 lg:h-[650px] xl:mt-28 xl:h-[890px] lg:mb-[-200px] xl:mb-[-230px]"></div>
+<div
+  className="
+    relative
+    w-full
+    h-[380px] md:h-[480px] lg:h-[650px] xl:h-[890px]
+    overflow-hidden
+    md:mb-0
+    xl:mt-28
+    lg:mb-[-200px] xl:mb-[-230px]
+  "
+>
+  <video
+    className="absolute inset-0 w-full h-full object-cover"
+    src="/videos/lp2.mp4"
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="metadata"
+  />
+
+  {/* optional cinematic overlay */}
+  <div className="absolute inset-0 bg-black/15 pointer-events-none" />
+</div>
         </div>
       </div>
     </section>
@@ -290,7 +376,7 @@ function AnimatedSection() {
    <section
   ref={sectionRef}
   className={`
-    py-12 md:py-24 bg-tertiary
+    py-12 md:py-24 bg-[#F6F6F6] 
     overflow-hidden
     transition-opacity duration-1000
     ${isVisible ? 'opacity-100' : 'opacity-0'}
@@ -302,8 +388,8 @@ function AnimatedSection() {
 
           {/* LEFT LABEL */}
           <div className="w-full lg:w-[22%] mb-6 lg:mb-0">
-         <h3 className="text-sm tracking-wide text-[var(--brand-green-1)]">
-  Who We Are
+         <h3 className="text-[18px] tracking-wide text-[var(--brand-green-1)]">
+  Who we are
 </h3>
 
           </div>
@@ -335,10 +421,12 @@ function AnimatedSection() {
 
             {/* BUTTON */}
           <Link href="/who-we-are" className="no-underline">
-  <LuxuryButton
-    variant="primary"
-    className="py-5"
-  >
+<LuxuryButton
+  variant="primary"
+  className="py-5 px-9 text-[16px] md:text-[17px]"
+>
+
+
     Explore Who We Are
   </LuxuryButton>
 </Link>
@@ -360,6 +448,7 @@ export default function Home() {
       <main>
        <div className="pt-[160px] md:pt-[180px]">
           <Hero 
+          videoSrc="/videos/lp1.mp4"
             title="United, we convert aspiration into strategic execution"
             description="Built on the pursuit of identifying under-recognised market opportunities and empowering
 talented individuals to execute their boldest, highest-conviction ideas with precision."

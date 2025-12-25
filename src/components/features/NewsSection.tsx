@@ -43,9 +43,17 @@ const [titlePart1, titlePart2] = title.split("&");
 <div className="flex flex-col md:flex-row items-start gap-8 lg:gap-16">
 
           {/* Left: Title and Description */}
-          <div className={`w-2/3 md:mb-0 pr-2 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-          }`}>
+          <div
+    className={`
+      transition-all
+      duration-[1000ms]
+      ease-[cubic-bezier(.22,.61,.36,1)]
+
+      ${isVisible
+        ? 'opacity-100 translate-x-0'
+        : 'opacity-0 -translate-x-24'}
+    `}
+  >
            <h2
   className="
     font-brand
@@ -54,18 +62,27 @@ const [titlePart1, titlePart2] = title.split("&");
     leading-[1.1] md:leading-snug lg:leading-[60px]
   "
 >
-  <span className="block text-[#0B3E27]">
+  <span className="block font-medium text-[#0B3E27]">
     Insights
   </span>
 
-  <span className="block text-[#197149]">
+  <span className="block font-medium text-[#197149]">
     & Perspectives
   </span>
 </h2>
 
-            <p className="color-grey leading-relaxed text-section-content">
-              {description}
-            </p>
+            <p
+  className="
+    font-ttcommons font-normal
+    text-[18px] md:text-[18.5px] lg:text-[19px]
+    leading-relaxed
+    text-[#68717A]
+    max-w-[600px]
+  "
+>
+  {description}
+</p>
+
           </div>
 {/* Right: News Items */}
 <div className="w-full">
@@ -108,7 +125,7 @@ const [titlePart1, titlePart2] = title.split("&");
 
         {/* SOURCE — GREY */}
         {item.source && (
-          <span className="text-[12px] font-normal text-black/60">
+          <span className="text-[14px] font-normal text-black/60">
             {item.source}
           </span>
         )}

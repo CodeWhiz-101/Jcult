@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface HeroProps {
   videoSrc?: string;
@@ -11,10 +11,22 @@ interface HeroProps {
 
 export default function Hero({ videoSrc, imageSrc, title, description }: HeroProps) {
   const [loaded, setLoaded] = useState(false);
-
+const videoRef = useRef<HTMLVideoElement>(null);
+const [revealDone, setRevealDone] = useState(false);
+const [videoRevealed, setVideoRevealed] = useState(false);
+const [contentVisible, setContentVisible] = useState(false);
   useEffect(() => {
-    setLoaded(true);
-  }, []);
+  setLoaded(true);
+
+  // wait for green wipe animation to finish
+  const timer = setTimeout(() => {
+    setRevealDone(true);
+    videoRef.current?.play();
+  }, 900); // MUST match animation duration
+
+  return () => clearTimeout(timer);
+}, []);
+
 
   return (
  <section className="
@@ -25,15 +37,47 @@ export default function Hero({ videoSrc, imageSrc, title, description }: HeroPro
 ">
 
   {/* Background Grey */}
+  {/* Background Video */}
+<div
+  className="
+    absolute top-0 left-0 w-full
+    ml-7 md:ml-10 lg:ml-12 xl:ml-14
+    overflow-hidden
+  "
+  style={{ height: '680px' }}
+>
+  {/* VIDEO */}
+  {videoSrc && (
+    <video
+      ref={videoRef}
+      className="w-full h-full object-cover"
+      src={videoSrc}
+      muted
+      loop
+      playsInline
+      preload="auto"
+    />
+  )}
+
+  {/* GREEN WIPE OVERLAY */}
   <div
-    className="
-      absolute top-0 left-0 w-full
-      bg-grey
-      ml-7 md:ml-10 lg:ml-12 xl:ml-14
-      overflow-hidden
-    "
-    style={{ height: '680px' }}
+    className={`
+      absolute inset-0 z-20
+      origin-left
+      transition-transform duration-[650ms]
+      ease-[cubic-bezier(.22,.61,.36,1)]
+      ${loaded ? 'scale-x-0' : 'scale-x-100'}
+    `}
+    style={{
+      background: 'var(--brand-green-gradient)',
+    }}
   />
+
+  {/* DARK OVERLAY (optional, cinematic) */}
+  <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+</div>
+
+
 
   {/* TITLE — CITADEL-LOCKED POSITION */}
   <div
@@ -49,6 +93,8 @@ export default function Hero({ videoSrc, imageSrc, title, description }: HeroPro
       className={`
         text-white
         font-brand
+        font-medium
+        tracking-[-0.02em]
         text-hero-title
         leading-[1.08] md:leading-[1.1] lg:leading-[1.05]
         drop-shadow-lg
@@ -70,7 +116,7 @@ export default function Hero({ videoSrc, imageSrc, title, description }: HeroPro
     left-0 right-0 z-10
     ml-7 md:ml-10 lg:ml-12 xl:ml-14
     mr-9 md:mr-13 lg:mr-17
-    bg-[#F6F6F6]          /* ✅ Citadel grey */
+      /* ✅ Citadel grey */
   "
 >
 
@@ -104,9 +150,10 @@ export default function Hero({ videoSrc, imageSrc, title, description }: HeroPro
     font-ttcommons font-normal
     text-white
     max-w-[620px]
-text-[16px] md:text-[17px] lg:text-[19px]
+text-[16.5px] md:text-[17.5px] lg:text-[19.5px]
     leading-relaxed
     translate-y-[-18px]
+    -ml-1 md:-ml-2 lg:-ml-3
     transition-opacity duration-700
     delay-[900ms]
     ${loaded ? 'opacity-100' : 'opacity-0'}
