@@ -55,7 +55,7 @@ export default function CareersPage() {
       <main className="pt-[88px]">
 
         {/* ================= HERO ================= */}
-                       <section className="relative overflow-visible mb-16 md:mb-24">
+                       <section className="relative overflow-visible">
                          <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
                            <div className="container-responsive">
                        
@@ -95,12 +95,16 @@ export default function CareersPage() {
                          </div>
                        </section>
         {/* ========== FILTERS + RESULTS ========== */}
-        <section className="pt-12 md:pt-16 pb-16 ml-7 md:ml-10 lg:ml-12 xl:ml-14">
-          <div className="container-responsive">
-            <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-16">
+        <section className="pb-16">
+<div className="ml-7 md:ml-10 lg:ml-12 xl:ml-14">
+
+          
+            <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr]">
 
               {/* ================= LEFT FILTERS ================= */}
-              <aside>
+              <aside className="pt-14 md:pt-16 pr-8 md:pr-10 lg:pr-12">
+
+
 
                 {/* SEARCH */}
                 <div className="mb-8">
@@ -109,9 +113,11 @@ export default function CareersPage() {
                       value={search}
                       onChange={e => setSearch(e.target.value)}
                       placeholder="Search"
-                      className="bg-transparent w-full outline-none text-[13px]"
+                      className="bg-transparent w-full outline-none text-[15px]"
+
+
                     />
-                    <Search className="absolute right-4 top-2.5 h-4 w-4 text-gray-500" />
+                    <Search className="absolute right-4 top-3 h-5 w-5 text-gray-500" />
                   </div>
                   <div className="border-b border-gray-300 mt-4" />
                 </div>
@@ -119,12 +125,12 @@ export default function CareersPage() {
                 {/* OPPORTUNITIES + CLEAR */}
                 {chips.length > 0 && (
                   <div className="flex justify-between items-center mb-4">
-                    <span className="text-[13px]">
+                    <span className="text-[15px] font-medium text-primary">
                       Opportunities (0)
                     </span>
                     <button
                       onClick={clearAll}
-                      className="text-[13px] text-primary"
+                      className="text-[15px] font-medium text-primary"
                     >
                       Clear All Filters
                     </button>
@@ -137,7 +143,7 @@ export default function CareersPage() {
                     {chips.map(chip => (
                       <span
                         key={chip}
-                        className="bg-primary text-white text-[12px] px-3 py-1 rounded-full flex items-center gap-2"
+                        className="bg-primary text-white text-[14px] px-4 py-1.5 rounded-full flex items-center gap-2"
                       >
                         {chip}
                         <button
@@ -194,10 +200,10 @@ export default function CareersPage() {
                             !o[section.key as keyof typeof o],
                         }))
                       }
-                      className="flex justify-between w-full text-left mb-3 text-[14px] font-medium"
+                      className="flex justify-between w-full text-left mb-4 text-[16px] font-medium text-primary"
                     >
                       {section.title}
-                      <span>
+                      <span className="text-[24px] font-medium leading-none">
                         {open[section.key as keyof typeof open] ? '–' : '+'}
                       </span>
                     </button>
@@ -213,7 +219,8 @@ export default function CareersPage() {
                         onClick={() =>
                           selectAll(section.values, section.setSelected)
                         }
-                        className="text-[13px] text-primary mb-3"
+                        className="text-[15px] mb-4"
+  style={{ color: 'rgb(25,113,73)' }}
                       >
                         Select All
                       </button>
@@ -222,8 +229,8 @@ export default function CareersPage() {
                         {section.values.map(v => (
                           <label
                             key={v}
-                            className="flex items-center text-[13px]"
-                          >
+                            className="flex items-center text-[18px] text-primary">
+                          
                             <input
                               type="checkbox"
                               checked={section.selected.includes(v)}
@@ -244,19 +251,23 @@ export default function CareersPage() {
               </aside>
 
               {/* ================= RIGHT RESULTS ================= */}
-              <section className="bg-gray-100 p-12">
-                <p className="text-[13px] mb-4">Viewing 0</p>
+              <section className="bg-gray-100 px-14 py-16">
+                <p className="text-[20px] mb-8 text-primary">
+  Viewing 0
+</p>
 
-                <p className="text-[15px] mb-6 leading-relaxed">
-                  None of our open positions match your search.
-                  Try adjusting your filters for additional results.
-                </p>
+<p className="text-[20px] mb-6 leading-relaxed text-primary">
+  None of our open positions match your search.
+  Try adjusting your filters for additional results.
+</p>
+
 
                 <div className="border-b border-gray-300" />
               </section>
 
             </div>
           </div>
+          
         </section>
       </main>
     </div>
