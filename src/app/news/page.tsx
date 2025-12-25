@@ -22,21 +22,36 @@ export default function News() {
     <div className="min-h-screen bg-main">
       <main className="pt-20">
 
-        {/* Hero Section */}
-      <section className="relative overflow-visible mb-8 md:mb-16">
+        {/* ================= HERO ================= */}
+<section className="relative overflow-visible mb-16 md:mb-24">
   <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
     <div className="container-responsive">
-      <div className="flex items-start pt-24 md:pt-32 lg:pt-40 pb-48 md:pb-52 lg:pb-56">
 
+      {/* ⛔ GREEN BOX — SAME AS OTHER PAGES */}
+      <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
 
-
-        <h1 className="font-brand text-section-title text-white">
+        {/* TITLE ONLY (NO BREADCRUMB ON THIS PAGE) */}
+        <h1
+          style={{
+            fontFamily: 'Raleway, sans-serif',
+            fontWeight: 500,
+            fontSize: '60px',
+            lineHeight: '1.1',
+            letterSpacing: '-0.018em',
+            maxWidth: '860px',
+            color: '#ffffff',
+            WebkitFontSmoothing: 'antialiased',
+            MozOsxFontSmoothing: 'grayscale',
+          }}
+        >
           News
         </h1>
+
       </div>
     </div>
   </div>
 </section>
+
 
 
         {/* Latest Updates */}

@@ -29,46 +29,47 @@ export default function OfficeLocations() {
     <div className="min-h-screen w-full bg-main">
       <main className="pt-20">
 
-        {/* ================= HERO ================= */}
-        <section className="relative overflow-visible mb-12 md:mb-20">
-          <FadeUp>
-            <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
-              <div className="container-responsive">
-                <div
-  className="
-    min-h-[60vh]
-    md:min-h-[70vh]
-    flex
-    flex-col
-    items-start
-    pt-36          /* 👈 more breathing room on mobile */
-    sm:pt-32
-    md:pt-36
-    lg:pt-40
-  "
->
+   {/* ================= HERO ================= */}
+<section className="relative overflow-visible mb-16 md:mb-24">
+  <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
+    <div className="container-responsive">
+
+      {/* ⛔ GREEN BOX — DO NOT TOUCH */}
+      <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
+
+        {/* BREADCRUMB */}
+        <div style={{ marginBottom: '24px' }}>
+          <PageBreadcrumb
+            items={[
+              { label: 'Who We Are', href: '/who-we-are' },
+              { label: 'Our Global Base', href: '/who-we-are/our-global-base' },
+            ]}
+          />
+        </div>
+
+        {/* TITLE */}
+        <h1
+          style={{
+            fontFamily: 'Raleway, sans-serif',
+            fontWeight: 500,
+            fontSize: '60px',          // ⬅ slightly bigger
+            lineHeight: '1.1',         // ⬅ tighter
+            letterSpacing: '-0.018em',
+            maxWidth: '860px',
+            color: '#ffffff',
+            WebkitFontSmoothing: 'antialiased',
+            MozOsxFontSmoothing: 'grayscale',
+          }}
+        >
+          Our Global Base
+        </h1>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 
-                  {/* Breadcrumb */}
-                  <PageBreadcrumb
-                    items={[
-                      { label: 'Who We Are', href: '/who-we-are' },
-                      { label: 'Our Global Base', href: '/who-we-are/our-global-base' },
-                    ]}
-                  />
-
-                  {/* Title */}
-                  <FadeLeft>
-                    <h1 className="font-brand text-section-title text-white">
-                      Our Global Base
-                    </h1>
-                  </FadeLeft>
-
-                </div>
-              </div>
-            </div>
-          </FadeUp>
-        </section>
 
         {/* ================= OVERVIEW ================= */}
         <section className="bg-tertiary py-8 md:py-16 -mt-12 md:-mt-20 lg:-mt-28">

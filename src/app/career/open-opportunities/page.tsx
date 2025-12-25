@@ -55,32 +55,45 @@ export default function CareersPage() {
       <main className="pt-[88px]">
 
         {/* ================= HERO ================= */}
-        <section className="relative overflow-visible">
-          <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
-            <div className="container-responsive">
-             <div className="pt-24 md:pt-28 lg:pt-32 pb-44 md:pb-48 lg:pb-52">
-                {/* 🔥 BREADCRUMB */}
-               <div className="breadcrumb-hero">
-  <PageBreadcrumb
-    items={[
-      { label: 'Careers', href: '/career' },
-      { label: 'Open Opportunities', href: '/career/open-opportunities' },
-    ]}
-  />
-</div>
-
-
-                {/* TITLE */}
-                <h1 className="mt-4 text-hero-title font-hero fw-normal text-white leading-[1.08] tracking-[-0.005em]">
-  Open Opportunities
-</h1>
-
-
-              </div>
-            </div>
-          </div>
-        </section>
-
+                       <section className="relative overflow-visible mb-16 md:mb-24">
+                         <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
+                           <div className="container-responsive">
+                       
+                             {/* ⛔ GREEN BOX — DO NOT TOUCH */}
+                             <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
+                
+                       
+                               {/* BREADCRUMB */}
+                               <div style={{ marginBottom: '24px' }}>
+                                 <PageBreadcrumb
+                                   items={[
+                                     { label: 'Career', href: '/career' },
+                                     { label: 'Open Oppurtunities', href: '/career/open-oppurtunities' },
+                                   ]}
+                                 />
+                               </div>
+                       
+                               {/* TITLE */}
+                               <h1
+                                 style={{
+                                   fontFamily: 'Raleway, sans-serif',
+                                   fontWeight: 500,
+                                   fontSize: '60px',          // ⬅ slightly bigger
+                                   lineHeight: '1.1',         // ⬅ tighter
+                                   letterSpacing: '-0.018em',
+                                   maxWidth: '860px',
+                                   color: '#ffffff',
+                                   WebkitFontSmoothing: 'antialiased',
+                                   MozOsxFontSmoothing: 'grayscale',
+                                 }}
+                               >
+                                 Open Oppurtunities
+                               </h1>
+                       
+                             </div>
+                           </div>
+                         </div>
+                       </section>
         {/* ========== FILTERS + RESULTS ========== */}
         <section className="pt-12 md:pt-16 pb-16 ml-7 md:ml-10 lg:ml-12 xl:ml-14">
           <div className="container-responsive">
