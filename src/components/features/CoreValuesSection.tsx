@@ -50,12 +50,21 @@ export default function CoreValuesSection() {
         {/* Right heading */}
         <FadeLeft delay={200}>
           <div className="font-brand ">
-          <h2 className="text-section-title leading-tight">
-            Led by
-          </h2>
-          <h3 className="text-section-title leading-tight text-green-300">
-            Our Foundational Principles
-          </h3>
+          <h2
+  className="
+    font-brand
+    text-[46px] md:text-[50px] lg:text-[56px]
+    leading-[1.12]
+  "
+>
+  <span className="block font-semibold text)]">
+    Led by
+  </span>
+  <span className="block font-semibold text-[var(--brand-green-1)]">
+    Our Foundational Principles
+  </span>
+</h2>
+
           </div>
         </FadeLeft>
       </div>

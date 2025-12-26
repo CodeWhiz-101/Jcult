@@ -7,57 +7,106 @@ import LuxuryButton from '@/components/ui/LuxuryButton';
 import FadeLeft from '@/components/animation/FadeLeft';
 import FadeUp from '@/components/animation/FadeUp';
 import PageBreadcrumb from '@/components/ui/PageBreadcrumb';
+import { useEffect, useRef, useState } from 'react';
 
 export default function OurCulture() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+const [isVisible, setIsVisible] = useState(false);
+
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) setIsVisible(true);
+    },
+    { threshold: 0.3 }
+  );
+
+  if (sectionRef.current) observer.observe(sectionRef.current);
+  return () => observer.disconnect();
+}, []);
+
   return (
     <div className="min-h-screen bg-main">
       <main className="pt-20">
 
         {/* ================= HERO ================= */}
-        <section className="relative overflow-visible mb-20">
-          <FadeUp>
-            <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
-              <div className="container-responsive">
-                <div className="flex flex-col md:flex-row min-h-[60vh] md:min-h-[70vh] pt-24 md:pt-32 lg:pt-40">
+        
+<section className="relative mb-32 overflow-visible">
 
-                  {/* LEFT CONTENT */}
-                  <div className="flex-1 flex flex-col gap-4 md:gap-6">
+  <div className="relative bg-primary ml-6 md:ml-10 lg:ml-14">
 
-                    <PageBreadcrumb
-                      items={[
-                        { label: 'Who We Are', href: '/who-we-are' },
-                        { label: 'Our Culture', href: '/who-we-are/our-culture' },
-                      ]}
-                    />
+    {/* FIXED HEIGHT PANEL */}
+    <div className="relative h-[600px] md:h-[680px] lg:h-[720px]">
+      <div className="container-responsive h-full">
 
-                    <FadeLeft>
-                      <h1 className="font-brand text-section-title text-white">
-                        Our Culture
-                      </h1>
-                    </FadeLeft>
+        <div className="flex h-full items-center">
+          
+          {/* LEFT CONTENT */}
+          <div className="max-w-xl text-white">
+            <PageBreadcrumb
+              items={[
+                { label: 'Who We Are', href: '/who-we-are' },
+                { label: 'Our Culture', href: '/who-we-are/our-culture' },
+              ]}
+            />
 
-                    <FadeLeft delay={200}>
-                      <p className="text-white text-hero-subtitle leading-relaxed max-w-md">
-                        Powered by our most impactful ideas, we’re always pushing toward what’s next.
-                      </p>
-                    </FadeLeft>
+            <div
+  ref={sectionRef}
+  className={`
+    mt-6
+    transition-all
+    duration-[1000ms]
+    ease-[cubic-bezier(.22,.61,.36,1)]
+    ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-24'}
+  `}
+>
+  <h1
+    style={{
+      fontFamily: 'Raleway, sans-serif',
+      fontWeight: 500,
+      fontSize: '68px',
+      lineHeight: '1.1',
+      letterSpacing: '-0.018em',
+      maxWidth: '860px',
+      color: '#ffffff',
+      WebkitFontSmoothing: 'antialiased',
+      MozOsxFontSmoothing: 'grayscale',
+    }}
+  >
+    Our Culture
+  </h1>
+</div>
 
-                  </div>
 
-                  {/* RIGHT IMAGE */}
-                  <div className="flex-1 relative min-h-[320px] md:min-h-0 md:mb-[-5rem] lg:mb-[-8rem]">
-                    <img
-                      src="/images/ourculture1.jpg"
-                      alt="Our Culture"
-                      className="absolute top-0 right-0 w-full h-full object-cover"
-                    />
-                  </div>
+            <p className="mt-6 text-hero-subtitle leading-relaxed">
+              Powered by our most impactful ideas, we’re always pushing toward what’s next.
+            </p>
+          </div>
 
-                </div>
-              </div>
-            </div>
-          </FadeUp>
-        </section>
+        </div>
+      </div>
+
+      {/* RIGHT IMAGE – BLEEDING */}
+     {/* RIGHT IMAGE – OVERLAPPING */}
+{/* RIGHT IMAGE – TRUE OVERLAP */}
+<div className="hidden md:block absolute top-25 right-0 w-[50%] lg:w-[52%] h-[640px] lg:h-[700px] xl:h-[740px] z-10">
+
+  <img
+    src="/images/ourculture1.jpg"
+    alt="Our Culture"
+    className="w-full h-full object-cover"
+  />
+</div>
+
+
+
+{/* SPACER to allow image overlap */}
+
+
+
+    </div>
+  </div>
+</section>
 
         {/* ================= INSIGHT SECTION ================= */}
         <section className="py-6 md:py-8 lg:py-16 mb-16">
@@ -66,9 +115,21 @@ export default function OurCulture() {
 
               <div className="flex-1 mb-4 md:mb-6 lg:mb-0">
                 <FadeLeft>
-                  <h2 className="text-section-title font-brand text-primary">
-                    Insight Over Hierarchy
-                  </h2>
+                  <h2
+  className="
+    font-brand
+    text-[46px] md:text-[50px] lg:text-[56px]
+    leading-[1.12]
+  "
+>
+  <span className="block font-semibold text-[var(--brand-green-1)]">
+    Insight Over
+  </span>
+  <span className="block font-semibold text-[var(--brand-green-2)]">
+    Hierarchy
+  </span>
+</h2>
+
                 </FadeLeft>
               </div>
 
@@ -105,9 +166,21 @@ export default function OurCulture() {
 
             <div className="flex-1 mb-6 md:mb-0">
               <FadeLeft>
-                <h2 className="text-section-title font-brand text-primary">
-                  A Headquarters Built for Collaboration
-                </h2>
+                <h2
+  className="
+    font-brand
+    text-[46px] md:text-[50px] lg:text-[56px]
+    leading-[1.12]
+  "
+>
+  <span className="block font-semibold text-[var(--brand-green-1)]">
+    A Headquarters Built
+  </span>
+  <span className="block font-semibold text-[var(--brand-green-2)]">
+    for Collaboration
+  </span>
+</h2>
+
               </FadeLeft>
             </div>
 

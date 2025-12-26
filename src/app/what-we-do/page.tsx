@@ -29,56 +29,107 @@ export default function WhatWeDo() {
         />
 
         {/* Small blue text left, para with border right */}
-        <section className="py-6 md:py-8 lg:py-16">
-          <div className="container-responsive">
-            <div className="flex flex-col md:flex-row items-start">
-              <div className="flex-1 mb-4 md:mb-0">
-                <FadeLeft>
-                  <p className="text-xs text-primary">How We Move</p>
-                </FadeLeft>
-              </div>
-              <BorderReveal>
-                <p className="text-section-content color-grey">
-                  We channel capital toward the world’s most meaningful and high-impact opportunities,
-                  guided by a rare fusion of disciplined talent, intuitive technology, deep analytics, and a
-                  global presence that moves with quiet strength.
-                </p>
-              </BorderReveal>
-            </div>
-          </div>
-        </section>
+    <section className="py-10 md:py-14 lg:py-20">
+  <div className="container-responsive">
+    <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-12 md:gap-16 items-start">
+
+      {/* LEFT LABEL */}
+      <FadeLeft>
+        <p className="text-[14px] font-medium tracking-wide  text-[var(--brand-green-1)]">
+          How We Move
+        </p>
+      </FadeLeft>
+
+      {/* RIGHT STATEMENT */}
+      <BorderReveal>
+        <p
+          className="
+            font-brand
+            font-medium
+            text-[22px] md:text-[28px] lg:text-[30px]
+            leading-[1.35]
+            text-[var(--brand-green-1)]
+            max-w-[940px]
+          "
+        >
+          We channel capital toward the world’s most meaningful and high-impact
+          opportunities, guided by a rare fusion of disciplined talent, intuitive
+          technology, deep analytics, and a global presence that moves with quiet
+          strength.
+        </p>
+      </BorderReveal>
+
+    </div>
+  </div>
+</section>
+
 
         {/* Title left, small para right */}
-        <section className="py-6 md:py-8 lg:py-16 bg-tertiary">
-          <div className="container-responsive">
-            <div className="flex flex-col md:flex-row items-start">
-              <div className="flex-1 mb-4 md:mb-0">
-                <FadeLeft>
-                  <h2 className="text-section-title font-brand text-primary">
-                    Diversified Asset Management With a Singular Focus
-                  </h2>
-                </FadeLeft>
-              </div>
-              <div className="flex-1 mb-4 md:mb-0 md:pl-8 lg:pl-16">
-                <FadeLeft delay={200}>
-                <p className="text-section-content color-grey mb-2">
-                  Our team explores the full spectrum of global markets, pursuing compelling ideas through
-                  innovative thinking and bold, disciplined execution.
-                </p>
-                <p className="text-section-content color-grey mb-4">
-                 Across equities, macro, real assets, virtual assets, and private wealth solutions, we
-                  maintain one clear objective: generating superior, risk-adjusted returns.
-                </p>
-                <a href="/what-we-do/asset-management">
-                  <LuxuryButton variant='primary'>
-                    Explore Diversification
-                  </LuxuryButton>
-                </a>
-                </FadeLeft>
-              </div>
-            </div>
-          </div>
-        </section>
+<section className="py-6 md:py-8 lg:py-16 bg-[#f6f6f6]">
+  <div className="container-responsive">
+    <div className="flex flex-col md:flex-row items-start gap-12">
+
+      {/* LEFT — TITLE (LEFT → RIGHT REVEAL) */}
+      <div className="flex-1 overflow-hidden">
+        <FadeLeft>
+          <h2
+            className="
+              font-brand
+              text-[34px] md:text-[38px] lg:text-[42px]
+              leading-[1.15]
+            "
+          >
+            <span className="block font-medium text-[var(--brand-green-1)]">
+              Diversified Asset Management
+            </span>
+            <span className="block font-medium text-[var(--brand-green-2)]">
+              With a Singular Focus
+            </span>
+          </h2>
+        </FadeLeft>
+      </div>
+
+      {/* RIGHT — CONTENT */}
+      <div className="flex-1 md:pl-8 lg:pl-16">
+        <FadeLeft delay={200}>
+          <p
+            className="
+              text-[18px]
+              leading-[1.7]
+              text-[#68717A]
+              mb-4
+            "
+          >
+            Our team explores the full spectrum of global markets, pursuing
+            compelling ideas through innovative thinking and bold, disciplined
+            execution.
+          </p>
+
+          <p
+            className="
+              text-[18px]
+              leading-[1.7]
+              text-[#68717A]
+              mb-6
+            "
+          >
+            Across equities, macro, real assets, virtual assets, and private
+            wealth solutions, we maintain one clear objective: generating
+            superior, risk-adjusted returns.
+          </p>
+
+          <a href="/what-we-do/asset-management">
+            <LuxuryButton variant="primary">
+              Explore Diversification
+            </LuxuryButton>
+          </a>
+        </FadeLeft>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
         {/* Image left, title with 3 paras right */}
         {/* <section className="py-6 md:py-8 lg:py-16">
@@ -155,21 +206,30 @@ export default function WhatWeDo() {
         </section> */}
 
         {/* Blue background with image top left hanging out, title right, 3 columns */}
-        <section className="bg-primary py-6 md:py-8 lg:py-16 relative overflow-visible">
+        <section className="bg-[linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))] py-6 md:py-8 lg:py-16 relative overflow-visible">
           <div className="container-responsive">
             <div className="flex flex-col md:flex-row items-start mb-8 md:mb-12">
               <div className="flex-1 mb-6 md:mb-0 relative md:-mt-24 lg:-mt-32">
-                <FadeLeft>
-                <img 
-                  src="/images/whatwedo2.jpg"
-                  alt="Our values"
-                  className="w-full h-64 md:h-80 object-cover"
-                />
-                </FadeLeft>
+              <div className="relative mb-6 md:mb-0 md:-ml-[calc((100vw-100%)/2)] md:w-[68vw] lg:w-[72vw]">
+  <FadeLeft>
+    <img
+      src="/images/whatwedo2.jpg"
+      alt="Our values"
+      className="
+        w-full
+        h-64 md:h-80 lg:h-[380px]
+        object-cover
+        object-left
+      "
+    />
+  </FadeLeft>
+</div>
+
+
               </div>
               <div className="flex-1 md:pl-8 lg:pl-16">
                 <FadeLeft delay={200}>
-                <h2 className="text-section-title font-brand text-white">
+                <h2 className="text-section-title font-brand text-medium text-white">
                   Our Strategic Edge
                 </h2>
                 </FadeLeft>
@@ -240,46 +300,73 @@ export default function WhatWeDo() {
             </div>
           </div>
         </section> */}
+<section className="relative bg-[#f6f6f6] overflow-hidden">
+  <div className="relative h-[400px] md:h-[460px] lg:h-[520px]">
 
-        <section className="py-6 md:py-8 lg:py-16">
-          <div className="container-responsive">
-            <div className="flex flex-col md:flex-row items-start">
-              <div className="flex-1 mb-6 md:mb-0 container-responsive">
-                <FadeLeft>
-                  <img 
-                    src="/images/whatwedo3.jpg"
-                    alt="Join our team"
-                    className="w-full h-64 md:h-80 lg:h-96 object-cover"
-                  />
-                </FadeLeft>
-              </div>
-              <div className="flex-1 md:pl-8 lg:pl-16 text-center md:text-left">
-                <FadeLeft delay={200}>
-                <h2 className="text-section-title font-brand text-primary mb-4 md:mb-6">
-                 In Pursuit of Minds That Redefine Possibility
-                </h2>
-                <a href="/career">
-                  <LuxuryButton variant="primary">
-                    Discover Available Positions
-                  </LuxuryButton>
-                </a>
-                </FadeLeft>
-              </div>
-            </div>
-          </div>
-        </section>
+    {/* IMAGE — FLUSH TOP & BOTTOM */}
+    <div className="absolute inset-y-0 left-0 md:-ml-[calc((100vw-100%)/2)] md:w-[55vw]">
+      <FadeLeft>
+        <img
+          src="/images/whatwedo3.jpg"
+          alt="Join our team"
+          className="w-full h-full object-cover object-center"
+        />
+      </FadeLeft>
+    </div>
 
-        <section className='pb-16'>
-          <div className="container-responsive text-charcoal color-grey">
-            <FadeUp>
-            JCULT TRADER’s risk management framework should not be interpreted as a guarantee
-            against losses. Certain risks may fall outside the scope of what JCULT TRADER monitors or
-            controls, and actual risks can exceed expectations, particularly during atypical or volatile
-            market conditions. Despite our risk practices and any information provided, substantial or
-            even total losses may still occur due to these or other unforeseen factors.
-            </FadeUp>
-          </div>
-        </section>
+    {/* TEXT — NO VERTICAL PADDING */}
+    <div className="relative h-full px-6 md:px-10 lg:px-14">
+      <div className="mx-auto max-w-[var(--container-width)] h-full flex items-center justify-end">
+        <div className="w-full md:w-[38%]">
+
+          <FadeLeft delay={200}>
+         <h2
+  className="
+    font-brand
+    text-[32px]
+    md:text-[42px]
+    leading-[1.15]
+    mb-8
+  "
+>
+  <span className="block font-medium text-[var(--brand-green-1)]">
+    In Pursuit of
+  </span>
+  <span className="block font-medium text-[var(--brand-green-2)]">
+    Minds That Redefine Possibility
+  </span>
+</h2>
+
+
+            <a href="/career">
+              <LuxuryButton variant="primary">
+                Discover Available Positions
+              </LuxuryButton>
+            </a>
+          </FadeLeft>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section className="bg-white pt-10 md:pt-14 pb-16">
+  <div className="container-responsive">
+    <FadeUp>
+      <p className="text-[#68717A] text-[18px] md:text-base leading-relaxed">
+        JCULT TRADER’s risk management framework should not be interpreted as a guarantee
+        against losses. Certain risks may fall outside the scope of what JCULT TRADER monitors or
+        controls, and actual risks can exceed expectations, particularly during atypical or volatile
+        market conditions. Despite our risk practices and any information provided, substantial or
+        even total losses may still occur due to these or other unforeseen factors.
+      </p>
+    </FadeUp>
+  </div>
+</section>
+
+
       </main>
     </div>
   );

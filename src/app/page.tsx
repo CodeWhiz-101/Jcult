@@ -493,9 +493,7 @@ talented individuals to execute their boldest, highest-conviction ideas with pre
     stats={[
       {
         number: "2025",
-        description: "Year founded by
-Jeyanandh Dhivaharan
-Founder & CEO"
+        description: "Year founded by Jeyanandh Dhivaharan Founder & CEO"
       },
       {
         number: "$10M",
