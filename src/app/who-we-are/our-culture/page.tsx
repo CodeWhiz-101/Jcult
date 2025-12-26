@@ -29,84 +29,107 @@ useEffect(() => {
     <div className="min-h-screen bg-main">
       <main className="pt-20">
 
-        {/* ================= HERO ================= */}
-        
+{/* ================= HERO ================= */}
 <section className="relative mb-32 overflow-visible">
-
   <div className="relative bg-primary ml-6 md:ml-10 lg:ml-14">
 
-    {/* FIXED HEIGHT PANEL */}
-    <div className="relative h-[600px] md:h-[680px] lg:h-[720px]">
+    <div className="relative h-[610px] md:h-[690px] lg:h-[730px]">
       <div className="container-responsive h-full">
+        <div className="flex h-full">
 
-        <div className="flex h-full items-center">
-          
           {/* LEFT CONTENT */}
-          <div className="max-w-xl text-white">
-            <PageBreadcrumb
-              items={[
-                { label: 'Who We Are', href: '/who-we-are' },
-                { label: 'Our Culture', href: '/who-we-are/our-culture' },
-              ]}
-            />
+<div className="relative z-20 max-w-xl text-white pt-24 pb-20 flex flex-col h-full">
 
-            <div
-  ref={sectionRef}
-  className={`
-    mt-6
-    transition-all
-    duration-[1000ms]
-    ease-[cubic-bezier(.22,.61,.36,1)]
-    ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-24'}
-  `}
->
-  <h1
-    style={{
-      fontFamily: 'Raleway, sans-serif',
-      fontWeight: 500,
-      fontSize: '68px',
-      lineHeight: '1.1',
-      letterSpacing: '-0.018em',
-      maxWidth: '860px',
-      color: '#ffffff',
-      WebkitFontSmoothing: 'antialiased',
-      MozOsxFontSmoothing: 'grayscale',
-    }}
-  >
-    Our Culture
-  </h1>
+  {/* TOP GROUP */}
+  <div>
+    <PageBreadcrumb
+      items={[
+        { label: 'Who We Are', href: '/who-we-are' },
+        { label: 'Our Culture', href: '/who-we-are/our-culture' },
+      ]}
+    />
+
+    <div
+      ref={sectionRef}
+      className={`
+        mt-6
+        transition-all
+        duration-[1000ms]
+        ease-[cubic-bezier(.22,.61,.36,1)]
+        ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-24'}
+      `}
+    >
+      <h1
+        style={{
+          fontFamily: 'Raleway, sans-serif',
+          fontWeight: 500,
+          fontSize: '68px',
+          lineHeight: '1.1',
+          letterSpacing: '-0.018em',
+          color: '#ffffff',
+        }}
+      >
+        Our Culture
+      </h1>
+    </div>
+  </div>
+
+  {/* THIS IS THE IMPORTANT LINE */}
+  <div className="flex-1" />
+
+  {/* BOTTOM-PINNED TEXT */}
+  <p className="max-w-md text-[20px] leading-[1.55] text-white/95">
+    Powered by our most impactful ideas, we’re always pushing toward what’s next.
+  </p>
 </div>
-
-
-            <p className="mt-6 text-hero-subtitle leading-relaxed">
-              Powered by our most impactful ideas, we’re always pushing toward what’s next.
-            </p>
-          </div>
 
         </div>
       </div>
 
-      {/* RIGHT IMAGE – BLEEDING */}
-     {/* RIGHT IMAGE – OVERLAPPING */}
-{/* RIGHT IMAGE – TRUE OVERLAP */}
-<div className="hidden md:block absolute top-25 right-0 w-[50%] lg:w-[52%] h-[640px] lg:h-[700px] xl:h-[740px] z-10">
-
-  <img
-    src="/images/ourculture1.jpg"
-    alt="Our Culture"
-    className="w-full h-full object-cover"
-  />
-</div>
-
-
-
-{/* SPACER to allow image overlap */}
-
-
-
+      {/* RIGHT IMAGE — DESKTOP */}
+      <div
+        className={`
+          hidden md:block absolute top-24 right-0
+          w-[50%] lg:w-[52%]
+          h-[630px] lg:h-[690px] xl:h-[730px]
+          z-10
+          transition-all
+          duration-[1000ms]
+          ease-[cubic-bezier(.22,.61,.36,1)]
+          ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-24'}
+        `}
+      >
+        <img
+          src="/images/ourculture1.jpg"
+          alt="Our Culture"
+          className="w-full h-full object-cover"
+        />
+      </div>
     </div>
+
+    {/* MOBILE IMAGE — STACKED (LIKE CITADEL) */}
+    <div
+      className={`
+        md:hidden mt-10
+        transition-all
+        duration-[1000ms]
+        ease-[cubic-bezier(.22,.61,.36,1)]
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}
+      `}
+    >
+      <img
+        src="/images/ourculture1.jpg"
+        alt="Our Culture"
+        className="w-full h-[280px] object-cover"
+      />
+    </div>
+
   </div>
 </section>
+
+
+
+
 
         {/* ================= INSIGHT SECTION ================= */}
         <section className="py-6 md:py-8 lg:py-16 mb-16">

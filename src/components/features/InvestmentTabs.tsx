@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { ArrowRight } from 'lucide-react';
+import LuxuryButton from '@/components/ui/LuxuryButton';
 
 export default function AssetManagement() {
   const [active, setActive] = useState(0);
@@ -30,7 +32,8 @@ export default function AssetManagement() {
   /* --------------------------------
      DATA — UNCHANGED
   -------------------------------- */
-    const tabs = [
+
+const tabs = [
   {
     label: 'Global Equities',
     overview:
@@ -116,7 +119,6 @@ export default function AssetManagement() {
   },
 ];
 
-
   const current = tabs[active];
 
   return (
@@ -130,70 +132,41 @@ export default function AssetManagement() {
         transition: 'all 900ms cubic-bezier(0.22,1,0.36,1)',
       }}
     >
+
       {/* ======================================================
-          TOP — CENTERED SEGMENTED NAV (RESPONSIVE)
+          TOP — BUTTON NAV (LUXURY BUTTON)
       ====================================================== */}
-    {/* ======================================================
-    TOP — CENTERED SEGMENTED NAV (FIXED & RESPONSIVE)
-====================================================== */}
-<div className="container-responsive pt-16 md:pt-20 pb-20 md:pb-24">
-  <div className="flex justify-center">
-    <div
-      className="
-        flex
-        gap-3
-        overflow-x-auto
-        snap-x snap-mandatory
-        px-1
-        max-w-full
-        [-ms-overflow-style:none]
-        [scrollbar-width:none]
-        [&::-webkit-scrollbar]:hidden
-      "
-    >
-      {tabs.map((tab, i) => {
-        const isActive = i === active;
+      <div className="container-responsive pt-16 md:pt-20 pb-20 md:pb-24">
+        <div className="flex justify-center">
+          <div className="flex gap-3 overflow-x-auto px-1">
+            {tabs.map((tab, i) => {
+              const isActive = i === active;
 
-        return (
-          <button
-            key={tab.label}
-            onClick={() => {
-              setActive(i);
-              setHoveredIndex(null);
-            }}
-            className={`
-              snap-start
-              min-w-[140px]
-              sm:min-w-[160px]
-              md:min-w-[180px]
-              h-[56px]
-              flex
-              items-center
-              justify-center
-              font-brand
-              text-xs sm:text-sm
-              rounded-lg
-              transition-all
-              duration-300
-              ${
-                isActive
-                  ? 'bg-white text-black shadow-md'
-                  : 'bg-white/10 text-white/80 hover:bg-white/20'
-              }
-            `}
-          >
-            {tab.label}
-          </button>
-        );
-      })}
-    </div>
-  </div>
-</div>
-
-
+              return (
+                <LuxuryButton
+                  key={tab.label}
+                  variant="white"
+                  onClick={() => {
+                    setActive(i);
+                    setHoveredIndex(null);
+                  }}
+                  className={`
+                    min-w-[160px]
+                    h-[56px]
+                    text-sm
+                    ${isActive ? '' : 'opacity-80'}
+                  `}
+                >
+                  {tab.label}
+                </LuxuryButton>
+              );
+            })}
+          </div>
+        </div>
+      </div>
 
       {/* ======================================================
-          MAIN CONTENT GRID
+          MAIN CONTENT
       ====================================================== */}
       <div
         key={active}
@@ -204,21 +177,20 @@ export default function AssetManagement() {
           lg:grid-cols-[1.15fr_1fr]
           gap-24
           pb-36
-          animate-header-reveal
         "
       >
         {/* ---------------- LEFT COLUMN ---------------- */}
         <div>
-          <h1 className="font-brand text-[48px] md:text-[64px] leading-[1.05] text-white mb-10">
+          <h1 className="font-brand text-[48px] md:text-[64px] leading-[1.05] text-white mb-8">
             {current.label}
           </h1>
 
-          <p className="max-w-[720px] text-white/85 leading-[1.9] text-[16px]">
+          <p className="max-w-[720px] text-white/85 leading-[1.75] text-[18.5px]">
             {current.overview}
           </p>
         </div>
 
-        {/* ---------------- RIGHT COLUMN (VERTICAL TOGGLE) ---------------- */}
+        {/* ---------------- RIGHT COLUMN ---------------- */}
         <div className="space-y-6">
           {current.columns.map((col, index) => {
             const isActiveItem = hoveredIndex === index;
@@ -228,9 +200,7 @@ export default function AssetManagement() {
                 key={col.title}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() =>
-                  setHoveredIndex(isActiveItem ? null : index)
-                }
+                onClick={() => setHoveredIndex(isActiveItem ? null : index)}
                 className="
                   relative
                   cursor-pointer
@@ -243,56 +213,47 @@ export default function AssetManagement() {
                   hover:border-white
                 "
               >
-                {/* TITLE */}
+                {/* HEADER */}
                 <div className="flex items-center justify-between">
                   <h3
-                    className="
-                      font-brand
-                      text-[22px]
-                      text-white
-                      transition-transform
-                      duration-300
-                    "
+                    className="font-brand text-[20px] text-white"
                     style={{
-                      transform: isActiveItem
-                        ? 'translateX(4px)'
-                        : 'translateX(0)',
+                      transform: isActiveItem ? 'translateX(4px)' : 'translateX(0)',
+                      transition: 'transform 300ms ease',
                     }}
                   >
                     {col.title}
                   </h3>
 
-                  <span
+                  {/* CIRCLE ARROW */}
+                  <div
                     className="
-                      text-white/60
-                      text-sm
-                      transition-transform
-                      duration-300
+                      flex items-center justify-center
+                      w-10 h-10
+                      rounded-full
+                      border
+                      transition-all duration-300
+                      text-white
+                      border-white/60
+                      hover:bg-white hover:text-black
                     "
-                    style={{
-                      transform: isActiveItem
-                        ? 'rotate(90deg)'
-                        : 'rotate(0deg)',
-                    }}
                   >
-                    ›
-                  </span>
+                    <ArrowRight
+                      strokeWidth={1.25}
+                      className="w-5 h-5"
+                    />
+                  </div>
                 </div>
 
                 {/* CONTENT */}
                 <div
-                  className="
-                    overflow-hidden
-                    transition-all
-                    duration-500
-                    ease-out
-                  "
+                  className="overflow-hidden transition-all duration-500 ease-out"
                   style={{
-                    maxHeight: isActiveItem ? '440px' : '0px',
+                    maxHeight: isActiveItem ? '420px' : '0px',
                     opacity: isActiveItem ? 1 : 0,
                   }}
                 >
-                  <p className="mt-4 text-[14.8px] leading-[1.85] text-white/85">
+                  <p className="mt-4 text-[18.5px] leading-[1.75] text-white/85">
                     {col.text}
                   </p>
                 </div>
@@ -311,9 +272,7 @@ export default function AssetManagement() {
                     origin-top
                   "
                   style={{
-                    transform: isActiveItem
-                      ? 'scaleY(1)'
-                      : 'scaleY(0)',
+                    transform: isActiveItem ? 'scaleY(1)' : 'scaleY(0)',
                   }}
                 />
               </div>
@@ -323,9 +282,12 @@ export default function AssetManagement() {
       </div>
 
       {/* ======================================================
-          BOTTOM FADE (POLISH)
+          BOTTOM FADE
       ====================================================== */}
       <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
     </section>
   );
 }
+
+
+
