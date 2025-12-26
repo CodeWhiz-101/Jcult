@@ -6,63 +6,81 @@ import FadeUp from '@/components/animation/FadeUp';
 import FadeLeft from '@/components/animation/FadeLeft';
 import LuxuryButton from '@/components/ui/LuxuryButton';
 import PageBreadcrumb from '@/components/ui/PageBreadcrumb';
+import { useEffect, useState } from 'react';
 
 export default function LeadershipTeam() {
   const teamMembers = [
-    { name: 'Jeyanandh Dhivaharan', title: 'Founder, CEO', image: '/images/jeyanandh-dhuvaharan.svg' },
+    {
+      name: 'Jeyanandh Dhivaharan',
+      title: 'Founder, CEO',
+      image: '/images/jeyanandh-dhuvaharan.svg',
+    },
   ];
 
   const leader = teamMembers[0];
+
+  /* ================= HERO ANIMATION STATE ================= */
+  const [reveal, setReveal] = useState(false);
+
+  useEffect(() => {
+    requestAnimationFrame(() => setReveal(true));
+  }, []);
 
   return (
     <div className="min-h-screen bg-main">
       <main className="pt-20">
 
         {/* ================= HERO ================= */}
-       {/* ================= HERO ================= */}
-       <section className="relative z-10 overflow-visible mb-16 md:mb-24">
-         <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
-           <div className="container-responsive">
-       
-             {/* ⛔ GREEN BOX — DO NOT TOUCH */}
-             <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
+        <section className="relative z-10 overflow-visible mb-16 md:mb-24">
+          <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
+            <div className="container-responsive">
 
-       
-               {/* BREADCRUMB */}
-               <div style={{ marginBottom: '24px' }}>
-                 <PageBreadcrumb
-                   items={[
-                     { label: 'Who We Are', href: '/who-we-are' },
-                     { label: 'Leadership', href: '/who-we-are/executive-leadership' },
-                   ]}
-                 />
-               </div>
-       
-               {/* TITLE */}
-               <FadeLeft>
-  <h1
-    style={{
-      fontFamily: 'Raleway, sans-serif',
-      fontWeight: 500,
-      fontSize: '60px',
-      lineHeight: '1.1',
-      letterSpacing: '-0.018em',
-      maxWidth: '860px',
-      color: '#ffffff',
-      WebkitFontSmoothing: 'antialiased',
-      MozOsxFontSmoothing: 'grayscale',
-    }}
-  >
-    Executive Leadership
-  </h1>
-</FadeLeft>
+              {/* GREEN PANEL */}
+              <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
 
+                {/* BREADCRUMB */}
+                <div style={{ marginBottom: '24px' }}>
+                  <PageBreadcrumb
+                    items={[
+                      { label: 'Who We Are', href: '/who-we-are' },
+                      { label: 'Leadership', href: '/who-we-are/executive-leadership' },
+                    ]}
+                  />
+                </div>
 
-       
-             </div>
-           </div>
-         </div>
-       </section>
+                {/* TITLE — LOAD REVEAL (SAFE) */}
+                <div style={{ overflow: 'hidden' }}>
+                  <h1
+                    style={{
+                      fontFamily: 'Raleway, sans-serif',
+                      fontWeight: 500,
+                      fontSize: '60px',
+                      lineHeight: '1.1',
+                      letterSpacing: '-0.018em',
+                      maxWidth: '860px',
+                      color: '#ffffff',
+                      WebkitFontSmoothing: 'antialiased',
+                      MozOsxFontSmoothing: 'grayscale',
+
+                      transform: reveal
+                        ? 'translateX(0)'
+                        : 'translateX(-120%)',
+                      opacity: reveal ? 1 : 0,
+                      transition:
+                        'transform 900ms cubic-bezier(0.22,1,0.36,1), opacity 600ms ease',
+                    }}
+                  >
+                    Executive Leadership
+                  </h1>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= OVERVIEW ================= */}
+
 
         {/* ================= OVERVIEW ================= */}
         <section
@@ -174,53 +192,54 @@ export default function LeadershipTeam() {
 
           </div>
         </section>
+{/* ================= CTA ================= */}
+<section className="bg-primary pt-6 md:pt-8 lg:pt-10 pb-16 md:pb-24 lg:pb-32">
+  <div className="flex flex-col md:flex-row items-center">
 
-        {/* ================= CTA ================= */}
-        <section className="pt-6 pb-16 md:pt-8 md:pb-24 lg:pt-16 lg:pb-32">
+    {/* LEFT — IMAGE (FLUSH LEFT, MIN TOP GAP) */}
+    <div className="w-full md:w-1/2">
+      <FadeLeft>
+        <img
+          src="/images/executiveledership2.jpg"
+          alt="Leadership impact"
+          className="w-full h-64 md:h-80 lg:h-[420px] object-cover"
+        />
+      </FadeLeft>
+    </div>
 
-          <div className="container-responsive">
-            <div className="flex flex-col md:flex-row items-start">
+    {/* RIGHT — TEXT (CONTAINED) */}
+    <div className="w-full md:w-1/2">
+      <div className="container-responsive">
+        <FadeLeft delay={200}>
+          <h2
+            className="
+              font-brand
+              mb-6
+              text-[46px] md:text-[50px] lg:text-[56px]
+              leading-[1.12]
+            "
+          >
+            <span className="block font-semibold text-[var(--brand-green-1)]">
+              Driving Ideas Into
+            </span>
+            <span className="block font-normal text-[var(--brand-green-2)]">
+              Real Impact
+            </span>
+          </h2>
 
-              <div className="flex-1 mb-6 md:mb-0">
-                <FadeLeft>
-                  <img
-                    src="/images/executiveledership2.jpg"
-                    alt="Leadership impact"
-                    className="w-full h-64 md:h-80 lg:h-96 object-cover"
-                  />
-                </FadeLeft>
-              </div>
+          <a href="/what-we-do">
+            <LuxuryButton>
+              Explore What We Do
+            </LuxuryButton>
+          </a>
+        </FadeLeft>
+      </div>
+    </div>
 
-              <div className="flex-1 md:pl-8 lg:pl-16">
-                <FadeLeft delay={200}>
-                 <h2
-  className="
-    font-brand
-    mb-4 md:mb-6
-    text-[46px] md:text-[50px] lg:text-[56px]
-    leading-[1.12]
-  "
->
-  <span className="block font-semibold text-[var(--brand-green-1)]">
-    Driving Ideas Into
-  </span>
-  <span className="block font-normal text-[var(--brand-green-2)]">
-    Real Impact
-  </span>
-</h2>
+  </div>
+</section>
 
-
-                  <a href="/what-we-do">
-                    <LuxuryButton>
-                      Explore What We Do
-                    </LuxuryButton>
-                  </a>
-                </FadeLeft>
-              </div>
-
-            </div>
-          </div>
-        </section>
+       
 
       </main>
     </div>

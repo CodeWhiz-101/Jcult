@@ -18,9 +18,9 @@ export default function LuxuryButton({
   const [hovered, setHovered] = useState(false);
 
   const baseStyle: React.CSSProperties = {
-    padding: '0.75rem 1.5rem',
-    fontSize: '0.875rem',
-    fontWeight: 500,
+    padding: '0.7rem 1.4rem',   // ⬅ reduced size
+    fontSize: '1rem',           // ⬅ keep readable
+    fontWeight: 500,            // ⬅ medium (clean, premium)
     cursor: 'pointer',
     transition: 'all 300ms ease',
     display: 'inline-flex',
@@ -29,7 +29,7 @@ export default function LuxuryButton({
   };
 
   const stylesByVariant: Record<string, React.CSSProperties> = {
-    /* ================= PRIMARY (GRADIENT) ================= */
+    /* ================= PRIMARY ================= */
     primary: {
       ...baseStyle,
       color: hovered ? 'var(--brand-green-1)' : '#FFFFFF',
@@ -41,14 +41,14 @@ export default function LuxuryButton({
         : 'inset 0 0 0 0 transparent',
     },
 
-    /* ================= WHITE (FIXED) ================= */
+    /* ================= WHITE ================= */
     white: {
       ...baseStyle,
       color: hovered ? '#FFFFFF' : 'var(--brand-green-1)',
       background: hovered ? 'transparent' : '#FFFFFF',
       boxShadow: hovered
-        ? 'inset 0 0 0 1px #FFFFFF'   // 👈 WHITE border on hover
-        : 'inset 0 0 0 1px var(--brand-green-1)', // green when idle
+        ? 'inset 0 0 0 1px #FFFFFF'
+        : 'inset 0 0 0 1px var(--brand-green-1)',
     },
 
     /* ================= OUTLINE ================= */

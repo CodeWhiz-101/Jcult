@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { newsArticles } from '@/data/newsData';
+
 import PageBreadcrumb from '@/components/ui/PageBreadcrumb';
 
 export default function InTheMedia() {

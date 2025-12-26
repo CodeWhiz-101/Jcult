@@ -120,7 +120,6 @@ transform: isVisible
     style={{
       backgroundColor: '#F6F6F6',
       color: '#1A1A1A',
-      borderBottom: '1px solid #E2E4E8',
       fontFamily: 'TT Commons, sans-serif',
       fontWeight: 400
     }}
@@ -136,8 +135,10 @@ transform: isVisible
       style={{
         height: `${HEADER_HEIGHT}px`,
         backgroundColor: '#FFFFFF',
-        borderBottom: isScrolled ? '1px solid #E8E8E8' : 'none'
-      }}
+borderBottom:
+  isScrolled && !isHome
+    ? '1px solid #E8E8E8'
+    : 'none'      }}
       onMouseLeave={() => setHoveredTab(null)}
     >
       {/* 🔥 KEEP YOUR EXISTING HEADER CONTENT EXACTLY SAME */}
@@ -182,45 +183,50 @@ transform: isVisible
 
                 return (
                   <li key={label} className="relative">
-                  <Link
+               <Link
   href={href}
-  className="inline-block whitespace-nowrap no-underline text-[18px] tracking-wide transition-colors duration-200"
-  style={{
-    color: active
-      ? 'var(--brand-green-2)' // ACTIVE = LIGHT
-      : 'var(--brand-green-1)' // DEFAULT = DARK
+className="
+  relative
+  inline-block
+  whitespace-nowrap
+  no-underline
+  text-[18px]
+  tracking-[-0.01em]
+  transition-colors
+  duration-200
+"  style={{
+    color: hoveredTab
+      ? hovered
+        ? 'var(--brand-green-2)' // hovered tab
+        : 'var(--brand-green-1)' // others while hovering
+      : active
+      ? 'var(--brand-green-2)' // active when no hover
+      : 'var(--brand-green-1)', // default
   }}
-  onMouseEnter={(e) => {
-    e.currentTarget.style.color = 'var(--brand-green-2)';
+  onMouseEnter={() => {
     setHoveredTab(label);
     setIsDropdownVisible(true);
     setDropdownKey(prev => prev + 1);
   }}
-  onMouseLeave={(e) => {
-    if (!active) {
-      e.currentTarget.style.color = 'var(--brand-green-1)';
-    }
-  }}
 >
+  {label}
 
-                      {label}
+  {/* UNDERLINE — SAME LOGIC */}
+  <span
+    className="absolute left-0 -bottom-0 h-[1px] transition-all duration-300"
+    style={{
+      width: hoveredTab
+        ? hovered
+          ? '100%'
+          : '0'
+        : active
+        ? '100%'
+        : '0',
+      backgroundColor: 'var(--brand-green-2)',
+    }}
+  />
+</Link>
 
-                      {/* underline animation */}
-                 <span
-  className={`absolute left-0 -bottom-0 h-[1px] transition-all duration-300 ${
-    active || hovered ? 'w-full' : 'w-0'
-  }`}
-  style={{
-    backgroundColor:
-      active || hovered
-        ? 'var(--brand-green-2)' // LIGHT on hover/active
-        : 'var(--brand-green-1)' // DARK default
-  }}
-/>
-
-
-
-                    </Link>
                   </li>
                 );
               })}
@@ -291,15 +297,16 @@ top: `${disclaimerHeight + HEADER_HEIGHT}px`,
       {/* DESKTOP DROPDOWN */}
 {isDropdownVisible && hoveredTab  && (
   <div
-    className={`hidden lg:block fixed left-0 right-0 bg-white z-[60]
-      ${hoveredTab ? 'animate-dropdown-in' : 'animate-dropdown-out'}`}
-    style={{
-  top: isVisible
-    ? `calc(var(--disclaimer-offset) + ${HEADER_HEIGHT}px)`
-    : `-${HEADER_HEIGHT}px`,
-  minHeight: '430px',
-  boxShadow: '0 10px 30px rgba(0,0,0,0.08)'
-}}
+  
+  className="hidden lg:block fixed left-0 right-0 z-[60]"
+  style={{
+    backgroundColor: '#F4F4F4',
+    top: isVisible
+      ? `calc(var(--disclaimer-offset) + ${HEADER_HEIGHT}px)`
+      : `-${HEADER_HEIGHT}px`,
+    minHeight: '430px',
+  }}
+
 
 
     onMouseEnter={() => setIsDropdownVisible(true)}
@@ -309,20 +316,14 @@ top: `${disclaimerHeight + HEADER_HEIGHT}px`,
     }}
   >
 
-          {/* GREY RIGHT SIDE PANEL — RESPONSIVE */}
-          <div
-            className="absolute top-0 bottom-0 bg-[#F4F4F4]"
-            style={{
-              left: '460px',
-              right: 0
-            }}
-          />
-
+        
           {/* DROPDOWN CONTENT */}
-          <div className="relative max-w-[1600px] mx-auto px-4 lg:px-12 xl:px-16 h-full flex gap-10 pt-12 pb-16">
+<div className="relative max-w-[1600px] mx-auto min-h-[430px] flex">
 
             {/* LEFT COLUMN */}
-            <div className="w-[380px]">
+<div className="w-[36%] bg-white py-12">
+    <div className="pl-4 lg:pl-12 xl:pl-16 pr-12 xl:pr-16">
+
              <h2
   className="text-4xl lg:text-5xl font-brand font-medium mb-6
              transition-colors duration-300"
@@ -362,11 +363,13 @@ top: `${disclaimerHeight + HEADER_HEIGHT}px`,
 >
   Learn More
 </Link>
-
+</div>
             </div>
 
             {/* RIGHT COLUMN LINKS */}
-            <div className="flex-1 pl-6 pt-2 relative z-[10]">
+<div className="flex-1 py-8">
+  <div className="px-6 xl:px-8">
+
               <div key={dropdownKey} className="space-y-6">
                 {(tabContent[hoveredTab]|| []).map(
                   (item, index) => {
@@ -421,8 +424,10 @@ top: `${disclaimerHeight + HEADER_HEIGHT}px`,
                 )}
               </div>
             </div>
+            </div>
           </div>
         </div>
+        
       )}
 
       {/* MOBILE MENU (UNCHANGED) */}
