@@ -20,7 +20,7 @@ export default function LeadershipTeam() {
 
         {/* ================= HERO ================= */}
        {/* ================= HERO ================= */}
-       <section className="relative overflow-visible mb-16 md:mb-24">
+       <section className="relative z-10 overflow-visible mb-16 md:mb-24">
          <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
            <div className="container-responsive">
        
@@ -39,21 +39,25 @@ export default function LeadershipTeam() {
                </div>
        
                {/* TITLE */}
-               <h1
-                 style={{
-                   fontFamily: 'Raleway, sans-serif',
-                   fontWeight: 500,
-                   fontSize: '60px',          // ⬅ slightly bigger
-                   lineHeight: '1.1',         // ⬅ tighter
-                   letterSpacing: '-0.018em',
-                   maxWidth: '860px',
-                   color: '#ffffff',
-                   WebkitFontSmoothing: 'antialiased',
-                   MozOsxFontSmoothing: 'grayscale',
-                 }}
-               >
-                 Executive Leadership
-               </h1>
+               <FadeLeft>
+  <h1
+    style={{
+      fontFamily: 'Raleway, sans-serif',
+      fontWeight: 500,
+      fontSize: '60px',
+      lineHeight: '1.1',
+      letterSpacing: '-0.018em',
+      maxWidth: '860px',
+      color: '#ffffff',
+      WebkitFontSmoothing: 'antialiased',
+      MozOsxFontSmoothing: 'grayscale',
+    }}
+  >
+    Executive Leadership
+  </h1>
+</FadeLeft>
+
+
        
              </div>
            </div>
@@ -61,19 +65,47 @@ export default function LeadershipTeam() {
        </section>
 
         {/* ================= OVERVIEW ================= */}
-        <section className="py-6 md:py-8 lg:py-16 bg-tertiary">
+        <section
+  className="
+    relative
+    z-0
+    -mt-20 md:-mt-28 lg:-mt-36
+    min-h-[50vh]
+    flex items-center
+    bg-tertiary
+  "
+>
+
+
+
+
           <div className="container-responsive">
             <div className="flex flex-col md:flex-row items-start">
 
               <div className="flex-1 mb-4 md:mb-6 lg:mb-0">
                 <FadeLeft>
-                  <h2 className="text-section-title font-brand text-primary">
-                    Defining Strategic Direction
-                  </h2>
+                  <h2
+  
+  className="
+    font-brand
+    text-[46px] md:text-[50px] lg:text-[56px]
+    leading-[1.12]
+  "
+>
+
+
+  <span className="block font-semibold text-[var(--brand-green-1)]">
+    Defining Strategic
+  </span>
+  <span className="block font-semibold text-[var(--brand-green-2)]">
+    Direction
+  </span>
+</h2>
+
                 </FadeLeft>
               </div>
 
-              <div className="flex-1 md:pl-8 lg:pl-16">
+              <div className="flex-1 md:pl-8 lg:pl-16 pt-6 md:pt-7">
                 <FadeLeft delay={200}>
                   <p className="text-section-content color-grey leading-[28px]">
                     Our executive leadership establishes the firm’s overarching mandate. They are responsible
@@ -92,9 +124,24 @@ export default function LeadershipTeam() {
           <div className="container-responsive">
 
             <FadeLeft>
-              <h2 className="text-section-title font-brand text-primary text-center mb-12 md:mb-16">
-                Our Leader
-              </h2>
+             <h2
+  className="
+    font-brand
+    text-center
+    mb-12 md:mb-16
+    text-[46px] md:text-[50px] lg:text-[56px]
+    leading-[1.1]
+  "
+>
+  <span className="font-semibold text-[var(--brand-green-1)]">
+    Our
+  </span>{' '}
+  <span className="font-semibold text-[var(--brand-green-2)]">
+    Leader
+  </span>
+</h2>
+
+
             </FadeLeft>
 
             <FadeLeft delay={200}>
@@ -137,7 +184,7 @@ export default function LeadershipTeam() {
               <div className="flex-1 mb-6 md:mb-0">
                 <FadeLeft>
                   <img
-                    src="/images/executiveledership2.JPG"
+                    src="/images/executiveledership2.jpg"
                     alt="Leadership impact"
                     className="w-full h-64 md:h-80 lg:h-96 object-cover"
                   />
@@ -146,9 +193,23 @@ export default function LeadershipTeam() {
 
               <div className="flex-1 md:pl-8 lg:pl-16">
                 <FadeLeft delay={200}>
-                  <h2 className="text-section-title font-brand text-primary mb-4 md:mb-6">
-                    Driving Ideas Into Real Impact
-                  </h2>
+                 <h2
+  className="
+    font-brand
+    mb-4 md:mb-6
+    text-[46px] md:text-[50px] lg:text-[56px]
+    leading-[1.12]
+  "
+>
+  <span className="block font-semibold text-[var(--brand-green-1)]">
+    Driving Ideas Into
+  </span>
+  <span className="block font-normal text-[var(--brand-green-2)]">
+    Real Impact
+  </span>
+</h2>
+
+
                   <a href="/what-we-do">
                     <LuxuryButton>
                       Explore What We Do
