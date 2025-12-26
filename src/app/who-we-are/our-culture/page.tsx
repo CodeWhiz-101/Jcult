@@ -47,7 +47,7 @@ export default function OurCulture() {
                   {/* RIGHT IMAGE */}
                   <div className="flex-1 relative min-h-[320px] md:min-h-0 md:mb-[-5rem] lg:mb-[-8rem]">
                     <img
-                      src="/images/ourculture1.JPG"
+                      src="/images/ourculture1.jpg"
                       alt="Our Culture"
                       className="absolute top-0 right-0 w-full h-full object-cover"
                     />

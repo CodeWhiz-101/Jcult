@@ -43,7 +43,7 @@ export default function WhoWeAre() {
 
         {/* ================= SECTION 1 ================= */}
         <FadeUp>
-<section className="-mt-16 md:-mt-20 lg:-mt-24 pt-2 md:pt-4 lg:pt-6 pb-6 md:pb-8 lg:pb-16 bg-[#ffffff]">
+<section className="pt-2 md:pt-4 lg:pt-6 pb-6 md:pb-8 lg:pb-16 bg-[#ffffff]">
             <div className="container-responsive">
               <div className="flex flex-col md:flex-row items-start">
                 <div className="flex-1 mb-4 md:mb-6 lg:mb-0">
