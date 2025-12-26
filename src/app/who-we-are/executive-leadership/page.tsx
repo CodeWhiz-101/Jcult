@@ -9,7 +9,7 @@ import PageBreadcrumb from '@/components/ui/PageBreadcrumb';
 
 export default function LeadershipTeam() {
   const teamMembers = [
-    { name: 'Jeyanandh Dhivaharan', title: 'Founder, CEO', image: '/images/office.webp' },
+    { name: 'Jeyanandh Dhivaharan', title: 'Founder, CEO', image: '/images/jeyanandh-dhuvaharan.svg' },
   ];
 
   const leader = teamMembers[0];

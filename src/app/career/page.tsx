@@ -1,10 +1,14 @@
+
+
 'use client';
+import { useEffect, useRef, useState } from 'react';
 
 import FadeUp from '@/components/animation/FadeUp';
 import ImageReveal from '@/components/animation/ImageReveal';
 import LuxuryButton from '@/components/ui/LuxuryButton';
 import Hero from '@/components/features/Hero';
 import Link from 'next/link';
+
 
 export default function Career() {
   return (
@@ -13,6 +17,8 @@ export default function Career() {
       <main className="pt-[160px] md:pt-[180px]">
 
        <div className="relative z-20">
+
+        
         
  <Hero 
   videoSrc="/videos/career1.mp4"
@@ -53,27 +59,36 @@ export default function Career() {
 
 
   {/* HEADING */}
-  <h2 className="font-brand text-primary leading-[1.05] mb-6">
-    <span
-      className="block fw-semibold"
-      style={{
-        fontSize: '44px',
-        letterSpacing: '-0.02em',
-      }}
-    >
-      Build Your Career
-    </span>
+  <h2
+  className="
+    font-brand
+    mb-6
+    leading-[1.05]
+  "
+>
+  <span
+    className="
+      block
+      font-semibold
+      text-[var(--brand-green-1)]
+      text-[44px] md:text-[50px] lg:text-[54px]
+    "
+  >
+    Build Your Career
+  </span>
 
-    <span
-      className="block fw-medium"
-      style={{
-        fontSize: '40px',
-        letterSpacing: '-0.015em',
-      }}
-    >
-      With Us
-    </span>
-  </h2>
+  <span
+    className="
+      block
+      font-medium
+      text-[var(--brand-green-2)]
+      text-[40px] md:text-[46px] lg:text-[50px]
+    "
+  >
+    With Us
+  </span>
+</h2>
+
 
   {/* DESCRIPTION */}
   <p
@@ -104,7 +119,7 @@ export default function Career() {
 
 
 <FadeUp delay={100}>
-  + <section className="pt-[80px] md:pt-[120px] lg:pt-[150px] pb-6 md:pb-8 lg:pb-16">
+   <section className="pt-[80px] md:pt-[120px] lg:pt-[150px] pb-6 md:pb-8 lg:pb-16">
     <div className="container-responsive">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
 
