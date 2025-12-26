@@ -493,7 +493,9 @@ talented individuals to execute their boldest, highest-conviction ideas with pre
     stats={[
       {
         number: "2025",
-        description: "Date founded by Managing Director Jeyanandh Dhivaharan"
+        description: "Year founded by
+Jeyanandh Dhivaharan
+Founder & CEO"
       },
       {
         number: "$10M",
