@@ -42,14 +42,16 @@ export default function LuxuryButton({
     },
 
     /* ================= WHITE ================= */
-    white: {
-      ...baseStyle,
-      color: hovered ? '#FFFFFF' : 'var(--brand-green-1)',
-      background: hovered ? 'transparent' : '#FFFFFF',
-      boxShadow: hovered
-        ? 'inset 0 0 0 1px #FFFFFF'
-        : 'inset 0 0 0 1px var(--brand-green-1)',
-    },
+  /* ================= WHITE ================= */
+white: {
+  ...baseStyle,
+  color: hovered ? '#FFFFFF' : 'var(--brand-green-1)',
+  background: hovered ? 'transparent' : '#FFFFFF',
+  boxShadow: hovered
+    ? 'inset 0 0 0 1px #FFFFFF' // border ONLY on hover
+    : 'inset 0 0 0 0 transparent', // ✅ no border when idle
+},
+
 
     /* ================= OUTLINE ================= */
     outline: {

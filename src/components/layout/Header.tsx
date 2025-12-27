@@ -21,6 +21,18 @@ const [dropdownKey, setDropdownKey] = useState(0);
 const disclaimerRef = useRef<HTMLDivElement>(null);
 const [disclaimerHeight, setDisclaimerHeight] = useState(0);
 const hasAnimatedRef = useRef(false);
+const primaryBaseStyle: React.CSSProperties = {
+  padding: '0.7rem 1.4rem',
+  fontSize: '1rem',
+  fontWeight: 500,
+  cursor: 'pointer',
+  transition: 'all 300ms ease',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: '#FFFFFF',
+  background: 'linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))',
+};
 
   const pathname = usePathname();
   const isHome = pathname === '/';
@@ -333,36 +345,27 @@ top: `${disclaimerHeight + HEADER_HEIGHT}px`,
 </h2>
 
 
-              <Link
+             <Link
   href={linkFor(hoveredTab)}
-  className="
-    inline-flex items-center justify-center
-    px-7 py-3 text-sm font-medium
-    no-underline
-
-    text-white
-    border border-transparent
-
-    transition-all duration-300
-  "
-  style={{
-    backgroundImage: 'var(--brand-green-gradient)'
-  }}
+  style={primaryBaseStyle}
+  className="no-underline"
   onMouseEnter={(e) => {
-    e.currentTarget.style.backgroundImage = 'none';
-    e.currentTarget.style.backgroundColor = '#FFFFFF';
     e.currentTarget.style.color = 'var(--brand-green-1)';
-    e.currentTarget.style.border = '1px solid var(--brand-green-1)';
+    e.currentTarget.style.background = 'transparent';
+    e.currentTarget.style.boxShadow =
+      'inset 0 0 0 1px var(--brand-green-1)';
   }}
   onMouseLeave={(e) => {
-    e.currentTarget.style.backgroundImage = 'var(--brand-green-gradient)';
-    e.currentTarget.style.backgroundColor = 'transparent';
     e.currentTarget.style.color = '#FFFFFF';
-    e.currentTarget.style.border = '1px solid transparent';
+    e.currentTarget.style.background =
+      'linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))';
+    e.currentTarget.style.boxShadow =
+      'inset 0 0 0 0 transparent';
   }}
 >
   Learn More
 </Link>
+
 </div>
             </div>
 
