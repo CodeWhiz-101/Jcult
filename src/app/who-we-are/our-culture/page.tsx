@@ -9,6 +9,7 @@ import FadeUp from '@/components/animation/FadeUp';
 import PageBreadcrumb from '@/components/ui/PageBreadcrumb';
 import { useEffect, useRef, useState } from 'react';
 
+
 export default function OurCulture() {
   const sectionRef = useRef<HTMLDivElement>(null);
 const [isVisible, setIsVisible] = useState(false);
@@ -145,10 +146,10 @@ useEffect(() => {
     leading-[1.12]
   "
 >
-  <span className="block font-semibold text-[var(--brand-green-1)]">
+  <span className="block font-medium text-[var(--brand-green-1)]">
     Insight Over
   </span>
-  <span className="block font-semibold text-[var(--brand-green-2)]">
+  <span className="block font-medium text-[var(--brand-green-2)]">
     Hierarchy
   </span>
 </h2>
@@ -196,10 +197,10 @@ useEffect(() => {
     leading-[1.12]
   "
 >
-  <span className="block font-semibold text-[var(--brand-green-1)]">
+  <span className="block font-medium text-[var(--brand-green-1)]">
     A Headquarters Built
   </span>
-  <span className="block font-semibold text-[var(--brand-green-2)]">
+  <span className="block font-medium text-[var(--brand-green-2)]">
     for Collaboration
   </span>
 </h2>

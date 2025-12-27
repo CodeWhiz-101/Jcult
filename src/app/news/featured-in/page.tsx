@@ -33,7 +33,7 @@ export default function InTheMedia() {
 
         {/* ================= HERO ================= */}
         <section className="relative overflow-visible mb-0">
-          <div className="bg-[var(--brand-green-1)] ml-7 md:ml-10 lg:ml-12 xl:ml-14">
+          <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
             <div className="container-responsive">
               <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
 
@@ -165,25 +165,54 @@ export default function InTheMedia() {
 
 
                    <div style={{ overflow: 'hidden' }}>
-  <h3
-    className="
-      font-brand
-      text-[24px] md:text-[26px]
-      text-medium
-      leading-snug
+ <h3
+  className="
+    relative
+    inline-block
+    pb-1.5
+    font-brand
+    font-medium
+    text-[24px] md:text-[26px]
+    leading-snug
+    text-[var(--brand-green-1)]
+  "
+  style={{
+    transform: reveal ? 'translateX(0)' : 'translateX(-120%)',
+    opacity: reveal ? 1 : 0,
+    transition: `transform 900ms cubic-bezier(0.22,1,0.36,1) ${150 + i * 80}ms,
+                 opacity 600ms ease ${150 + i * 80}ms`,
+  }}
+>
 
-      text-[var(--brand-green-1)]
-      max-w-[820px]
-    "
-    style={{
-      transform: reveal ? 'translateX(0)' : 'translateX(-120%)',
-      opacity: reveal ? 1 : 0,
-      transition: `transform 900ms cubic-bezier(0.22,1,0.36,1) ${150 + i * 80}ms,
-                   opacity 600ms ease ${150 + i * 80}ms`,
-    }}
-  >
-    {item.title}
-  </h3>
+  {item.title}
+
+  {/* REVEAL UNDERLINE */}
+ <span
+  aria-hidden
+  className="
+    absolute
+    left-0
+    bottom-0
+    w-full
+    origin-left
+  "
+  style={{
+    height: '0.5px',
+    backgroundColor: 'rgba(20, 83, 45, 0.45)', // lighter green
+    transform: reveal ? 'scaleX(1)' : 'scaleX(0)',
+    opacity: reveal ? 1 : 0,
+    transition: `
+      transform 600ms cubic-bezier(0.22,1,0.36,1) ${450 + i * 80}ms,
+      opacity 400ms ease ${450 + i * 80}ms
+    `,
+  }}
+/>
+
+
+</h3>
+
+
+
 </div>
 
                   </div>
