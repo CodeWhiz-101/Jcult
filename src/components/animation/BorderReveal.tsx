@@ -14,14 +14,15 @@ export default function BorderReveal({ children, delay = 0 }: BorderRevealProps)
   return (
     <div className="flex-3">
       <div
-        ref={ref as any}
-        className="pl-4 md:border-l-1 border-gray-800"
-        style={{
-          borderLeftColor: isVisible ? 'rgb(31, 41, 55)' : 'transparent',
-          transition: 'border-color 800ms cubic-bezier(0.25, 1, 0.5, 1)',
-          transitionDelay: `${delay}ms`
-        }}
-      >
+  ref={ref as any}
+  className="pl-4 md:border-l-1"
+  style={{
+    borderLeftColor: isVisible ? 'rgba(0, 0, 0, 0.2)' : 'transparent',
+    transition: 'border-color 800ms cubic-bezier(0.25, 1, 0.5, 1)',
+    transitionDelay: `${delay}ms`
+  }}
+>
+
         <div
           style={{
             opacity: isVisible ? 1 : 0,

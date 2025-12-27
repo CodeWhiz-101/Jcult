@@ -35,10 +35,19 @@ export default function WhatWeDo() {
 
       {/* LEFT LABEL */}
       <FadeLeft>
-        <p className="text-[14px] font-medium tracking-wide  text-[var(--brand-green-1)]">
-          How We Move
-        </p>
-      </FadeLeft>
+  <h3
+    className="
+      font-brand
+      font-medium
+      text-[14px] md:text-[15px]
+      tracking-wider
+      text-[var(--brand-green-1)]
+    "
+  >
+    How We Move
+  </h3>
+</FadeLeft>
+
 
       {/* RIGHT STATEMENT */}
       <BorderReveal>
@@ -354,8 +363,18 @@ export default function WhatWeDo() {
 
 <section className="bg-white pt-10 md:pt-14 pb-16">
   <div className="container-responsive">
+    
     <FadeUp>
-      <p className="text-[#68717A] text-[18px] md:text-base leading-relaxed">
+      <p
+  className="
+    font-brand
+    font-medium
+    text-[#68717A]
+    text-[18px] md:text-[19px]
+    leading-[1.6]
+    w-full
+  "
+>
         JCULT TRADER’s risk management framework should not be interpreted as a guarantee
         against losses. Certain risks may fall outside the scope of what JCULT TRADER monitors or
         controls, and actual risks can exceed expectations, particularly during atypical or volatile
