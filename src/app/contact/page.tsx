@@ -1,187 +1,170 @@
 'use client';
 
-import FadeUp from '@/components/animation/FadeUp';
+import { useEffect, useState } from 'react';
 import FadeLeft from '@/components/animation/FadeLeft';
+import FadeUp from '@/components/animation/FadeUp';
 
 export default function Contact() {
+  const [reveal, setReveal] = useState(false);
+
+  useEffect(() => {
+    requestAnimationFrame(() => setReveal(true));
+  }, []);
+
   return (
-    <div className="min-h-screen bg-main">
-      <main className="pt-24">
-        <section className="py-20">
-          <div className="container-responsive">
+    <div className="min-h-screen bg-white">
+      <main className="pt-20">
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+        {/* ================= HERO ================= */}
+        <section className="relative overflow-visible mb-0">
+          <div className="bg-[var(--brand-green-1)] ml-7 md:ml-10 lg:ml-12 xl:ml-14">
+            <div className="container-responsive">
+              <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
 
-              {/* LEFT — INFORMATION */}
-             <FadeUp>
-  <div className="h-full flex flex-col justify-between">
-
-    {/* TOP — TITLE + TEXT */}
-    <div>
-      <h1 className="text-4xl md:text-5xl lg:text-6xl text-primary mb-6">
-        Get in Touch
-      </h1>
-
-      <p className="text-lg text-main opacity-75 max-w-xl leading-relaxed mb-10">
-        We'd love to hear from you. Reach out to us for inquiries,
-        partnerships, or career opportunities.
-      </p>
-
-      {/* EMAIL + ADDRESS */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-14">
-        <div>
-          <p className="text-xs uppercase tracking-wider text-grey mb-2">
-            Email
-          </p>
-          <p className="text-main">
-            jculttrader.inquiry@gmail.com
-          </p>
-        </div>
-
-        <div>
-          <p className="text-xs uppercase tracking-wider text-grey mb-2">
-            Address
-          </p>
-          <p className="text-main leading-relaxed">
-            DSO-IFZA, IFZA Properties<br />
-            Dubai Silicon Oasis<br />
-            Dubai, Dubayy (AE-DU)<br />
-            UAE
-          </p>
-        </div>
-      </div>
-    </div>
-
-    {/* BOTTOM — GREEN BOXES (ALIGNED WITH FORM) */}
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {[
-        {
-          title: 'Customer Support',
-          text:
-            'Our support team is available around the clock to address any concerns or queries you may have.',
-        },
-        {
-          title: 'Feedback And Suggestions',
-          text:
-            'We value your feedback and are continuously working to improve our services.',
-        },
-        {
-          title: 'Media Inquiries',
-          text:
-            'For media-related questions or press inquiries, please reach out to us directly.',
-        },
-      ].map((item, i) => (
-       <div
-  key={i}
-  className="
-    aspect-square
-    bg-[linear-gradient(180deg,var(--brand-green-1),var(--brand-green-2))]
-    p-3
-    flex flex-col
-    items-center        /* 👈 horizontal center */
-    justify-center      /* 👈 vertical center */
-    text-center         /* 👈 text center */
-    text-white
-    transition-transform duration-300
-    hover:scale-[1.04]
-  "
->
-  <h3 className="text-base font-medium mb-3">
-    {item.title}
-  </h3>
-
-  <p className="text-sm leading-relaxed opacity-90">
-    {item.text}
-  </p>
-</div>
-
-      ))}
-    </div>
-
-  </div>
-</FadeUp>
-
-
-              {/* RIGHT — FORM */}
-              <FadeLeft delay={200}>
-                <div
-                  className="border border-grey/30 p-10"
-                  style={{
-                   background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%)'
-                  }}
-                     >
-
-                  <h2 className="text-2xl text-primary mb-2">
-                    Send us a message
-                  </h2>
-
-                  <p className="text-sm text-grey mb-8">
-                    You can reach us anytime
-                  </p>
-
-                  <form className="space-y-5">
-                    <div className="grid grid-cols-2 gap-4">
-                      <input
-                        type="text"
-                        placeholder="First name"
-                        className="px-4 py-3 border border-grey/40 bg-white outline-none focus:border-primary transition"
-                      />
-                      <input
-                        type="text"
-                        placeholder="Last name"
-                        className="px-4 py-3 border border-grey/40 bg-white outline-none focus:border-primary transition"
-                      />
-                    </div>
-
-                    <input
-                      type="email"
-                      placeholder="Your email"
-                      className="w-full px-4 py-3 border border-grey/40 bg-white outline-none focus:border-primary transition"
-                    />
-
-                    <textarea
-                      rows={4}
-                      placeholder="How can we help?"
-                      className="w-full px-4 py-3 border border-grey/40 bg-white outline-none resize-none focus:border-primary transition"
-                    />
-
-                    <button
-  type="submit"
-  className="
-    w-full
-    py-3
-    text-white
-    font-medium
-    transition-all duration-300
-    hover:scale-[1.02]
-    hover:shadow-lg
-    active:scale-[0.98]
-  "
-  style={{
-    background: 'var(--brand-green-gradient)',
-  }}
->
-  Send Message
-</button>
-
-
-                    <p className="text-xs text-grey text-center">
-                      By contacting us, you agree to our{' '}
-                      <a href="#" className="underline text-main">
-                        Terms of service
-                      </a>{' '}
-                      and{' '}
-                      <a href="#" className="underline text-main">
-                        Privacy Policy
-                      </a>
-                    </p>
-                  </form>
+                {/* TITLE — LEFT → RIGHT REVEAL */}
+                <div style={{ overflow: 'hidden' }}>
+                  <h1
+                    style={{
+                      fontFamily: 'Raleway, sans-serif',
+                      fontWeight: 500,
+                      fontSize: '60px',
+                      lineHeight: '1.1',
+                      letterSpacing: '-0.018em',
+                      maxWidth: '860px',
+                      color: '#ffffff',
+                      transform: reveal
+                        ? 'translateX(0)'
+                        : 'translateX(-120%)',
+                      opacity: reveal ? 1 : 0,
+                      transition:
+                        'transform 900ms cubic-bezier(0.22,1,0.36,1), opacity 600ms ease',
+                    }}
+                  >
+                    Contact Us
+                  </h1>
                 </div>
-              </FadeLeft>
 
+                {/* SUBTITLE */}
+                <FadeLeft delay={300}>
+                  <p className="mt-6 max-w-[640px] text-white/80 text-[18px] leading-[1.7]">
+                    For client inquiries, strategic partnerships, or institutional discussions,
+                    please reach out to our team.
+                  </p>
+                </FadeLeft>
+
+              </div>
             </div>
           </div>
         </section>
+
+        {/* ================= CONTENT ================= */}
+ <section className="py-20">
+  <div className="container-responsive">
+
+    <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-20 items-start">
+
+      {/* ================= LEFT — CONTACT PANEL ================= */}
+      <FadeUp>
+      <div className="relative pl-12">
+
+  {/* Vertical divider — LEFT SIDE */}
+  <div className="absolute top-0 left-0 h-full w-px bg-black/10 hidden lg:block" />
+
+  <div className="space-y-14">
+
+
+            <div>
+              <p className="uppercase tracking-wide text-[13px] text-[#8A8F93] mb-3">
+                General Inquiries
+              </p>
+              <p className="text-[20px] font-medium text-[var(--brand-green-1)]">
+                jculttrader.inquiry@gmail.com
+              </p>
+            </div>
+
+            <div>
+              <p className="uppercase tracking-wide text-[13px] text-[#8A8F93] mb-3">
+                Office Address
+              </p>
+              <p className="text-[17px] leading-[1.7] text-[var(--brand-green-1)]">
+                DSO-IFZA, IFZA Properties<br />
+                Dubai Silicon Oasis<br />
+                Dubai, Dubayy (AE-DU)<br />
+                United Arab Emirates
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </FadeUp>
+
+      {/* ================= RIGHT — FORM ================= */}
+      <FadeLeft delay={200}>
+        <div className="border border-black/10 p-12">
+
+          <h2 className="font-brand text-[28px] mb-2 text-[var(--brand-green-1)]">
+            Send a Message
+          </h2>
+
+          <p className="text-[15px] text-[#8A8F93] mb-10">
+            Our team will respond promptly.
+          </p>
+
+          <form className="space-y-6">
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <input
+                type="text"
+                placeholder="First name"
+                className="px-4 py-3 border border-black/15 bg-white outline-none focus:border-[var(--brand-green-1)] transition"
+              />
+              <input
+                type="text"
+                placeholder="Last name"
+                className="px-4 py-3 border border-black/15 bg-white outline-none focus:border-[var(--brand-green-1)] transition"
+              />
+            </div>
+
+            <input
+              type="email"
+              placeholder="Email address"
+              className="w-full px-4 py-3 border border-black/15 bg-white outline-none focus:border-[var(--brand-green-1)] transition"
+            />
+
+            <textarea
+              rows={5}
+              placeholder="Message"
+              className="w-full px-4 py-3 border border-black/15 bg-white outline-none resize-none focus:border-[var(--brand-green-1)] transition"
+            />
+
+            <button
+              type="submit"
+              className="
+                w-full
+                py-4
+                text-white
+                font-medium
+                tracking-wide
+                transition-all duration-300
+                hover:opacity-90
+              "
+              style={{
+                background: 'var(--brand-green-gradient)',
+              }}
+            >
+              SUBMIT
+            </button>
+
+          </form>
+        </div>
+      </FadeLeft>
+
+    </div>
+
+  </div>
+</section>
+
+
       </main>
     </div>
   );

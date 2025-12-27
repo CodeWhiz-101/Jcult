@@ -1,232 +1,228 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { ArrowRight, ChevronDown } from 'lucide-react';
-import { newsArticles } from '@/data/newsData';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import dynamic from 'next/dynamic';
+import FadeUp from '@/components/animation/FadeUp';
+import FadeLeft from '@/components/animation/FadeLeft';
+import ScaleIn from '@/components/animation/ScaleIn';
 import PageBreadcrumb from '@/components/ui/PageBreadcrumb';
+import { useEffect, useRef, useState } from 'react';
 
-export default function InTheMedia() {
-  const [selectedYear, setSelectedYear] = useState('2025');
-  const [showMore, setShowMore] = useState(false);
+
+const OfficeMap = dynamic(() => import('@/components/map/OfficeMap'), {
+  ssr: false,
+  loading: () => (
+    <div className="h-96 rounded-lg flex items-center justify-center">
+      Loading map...
+    </div>
+  ),
+});
+
+export default function OfficeLocations() {
+  const [isHeroVisible, setIsHeroVisible] = useState(false);
+const heroRef = useRef<HTMLDivElement>(null);
+
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      setIsHeroVisible(entry.isIntersecting);
+    },
+    { threshold: 0.2 }
+  );
+
+  if (heroRef.current) {
+    observer.observe(heroRef.current);
+  }
+
+  return () => observer.disconnect();
+}, []);
+
+  const locations = [
+    { name: 'New York', lat: 40.7128, lng: -74.006, address: '123 Wall Street, New York, NY 10005' },
+    { name: 'London', lat: 51.5074, lng: -0.1278, address: '456 Canary Wharf, London E14 5AB, UK' },
+    { name: 'Tokyo', lat: 35.6762, lng: 139.6503, address: '789 Shibuya, Tokyo 150-0002, Japan' },
+    { name: 'Singapore', lat: 1.3521, lng: 103.8198, address: '321 Marina Bay, Singapore 018956' },
+  ];
+
   const [reveal, setReveal] = useState(false);
 
-  useEffect(() => {
-    requestAnimationFrame(() => setReveal(true));
-  }, []);
-
-  const newsDataByYear: Record<string, typeof newsArticles> = {
-    '2025': newsArticles,
-    '2024': [],
-    '2023': [],
-  };
-
-  const currentYearData = newsDataByYear[selectedYear] || [];
-  const displayedItems = showMore
-    ? currentYearData
-    : currentYearData.slice(0, 5);
+useEffect(() => {
+  requestAnimationFrame(() => setReveal(true));
+}, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen w-full bg-main">
       <main className="pt-20">
 
-        {/* ================= HERO ================= */}
-        <section className="relative overflow-visible mb-0">
-          <div className="bg-[var(--brand-green-1)] ml-7 md:ml-10 lg:ml-12 xl:ml-14">
-            <div className="container-responsive">
-              <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
+   {/* ================= HERO ================= */}
+<section className="relative overflow-visible mb-16 md:mb-24">
+  <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
+    <div className="container-responsive">
 
-                {/* BREADCRUMB */}
-                <div className="mb-6">
-                  <PageBreadcrumb
-                    items={[
-                      { label: 'News', href: '/news' },
-                      { label: 'Featured In', href: '/news/featured-in' },
-                    ]}
-                  />
-                </div>
+      {/* ⛔ GREEN BOX — DO NOT TOUCH */}
+      <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
 
-                {/* TITLE — LEFT → RIGHT REVEAL */}
-                <div style={{ overflow: 'hidden' }}>
-                  <h1
-                    style={{
-                      fontFamily: 'Raleway, sans-serif',
-                      fontWeight: 500,
-                      fontSize: '60px',
-                      lineHeight: '1.1',
-                      letterSpacing: '-0.018em',
-                      maxWidth: '860px',
-                      color: '#ffffff',
-                      transform: reveal
-                        ? 'translateX(0)'
-                        : 'translateX(-120%)',
-                      opacity: reveal ? 1 : 0,
-                      transition:
-                        'transform 900ms cubic-bezier(0.22,1,0.36,1), opacity 600ms ease',
-                    }}
-                  >
-                    Featured In
-                  </h1>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ================= FILTER ROW ================= */}
-      <section className="py-8 md:py-10">
-  <div className="container-responsive">
-    <div
-      className="
-        flex items-center gap-6
-        uppercase tracking-wide
-        text-[16px] md:text-[17px] lg:text-[18px]
-      "
-    >
-      {/* RECENT */}
-      <span className="font-medium text-[var(--brand-green-1)]">
-        Recent
-      </span>
-
-      {/* DIVIDER */}
-      <span className="text-[var(--brand-green-1)]">|</span>
-
-      {/* PAST NEWS + YEAR */}
-      <div className="flex items-center gap-3">
-        <span className="font-medium text-[#8A8F93]">
-          Past News:
-        </span>
-
-        {/* YEAR DROPDOWN */}
-        <div className="relative">
-          <select
-            value={selectedYear}
-            onChange={(e) => {
-              setSelectedYear(e.target.value);
-              setShowMore(false);
-            }}
-            className="
-              appearance-none
-              bg-transparent
-              pr-8
-              cursor-pointer
-              font-medium
-              text-[18px] md:text-[20px]
-              text-[var(--brand-green-1)]
-              focus:outline-none
-            "
-          >
-            <option value="2025">2025</option>
-            <option value="2024">2024</option>
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>
-          </select>
-
-          <ChevronDown
-            className="
-              absolute right-0 top-1/2 -translate-y-1/2
-              h-5 w-5
-              text-[var(--brand-green-1)]
-              pointer-events-none
-            "
+        {/* BREADCRUMB — NO ANIMATION */}
+        <div className="mb-6">
+          <PageBreadcrumb
+            items={[
+              { label: 'Who We Are', href: '/who-we-are' },
+              { label: 'Our Global Base', href: '/who-we-are/our-global-base' },
+            ]}
           />
         </div>
+
+        {/* TITLE — LEFT → RIGHT REVEAL (EXACT LIKE InTheMedia) */}
+        <div style={{ overflow: 'hidden' }}>
+          <h1
+            style={{
+              fontFamily: 'Raleway, sans-serif',
+              fontWeight: 500,
+              fontSize: '60px',
+              lineHeight: '1.1',
+              letterSpacing: '-0.018em',
+              maxWidth: '860px',
+              color: '#ffffff',
+
+              transform: reveal
+                ? 'translateX(0)'
+                : 'translateX(-120%)',
+              opacity: reveal ? 1 : 0,
+              transition:
+                'transform 900ms cubic-bezier(0.22,1,0.36,1), opacity 600ms ease',
+            }}
+          >
+            Our Global Base
+          </h1>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
 
 
-        {/* ================= NEWS LIST ================= */}
-        <section className="pb-16">
-          <div className="container-responsive">
-            <div className="border-t border-b border-black/10 divide-y">
 
-              {displayedItems.map((item, i) => (
-                <a
-                  key={i}
-                  href={`/news/${item.id}`}
-                  className="group flex items-center justify-between py-6"
-                >
-                  {/* LEFT */}
-                  <div>
-                    <p
+
+        {/* ================= OVERVIEW ================= */}
+        <section className="bg-tertiary pt-10 md:pt-14 lg:pt-18 pb-2 md:pb-3 -mt-12 md:-mt-20 lg:-mt-28">
+
+
+          <div className="container-responsive pt-6 md:pt-8 lg:pt-10">
+
+            <div className="flex flex-col md:flex-row items-start">
+
+              <div className="flex-1 mb-6 md:mb-0">
+                <FadeLeft>
+  <h2
   className="
-    text-[15.5px] md:text-[16px]
-    leading-tight
-    text-[var(--brand-green-1)]
-    mb-2
+    font-brand
+    mb-8
+    text-[48px] md:text-[54px] lg:text-[60px]
+    leading-[1.18]
   "
 >
-  {item.date} {item.source && <> | {item.source}</>}
-</p>
 
+    <span className="block font-medium text-[var(--brand-green-1)]">
+      Explore Our
+    </span>
 
-                   <div style={{ overflow: 'hidden' }}>
-  <h3
-    className="
-      font-brand
-      text-[24px] md:text-[26px]
-      text-medium
-      leading-snug
+    <span className="block font-medium text-[var(--brand-green-2)]">
+      Headquarters
+    </span>
+  </h2>
+</FadeLeft>
+              </div>
 
-      text-[var(--brand-green-1)]
-      max-w-[820px]
-    "
-    style={{
-      transform: reveal ? 'translateX(0)' : 'translateX(-120%)',
-      opacity: reveal ? 1 : 0,
-      transition: `transform 900ms cubic-bezier(0.22,1,0.36,1) ${150 + i * 80}ms,
-                   opacity 600ms ease ${150 + i * 80}ms`,
-    }}
-  >
-    {item.title}
-  </h3>
-</div>
-
-                  </div>
-
-                  {/* RIGHT ARROW */}
-                  <div
-                    className="
-                      flex items-center justify-center
-                      w-10 h-10
-                      rounded-full
-                      border
-                      transition-all duration-300
-                      text-[var(--brand-green-1)]
-                      border-[var(--brand-green-1)]
-                      group-hover:bg-[var(--brand-green-1)]
-                      group-hover:text-white
-                    "
-                  >
-                    <ArrowRight
-                      strokeWidth={1.25}
-                      className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5"
-                    />
-                  </div>
-                </a>
-              ))}
+              <div className="flex-1 md:pl-16">
+                <FadeLeft delay={200}>
+                  <p className="text-section-content color-grey leading-[30px]">
+                    Our firm is rooted in a city defined by opportunity, culture, and momentum,
+                    making it an outstanding place to build a career.
+                  </p>
+                </FadeLeft>
+              </div>
 
             </div>
+          </div>
+        </section>
 
-            {/* ================= MORE BAR ================= */}
-            {currentYearData.length > 5 && (
-              <button
-                onClick={() => setShowMore(!showMore)}
-                className="
-                  mt-10
-                  w-full
-                  py-4
-                  text-white
-                  font-medium
-                  bg-[var(--brand-green-1)]
-                  tracking-wide
-                "
-              >
-                MORE
-              </button>
-            )}
+        {/* ================= MAP ================= */}
+        <section className="py-6 md:py-8 lg:py-16 bg-tertiary">
+          <div className="container-responsive">
+            <ScaleIn>
+              <OfficeMap locations={locations} />
+            </ScaleIn>
+          </div>
+        </section>
+
+        {/* ================= ADDRESS ================= */}
+        <section className="py-8 md:py-16">
+          <div className="container-responsive">
+            <div className="flex flex-col md:flex-row items-start">
+
+              <div className="flex-1 mb-6 md:mb-0">
+                <FadeLeft>
+  <h2
+    className="
+      font-brand
+      mb-6
+      text-[42px] md:text-[46px] lg:text-[52px]
+
+      leading-[1.1]
+    "
+  >
+    <span className="block font-medium text-[var(--brand-green-1)]">
+      Headquarters
+    </span>
+
+    <span className="block font-medium text-[var(--brand-green-2)]">
+      Presence
+    </span>
+  </h2>
+</FadeLeft>
+
+              </div>
+
+              <div className="flex-1 md:pl-16">
+                <FadeLeft delay={200}>
+                  <p className="text-section-content color-grey mb-2">
+                    United Arab Emirates
+                  </p>
+                  <p className="text-section-content color-grey mb-2">
+                    Dubai
+                  </p>
+                  <p className="text-section-content color-grey mb-2 leading-[30px]">
+                    DSO-IFZA, IFZA Properties <br />
+                    Dubai Silicon Oasis <br />
+                    Dubai, Dubayy (AE-DU) <br />
+                    UAE
+                  </p>
+                  <p className="text-section-content color-grey">
+                    jculttrader.inquiry@gmail.com
+                  </p>
+                </FadeLeft>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ================= IMAGE ================= */}
+        <section className="py-6 md:py-8 lg:py-16 bg-white">
+          <div className="container-responsive">
+            <ScaleIn>
+              <video
+  src="/videos/globalbase1.mp4"
+  className="w-full h-48 md:h-64 lg:h-96 object-cover"
+  autoPlay
+  muted
+  loop
+  playsInline
+/>
+
+            </ScaleIn>
           </div>
         </section>
 
