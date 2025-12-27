@@ -497,11 +497,11 @@ talented individuals to execute their boldest, highest-conviction ideas with pre
       },
       {
         number: "$10M",
-        description: "Assets Under Management",
+        description: "Focused on reaching $10M in Assets Under Management by 2026",
       },
       {
         number: "1000+",
-        description: "Investor Trusts Us"
+        description: "Building Trust with a Growing Base of 1,000+ Investors"
       }
     ]}
   />

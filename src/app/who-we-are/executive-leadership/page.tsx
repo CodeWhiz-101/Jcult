@@ -106,16 +106,17 @@ export default function LeadershipTeam() {
   
   className="
     font-brand
-    text-[46px] md:text-[50px] lg:text-[56px]
+    text-[42px] md:text-[46px] lg:text-[52px]
+
     leading-[1.12]
   "
 >
 
 
-  <span className="block font-semibold text-[var(--brand-green-1)]">
+  <span className="block font-medium text-[var(--brand-green-1)]">
     Defining Strategic
   </span>
-  <span className="block font-semibold text-[var(--brand-green-2)]">
+  <span className="block font-medium text-[var(--brand-green-2)]">
     Direction
   </span>
 </h2>
@@ -151,10 +152,10 @@ export default function LeadershipTeam() {
     leading-[1.1]
   "
 >
-  <span className="font-semibold text-[var(--brand-green-1)]">
+  <span className="font-medium text-[var(--brand-green-1)]">
     Our
   </span>{' '}
-  <span className="font-semibold text-[var(--brand-green-2)]">
+  <span className="font-medium text-[var(--brand-green-2)]">
     Leader
   </span>
 </h2>
@@ -193,48 +194,52 @@ export default function LeadershipTeam() {
           </div>
         </section>
 {/* ================= CTA ================= */}
-<section className="bg-primary pt-6 md:pt-8 lg:pt-10 pb-16 md:pb-24 lg:pb-32">
-  <div className="flex flex-col md:flex-row items-center">
+<section className="bg-primary relative">
+  <div className="flex flex-col md:flex-row items-start">
 
-    {/* LEFT — IMAGE (FLUSH LEFT, MIN TOP GAP) */}
+    {/* LEFT — IMAGE (SIZE UNCHANGED) */}
     <div className="w-full md:w-1/2">
       <FadeLeft>
         <img
           src="/images/executiveledership2.jpg"
           alt="Leadership impact"
-          className="w-full h-64 md:h-80 lg:h-[420px] object-cover"
+          className="w-full h-96 md:h-[600px] lg:h-[680px] object-cover object-center"
+
+
         />
       </FadeLeft>
     </div>
 
-    {/* RIGHT — TEXT (CONTAINED) */}
-    <div className="w-full md:w-1/2">
-      <div className="container-responsive">
-        <FadeLeft delay={200}>
-          <h2
-            className="
-              font-brand
-              mb-6
-              text-[46px] md:text-[50px] lg:text-[56px]
-              leading-[1.12]
-            "
-          >
-            <span className="block font-semibold text-[var(--brand-green-1)]">
-              Driving Ideas Into
-            </span>
-            <span className="block font-normal text-[var(--brand-green-2)]">
-              Real Impact
-            </span>
-          </h2>
+    {/* RIGHT — TEXT */}
+<div className="w-full md:w-[62%] flex items-start">
+  <div className="container-responsive pt-24 md:pt-32 lg:pt-36">
+    <FadeLeft delay={200}>
+      <h2
+  className="
+    font-brand
+    mb-10 md:mb-12
+    text-[42px] md:text-[46px] lg:text-[52px]
 
-          <a href="/what-we-do">
-            <LuxuryButton>
-              Explore What We Do
-            </LuxuryButton>
-          </a>
-        </FadeLeft>
-      </div>
-    </div>
+    leading-[1.12]
+  "
+>
+
+        <span className="block font-medium text-white">
+          Driving Ideas Into
+        </span>
+        <span className="block font-medium text-[var(--brand-green-2)]">
+          Real Impact
+        </span>
+      </h2>
+
+      <LuxuryButton variant="white">
+        Explore What We Do
+      </LuxuryButton>
+    </FadeLeft>
+  </div>
+</div>
+
+
 
   </div>
 </section>

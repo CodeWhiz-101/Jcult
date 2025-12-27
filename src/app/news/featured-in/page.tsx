@@ -25,6 +25,7 @@ export default function InTheMedia() {
   const displayedItems = showMore
     ? currentYearData
     : currentYearData.slice(0, 5);
+    
 
   return (
     <div className="min-h-screen bg-white">

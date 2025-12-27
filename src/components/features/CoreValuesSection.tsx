@@ -34,11 +34,16 @@ export default function CoreValuesSection() {
   return (
     <section className="bg-primary text-white py-20 relative overflow-visible">
       {/* HERO SECTION */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 pl-0 pr-6 md:pr-10 lg:pr-14">
+
+
+
         
         {/* Left image */}
         <FadeLeft>
-          <div className="relative w-full h-[320px] md:h-[360px] -mt-32">
+          <div className="relative w-[94%] h-[360px] md:h-[400px] -mt-32">
+
+
           <img
             src="/images/ourculture2.jpg"
             alt="Team collaboration"
@@ -50,27 +55,29 @@ export default function CoreValuesSection() {
         {/* Right heading */}
         <FadeLeft delay={200}>
           <div className="font-brand ">
-          <h2
+         <h2
+  style={{ fontFamily: 'Raleway, sans-serif' }}
   className="
-    font-brand
-    text-[46px] md:text-[50px] lg:text-[56px]
+    font-medium
+    text-[48px] md:text-[52px] lg:text-[56px]
     leading-[1.12]
   "
 >
-  <span className="block font-semibold text)]">
+  <span className="block text-white">
     Led by
   </span>
-  <span className="block font-semibold text-[var(--brand-green-1)]">
+  <span className="block text-[var(--brand-green-1)]">
     Our Foundational Principles
   </span>
 </h2>
+
 
           </div>
         </FadeLeft>
       </div>
 
       {/* VALUES GRID */}
-      <div className="max-w-7xl mx-auto px-6 mt-12">
+      <div className="max-w-[92rem] mx-auto px-10 mt-12">
 
         {/* Top row: 3 columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-10">
@@ -79,7 +86,19 @@ export default function CoreValuesSection() {
               <div className="relative pr-6 border-l-1 border-white/20 pl-4">
                 {/* Vertical Divider */}
                 
-                <h4 className="text-2xl mb-4">{value.title}</h4>
+                <h4
+  style={{ fontFamily: 'Raleway, sans-serif' }}
+  className="
+    font-medium
+    text-[24px]
+    md:text-[26px]
+    lg:text-[28px]
+    leading-tight
+    mb-4
+  "
+>
+  {value.title}
+</h4>
                 <p className="text-button leading-relaxed text-white/90">{value.text}</p>
               </div>
             </FadeLeft>
