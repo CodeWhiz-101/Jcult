@@ -216,14 +216,21 @@ const tabs = [
                 {/* HEADER */}
                 <div className="flex items-center justify-between">
                   <h3
-                    className="font-brand text-[20px] text-white"
-                    style={{
-                      transform: isActiveItem ? 'translateX(4px)' : 'translateX(0)',
-                      transition: 'transform 300ms ease',
-                    }}
-                  >
-                    {col.title}
-                  </h3>
+  style={{
+    fontFamily: 'Raleway, sans-serif',
+    transform: isActiveItem ? 'translateX(4px)' : 'translateX(0)',
+    transition: 'transform 300ms ease',
+  }}
+  className="
+    font-medium
+    text-[24px] md:text-[26px] lg:text-[28px]
+    leading-[1.12]
+    text-white
+  "
+>
+  {col.title}
+</h3>
+
 
                   {/* CIRCLE ARROW */}
                   <div
