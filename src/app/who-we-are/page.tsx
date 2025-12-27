@@ -157,7 +157,7 @@ export default function WhoWeAre() {
       >
         <FadeLeft>
           <ImageReveal
-            src="/images/whoweare2.JPG"
+            src="/images/whoweare2.jpg"
             alt="Our team"
             className="
               w-full
