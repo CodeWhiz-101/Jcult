@@ -251,10 +251,22 @@ export default function WhatWeDo() {
                 <div className="relative px-0 md:px-6">
                 <div className="absolute top-0 left-0 h-full w-px bg-white/30 hidden md:block"></div>
                 <div className="absolute top-0 right-0 h-full w-px bg-white/30 hidden md:block"></div>
-                <h4 className="text-section-content font-brand text-white mb-4">
-                  World-Class Talent
-                </h4>
-                <p className="text-button text-white/90">
+                <h4
+  style={{ fontFamily: 'Raleway, sans-serif' }}
+  className="
+    font-medium
+    text-[24px]
+    md:text-[26px]
+    lg:text-[28px]
+    leading-tight
+    mb-4
+    text-white
+  "
+>
+  World-Class Talent
+</h4>
+
+                <p className="text-button leading-relaxed text-white/90">
                   By uniting experts from the worlds of finance and technology, we foster a culture of
                   unparalleled growth. Our collaborative environment and extensive resources empower our
                   people to achieve their full potential and drive innovation.
@@ -264,10 +276,22 @@ export default function WhatWeDo() {
               <FadeLeft delay={600}>
                 <div className="relative pr-0 md:pr-6">
                 <div className="absolute top-0 right-0 h-full w-px bg-white/30 hidden md:block"></div>
-                <h4 className="text-section-content font-brand text-white mb-4">
-                  Uncompromising Risk Standards
-                </h4>
-                <p className="text-button text-white/90">
+                <h4
+  style={{ fontFamily: 'Raleway, sans-serif' }}
+  className="
+    font-medium
+    text-[24px]
+    md:text-[26px]
+    lg:text-[28px]
+    leading-tight
+    mb-4
+    text-white
+  "
+>
+  Uncompromising Risk Standards
+</h4>
+
+                <p className="text-button leading-relaxed text-white/90">
                 Our approach to risk is disciplined and independent. With a reporting line directly to the
                 CEO, our specialized risk managers monitor performance drivers and maintain strict
                 tolerance levels. We utilize advanced technology for continuous tracking and real-time

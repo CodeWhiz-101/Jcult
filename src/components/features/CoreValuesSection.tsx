@@ -66,7 +66,8 @@ export default function CoreValuesSection() {
   <span className="block text-white">
     Led by
   </span>
-  <span className="block text-[var(--brand-green-1)]">
+  <span className="block font-medium text-[#65A08F]">
+
     Our Foundational Principles
   </span>
 </h2>

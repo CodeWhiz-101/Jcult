@@ -31,7 +31,7 @@ export default function Footer() {
               <a
                 key={link.label}
                 href={link.href}
-className="text-[15px] tracking-wide text-black/80 hover:text-primary transition-colors"
+className="text-[17px] tracking-wide text-black/80 hover:text-primary transition-colors"
               >
                 {link.label}
               </a>
@@ -44,7 +44,7 @@ className="text-[15px] tracking-wide text-black/80 hover:text-primary transition
           <div className="relative flex flex-col gap-6 lg:flex-row justify-between items-center">
 
             {/* Legal Links */}
-<div className="flex gap-6 text-[11.5px] tracking-wide text-black/70">
+<div className="flex gap-6 text-[13px] tracking-wide text-black/70">
               <a href="/privacy" className="hover:text-primary">Privacy</a>
               <a href="/terms-of-use" className="hover:text-primary">Terms</a>
               <a href="/notices" className="hover:text-primary">Notices</a>
@@ -52,8 +52,8 @@ className="text-[15px] tracking-wide text-black/80 hover:text-primary transition
             </div>
 
             {/* Copyright */}
-            <div className="text-[12px] text-black/60 whitespace-nowrap">
-              © 2024 JCULT. All rights reserved.
+            <div className="text-[13px] text-black/60 whitespace-nowrap">
+              Copyright ©️ 2025 JCULT TRADER - All Rights Reserved.
             </div>
 
             {/* Social Media Icons */}
