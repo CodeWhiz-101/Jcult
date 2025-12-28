@@ -42,12 +42,18 @@ export default function Accordion({ regions }: { regions: Region[] }) {
                 </h2>
 
                 <div
-                  className="
-                    p-3 border border-[var(--brand-green-1)] rounded-full
-                    transition
-                    group-hover:bg-[var(--brand-green-1)]
-                  "
-                >
+  className="
+    p-3 rounded-full
+    border border-[var(--brand-green-1)]
+    transition-all duration-300
+
+    group-hover:bg-gradient-to-r
+    group-hover:from-[var(--brand-green-1)]
+    group-hover:to-[var(--brand-green-2)]
+    group-hover:border-transparent
+  "
+>
+
                   {isOpen ? (
                     <IoRemove
                       size={20}
@@ -100,40 +106,97 @@ export default function Accordion({ regions }: { regions: Region[] }) {
                 </div>
 
                 {/* MIDDLE — DETAILS */}
-                <div className="col-span-4">
-                  <h3 className="text-[30px] font-brand text-[var(--brand-green-1)] mb-6">
-                    {region.cities[selectedCityIndex].name}
-                  </h3>
+               {/* ================= MIDDLE — DETAILS ================= */}
+<div className="col-span-4 space-y-12">
 
-                  <div className="mb-6">
-                    <p className="uppercase tracking-wide text-sm text-[var(--brand-green-1)] opacity-60">
-                      Location
-                    </p>
-                    {region.cities[selectedCityIndex].address.map((line, l) => (
-                      <p key={l} className="text-[var(--brand-green-1)] opacity-80">
-                        {line}
-                      </p>
-                    ))}
-                  </div>
+  {/* CITY NAME */}
+  <h3 className="
+    font-brand
+    text-[30px]
+    leading-tight
+    font-semibold
+    text-[var(--brand-green-1)]
+  ">
+    {region.cities[selectedCityIndex].name}
+  </h3>
 
-                  <div className="mb-6">
-                    <p className="uppercase tracking-wide text-sm text-[var(--brand-green-1)] opacity-60">
-                      Contact
-                    </p>
-                    <a
-                      href={`tel:${region.cities[selectedCityIndex].phone}`}
-                      className="text-[var(--brand-green-1)] underline"
-                    >
-                      {region.cities[selectedCityIndex].phone}
-                    </a>
-                  </div>
-                </div>
+  {/* LOCATION */}
+  <div className="space-y-3">
+    <p className="
+      text-[18px]
+      font-medium
+      text-[var(--brand-green-1)]
+    ">
+      Location
+    </p>
+
+    <div className="space-y-1">
+      {region.cities[selectedCityIndex].address.map((line, l) => (
+        <p
+          key={l}
+          className="
+            text-[16px]
+            leading-relaxed
+            text-[#6B7280]
+          "
+        >
+          {line}
+        </p>
+      ))}
+    </div>
+  </div>
+
+  {/* CONTACT */}
+  <div className="space-y-3">
+    <p className="
+      text-[18px]
+      font-medium
+      text-[var(--brand-green-1)]
+    ">
+      Contact
+    </p>
+
+<a
+  href={`tel:${region.cities[selectedCityIndex].phone}`}
+  className="
+    group
+    relative inline-block
+    leading-none
+    text-[16px]
+    font-medium
+    text-[#6B7280]
+    transition-colors duration-300
+    hover:text-[var(--brand-green-1)]
+  "
+>
+  {region.cities[selectedCityIndex].phone}
+
+  <span
+    className="
+      pointer-events-none
+      absolute left-0 -bottom-[4px]
+      block
+      h-[1px]
+      w-0
+      bg-[var(--brand-green-1)]
+      transition-all duration-300
+      group-hover:w-full
+    "
+  />
+</a>
+
+
+
+  </div>
+
+</div>
+
 
                 {/* RIGHT — IMAGE (SMALLER & CLEAN) */}
                 <div className="col-span-5 flex justify-end">
-                  <div className="relative w-[70%] aspect-[3/4] overflow-hidden rounded-md">
+<div className="relative w-[85%] aspect-[4/3] overflow-hidden rounded-md">
                     <Image
-                      src={region.cities[selectedCityIndex].image}
+                      src="/images/ourculture3.jpg"
                       alt="city"
                       fill
                       className="object-cover"

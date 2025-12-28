@@ -227,7 +227,8 @@ export default function LeadershipTeam() {
         <span className="block font-medium text-white">
           Driving Ideas Into
         </span>
-        <span className="block font-medium text-[var(--brand-green-2)]">
+        <span className="block font-medium text-[#65A08F]">
+
           Real Impact
         </span>
       </h2>

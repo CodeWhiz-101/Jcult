@@ -2,7 +2,7 @@
 
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import Hero from '@/components/features/Hero';
+import SubHero from '@/components/features/SubHero';
 import Accordion from '@/components/features/Accordion';
 import FadeUp from '@/components/animation/FadeUp';
 import FadeLeft from '@/components/animation/FadeLeft';
@@ -35,7 +35,7 @@ export default function WhoWeAre() {
       <main className="pt-[160px] md:pt-[180px]">
 
         {/* ================= HERO ================= */}
-        <Hero
+        <SubHero
           videoSrc="/videos/whoweare1.mp4"
           title="Who We Are"
           description="To empower our clients with expert financial guidance, innovative investment strategies, and transparent wealth management services that build lasting prosperity and financial security"

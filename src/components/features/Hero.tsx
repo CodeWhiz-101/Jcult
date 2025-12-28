@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface HeroProps {
   videoSrc?: string;
@@ -9,48 +10,62 @@ interface HeroProps {
   description: string;
 }
 
-export default function Hero({ videoSrc, imageSrc, title, description }: HeroProps) {
+export default function Hero({
+  videoSrc,
+  imageSrc,
+  title,
+  description,
+}: HeroProps) {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+
   const [loaded, setLoaded] = useState(false);
-const videoRef = useRef<HTMLVideoElement>(null);
-const [revealDone, setRevealDone] = useState(false);
-const [videoRevealed, setVideoRevealed] = useState(false);
-const [contentVisible, setContentVisible] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  /* ===============================
+     LOAD + PLAY VIDEO AFTER WIPE
+  =============================== */
   useEffect(() => {
-  setLoaded(true);
-
-  // wait for green wipe animation to finish
-  const timer = setTimeout(() => {
-    setRevealDone(true);
-    videoRef.current?.play();
-  }, 900); // MUST match animation duration
-
-  return () => clearTimeout(timer);
-}, []);
-
+    setLoaded(true);
+    const t = setTimeout(() => videoRef.current?.play(), 900);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
- <section className="
-  relative
-  h-[480px] md:h-[530px] lg:h-[680px] xl:h-[760px]
-  overflow-hidden
-  -mt-20        /* 🔥 removes white space above grey box */
-">
+   <section
+  className="
+    relative
+    h-[480px] md:h-[530px] lg:h-[680px] xl:h-[760px]
+  "
+  style={{
+    paddingTop: isHome ? 'var(--page-top-offset)' : '0px',
+  }}
+>
 
-  {/* Background Grey */}
-  {/* Background Video */}
+      {/* ================= VIDEO ================= */}
 <div
   className="
-    absolute top-0 left-0 w-full
-    ml-7 md:ml-10 lg:ml-12 xl:ml-14
+    absolute
+    top-0 left-0 right-0
+    bottom-[66px] md:bottom-[96px] lg:bottom-[126px] xl:bottom-[136px]
     overflow-hidden
   "
-  style={{ height: '680px' }}
 >
+        
+   <div className="absolute inset-0 ml-7 md:ml-10 lg:ml-12 xl:ml-14">
+
+  {/* ✅ GREEN FALLBACK BEHIND VIDEO */}
+  <div
+    className="absolute inset-0 z-0"
+    style={{ background: 'var(--brand-green-gradient)' }}
+  />
+
   {/* VIDEO */}
   {videoSrc && (
     <video
       ref={videoRef}
-      className="w-full h-full object-cover"
+      className="relative z-10 w-full h-full object-cover"
+      style={{ objectPosition: 'center top' }}
       src={videoSrc}
       muted
       loop
@@ -59,115 +74,93 @@ const [contentVisible, setContentVisible] = useState(false);
     />
   )}
 
-  {/* GREEN WIPE OVERLAY */}
-  <div
-    className={`
-      absolute inset-0 z-20
-      origin-left
-      transition-transform duration-[650ms]
-      ease-[cubic-bezier(.22,.61,.36,1)]
-      ${loaded ? 'scale-x-0' : 'scale-x-100'}
-    `}
-    style={{
-      background: 'var(--brand-green-gradient)',
-    }}
-  />
+  {/* GREEN WIPE */}
+<div
+  className={`
+    absolute inset-0 z-20 origin-left
+    transition-transform
+    duration-[500ms]
+    ease-[cubic-bezier(0.0,0.0,0.2,1)]
+    ${loaded ? 'scale-x-0' : 'scale-x-100'}
+  `}
+  style={{ background: 'var(--brand-green-gradient)' }}
+/>
 
-  {/* DARK OVERLAY (optional, cinematic) */}
-  <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+
+  {/* DARK OVERLAY */}
+  <div className="absolute inset-0 z-30 bg-black/20" />
 </div>
 
+      </div>
 
-
-  {/* TITLE — CITADEL-LOCKED POSITION */}
-  <div
-    className="
-      absolute
-      top-[68px] md:top-[76px] lg:top-[108px] xl:top-[116px]
-      left-0 z-20
-      ml-20 md:ml-23 lg:ml-25 xl:ml-27
-      max-w-[300px] md:max-w-[480px] lg:max-w-[580px]
-    "
-  >
-    <h1
-      className={`
-        text-white
-        font-brand
-        font-medium
-        tracking-[-0.02em]
-        text-hero-title
-        leading-[1.08] md:leading-[1.1] lg:leading-[1.05]
-        drop-shadow-lg
-        transition-all duration-[1000ms]
-        ease-[cubic-bezier(.22,.61,.36,1)]
-        ${loaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'}
-      `}
-    >
-      {title}
-    </h1>
-  </div>
-
-  {/* GREEN / GRADIENT TEXT BOX */}
- {/* GREEN / GRADIENT TEXT BOX */}
-<div
-  className="
-    absolute
-    bottom-6 md:bottom-10 lg:bottom-14 xl:bottom-20
-    left-0 right-0 z-10
-    ml-7 md:ml-10 lg:ml-12 xl:ml-14
-    mr-9 md:mr-13 lg:mr-17
-      /* ✅ Citadel grey */
-  "
->
-
-    <div
-      className="
-        relative
-        pt-16 md:pt-18 lg:pt-20
-        pb-4 md:pb-6 lg:pb-8
-        overflow-hidden
-      "
-    >
+      {/* ================= TITLE ================= */}
       <div
-        className={`
-          absolute inset-0 origin-left
-          transition-transform duration-[900ms]
-          ease-[cubic-bezier(.22,.61,.36,1)]
-          ${loaded ? 'scale-x-100' : 'scale-x-0'}
-        `}
-        style={{
-          background: 'var(--brand-green-gradient)',
-          opacity: 0.75,
-          backdropFilter: 'blur(14px)',
-          WebkitBackdropFilter: 'blur(14px)',
-          boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
-        }}
-      />
+        className="
+          absolute z-30
+          top-[68px] md:top-[76px] lg:top-[108px] xl:top-[116px]
+          left-0
+          -mt-18
+          ml-20 md:ml-23 lg:ml-25 xl:ml-27
+          max-w-[580px]
+        "
+      >
+        <h1
+          className={`
+            text-white font-brand font-medium
+            tracking-[-0.02em]
+            text-hero-title
+            leading-[1.08]
+            drop-shadow-lg
+            transition-all duration-[1000ms]
+            ease-[cubic-bezier(.22,.61,.36,1)]
+            ${loaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'}
+          `}
+        >
+          {title}
+        </h1>
+      </div>
 
-      <div className="container-responsive relative z-10 h-full flex items-center">
-       <p
+      {/* ================= GREEN BOX ================= */}
+      <div
+        className="
+          absolute z-30
+          bottom-6 md:bottom-10 lg:bottom-14 xl:bottom-20
+          left-0 right-0
+          ml-7 md:ml-10 lg:ml-12 xl:ml-14
+          mr-9 md:mr-13 lg:mr-17
+         -translate-y-10 md:-translate-y-12 lg:-translate-y-14
+        "
+      >
+        <div className="relative py-10 md:py-12 lg:py-14 overflow-hidden">
+          <div
+            className={`
+              absolute inset-0 origin-left
+              transition-transform duration-[900ms]
+              ease-[cubic-bezier(.22,.61,.36,1)]
+              ${loaded ? 'scale-x-100' : 'scale-x-0'}
+            `}
+            style={{
+              background: 'var(--brand-green-gradient)',
+              opacity: 0.75,
+              backdropFilter: 'blur(14px)',
+            }}
+          />
+
+          <div
   className={`
-    font-ttcommons font-normal
-    text-white
-    max-w-[620px]
-text-[16.5px] md:text-[17.5px] lg:text-[19.5px]
-    leading-relaxed
-    translate-y-[-18px]
-    -ml-1 md:-ml-2 lg:-ml-3
-    transition-opacity duration-700
-    delay-[900ms]
+    container-responsive relative z-10
+    transition-opacity duration-[600ms]
+    delay-[950ms]
     ${loaded ? 'opacity-100' : 'opacity-0'}
   `}
-  style={{ fontFamily: 'TT Commons, sans-serif' }}
 >
+  <p className="font-ttcommons text-white max-w-[620px] text-[16.5px] md:text-[17.5px] lg:text-[19.5px] leading-relaxed">
+    {description}
+  </p>
+</div>
 
-          {description}
-        </p>
+        </div>
       </div>
-    </div>
-  </div>
-
-</section>
-
+    </section>
   );
 }

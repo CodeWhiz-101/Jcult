@@ -219,18 +219,23 @@ export default function InTheMedia() {
 
                   {/* RIGHT ARROW */}
                   <div
-                    className="
-                      flex items-center justify-center
-                      w-10 h-10
-                      rounded-full
-                      border
-                      transition-all duration-300
-                      text-[var(--brand-green-1)]
-                      border-[var(--brand-green-1)]
-                      group-hover:bg-[var(--brand-green-1)]
-                      group-hover:text-white
-                    "
-                  >
+  className="
+    flex items-center justify-center
+    w-10 h-10
+    rounded-full
+    border
+    border-[var(--brand-green-2)]
+    text-[var(--brand-green-2)]
+    transition-all duration-300
+
+    group-hover:bg-gradient-to-r
+    group-hover:from-[var(--brand-green-1)]
+    group-hover:to-[var(--brand-green-2)]
+    group-hover:border-transparent
+    group-hover:text-white
+  "
+>
+
                     <ArrowRight
                       strokeWidth={1.25}
                       className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5"

@@ -276,7 +276,7 @@ function AnimatedGreenSection() {
 
   <span
     className="block font-medium"
-    style={{ color: '#187049' }}
+    style={{ color: '#65A08F' }}
   >
     Future of Finance
   </span>

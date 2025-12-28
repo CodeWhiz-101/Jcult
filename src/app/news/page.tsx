@@ -104,11 +104,11 @@ useEffect(() => {
       leading-[1.1]
     "
   >
-    <span className="block font-semibold text-[var(--brand-green-1)]">
+    <span className="block font-medium text-[var(--brand-green-1)]">
       Latest
     </span>
 
-    <span className="block font-semibold text-[var(--brand-green-2)]">
+    <span className="block font-medium text-[var(--brand-green-2)]">
       Updates
     </span>
   </h2>
@@ -214,18 +214,23 @@ useEffect(() => {
 
       {/* RIGHT ARROW */}
       <div
-        className="
-          flex items-center justify-center
-          w-10 h-10
-          rounded-full
-          border
-          transition-all duration-300
-          text-[var(--brand-green-2)]
-          border-[var(--brand-green-2)]
-          group-hover:bg-[var(--brand-green-2)]
-          group-hover:text-white
-        "
-      >
+  className="
+    flex items-center justify-center
+    w-10 h-10
+    rounded-full
+    border
+    border-[var(--brand-green-2)]
+    text-[var(--brand-green-2)]
+    transition-all duration-300
+
+    group-hover:bg-gradient-to-r
+    group-hover:from-[var(--brand-green-1)]
+    group-hover:to-[var(--brand-green-2)]
+    group-hover:border-transparent
+    group-hover:text-white
+  "
+>
+
         <ArrowRight
           strokeWidth={1.25}
           className="

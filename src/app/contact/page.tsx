@@ -73,24 +73,71 @@ export default function Contact() {
   <div className="space-y-14">
 
 
-            <div>
-              <p className="uppercase tracking-wide text-[13px] text-[#8A8F93] mb-3">
-                General Inquiries
-              </p>
-              <p className="text-[20px] font-medium text-[var(--brand-green-1)]">
-                jculttrader.inquiry@gmail.com
-              </p>
-            </div>
+          <div>
+  <h3
+    className="
+      mb-4
+      font-brand
+      font-semibold
+      text-[22px] md:text-[24px]
+      text-[var(--brand-green-1)]
+    "
+  >
+    General Inquiries
+  </h3>
+
+  <a
+    href="mailto:jculttrader.inquiry@gmail.com"
+    className="
+    relative
+    inline-block
+    font-medium
+    text-[18px]
+    text-[#8A8F93]
+    group
+  "
+
+  >
+    jculttrader.inquiry@gmail.com
+
+    <span
+      className="
+        absolute
+        left-0
+        -bottom-[3px]
+        h-[1px]
+        w-0
+        bg-[var(--brand-green-1)]
+        transition-all
+        duration-300
+        group-hover:w-full
+      "
+    />
+  </a>
+</div>
+
+
+
 
             <div>
-              <p className="uppercase tracking-wide text-[13px] text-[#8A8F93] mb-3">
-                Office Address
-              </p>
-              <p className="text-[17px] leading-[1.7] text-[var(--brand-green-1)]">
+              <h3
+  className="
+    mb-4
+    font-brand
+    font-semibold
+    text-[22px] md:text-[24px]
+    text-[var(--brand-green-1)]
+  "
+>
+  Office Address
+</h3>
+
+              <p className="text-[17px] leading-[1.7] text-[#8A8F93]">
+
                 DSO-IFZA, IFZA Properties<br />
                 Dubai Silicon Oasis<br />
                 Dubai, Dubayy (AE-DU)<br />
-                United Arab Emirates
+                UAE
               </p>
             </div>
 
@@ -102,7 +149,7 @@ export default function Contact() {
       <FadeLeft delay={200}>
         <div className="border border-black/10 p-12">
 
-          <h2 className="font-brand text-[28px] mb-2 text-[var(--brand-green-1)]">
+          <h2 className="font-brand font-semibold text-[28px] mb-2 text-[var(--brand-green-1)]">
             Send a Message
           </h2>
 

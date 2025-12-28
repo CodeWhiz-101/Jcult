@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import FadeUp from '@/components/animation/FadeUp';
 import ImageReveal from '@/components/animation/ImageReveal';
 import LuxuryButton from '@/components/ui/LuxuryButton';
-import Hero from '@/components/features/Hero';
+import SubHero from '@/components/features/SubHero';
 import Link from 'next/link';
 
 
@@ -20,7 +20,7 @@ export default function Career() {
 
         
         
- <Hero 
+ <SubHero 
   videoSrc="/videos/career1.mp4"
   title="Career"
   description="Join our team of exceptional professionals and shape the future of finance. We offer challenging opportunities and a culture of excellence."

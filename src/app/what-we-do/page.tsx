@@ -1,7 +1,7 @@
 'use client';
 
 import LuxuryButton from '@/components/ui/LuxuryButton';
-import Hero from '@/components/features/Hero';
+import SubHero from '@/components/features/SubHero';
 import FadeLeft from '@/components/animation/FadeLeft';
 import FadeUp from '@/components/animation/FadeUp';
 import BorderReveal from '@/components/animation/BorderReveal';
@@ -20,7 +20,7 @@ export default function WhatWeDo() {
       <main className="pt-[160px] md:pt-[180px]">
 
         {/* Hero Section with Image */}
-        <Hero 
+        <SubHero 
            videoSrc="/videos/whatwedo1.mp4"
           title="Capitalizing on Market Potential"
           description="Guided by a perspective that sees beyond the obvious, we illuminate opportunities hidden
