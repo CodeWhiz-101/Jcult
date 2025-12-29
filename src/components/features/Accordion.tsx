@@ -29,7 +29,7 @@ export default function Accordion({ regions }: { regions: Region[] }) {
           const isOpen = openIndex === i;
 
           return (
-            <div key={i} className="border-b border-black/10 pb-6">
+            <div key={i} className="border-b border-[var(--brand-green-1)] pb-6">
 
               {/* ================= HEADER ================= */}
               <div
@@ -41,30 +41,42 @@ export default function Accordion({ regions }: { regions: Region[] }) {
                   {region.title}
                 </h2>
 
-                <div
+              <div
   className="
     p-3 rounded-full
-    border border-[var(--brand-green-1)]
+    border
     transition-all duration-300
+
+    border-[var(--brand-green-1)]
+    bg-transparent
 
     group-hover:bg-gradient-to-r
     group-hover:from-[var(--brand-green-1)]
     group-hover:to-[var(--brand-green-2)]
-    group-hover:border-transparent
+    group-hover:border-white
   "
 >
 
-                  {isOpen ? (
-                    <IoRemove
-                      size={20}
-                      className="text-[var(--brand-green-1)] group-hover:text-white"
-                    />
-                  ) : (
-                    <IoAdd
-                      size={20}
-                      className="text-[var(--brand-green-1)] group-hover:text-white"
-                    />
-                  )}
+               {isOpen ? (
+  <IoRemove
+    size={20}
+    className="
+      text-[var(--brand-green-1)]
+      transition-colors duration-300
+      group-hover:text-white
+    "
+  />
+) : (
+  <IoAdd
+    size={20}
+    className="
+      text-[var(--brand-green-1)]
+      transition-colors duration-300
+      group-hover:text-white
+    "
+  />
+)}
+
                 </div>
               </div>
 

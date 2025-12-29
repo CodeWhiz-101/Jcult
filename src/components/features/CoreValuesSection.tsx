@@ -84,25 +84,43 @@ export default function CoreValuesSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-10">
           {valuesTop.map((value, i) => (
             <FadeLeft key={i} delay={i * 200}>
-              <div className="relative pr-6 border-l-1 border-white/20 pl-4">
-                {/* Vertical Divider */}
-                
-                <h4
-  style={{ fontFamily: 'Raleway, sans-serif' }}
-  className="
-    font-medium
-    text-[24px]
-    md:text-[26px]
-    lg:text-[28px]
-    leading-tight
-    mb-4
-  "
->
-  {value.title}
-</h4>
-                <p className="text-button leading-relaxed text-white/90">{value.text}</p>
-              </div>
-            </FadeLeft>
+  <div className="relative pr-6 pl-6">
+
+    {/* FIXED HEIGHT VERTICAL DIVIDER */}
+    <div
+      className="
+        absolute
+        left-0
+        top-2
+        w-px
+        bg-white/20
+
+        h-[210px]
+        md:h-[230px]
+        lg:h-[250px]
+      "
+    />
+
+    <h4
+      style={{ fontFamily: 'Raleway, sans-serif' }}
+      className="
+        font-medium
+        text-[24px]
+        md:text-[26px]
+        lg:text-[28px]
+        leading-tight
+        mb-4
+      "
+    >
+      {value.title}
+    </h4>
+
+    <p className="text-button leading-relaxed text-white/90">
+      {value.text}
+    </p>
+  </div>
+</FadeLeft>
+
           ))}
         </div>
 

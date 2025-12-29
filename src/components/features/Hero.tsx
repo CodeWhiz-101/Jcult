@@ -90,7 +90,7 @@ export default function Hero({
           {/* GREEN WIPE (2️⃣) */}
           <div
             className="
-              absolute inset-0 z-20
+              absolute inset-0 z-40
               will-change-[clip-path]
               transition-[clip-path]
               duration-[700ms]
