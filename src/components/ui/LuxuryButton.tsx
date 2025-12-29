@@ -1,20 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, ButtonHTMLAttributes } from 'react';
 
-interface LuxuryButtonProps {
-  children: React.ReactNode;
-  onClick?: () => void;
+interface LuxuryButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'white' | 'gold' | 'outline';
-  className?: string;
 }
+
 
 export default function LuxuryButton({
   children,
-  onClick,
   variant = 'primary',
   className = '',
+  ...props
 }: LuxuryButtonProps) {
+
   const [hovered, setHovered] = useState(false);
 
   const baseStyle: React.CSSProperties = {
@@ -73,13 +73,14 @@ white: {
   };
 
   return (
-    <button
-      onClick={onClick}
-      style={stylesByVariant[variant]}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className={className}
-    >
+   <button
+  {...props}
+  style={stylesByVariant[variant]}
+  onMouseEnter={() => setHovered(true)}
+  onMouseLeave={() => setHovered(false)}
+  className={className}
+>
+
       {children}
     </button>
   );
