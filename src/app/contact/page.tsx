@@ -3,6 +3,13 @@
 import { useEffect, useState } from 'react';
 import FadeLeft from '@/components/animation/FadeLeft';
 import FadeUp from '@/components/animation/FadeUp';
+import {
+  Linkedin,
+  Twitter,
+  Youtube,
+  Facebook,
+  Instagram,
+} from 'lucide-react';
 
 export default function Contact() {
   const [reveal, setReveal] = useState(false);
@@ -64,86 +71,126 @@ export default function Contact() {
     <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-20 items-start">
 
       {/* ================= LEFT — CONTACT PANEL ================= */}
-      <FadeUp>
-      <div className="relative pl-12">
+    <FadeUp>
+  <div className="relative pl-12">
 
-  {/* Vertical divider — LEFT SIDE */}
-  <div className="absolute top-0 left-0 h-full w-px bg-black/10 hidden lg:block" />
+    {/* VERTICAL DIVIDER — FULL HEIGHT */}
+    <div className="absolute top-0 left-0 bottom-0 w-px bg-black/10 hidden lg:block" />
 
-  <div className="space-y-14">
+    <div className="space-y-16">
 
+      {/* ================= GENERAL INQUIRIES ================= */}
+      <div>
+        <h3
+          className="
+            mb-4
+            font-brand
+            font-semibold
+            text-[22px] md:text-[24px]
+            text-[var(--brand-green-1)]
+          "
+        >
+          General Inquiries
+        </h3>
 
-          <div>
-  <h3
-    className="
-      mb-4
-      font-brand
-      font-semibold
-      text-[22px] md:text-[24px]
-      text-[var(--brand-green-1)]
-    "
-  >
-    General Inquiries
-  </h3>
+        <a
+          href="mailto:jculttrader.inquiry@gmail.com"
+          className="
+            relative
+            inline-block
+            font-medium
+            text-[18px]
+            text-[#8A8F93]
+            group
+          "
+        >
+          jculttrader.inquiry@gmail.com
 
-  <a
-    href="mailto:jculttrader.inquiry@gmail.com"
-    className="
-    relative
-    inline-block
-    font-medium
-    text-[18px]
-    text-[#8A8F93]
-    group
-  "
-
-  >
-    jculttrader.inquiry@gmail.com
-
-    <span
+         <span
       className="
-        absolute
-        left-0
-        -bottom-[3px]
-        h-[1px]
-        w-0
-        bg-[var(--brand-green-1)]
-        transition-all
-        duration-300
-        group-hover:w-full
-      "
+      pointer-events-none
+      absolute left-0 -bottom-[4px]
+      block
+      h-[1px]
+      w-0
+      bg-[var(--brand-green-1)]
+      transition-all duration-300
+      group-hover:w-full
+    "
     />
-  </a>
-</div>
+        </a>
+      </div>
 
+      {/* ================= OFFICE ADDRESS ================= */}
+      <div>
+        <h3
+          className="
+            mb-4
+            font-brand
+            font-semibold
+            text-[22px] md:text-[24px]
+            text-[var(--brand-green-1)]
+          "
+        >
+          Office Address
+        </h3>
 
+        <p className="text-[17px] leading-[1.7] text-[#8A8F93]">
+          DSO-IFZA, IFZA Properties<br />
+          Dubai Silicon Oasis<br />
+          Dubai, Dubayy (AE-DU)<br />
+          UAE
+        </p>
+      </div>
 
+      {/* ================= CONNECT WITH US ================= */}
+      <div >
+        <h3
+          className="
+            mb-6
+            font-brand
+            font-semibold
+            text-[22px] md:text-[24px]
+            text-[var(--brand-green-1)]
+          "
+        >
+          Connect With Us
+        </h3>
 
-            <div>
-              <h3
-  className="
-    mb-4
-    font-brand
-    font-semibold
-    text-[22px] md:text-[24px]
-    text-[var(--brand-green-1)]
-  "
->
-  Office Address
-</h3>
+        <div >
 
-              <p className="text-[17px] leading-[1.7] text-[#8A8F93]">
+          <a className="flex items-center gap-3 text-[17px] text-[#8A8F93] hover:text-[var(--brand-green-1)] transition">
+            <Linkedin size={18} />
+            <span>linkedin.com/company/yourcompany</span>
+          </a>
 
-                DSO-IFZA, IFZA Properties<br />
-                Dubai Silicon Oasis<br />
-                Dubai, Dubayy (AE-DU)<br />
-                UAE
-              </p>
-            </div>
+          <a className="flex items-center gap-3 text-[17px] text-[#8A8F93] hover:text-[var(--brand-green-1)] transition">
+            <Twitter size={18} />
+            <span>twitter.com/yourhandle</span>
+          </a>
 
-          </div>
+          <a className="flex items-center gap-3 text-[17px] text-[#8A8F93] hover:text-[var(--brand-green-1)] transition">
+            <Youtube size={18} />
+            <span>youtube.com/@yourchannel</span>
+          </a>
+
+          <a className="flex items-center gap-3 text-[17px] text-[#8A8F93] hover:text-[var(--brand-green-1)] transition">
+            <Facebook size={18} />
+            <span>facebook.com/yourpage</span>
+          </a>
+
+          <a className="flex items-center gap-3 text-[17px] text-[#8A8F93] hover:text-[var(--brand-green-1)] transition">
+            <Instagram size={18} />
+            <span>instagram.com/yourhandle</span>
+          </a>
+
         </div>
-      </FadeUp>
+      </div>
+
+    </div>
+  </div>
+</FadeUp>
+
 
       {/* ================= RIGHT — FORM ================= */}
       <FadeLeft delay={200}>

@@ -56,11 +56,11 @@ export default function WhoWeAre() {
     leading-[1.1]
   "
 >
-  <span className="block font-semibold text-[var(--brand-green-1)]">
+  <span className="block font-medium text-[var(--brand-green-1)]">
     Pursuing Edge.
   </span>
 
-  <span className="block font-semibold text-[var(--brand-green-2)]">
+  <span className="block font-medium text-[var(--brand-green-2)]">
     Rewriting Markets.
   </span>
 </h2>
@@ -104,11 +104,11 @@ export default function WhoWeAre() {
     leading-[1.1]
   "
 >
-  <span className="block font-semibold text-[var(--brand-green-1)]">
+  <span className="block font-medium text-[var(--brand-green-1)]">
     Bound by Culture.
   </span>
 
-  <span className="block font-semibold text-[var(--brand-green-2)]">
+  <span className="block font-medium text-[var(--brand-green-2)]">
     Driven by Purpose.
   </span>
 </h2>
@@ -179,10 +179,10 @@ export default function WhoWeAre() {
               leading-[1.1]
             "
           >
-            <span className="block font-semibold text-[var(--brand-green-1)]">
+            <span className="block font-medium text-[var(--brand-green-1)]">
               Rise.
             </span>
-            <span className="block font-semibold text-[var(--brand-green-2)]">
+            <span className="block font-medium text-[var(--brand-green-2)]">
               Lead. Elevate.
             </span>
           </h2>
@@ -227,11 +227,11 @@ export default function WhoWeAre() {
     leading-[1.1]
   "
 >
-  <span className="block font-semibold text-[var(--brand-green-1)]">
+  <span className="block font-medium text-[var(--brand-green-1)]">
     Work Across
   </span>
 
-  <span className="block font-semibold text-[var(--brand-green-2)]">
+  <span className="block font-medium text-[var(--brand-green-2)]">
     Global Cities.
   </span>
 </h2>

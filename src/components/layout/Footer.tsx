@@ -105,15 +105,16 @@ className="text-[17px] tracking-wide text-black/80 hover:text-primary transition
       href="#"
       aria-label={item.label}
       className="
-        w-10 h-10
-        flex items-center justify-center
-        rounded-full
-        border border-black/30
-        text-black/80
-        hover:text-primary
-        hover:border-primary
-        transition-all duration-300
-      "
+  w-10 h-10
+  flex items-center justify-center
+  rounded-full
+  border border-[var(--brand-green-1)]
+  text-black/80
+  hover:text-primary
+  hover:border-primary
+  transition-all duration-300
+"
+
     >
       {item.svg}
     </a>

@@ -135,7 +135,12 @@ export default function Stats({ stats, title, className = "" }: StatsProps) {
     `}
     style={{ transitionDelay: `${600 + index * 200}ms` }}
   >
-    {stat.description}
+    {stat.description.split('\n').map((line, i) => (
+  <span key={i} className="block">
+    {line}
+  </span>
+))}
+
   </p>
 </div>
 

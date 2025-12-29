@@ -48,10 +48,10 @@ function AnimatedTalentSection() {
         >
           {/* LEFT TITLE */}
       <div
-    className={`
-      transition-transform duration-[900ms]
-      ease-[cubic-bezier(.22,.61,.36,1)]
-      ${isVisible ? 'translate-x-0' : '-translate-x-[120%]'}
+    className={`transition-all
+duration-[1000ms]
+ease-[cubic-bezier(.22,.61,.36,1)]
+${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-24'}
     `}
   >
 
@@ -179,9 +179,10 @@ function AnimatedMeritocraticSection() {
           <div className="flex-1 mb-4 md:mb-6 lg:mb-0 overflow-hidden">
   <div
     className={`
-      transition-transform duration-[900ms]
-      ease-[cubic-bezier(.22,.61,.36,1)]
-      ${isVisible ? 'translate-x-0' : '-translate-x-[120%]'}
+     transition-all
+duration-[1000ms]
+ease-[cubic-bezier(.22,.61,.36,1)]
+${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-24'}
     `}
   >
     <h2
@@ -493,15 +494,15 @@ talented individuals to execute their boldest, highest-conviction ideas with pre
     stats={[
       {
         number: "2025",
-        description: "Year founded by Jeyanandh Dhivaharan Founder & CEO"
+        description: "Year founded by \n Jeyanandh Dhivaharan\n Founder & CEO"
       },
       {
         number: "$10M",
-        description: "Focused on reaching $10M in Assets Under Management by 2026",
+        description: "Focused on reaching $10M \nin Assets Under Management\nby 2026",
       },
       {
         number: "1000+",
-        description: "Building Trust with a Growing Base of 1,000+ Investors"
+        description: "Building Trust with\n a Growing Base of 1,000+ Investors"
       }
     ]}
   />
@@ -517,15 +518,15 @@ talented individuals to execute their boldest, highest-conviction ideas with pre
             stats={[
               {
                 number: "60%+",
-                description: "Professionals with cross-market trading exposure",
+                description: "Professionals with\n cross-market trading exposure",
               },
               {
                 number: "15+",
-                description: "Years of Collective Expertise The combined market proficiency of our founding team, refined into a contemporary investment approach.",
+                description: "Years of Collective Expertise\nThe combined market proficiency of \nour founding team,\n refined into a contemporary investment approach.",
               },
               {
                 number: "100%",
-                description: "Capital Commitment Our conviction is unequivocal — the founding partners invest alongside the portfolio, fully aligned with its performance.",
+                description: "Capital Commitment Our conviction\n is unequivocal — the founding partners \ninvest alongside the portfolio,\n fully aligned with its performance.",
               }
             ]}
             />

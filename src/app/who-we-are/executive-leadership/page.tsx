@@ -140,58 +140,99 @@ export default function LeadershipTeam() {
 
         {/* ================= LEADER ================= */}
         <section className="py-12 md:py-16 lg:py-24">
-          <div className="container-responsive">
+        <div className="container-responsive">
 
-            <FadeLeft>
-             <h2
-  className="
-    font-brand
-    text-center
-    mb-12 md:mb-16
-    text-[46px] md:text-[50px] lg:text-[56px]
-    leading-[1.1]
-  "
->
-  <span className="font-medium text-[var(--brand-green-1)]">
-    Our
-  </span>{' '}
-  <span className="font-medium text-[var(--brand-green-2)]">
-    Leader
-  </span>
-</h2>
+  {/* SECTION TITLE */}
+  <FadeLeft>
+    <h2
+      className="
+        font-brand
+        text-center
+        mb-10 md:mb-14
+        text-[44px] md:text-[48px] lg:text-[52px]
+        leading-[1.1]
+        tracking-[-0.015em]
+      "
+    >
+      <span className="font-medium text-[var(--brand-green-1)]">
+        Our
+      </span>{' '}
+      <span className="font-medium text-[var(--brand-green-2)]">
+        Leader
+      </span>
+    </h2>
+  </FadeLeft>
 
+  {/* LEADER CARD */}
+<FadeLeft delay={200}>
+  <div className="flex justify-center items-stretch gap-10 md:gap-14">
 
-            </FadeLeft>
+    {/* LEFT VERTICAL LINE */}
+    <div className="hidden md:block w-px bg-black/20" />
 
-            <FadeLeft delay={200}>
-              <div className="flex justify-center">
-                <div className="group max-w-[360px] text-center">
+    {/* LEADER CARD */}
+    <div className="group text-center px-6">
 
-                  <div className="w-full aspect-[4/5] overflow-hidden mb-6">
-                    <img
-                      src={leader.image}
-                      alt={leader.name}
-                      className="
-                        w-full h-full object-cover
-                        transition-transform duration-500
-                        group-hover:scale-[1.05]
-                      "
-                    />
-                  </div>
+      {/* IMAGE */}
+      <div
+        className="
+          w-[300px] md:w-[320px]
+          aspect-[4/5]
+          overflow-hidden
+          mb-6
+          mx-auto
+          transition-transform duration-700
+          ease-[cubic-bezier(.22,.61,.36,1)]
+          group-hover:scale-[0.98]
+        "
+      >
+        <img
+          src={leader.image}
+          alt={leader.name}
+          className="
+            w-full h-full object-cover
+            transition-transform duration-700
+            ease-[cubic-bezier(.22,.61,.36,1)]
+            group-hover:scale-[1.06]
+          "
+        />
+      </div>
 
-                  <h3 className="text-section-content font-brand text-primary mb-1">
-                    {leader.name}
-                  </h3>
+      {/* NAME */}
+      <h3
+        className="
+          font-brand
+          font-medium
+          text-[20px] md:text-[21px]
+          text-[#0B3E27]
+          mb-1
+          tracking-[-0.01em]
+        "
+      >
+        {leader.name}
+      </h3>
 
-                  <p className="text-button text-grey tracking-wide">
-                    {leader.title}
-                  </p>
+      {/* TITLE */}
+      <p
+        className="
+          font-ttcommons
+          text-[17px] md:text-[18px]
+          text-[#68717A]
+          leading-[1.4]
+        "
+      >
+        {leader.title}
+      </p>
+    </div>
 
-                </div>
-              </div>
-            </FadeLeft>
+    {/* RIGHT VERTICAL LINE */}
+    <div className="hidden md:block w-px bg-black/20" />
 
-          </div>
+  </div>
+</FadeLeft>
+
+</div>
+
         </section>
 {/* ================= CTA ================= */}
 <section className="bg-primary relative">

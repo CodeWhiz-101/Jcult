@@ -185,25 +185,87 @@ useEffect(() => {
 
               </div>
 
-              <div className="flex-1 md:pl-16">
-                <FadeLeft delay={200}>
-                  <p className="text-section-content color-grey mb-2">
-                    United Arab Emirates
-                  </p>
-                  <p className="text-section-content color-grey mb-2">
-                    Dubai
-                  </p>
-                  <p className="text-section-content color-grey mb-2 leading-[30px]">
-                    DSO-IFZA, IFZA Properties <br />
-                    Dubai Silicon Oasis <br />
-                    Dubai, Dubayy (AE-DU) <br />
-                    UAE
-                  </p>
-                  <p className="text-section-content color-grey">
-                    jculttrader.inquiry@gmail.com
-                  </p>
-                </FadeLeft>
-              </div>
+             <div className="flex-1 md:pl-16">
+  <FadeLeft delay={200}>
+
+    {/* LOCATION LABEL */}
+    <p
+      className="
+        text-[18px]
+        font-medium
+        text-[var(--brand-green-1)]
+        mb-3
+      "
+    >
+      Location
+    </p>
+
+    {/* ADDRESS LINES */}
+    <div className="space-y-4">
+
+  {/* ADDRESS */}
+  <p
+    className="
+      text-[16px]
+      leading-relaxed
+      text-[#6B7280]
+    "
+  >
+    DSO–IFZA, IFZA Properties<br />
+    Dubai Silicon Oasis<br />
+    Dubai, Dubayy (AE-DU)
+    UAE
+  </p>
+
+</div>
+
+
+    {/* EMAIL */}
+    <div className="mt-6">
+      <p
+        className="
+          text-[18px]
+          font-medium
+          text-[var(--brand-green-1)]
+          mb-2
+        "
+      >
+        Contact
+      </p>
+
+      <a
+    href="mailto:jculttrader.inquiry@gmail.com"
+    className="
+    group
+    relative inline-block
+    leading-none
+    text-[16px]
+    font-medium
+    text-[#6B7280]
+    transition-colors duration-300
+    hover:text-[var(--brand-green-1)]
+  "
+  >
+    jculttrader.inquiry@gmail.com
+
+    <span
+      className="
+      pointer-events-none
+      absolute left-0 -bottom-[4px]
+      block
+      h-[1px]
+      w-0
+      bg-[var(--brand-green-1)]
+      transition-all duration-300
+      group-hover:w-full
+    "
+    />
+  </a>
+    </div>
+
+  </FadeLeft>
+</div>
+
 
             </div>
           </div>
