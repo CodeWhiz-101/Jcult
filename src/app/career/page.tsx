@@ -69,7 +69,7 @@ export default function Career() {
   <span
     className="
       block
-      font-semibold
+      font-medium
       text-[var(--brand-green-1)]
       text-[44px] md:text-[50px] lg:text-[54px]
     "

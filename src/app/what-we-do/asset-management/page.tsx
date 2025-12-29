@@ -130,7 +130,7 @@ useEffect(() => {
     {/* IMAGE — FULL BLEED LEFT */}
     <div className="md:w-1/2">
       <img
-        src="/images/assetmanagement1.JPG"
+        src="/images/assetmanagement1.jpg"
         alt="Join our team"
         className="w-full h-64 md:h-80 lg:h-96 object-cover"
       />
@@ -149,11 +149,11 @@ useEffect(() => {
       leading-[1.1]
     "
   >
-    <span className="block font-semibold text-[var(--brand-green-1)]">
+    <span className="block font-medium text-[var(--brand-green-1)]">
       Pursuing Edge.
     </span>
 
-    <span className="block font-semibold text-[var(--brand-green-2)]">
+    <span className="block font-medium text-[var(--brand-green-2)]">
       Rewriting Markets.
     </span>
   </h2>

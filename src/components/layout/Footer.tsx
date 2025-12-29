@@ -53,7 +53,7 @@ className="text-[17px] tracking-wide text-black/80 hover:text-primary transition
 
             {/* Copyright */}
             <div className="text-[13px] text-black/60 whitespace-nowrap">
-              Copyright ©️ 2025 JCULT TRADER - All Rights Reserved.
+              Copyright ©️ 2026 JCULT TRADER - All Rights Reserved.
             </div>
 
             {/* Social Media Icons */}
