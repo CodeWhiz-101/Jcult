@@ -3,19 +3,27 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { newsArticles } from '@/data/newsData';
+import { useRef } from 'react';
+
 
 import PageBreadcrumb from '@/components/ui/PageBreadcrumb';
 
 export default function InTheMedia() {
-  const [selectedYear, setSelectedYear] = useState('2025');
+  const [selectedYear, setSelectedYear] = useState('2026');
   const [showMore, setShowMore] = useState(false);
   const [reveal, setReveal] = useState(false);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
 
   useEffect(() => {
     requestAnimationFrame(() => setReveal(true));
   }, []);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+const dropdownRef = useRef<HTMLDivElement>(null);
+
 
   const newsDataByYear: Record<string, typeof newsArticles> = {
+    '2026':newsArticles,
     '2025': newsArticles,
     '2024': [],
     '2023': [],
@@ -100,40 +108,85 @@ export default function InTheMedia() {
         </span>
 
         {/* YEAR DROPDOWN */}
-        <div className="relative">
-          <select
-            value={selectedYear}
-            onChange={(e) => {
-              setSelectedYear(e.target.value);
-              setShowMore(false);
-            }}
-            className="
-              appearance-none
-              bg-transparent
-              pr-8
-              cursor-pointer
-              font-medium
-              text-[18px] md:text-[20px]
-              text-[var(--brand-green-1)]
-              focus:outline-none
-            "
-          >
-            <option value="2026">2025</option>
-            <option value="2025">2026</option>
-          { /* <option value="2024">2024</option>
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>*/}
-          </select>
+        {/* YEAR DROPDOWN */}
+<div
+  ref={dropdownRef}
+  className="relative"
+  onMouseEnter={() => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setDropdownOpen(true);
+  }}
+  onMouseLeave={() => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setDropdownOpen(false);
+    }, 180); // <-- small delay (sweet spot)
+  }}
+>
 
-          <ChevronDown
-            className="
-              absolute right-0 top-1/2 -translate-y-1/2
-              h-5 w-5
-              text-[var(--brand-green-1)]
-              pointer-events-none
-            "
-          />
-        </div>
+
+  <button
+    onClick={() => setDropdownOpen(!dropdownOpen)}
+    className="
+      flex items-center gap-2
+      font-medium
+      text-[18px] md:text-[20px]
+      text-[var(--brand-green-1)]
+      focus:outline-none
+    "
+  >
+    {selectedYear}
+    <ChevronDown
+      className={`
+        w-5 h-5
+        transition-transform duration-300
+        ${dropdownOpen ? 'rotate-180' : ''}
+      `}
+    />
+  </button>
+
+  {dropdownOpen && (
+    <div
+      className="
+        absolute
+        top-[140%]
+        left-0
+        z-30
+        w-[140px]
+        bg-white
+        shadow-[0_20px_40px_rgba(0,0,0,0.08)]
+        border border-black/5
+        py-3
+      "
+    >
+      {['2026','2025'].map((year) => (
+        <button
+          key={year}
+          onClick={() => {
+            setSelectedYear(year);
+            setShowMore(false);
+            setDropdownOpen(false);
+          }}
+          className="
+            block w-full
+            px-6 py-3
+            text-left
+            text-[22px]
+            font-medium
+            text-[var(--brand-green-1)]
+            hover:bg-black/[0.03]
+            transition
+          "
+        >
+          {year}
+        </button>
+      ))}
+    </div>
+  )}
+</div>
+
       </div>
     </div>
   </div>
