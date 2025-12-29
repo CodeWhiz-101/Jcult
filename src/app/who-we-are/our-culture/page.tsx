@@ -34,8 +34,8 @@ useEffect(() => {
 <section className="relative mb-32 overflow-visible">
   <div className="relative bg-primary ml-6 md:ml-10 lg:ml-14">
 
-    <div className="relative h-[610px] md:h-[690px] lg:h-[730px]">
-      <div className="container-responsive h-full">
+    <div className="relative h-[568px] md:h-[648px] lg:h-[688px]">
+     <div className="container-responsive h-full">
         <div className="flex h-full">
 
           {/* LEFT CONTENT */}
@@ -79,7 +79,7 @@ useEffect(() => {
   <div className="flex-1" />
 
   {/* BOTTOM-PINNED TEXT */}
-  <p className="max-w-md text-[20px] leading-[1.55] text-white/95">
+  <p className="max-w-md text-[20px] leading-[1.55] text-white/95 mb-3">
     Powered by our most impactful ideas, we’re always pushing toward what’s next.
   </p>
 </div>
