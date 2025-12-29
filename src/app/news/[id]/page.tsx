@@ -62,17 +62,16 @@ export default function NewsArticlePage() {
                 )}
               </div>
 
-             <h1 className="text-section-title text-[var(--brand-green-1)]">
-  {article.title.split(' ').slice(0, -1).join(' ')}{' '}
-  <span
-    style={{
-      fontVariantNumeric: 'tabular-nums',
-      letterSpacing: '0.04em',
-    }}
-  >
-    {article.title.split(' ').slice(-1)}
-  </span>
-</h1>
+            <div className="transform-none">
+  <h1 className="text-section-title text-[var(--brand-green-1)]">
+    {article.title.split(' ').slice(0, -1).join(' ')}{' '}
+    <span className="code-straight">
+
+      {article.title.split(' ').slice(-1)}
+    </span>
+  </h1>
+</div>
+
 
 
 

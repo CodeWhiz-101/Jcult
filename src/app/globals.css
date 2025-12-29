@@ -655,3 +655,12 @@ body {
 .hover\:bg-secondary:hover {
   background-color: #165018;
 }
+
+/* === FORCE CLEAN RENDERING FOR IDS / CODES === */
+.code-straight {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}

@@ -22,7 +22,7 @@ export const newsArticles: NewsArticle[] = [
   category: "Press Release",
   title: "LEI RECORD ISSUED 984500HBB6D87BEFC121",
   date: "September 18, 2025",
-  source: "Bloomberg",
+  source: "LEI WORLDWIDE",
   excerpt:
     "LEI record issued and registered under LEI Worldwide for standardized legal entity identification.",
   externalLink:
