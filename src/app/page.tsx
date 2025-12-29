@@ -43,7 +43,8 @@ function AnimatedTalentSection() {
           className="
             flex flex-col lg:flex-row items-start
             mb-10 md:mb-20 lg:mb-14 xl:mb-28
-            gap-30 lg:gap-55   /* 👈 THIS CONTROLS GAP BETWEEN LEFT & RIGHT (increase/decrease here) */
+            gap-8 md:gap-16 lg:gap-55
+   /* 👈 THIS CONTROLS GAP BETWEEN LEFT & RIGHT (increase/decrease here) */
           "
         >
           {/* LEFT TITLE */}

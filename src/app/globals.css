@@ -93,8 +93,9 @@
 }
 
 .animate-header-reveal {
-  animation: headerRevealUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: header-reveal 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
 :root {
   /* Solid brand green (text, borders, buttons) */
   --brand-green: #1B5E20;
