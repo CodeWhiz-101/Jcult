@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 import { Search } from 'lucide-react';
 import PageBreadcrumb from '@/components/ui/PageBreadcrumb';
 
@@ -15,6 +16,12 @@ export default function CareersPage() {
     role: true,
     location: true,
   });
+/* ================= HERO ANIMATION STATE ================= */
+const [reveal, setReveal] = useState(false);
+
+useEffect(() => {
+  requestAnimationFrame(() => setReveal(true));
+}, []);
 
   const [selectedExperience, setSelectedExperience] = useState<string[]>([]);
   const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
@@ -74,21 +81,32 @@ export default function CareersPage() {
                                </div>
                        
                                {/* TITLE */}
-                               <h1
-                                 style={{
-                                   fontFamily: 'Raleway, sans-serif',
-                                   fontWeight: 500,
-                                   fontSize: '60px',          // ⬅ slightly bigger
-                                   lineHeight: '1.1',         // ⬅ tighter
-                                   letterSpacing: '-0.018em',
-                                   maxWidth: '860px',
-                                   color: '#ffffff',
-                                   WebkitFontSmoothing: 'antialiased',
-                                   MozOsxFontSmoothing: 'grayscale',
-                                 }}
-                               >
-                                 Open Oppurtunities
-                               </h1>
+                               {/* TITLE — LOAD REVEAL */}
+<div style={{ overflow: 'hidden' }}>
+  <h1
+    style={{
+      fontFamily: 'Raleway, sans-serif',
+      fontWeight: 500,
+      fontSize: '60px',
+      lineHeight: '1.1',
+      letterSpacing: '-0.018em',
+      maxWidth: '860px',
+      color: '#ffffff',
+      WebkitFontSmoothing: 'antialiased',
+      MozOsxFontSmoothing: 'grayscale',
+
+      transform: reveal
+        ? 'translateX(0)'
+        : 'translateX(-120%)',
+      opacity: reveal ? 1 : 0,
+      transition:
+        'transform 900ms cubic-bezier(0.22,1,0.36,1), opacity 600ms ease',
+    }}
+  >
+    Open Oppurtunities
+  </h1>
+</div>
+
                        
                              </div>
                            </div>
