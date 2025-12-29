@@ -17,25 +17,24 @@ export interface NewsArticle {
 }
 
 export const newsArticles: NewsArticle[] = [
-  {
-    id: "lorem-ipsum-dolor-sit-amet",
-    category: "Press Release",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    date: "Jan 15, 2024",
-    source: "Bloomberg",
-    excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    sections: [
-      {
-        subtitle: "Introduction to Our Vision",
-        mediaType: "image",
-        mediaUrl: "/images/office.webp",
-        paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-      },
-      {
-        paragraph: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      }
-    ]
-  },
+ {
+  id: "lei-record-issued-984500hbb6d87befc121",
+  category: "Press Release",
+  title: "LEI RECORD ISSUED 984500HBB6D87BEFC121",
+  date: "September 18, 2025",
+  source: "Bloomberg",
+  excerpt:
+    "LEI record issued and registered under LEI Worldwide for standardized legal entity identification.",
+  externalLink:
+    "https://leiworldwide.com/lei_record/984500HBB6D87BEFC121",
+  sections: [
+    {
+      paragraph:
+        "The Legal Entity Identifier (LEI) record has been officially issued and published by LEI Worldwide. This identifier enables transparent and standardized identification of legal entities participating in global financial transactions.",
+    }
+  ]
+}
+,
   // {
   //   id: "sed-do-eiusmod-tempor",
   //   category: "Company News",

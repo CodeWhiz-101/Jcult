@@ -13,6 +13,8 @@ export default function News() {
   ====================================================== */
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [pageBlur, setPageBlur] = useState(false);
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,7 +49,8 @@ export default function News() {
   ====================================================== */
   return (
     <div className="min-h-screen bg-main">
-      <Header />
+      <Header setPageBlur={setPageBlur} />
+
 
       <main className="pt-20">
 
@@ -231,30 +234,33 @@ export default function News() {
                         </div>
                       </div>
 
-                      {/* RIGHT ARROW */}
-                      <div
-                        className="
-                          flex items-center justify-center
-                          w-10 h-10
-                          rounded-full
-                          border
-                          border-[var(--brand-green-1)]
-                          text-[var(--brand-green-1)]
-                          transition-all duration-300
-                          group-hover:border-transparent
-                          group-hover:text-white
-                          group-hover:bg-[linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))]
-                        "
-                      >
-                        <ArrowRight
-                          strokeWidth={1.25}
-                          className="
-                            w-5 h-5
-                            transition-transform duration-300
-                            group-hover:translate-x-0.5
-                          "
-                        />
-                      </div>
+                      {/* ARROW — FIXED VERSION */}
+<div
+  className="
+    p-3 rounded-full
+    border
+    transition-all duration-300
+
+    border-[var(--brand-green-1)]
+    bg-transparent
+
+    group-hover:bg-gradient-to-r
+    group-hover:from-[var(--brand-green-1)]
+    group-hover:to-[var(--brand-green-2)]
+    group-hover:border-white
+  "
+>
+  <ArrowRight
+    strokeWidth={1.25}
+    className="
+      w-5 h-5
+      text-[var(--brand-green-1)]
+      transition-all duration-300
+      group-hover:text-white
+      group-hover:translate-x-0.5
+    "
+  />
+</div>
                     </a>
                   ))}
 
@@ -267,7 +273,7 @@ export default function News() {
 
       </main>
 
-      <Footer />
+    
     </div>
   );
 }

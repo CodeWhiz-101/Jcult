@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Raleway } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import ClientShell from "../components/layout/ClientShell";
 
 const ttCommons = Inter({
   variable: "--font-tt-commons",
@@ -23,17 +22,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
         className={`${ttCommons.variable} ${raleway.variable} antialiased`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <ClientShell>{children}</ClientShell>
       </body>
     </html>
   );

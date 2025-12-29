@@ -134,31 +134,34 @@ export default function NewsSection({ title, description, items }: NewsSectionPr
                   </div>
 
                   {/* ARROW — FINAL CORRECT VERSION */}
-                  <div
-                    className="
-                      flex items-center justify-center
-                      w-10 h-10 rounded-full
-                      border border-[var(--brand-green-1)]
-                      text-[var(--brand-green-1)]
-                      bg-none
-                      transition-all duration-300
+                  {/* ARROW — FIXED VERSION */}
+<div
+  className="
+    p-3 rounded-full
+    border
+    transition-all duration-300
 
-                      group-hover:bg-gradient-to-r
-                      group-hover:from-[var(--brand-green-1)]
-                      group-hover:to-[var(--brand-green-2)]
-                      group-hover:border-transparent
-                      group-hover:text-white
-                    "
-                  >
-                    <ArrowRight
-                      strokeWidth={1.25}
-                      className="
-                        w-5 h-5
-                        transition-transform duration-300
-                        group-hover:translate-x-0.5
-                      "
-                    />
-                  </div>
+    border-[var(--brand-green-1)]
+    bg-transparent
+
+    group-hover:bg-gradient-to-r
+    group-hover:from-[var(--brand-green-1)]
+    group-hover:to-[var(--brand-green-2)]
+    group-hover:border-white
+  "
+>
+  <ArrowRight
+    strokeWidth={1.25}
+    className="
+      w-5 h-5
+      text-[var(--brand-green-1)]
+      transition-all duration-300
+      group-hover:text-white
+      group-hover:translate-x-0.5
+    "
+  />
+</div>
+
                 </a>
               ))}
             </div>

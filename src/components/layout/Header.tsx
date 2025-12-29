@@ -8,7 +8,11 @@ import { useRef } from 'react';
 import LuxuryButton from '@/components/ui/LuxuryButton';
 
 
-export default function Header() {
+export default function Header({
+  setPageBlur,
+}: {
+  setPageBlur: (v: boolean) => void;
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const [mobileExpandedTabs, setMobileExpandedTabs] = useState<string[]>([]);
@@ -21,6 +25,8 @@ const [dropdownKey, setDropdownKey] = useState(0);
 const disclaimerRef = useRef<HTMLDivElement>(null);
 const [disclaimerHeight, setDisclaimerHeight] = useState(0);
 const hasAnimatedRef = useRef(false);
+   const shouldBlurPage = isDropdownVisible && !!hoveredTab;
+
 const primaryBaseStyle: React.CSSProperties = {
   padding: '0.7rem 1.4rem',
   fontSize: '1rem',
@@ -33,7 +39,10 @@ const primaryBaseStyle: React.CSSProperties = {
   color: '#FFFFFF',
   background: 'linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))',
 };
-
+const closeDropdown = () => {
+  setHoveredTab(null);
+  setIsDropdownVisible(false);
+};
   const pathname = usePathname();
   const isHome = pathname === '/';
 useEffect(() => {
@@ -43,14 +52,15 @@ useEffect(() => {
     setDisclaimerHeight(0);
   }
 }, [isHome]);
-
+useEffect(() => {
+  setPageBlur(isDropdownVisible && !!hoveredTab);
+}, [isDropdownVisible, hoveredTab, setPageBlur]);
 useEffect(() => {
   document.documentElement.style.setProperty(
     '--disclaimer-offset',
     isHome ? `${disclaimerHeight}px` : '0px'
   );
 }, [isHome, disclaimerHeight]);
-
 
   const HEADER_HEIGHT = 120;useEffect(() => {
   /* ===============================
@@ -230,6 +240,8 @@ className="
     setIsDropdownVisible(true);
     setDropdownKey(prev => prev + 1);
   }}
+    onClick={closeDropdown}
+
 >
   {label}
 
@@ -307,25 +319,14 @@ className="
         </div>
       </div>
 
-      {/* OVERLAY (behind dropdown) */}
-      {hoveredTab && (
-        <div
-          className="hidden lg:block fixed inset-0 bg-transparent"
-
-          style={{
-top: `${disclaimerHeight + HEADER_HEIGHT}px`,
-  zIndex: 50
-}}
-
-        />
-      )}
+    
 
       {/* DESKTOP DROPDOWN */}
       {/* DESKTOP DROPDOWN */}
 {isDropdownVisible && hoveredTab  && (
   <div
   
-  className="hidden lg:block fixed left-0 right-0 z-[60]"
+  className="hidden lg:block fixed left-0 right-0 z-[180]"
   style={{
     backgroundColor: '#F4F4F4',
     top: isVisible
@@ -377,6 +378,10 @@ top: `${disclaimerHeight + HEADER_HEIGHT}px`,
     e.currentTarget.style.boxShadow =
       'inset 0 0 0 0 transparent';
   }}
+
+  onClick={closeDropdown}
+
+
 >
   Learn More
 </Link>
@@ -562,11 +567,15 @@ top: `${disclaimerHeight + HEADER_HEIGHT}px`,
   </span>
 </Link>
 
+{/* PAGE BLUR OVERLAY */}
+
 
           </div>
         </div>
       )}
     </header>
+
+
    </div>
     </>
   );

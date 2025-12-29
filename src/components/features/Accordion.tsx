@@ -29,7 +29,7 @@ export default function Accordion({ regions }: { regions: Region[] }) {
           const isOpen = openIndex === i;
 
           return (
-            <div key={i} className="border-b border-[var(--brand-green-1)] pb-6">
+            <div key={i} className="border-b border-black/20 pb-6">
 
               {/* ================= HEADER ================= */}
               <div

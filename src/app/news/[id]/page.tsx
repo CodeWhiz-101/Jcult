@@ -62,9 +62,19 @@ export default function NewsArticlePage() {
                 )}
               </div>
 
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-lora  text-green-700 mb-4 leading-tight">
-                {article.title}
-              </h1>
+             <h1 className="text-section-title text-[var(--brand-green-1)]">
+  {article.title.split(' ').slice(0, -1).join(' ')}{' '}
+  <span
+    style={{
+      fontVariantNumeric: 'tabular-nums',
+      letterSpacing: '0.04em',
+    }}
+  >
+    {article.title.split(' ').slice(-1)}
+  </span>
+</h1>
+
+
 
               <p className="text-sm font-raleway text-secondary mb-8">
                 {article.date}
