@@ -163,12 +163,17 @@ borderBottom:
       >
       <div className="grid grid-cols-[auto_1fr_auto] items-center h-full">
           {/* LOGO */}
-         <div
-  className={`flex-1 flex items-center ${
-    hasLoaded ? 'animate-header-reveal' : 'opacity-0'
-  }`}
-  style={{ animationDelay: '0ms' }}
+        <div
+  className="flex-1 flex items-center"
+  style={{
+    opacity: hasLoaded ? 1 : 0,
+    transform: hasLoaded ? 'translateY(0)' : 'translateY(36px)',
+    transition:
+      'opacity 1.4s cubic-bezier(0.16,1,0.3,1), transform 1.4s cubic-bezier(0.16,1,0.3,1)',
+    transitionDelay: '0ms',
+  }}
 >
+
             <Link href="/" aria-label="Home">
               <Image
                 src="/Final Logos/Transparent/Base Logo/Primary/Transparent Primary.svg"
@@ -182,11 +187,16 @@ borderBottom:
 
           {/* DESKTOP CENTER NAV */}
 <nav
-  className={`hidden lg:flex flex-1 justify-center pl-7 lg:pl-10 ${
-    hasLoaded ? 'animate-header-reveal' : 'opacity-0'
-  }`}
-  style={{ animationDelay: '120ms' }}
+  className="hidden lg:flex flex-1 justify-center pl-7 lg:pl-10"
+  style={{
+    opacity: hasLoaded ? 1 : 0,
+    transform: hasLoaded ? 'translateY(0)' : 'translateY(36px)',
+    transition:
+      'opacity 1.4s cubic-bezier(0.16,1,0.3,1), transform 1.4s cubic-bezier(0.16,1,0.3,1)',
+    transitionDelay: '160ms',
+  }}
 >
+
           <ul className="flex items-center space-x-6">
               {navItems.map((label) => {
                 const href = linkFor(label);
@@ -246,12 +256,17 @@ className="
           </nav>
 
           {/* CONTACT US BUTTON */}
-          <div
-  className={`flex-1 flex justify-end ${
-    hasLoaded ? 'animate-header-reveal' : 'opacity-0'
-  }`}
-  style={{ animationDelay: '240ms' }}
+   <div
+  className="flex-1 flex justify-end"
+  style={{
+    opacity: hasLoaded ? 1 : 0,
+    transform: hasLoaded ? 'translateY(0)' : 'translateY(36px)',
+    transition:
+      'opacity 1.4s cubic-bezier(0.16,1,0.3,1), transform 1.4s cubic-bezier(0.16,1,0.3,1)',
+    transitionDelay: '320ms',
+  }}
 >
+
 <Link href="/contact" className="no-underline">
   <LuxuryButton variant="primary">
     Contact Us
