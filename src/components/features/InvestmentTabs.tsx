@@ -138,30 +138,51 @@ const tabs = [
       ====================================================== */}
       <div className="container-responsive pt-16 md:pt-20 pb-20 md:pb-24">
         <div className="flex justify-center">
-          <div className="flex gap-3 overflow-x-auto px-1">
-            {tabs.map((tab, i) => {
-              const isActive = i === active;
+          <div className="flex justify-center">
+  <div className="flex gap-4">
 
-              return (
-                <LuxuryButton
-                  key={tab.label}
-                  variant="white"
-                  onClick={() => {
-                    setActive(i);
-                    setHoveredIndex(null);
-                  }}
-                  className={`
-                    min-w-[160px]
-                    h-[56px]
-                    text-sm
-                    ${isActive ? '' : 'opacity-80'}
-                  `}
-                >
-                  {tab.label}
-                </LuxuryButton>
-              );
-            })}
-          </div>
+    {tabs.map((tab, i) => {
+      const isActive = active === i;
+
+      return (
+        <button
+          key={tab.label}
+          onClick={() => {
+            setActive(i);
+            setHoveredIndex(null);
+          }}
+          className={`
+            w-[190px]
+            h-[56px]
+
+            flex items-center justify-center
+
+            text-[15px]
+            font-medium
+            transition-all duration-200
+
+            ${
+              isActive
+                ? `
+                  bg-[var(--brand-green-2)]
+                  text-white
+                `
+                : `
+                  bg-white
+                  text-[var(--brand-green-1)]
+                  hover:bg-[#E6F2EC]
+                `
+            }
+          `}
+        >
+          {tab.label}
+        </button>
+      );
+    })}
+
+  </div>
+</div>
+
         </div>
       </div>
 
