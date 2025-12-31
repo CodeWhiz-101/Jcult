@@ -34,7 +34,8 @@ export default function CoreValuesSection() {
   return (
     <section className="bg-primary text-white py-20 relative overflow-visible">
       {/* HERO SECTION */}
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 pl-0 pr-6 md:pr-10 lg:pr-14">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 px-6 md:pl-0 md:pr-10 lg:pr-14
+ md:pr-10 lg:pr-14">
 
 
 
@@ -81,25 +82,39 @@ export default function CoreValuesSection() {
       <div className="max-w-[92rem] mx-auto px-10 mt-12">
 
         {/* Top row: 3 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-10 items-stretch">
           {valuesTop.map((value, i) => (
-            <FadeLeft key={i} delay={i * 200}>
-  <div className="relative pr-6 pl-6">
+           <FadeLeft key={i} delay={i * 200}>
+  <div className="relative pr-6 pl-6 h-full flex flex-col">
+
 
     {/* FIXED HEIGHT VERTICAL DIVIDER */}
-    <div
-      className="
-        absolute
-        left-0
-        top-2
-        w-px
-        bg-white/20
+    {/* MOBILE DIVIDER — follows text */}
+<div
+  className="
+    absolute
+    left-0
+    top-2
+    bottom-0
+    w-px
+    bg-white/20
+    md:hidden
+  "
+/>
 
-        h-[210px]
-        md:h-[230px]
-        lg:h-[250px]
-      "
-    />
+{/* DESKTOP DIVIDER — equal height columns */}
+<div
+  className="
+    absolute
+    left-0
+    top-0
+    h-full
+    w-px
+    bg-white/20
+    hidden md:block
+  "
+/>
+
 
     <h4
       style={{ fontFamily: 'Raleway, sans-serif' }}

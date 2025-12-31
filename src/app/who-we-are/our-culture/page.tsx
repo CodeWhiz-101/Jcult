@@ -31,15 +31,17 @@ useEffect(() => {
       <main className="pt-20">
 
 {/* ================= HERO ================= */}
-<section className="relative mb-32 overflow-visible">
+<section className="relative mb-12 md:mb-32 overflow-visible">
   <div className="relative bg-primary ml-6 md:ml-10 lg:ml-14">
 
-    <div className="relative h-[568px] md:h-[648px] lg:h-[688px]">
+    <div className="relative h-auto md:h-[648px] lg:h-[688px]">
+
      <div className="container-responsive h-full">
         <div className="flex h-full">
 
           {/* LEFT CONTENT */}
-<div className="relative z-20 max-w-xl text-white pt-24 pb-20 flex flex-col h-full">
+<div className="relative z-20 max-w-xl text-white pt-24 pb-4 md:pb-20 flex flex-col md:h-full">
+
 
   {/* TOP GROUP */}
   <div>
@@ -53,30 +55,46 @@ useEffect(() => {
     <div
       ref={sectionRef}
       className={`
-        mt-6
-        transition-all
-        duration-[1000ms]
-        ease-[cubic-bezier(.22,.61,.36,1)]
+       mt-6 mb-10 md:mb-8
+    transition-all
+    duration-[1000ms]
+    ease-[cubic-bezier(.22,.61,.36,1)]
         ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-24'}
       `}
     >
-      <h1
-        style={{
-          fontFamily: 'Raleway, sans-serif',
-          fontWeight: 500,
-          fontSize: '68px',
-          lineHeight: '1.1',
-          letterSpacing: '-0.018em',
-          color: '#ffffff',
-        }}
-      >
-        Our Culture
-      </h1>
+      {/* MOBILE TITLE */}
+<h1
+  className="
+    block md:hidden
+    font-brand font-medium
+    text-[46px]
+    leading-[1.12]
+    tracking-[-0.015em]
+    text-white
+  "
+>
+  Our Culture
+</h1>
+
+{/* DESKTOP TITLE */}
+<h1
+  className="
+    hidden md:block
+    font-brand font-medium
+    text-[68px]
+    leading-[1.1]
+    tracking-[-0.018em]
+    text-white
+  "
+>
+  Our Culture
+</h1>
+
     </div>
   </div>
 
   {/* THIS IS THE IMPORTANT LINE */}
-  <div className="flex-1" />
+  <div className="hidden md:block flex-1" />
 
   {/* BOTTOM-PINNED TEXT */}
   <p className="max-w-md text-[20px] leading-[1.55] text-white/95 mb-3">
@@ -121,7 +139,9 @@ useEffect(() => {
       <img
         src="/images/ourculture1.jpg"
         alt="Our Culture"
-        className="w-full h-[280px] object-cover"
+        className="w-full h-[220px] md:h-[280px]
+ object-cover object-top
+"
       />
     </div>
 
@@ -135,7 +155,7 @@ useEffect(() => {
         {/* ================= INSIGHT SECTION ================= */}
         <section className="py-6 md:py-8 lg:py-16 mb-16">
           <div className="container-responsive">
-            <div className="flex flex-col md:flex-row items-start">
+            <div className="flex flex-col md:flex-row items-start gap-4 md:gap-0">
 
               <div className="flex-1 mb-4 md:mb-6 lg:mb-0">
                 <FadeLeft>
@@ -159,18 +179,20 @@ useEffect(() => {
 
               <div className="flex-1 md:pl-8 lg:pl-16 space-y-4 md:space-y-6">
                 <FadeLeft delay={200}>
-                  <p className="text-section-content color-grey leading-[28px]">
+                  <p className="text-section-content color-grey leading-[24px] md:leading-[28px]">
                     From the moment you arrive, your thinking has influence. You are invited to share your
                     ideas openly, and your contribution is valued regardless of your position or experience.
                   </p>
 
-                  <p className="text-section-content color-grey leading-[28px]">
+                 <p className="text-section-content color-grey leading-[24px] md:leading-[28px]">
+
                     We encourage one another to look beyond what is familiar and to search for the next
                     breakthrough. A wide range of viewpoints strengthens our creativity and sharpens our
                     position in the industry.
                   </p>
 
-                  <p className="text-section-content color-grey leading-[28px]">
+                 <p className="text-section-content color-grey leading-[24px] md:leading-[28px]">
+
                     We explore ideas through open dialogue, strengthening them through challenge and
                     improvement, always aiming to exceed prior achievements.
                   </p>
@@ -185,18 +207,19 @@ useEffect(() => {
         <CoreValuesSection />
 
         {/* ================= HQ SECTION ================= */}
-        <section className="py-6 md:py-8 lg:py-16 container-responsive">
+        <section className="mt-12 pt-4 pb-8 md:mt-0 md:py-8 lg:py-16 container-responsive">
           <div className="flex flex-col md:flex-row items-start">
 
             <div className="flex-1 mb-6 md:mb-0">
               <FadeLeft>
-                <h2
+               <h2
   className="
     font-brand
-    text-[46px] md:text-[50px] lg:text-[56px]
-    leading-[1.12]
+    text-[36px] md:text-[50px] lg:text-[56px]
+    leading-[1.15] md:leading-[1.12]
   "
 >
+
   <span className="block font-medium text-[var(--brand-green-1)]">
     A Headquarters Built
   </span>
