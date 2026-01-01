@@ -206,7 +206,7 @@ export default function Accordion({ regions }: { regions: Region[] }) {
 
                 {/* RIGHT — IMAGE (SMALLER & CLEAN) */}
                 <div className="col-span-5 flex justify-end">
-<div className="relative w-[85%] aspect-[4/3] overflow-hidden rounded-md">
+<div className="relative w-[85%] aspect-[4/3] overflow-hidden ">
                     <Image
                       src="/images/ourculture3.jpg"
                       alt="city"
