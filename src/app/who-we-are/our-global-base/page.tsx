@@ -104,49 +104,63 @@ useEffect(() => {
 
 
 
+{/* ================= OVERVIEW ================= */}
+<section className="relative z-0">
 
-        {/* ================= OVERVIEW ================= */}
-        <section className="bg-tertiary pt-10 md:pt-14 lg:pt-18 pb-2 md:pb-3 -mt-12 md:-mt-20 lg:-mt-28">
+  {/* MOBILE GREY BACKDROP — sits behind hero */}
+  <div className="absolute inset-x-0 top-[-64px] h-[64px] bg-tertiary md:hidden" />
 
+  {/* ACTUAL OVERVIEW CONTENT */}
+  <div
+    className="
+      relative
+      z-10
+      bg-tertiary
+      pt-4 md:pt-14 lg:pt-18
 
-          <div className="container-responsive pt-6 md:pt-8 lg:pt-10">
+      pb-2 md:pb-3
+      md:-mt-20 lg:-mt-28
+    "
+  >
+    <div className="container-responsive pt-6 md:pt-8 lg:pt-10">
+      <div className="flex flex-col md:flex-row items-start">
 
-            <div className="flex flex-col md:flex-row items-start">
+        {/* LEFT — TITLE */}
+        <div className="flex-1 mb-6 md:mb-0">
+          <FadeLeft>
+            <h2
+              className="
+                font-brand
+                mb-8
+                text-[48px] md:text-[54px] lg:text-[60px]
+                leading-[1.18]
+              "
+            >
+              <span className="block font-medium text-[var(--brand-green-1)]">
+                Explore Our
+              </span>
+              <span className="block font-medium text-[var(--brand-green-2)]">
+                Headquarters
+              </span>
+            </h2>
+          </FadeLeft>
+        </div>
 
-              <div className="flex-1 mb-6 md:mb-0">
-                <FadeLeft>
-  <h2
-  className="
-    font-brand
-    mb-8
-    text-[48px] md:text-[54px] lg:text-[60px]
-    leading-[1.18]
-  "
->
+        {/* RIGHT — COPY */}
+        <div className="flex-1 md:pl-16">
+          <FadeLeft delay={200}>
+            <p className="text-section-content color-grey leading-[30px]">
+              Our firm is rooted in a city defined by opportunity, culture,
+              and momentum, making it an outstanding place to build a career.
+            </p>
+          </FadeLeft>
+        </div>
 
-    <span className="block font-medium text-[var(--brand-green-1)]">
-      Explore Our
-    </span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <span className="block font-medium text-[var(--brand-green-2)]">
-      Headquarters
-    </span>
-  </h2>
-</FadeLeft>
-              </div>
-
-              <div className="flex-1 md:pl-16">
-                <FadeLeft delay={200}>
-                  <p className="text-section-content color-grey leading-[30px]">
-                    Our firm is rooted in a city defined by opportunity, culture, and momentum,
-                    making it an outstanding place to build a career.
-                  </p>
-                </FadeLeft>
-              </div>
-
-            </div>
-          </div>
-        </section>
 
         {/* ================= MAP ================= */}
         <section className="py-6 md:py-8 lg:py-16 bg-tertiary">

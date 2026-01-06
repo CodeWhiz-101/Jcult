@@ -82,61 +82,62 @@ export default function LeadershipTeam() {
         {/* ================= OVERVIEW ================= */}
 
 
-        {/* ================= OVERVIEW ================= */}
-        <section
-  className="
-    relative
-    z-0
-    -mt-20 md:-mt-28 lg:-mt-36
-    min-h-[50vh]
-    flex items-center
-    bg-tertiary
-  "
->
+       {/* ================= OVERVIEW ================= */}
+<section className="relative z-0">
 
+  {/* MOBILE GREY BACKDROP — sits BEHIND hero */}
+  <div className="absolute inset-x-0 top-[-120px] h-[120px] bg-tertiary md:hidden" />
 
+  {/* ACTUAL OVERVIEW CONTENT */}
+  <div
+    className="
+      relative
+      z-10
+      min-h-[50vh]
+      flex items-center
+      bg-tertiary
+      md:-mt-28 lg:-mt-36
+    "
+  >
+    <div className="container-responsive">
+      <div className="flex flex-col md:flex-row items-start">
 
+        {/* LEFT — TITLE */}
+        <div className="flex-1 mb-4 md:mb-6 lg:mb-0">
+          <FadeLeft>
+            <h2
+              className="
+                font-brand
+                text-[42px] md:text-[46px] lg:text-[52px]
+                leading-[1.12]
+              "
+            >
+              <span className="block font-medium text-[var(--brand-green-1)]">
+                Defining Strategic
+              </span>
+              <span className="block font-medium text-[var(--brand-green-2)]">
+                Direction
+              </span>
+            </h2>
+          </FadeLeft>
+        </div>
 
-          <div className="container-responsive">
-            <div className="flex flex-col md:flex-row items-start">
+        {/* RIGHT — PARAGRAPH */}
+        <div className="flex-1 md:pl-8 lg:pl-16 pt-6 md:pt-7">
+          <FadeLeft delay={200}>
+            <p className="text-section-content color-grey leading-[28px]">
+              Our executive leadership establishes the firm’s overarching mandate.
+              They are responsible for synthesizing our ambition into a clear,
+              actionable strategy, providing the governance required to align our
+              exceptional talent with the firm&apos;s long-term trajectory.
+            </p>
+          </FadeLeft>
+        </div>
 
-              <div className="flex-1 mb-4 md:mb-6 lg:mb-0">
-                <FadeLeft>
-                  <h2
-  
-  className="
-    font-brand
-    text-[42px] md:text-[46px] lg:text-[52px]
-
-    leading-[1.12]
-  "
->
-
-
-  <span className="block font-medium text-[var(--brand-green-1)]">
-    Defining Strategic
-  </span>
-  <span className="block font-medium text-[var(--brand-green-2)]">
-    Direction
-  </span>
-</h2>
-
-                </FadeLeft>
-              </div>
-
-              <div className="flex-1 md:pl-8 lg:pl-16 pt-6 md:pt-7">
-                <FadeLeft delay={200}>
-                  <p className="text-section-content color-grey leading-[28px]">
-                    Our executive leadership establishes the firm’s overarching mandate. They are responsible
-                    for synthesizing our ambition into a clear, actionable strategy, providing the governance
-                    required to align our exceptional talent with the firm&apos;s long-term trajectory.
-                  </p>
-                </FadeLeft>
-              </div>
-
-            </div>
-          </div>
-        </section>
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* ================= LEADER ================= */}
         <section className="py-12 md:py-16 lg:py-24">
@@ -235,7 +236,7 @@ export default function LeadershipTeam() {
 
         </section>
 {/* ================= CTA ================= */}
-<section className="bg-primary relative">
+<section className="bg-primary relative pb-16 md:pb-0">
   <div className="flex flex-col md:flex-row items-start">
 
     {/* LEFT — IMAGE (SIZE UNCHANGED) */}
@@ -253,7 +254,7 @@ export default function LeadershipTeam() {
 
     {/* RIGHT — TEXT */}
 <div className="w-full md:w-[62%] flex items-start">
-  <div className="container-responsive pt-24 md:pt-32 lg:pt-36">
+  <div className="container-responsive pt-14 md:pt-32 lg:pt-36">
     <FadeLeft delay={200}>
       <h2
   className="
