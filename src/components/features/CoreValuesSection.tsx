@@ -33,9 +33,53 @@ export default function CoreValuesSection() {
 
   return (
     <section className="bg-primary text-white py-20 relative overflow-visible">
-      {/* HERO SECTION */}
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 px-6 md:pl-0 md:pr-10 lg:pr-14
- md:pr-10 lg:pr-14">
+      {/* HERO SECTION — MOBILE ONLY */}
+<div className="md:hidden px-6 pt-0">
+
+  {/* TEXT FIRST */}
+  <FadeLeft>
+    <div className="font-brand mb-6">
+      <h2
+        style={{ fontFamily: 'Raleway, sans-serif' }}
+        className="
+          font-medium
+          text-[40px]
+          leading-[1.15]
+        "
+      >
+        <span className="block text-white">
+          Led by
+        </span>
+        <span className="block font-medium text-[#65A08F]">
+          Our Foundational Principles
+        </span>
+      </h2>
+    </div>
+  </FadeLeft>
+
+  {/* IMAGE BELOW — FULL BLEED LEFT */}
+  <FadeLeft delay={150}>
+    <div
+      className="
+        relative
+        w-screen
+        h-[280px]
+        -ml-6
+      "
+    >
+      <img
+        src="/images/ourculture2.jpg"
+        alt="Team collaboration"
+        className="w-full h-full object-cover"
+      />
+    </div>
+  </FadeLeft>
+
+</div>
+
+     {/* HERO SECTION — DESKTOP ONLY */}
+<div className="hidden md:grid grid-cols-2 items-center gap-10 px-6 md:pl-0 md:pr-10 lg:pr-14">
+
 
 
 

@@ -81,17 +81,18 @@ export default function Accordion({ regions }: { regions: Region[] }) {
               </div>
 
               {/* ================= CONTENT ================= */}
-              <div
-                className={`
-                  mt-10 grid grid-cols-12 gap-10 overflow-hidden
-                  transition-all duration-300 ease-in-out
-                  ${
-                    isOpen
-                      ? "max-h-[1000px] opacity-100 translate-y-0"
-                      : "max-h-0 opacity-0 translate-y-2 pointer-events-none"
-                  }
-                `}
-              >
+             <div
+  className={`
+    mt-10 grid grid-cols-1 md:grid-cols-12 gap-10 
+    transition-all duration-300 ease-in-out
+    ${
+      isOpen
+        ? "max-h-[2000px] opacity-100 translate-y-0"
+        : "max-h-0 opacity-0 translate-y-2 pointer-events-none overflow-hidden"
+    }
+  `}
+>
+
 
                 {/* LEFT — CITY LIST */}
                 <div className="col-span-3 flex flex-col space-y-4 text-[18px]">
@@ -205,13 +206,29 @@ export default function Accordion({ regions }: { regions: Region[] }) {
 
 
                 {/* RIGHT — IMAGE (SMALLER & CLEAN) */}
-                <div className="col-span-5 flex justify-end">
-<div className="relative w-[85%] aspect-[4/3] overflow-hidden ">
+            <div className="md:col-span-5 flex justify-start md:justify-end">
+  <div
+    className="
+      relative
+      /* Set a specific width on mobile to create that right-side gap */
+      w-[300px] sm:w-[350px] md:w-[85%]
+      
+      /* Aspect ratio 3/4 makes it tall like the Dubai skyscraper pic */
+      aspect-[3/4] md:aspect-[4/3]
+      
+      overflow-hidden
+    "
+  >
+
+
+
+
+
                     <Image
                       src="/images/ourculture3.jpg"
                       alt="city"
                       fill
-                      className="object-cover"
+                      className="object-cover object-center"
                     />
                   </div>
                 </div>
