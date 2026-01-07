@@ -8,11 +8,7 @@ import { useRef } from 'react';
 import LuxuryButton from '@/components/ui/LuxuryButton';
 
 
-export default function Header({
-  setPageBlur,
-}: {
-  setPageBlur: (v: boolean) => void;
-}) {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const [mobileExpandedTabs, setMobileExpandedTabs] = useState<string[]>([]);
@@ -53,8 +49,19 @@ useEffect(() => {
   }
 }, [isHome]);
 useEffect(() => {
-  setPageBlur(isDropdownVisible && !!hoveredTab);
-}, [isDropdownVisible, hoveredTab, setPageBlur]);
+  const root = document.documentElement;
+
+  if (isDropdownVisible && hoveredTab) {
+    root.classList.add("dropdown-open");
+  } else {
+    root.classList.remove("dropdown-open");
+  }
+
+  return () => {
+    root.classList.remove("dropdown-open");
+  };
+}, [isDropdownVisible, hoveredTab]);
+
 useEffect(() => {
   document.documentElement.style.setProperty(
     '--disclaimer-offset',
