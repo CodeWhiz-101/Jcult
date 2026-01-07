@@ -50,24 +50,42 @@ export default function WhatWeDo() {
 
 
       {/* RIGHT STATEMENT */}
-      <BorderReveal>
-        <p
-          className="
-            font-brand
-            font-medium
-            text-[22px] md:text-[28px] lg:text-[30px]
-            leading-[1.35]
-            text-[var(--brand-green-1)]
-            max-w-[940px]
-          "
-        >
+      <div className="relative pl-3 md:pl-6">
+  {/* MOBILE DIVIDER */}
+  <div
+    className="
+      absolute
+      left-0
+      top-1
+      bottom-0
+      w-px
+      bg-[var(--brand-green-1)]/30
+      md:hidden
+    "
+  />
+
+  {/* DESKTOP DIVIDER 
+  <div
+    className="
+      absolute
+      left-0
+      top-0
+      h-full
+      w-px
+      bg-[var(--brand-green-1)]/30
+      hidden md:block
+    "
+  />
+*/}
+  <BorderReveal>
+    <p className="font-brand font-medium text-[22px] md:text-[28px] lg:text-[30px] leading-[1.35] text-[var(--brand-green-1)] max-w-[940px]">
           We channel capital toward the world’s most meaningful and high-impact
           opportunities, guided by a rare fusion of disciplined talent, intuitive
           technology, deep analytics, and a global presence that moves with quiet
           strength.
         </p>
       </BorderReveal>
-
+</div>
     </div>
   </div>
 </section>
@@ -246,11 +264,79 @@ export default function WhatWeDo() {
             </div>
 
             {/* 3 Columns */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 pt-6 md:pt-10">
+            <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+  
+  {/* LEFT EDGE DIVIDER — DESKTOP */}
+  <div
+    className="
+      hidden md:block
+      absolute
+      top-0
+      bottom-0
+      left-0
+      w-px
+      bg-white/30
+    "
+  />
+
+  {/* CENTER DIVIDER — DESKTOP */}
+  <div
+    className="
+      hidden md:block
+      absolute
+      top-0
+      bottom-0
+      left-1/2
+      -translate-x-1/2
+      w-px
+      bg-white/30
+    "
+  />
+
+  {/* RIGHT EDGE DIVIDER — DESKTOP */}
+  <div
+    className="
+      hidden md:block
+      absolute
+      top-0
+      bottom-0
+      right-0
+      w-px
+      bg-white/30
+    "
+  />
+              {/* CENTER DIVIDER — DESKTOP ONLY */}
+<div
+  className="
+    hidden md:block
+    absolute
+    top-0
+    bottom-0
+    left-1/2
+    -translate-x-1/2
+    w-px
+    bg-white/30
+  "
+/>
+
               <FadeLeft delay={400}>
-                <div className="relative px-0 md:px-6">
-                <div className="absolute top-0 left-0 h-full w-px bg-white/30 hidden md:block"></div>
-                <div className="absolute top-0 right-0 h-full w-px bg-white/30 hidden md:block"></div>
+                <div className="relative pl-6 pr-6 flex flex-col">
+               {/* MOBILE DIVIDER — follows content */}
+<div
+  className="
+    absolute
+    left-0
+    top-2
+    bottom-0
+    w-px
+    bg-white/30
+    md:hidden
+  "
+/>
+
+{/* DESKTOP DIVIDER — full height */}
+
+
                 <h4
   style={{ fontFamily: 'Raleway, sans-serif' }}
   className="
@@ -274,31 +360,47 @@ export default function WhatWeDo() {
                 </div>
               </FadeLeft>
               <FadeLeft delay={600}>
-                <div className="relative pr-0 md:pr-6">
-                <div className="absolute top-0 right-0 h-full w-px bg-white/30 hidden md:block"></div>
-                <h4
-  style={{ fontFamily: 'Raleway, sans-serif' }}
-  className="
-    font-medium
-    text-[24px]
-    md:text-[26px]
-    lg:text-[28px]
-    leading-tight
-    mb-4
-    text-white
-  "
->
-  Uncompromising Risk Standards
-</h4>
+  <div className="relative pl-6 pr-6 flex flex-col">
 
-                <p className="text-button leading-relaxed text-white/90">
-                Our approach to risk is disciplined and independent. With a reporting line directly to the
-                CEO, our specialized risk managers monitor performance drivers and maintain strict
-                tolerance levels. We utilize advanced technology for continuous tracking and real-time
-                stress testing, ensuring robust protection for every position we hold.
-                </p>
-                </div>
-              </FadeLeft>
+    {/* MOBILE DIVIDER */}
+    <div
+      className="
+        absolute
+        left-0
+        top-2
+        bottom-0
+        w-px
+        bg-white/30
+        md:hidden
+      "
+    />
+
+    <h4
+      style={{ fontFamily: 'Raleway, sans-serif' }}
+      className="
+        font-medium
+        text-[24px]
+        md:text-[26px]
+        lg:text-[28px]
+        leading-tight
+        mb-4
+        text-white
+      "
+    >
+      Uncompromising Risk Standards
+    </h4>
+
+    <p className="text-button leading-relaxed text-white/90">
+      Our approach to risk is disciplined and independent. With a reporting line
+      directly to the CEO, our specialized risk managers monitor performance
+      drivers and maintain strict tolerance levels. We utilize advanced
+      technology for continuous tracking and real-time stress testing, ensuring
+      robust protection for every position we hold.
+    </p>
+
+  </div>
+</FadeLeft>
+
               {/* <div className="relative pr-6">
                 <h4 className="text-xl md:text-2xl  text-white mb-4">
                   Integrity
@@ -334,56 +436,95 @@ export default function WhatWeDo() {
           </div>
         </section> */}
 <section className="relative bg-[#f6f6f6] overflow-hidden">
-  <div className="relative h-[400px] md:h-[460px] lg:h-[520px]">
 
-    {/* IMAGE — FLUSH TOP & BOTTOM */}
-    <div className="absolute inset-y-0 left-0 md:-ml-[calc((100vw-100%)/2)] md:w-[55vw]">
-      <FadeLeft>
-        <img
-          src="/images/whatwedo3.jpg"
-          alt="Join our team"
-          className="w-full h-full object-cover object-center"
-        />
+  {/* ================= MOBILE LAYOUT ================= */}
+  <div className="md:hidden">
+
+    {/* IMAGE */}
+    <FadeLeft>
+      <img
+        src="/images/whatwedo3.jpg"
+        alt="Join our team"
+        className="w-full h-64 object-cover object-center"
+      />
+    </FadeLeft>
+
+    {/* TEXT BELOW IMAGE — STILL IN GREY */}
+    <div className="px-6 py-8">
+      <FadeLeft delay={200}>
+        <h2
+          className="
+            font-brand
+            text-[32px]
+            leading-[1.15]
+            mb-6
+          "
+        >
+          <span className="block font-medium text-[var(--brand-green-1)]">
+            In Pursuit of
+          </span>
+          <span className="block font-medium text-[var(--brand-green-2)]">
+            Minds That Redefine Possibility
+          </span>
+        </h2>
+
+        <LuxuryButton variant="primary">
+          Discover Available Positions
+        </LuxuryButton>
       </FadeLeft>
     </div>
 
-    {/* TEXT — NO VERTICAL PADDING */}
-    <div className="relative h-full px-6 md:px-10 lg:px-14">
-      <div className="mx-auto max-w-[var(--container-width)] h-full flex items-center justify-end">
-        <div className="w-full md:w-[38%]">
+  </div>
 
-          <FadeLeft delay={200}>
-         <h2
-  className="
-    font-brand
-    text-[32px]
-    md:text-[42px]
-    leading-[1.15]
-    mb-8
-  "
->
-  <span className="block font-medium text-[var(--brand-green-1)]">
-    In Pursuit of
-  </span>
-  <span className="block font-medium text-[var(--brand-green-2)]">
-    Minds That Redefine Possibility
-  </span>
-</h2>
+  {/* ================= DESKTOP LAYOUT (UNCHANGED) ================= */}
+  <div className="hidden md:block">
+    <div className="relative h-[460px] lg:h-[520px]">
 
+      {/* IMAGE */}
+      <div className="absolute inset-y-0 left-0 md:-ml-[calc((100vw-100%)/2)] md:w-[55vw]">
+        <FadeLeft>
+          <img
+            src="/images/whatwedo3.jpg"
+            alt="Join our team"
+            className="w-full h-full object-cover object-center"
+          />
+        </FadeLeft>
+      </div>
 
-            <a href="/career">
+      {/* TEXT */}
+      <div className="relative h-full px-10 lg:px-14">
+        <div className="mx-auto max-w-[var(--container-width)] h-full flex items-center justify-end">
+          <div className="w-[38%]">
+            <FadeLeft delay={200}>
+              <h2
+                className="
+                  font-brand
+                  text-[42px]
+                  leading-[1.15]
+                  mb-8
+                "
+              >
+                <span className="block font-medium text-[var(--brand-green-1)]">
+                  In Pursuit of
+                </span>
+                <span className="block font-medium text-[var(--brand-green-2)]">
+                  Minds That Redefine Possibility
+                </span>
+              </h2>
+
               <LuxuryButton variant="primary">
                 Discover Available Positions
               </LuxuryButton>
-            </a>
-          </FadeLeft>
-
+            </FadeLeft>
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
+
 </section>
+
 
 <section className="bg-white pt-10 md:pt-14 pb-16">
   <div className="container-responsive">
