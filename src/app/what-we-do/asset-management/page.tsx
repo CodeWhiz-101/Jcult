@@ -72,18 +72,26 @@ useEffect(() => {
 
 
         {/* ================= OVERVIEW ================= */}
-       <section
+      <section
   className="
     relative
     z-0
     -mt-20 md:-mt-28 lg:-mt-36
     min-h-[50vh]
-    flex items-center
     bg-tertiary
   "
 >
-  <div className="container-responsive">
-    <div className="flex flex-col md:flex-row items-center md:items-start">
+
+ <div
+  className="
+    pt-20 md:pt-28 lg:pt-32
+    pb-16 md:pb-20 lg:pb-24
+    ml-7 md:ml-10 lg:ml-12 xl:ml-14
+    pr-7 md:pr-10 lg:pr-12 xl:pr-14
+  "
+>
+
+    <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12">
 
       {/* LEFT — TITLE */}
       <div className="flex-1 mb-4 md:mb-6 lg:mb-0">
@@ -124,11 +132,11 @@ useEffect(() => {
         <InvestmentTabs />
 
         {/* ================= CTA ================= */}
-        <section className="py-6 md:py-8 lg:py-16">
+        <section className="pt-10 pb-6 md:pt-8 md:pb-8 lg:pt-16 lg:pb-16">
   <div className="flex flex-col md:flex-row">
 
     {/* IMAGE — FULL BLEED LEFT */}
-    <div className="md:w-1/2">
+    <div className="md:w-1/2 mb-8 md:mb-0">
       <img
         src="/images/assetmanagement1.jpg"
         alt="Join our team"

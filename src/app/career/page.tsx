@@ -28,23 +28,48 @@ export default function Career() {
 
 </div>
 
+{/* ================= MOBILE IMAGE ================= */}
+<div className="md:hidden bg-tertiary pt-8 overflow-hidden">
+  <div className="-ml-12 pr-10">
+    <ImageReveal
+      src="/images/career2.jpg"
+      alt="Career at JCULT"
+      className="w-full h-64 object-cover"
+    />
+  </div>
+</div>
+
+
+
+
 
 
    <FadeUp>
-  <section className="relative -mt-[160px] md:-mt-[180px] pt-[160px] md:pt-[180px] pb-6 md:pb-8 lg:pb-16 bg-tertiary overflow-visible">
+  <section
+  className="
+    relative
+    mt-0 md:-mt-[180px]
+    pt-0 md:pt-[180px]
+    pb-6 md:pb-8 lg:pb-16
+    bg-tertiary
+    overflow-visible
+  "
+>
 
     {/* CONTENT WRAPPER */}
     <div className="relative z-10 flex flex-col md:flex-row">
 
       {/* IMAGE — FULL LEFT, OVERLAPS DOWN INTO WHITE */}
-      <div
-        className="
-          relative
-          w-full md:w-[48%]
-          mb-[-96px] md:mb-[-128px] lg:mb-[-160px]
-          z-20
-        "
-      >
+     <div
+  className="
+    relative
+    hidden md:block
+    md:w-[48%]
+    md:mb-[-128px] lg:mb-[-160px]
+    z-20
+  "
+>
+
         <ImageReveal
           src="/images/career2.jpg"
           alt="Career at JCULT"
@@ -54,7 +79,7 @@ export default function Career() {
 
       {/* TEXT — NORMAL FLOW */}
       <div className="w-full md:w-[52%]">
-        <div className="container-responsive h-full flex items-start">
+        <div className="h-full flex items-start px-6 md:px-0 md:container-responsive">
          <div className="py-12 md:py-0 md:pl-6 lg:pl-10">
 
 
@@ -66,16 +91,18 @@ export default function Career() {
     leading-[1.05]
   "
 >
-  <span
-    className="
-      block
-      font-medium
-      text-[var(--brand-green-1)]
-      text-[44px] md:text-[50px] lg:text-[54px]
-    "
-  >
-    Build Your Career
-  </span>
+ <span
+  className="
+    inline-block md:block
+    font-medium
+    text-[var(--brand-green-1)]
+    text-[44px] md:text-[50px] lg:text-[54px]
+    whitespace-nowrap
+  "
+>
+  Build Your Career
+</span>
+
 
   <span
     className="

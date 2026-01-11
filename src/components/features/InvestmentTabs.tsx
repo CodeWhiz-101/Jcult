@@ -136,10 +136,22 @@ const tabs = [
       {/* ======================================================
           TOP — BUTTON NAV (LUXURY BUTTON)
       ====================================================== */}
-      <div className="container-responsive pt-16 md:pt-20 pb-20 md:pb-24">
+      <div className="pt-16 md:pt-20 pb-20 md:pb-24">
+        <div className="container-responsive">
+
         <div className="flex justify-center">
           <div className="flex justify-center">
-  <div className="flex gap-4">
+  <div
+  className="
+    flex
+    gap-4
+    overflow-x-auto
+    whitespace-nowrap
+    md:overflow-visible
+    scrollbar-hide
+    px-4 md:px-0
+  "
+>
 
     {tabs.map((tab, i) => {
       const isActive = active === i;
@@ -154,7 +166,7 @@ const tabs = [
           className={`
             w-[190px]
             h-[56px]
-
+shrink-0
             flex items-center justify-center
 
             text-[15px]
@@ -179,7 +191,7 @@ const tabs = [
         </button>
       );
     })}
-
+</div>
   </div>
 </div>
 

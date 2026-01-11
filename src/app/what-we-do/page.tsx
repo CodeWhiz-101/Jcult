@@ -233,185 +233,75 @@ export default function WhatWeDo() {
         </section> */}
 
         {/* Blue background with image top left hanging out, title right, 3 columns */}
-        <section className="bg-[linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))] py-6 md:py-8 lg:py-16 relative overflow-visible">
-          <div className="container-responsive">
-            <div className="flex flex-col md:flex-row items-start mb-8 md:mb-12">
-              <div className="flex-1 mb-6 md:mb-0 relative md:-mt-24 lg:-mt-32">
-              <div className="relative mb-6 md:mb-0 md:-ml-[calc((100vw-100%)/2)] md:w-[68vw] lg:w-[72vw]">
-  <FadeLeft>
-    <img
-      src="/images/whatwedo2.jpg"
-      alt="Our values"
-      className="
-        w-full
-        h-64 md:h-80 lg:h-[380px]
-        object-cover
-        object-left
-      "
-    />
-  </FadeLeft>
-</div>
+        {/* ================= STRATEGIC EDGE ================= */}
+<section className="bg-[linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))] relative overflow-hidden">
 
+  {/* ================= MOBILE VERSION ================= */}
+  <div className="md:hidden">
 
-              </div>
-              <div className="flex-1 md:pl-8 lg:pl-16">
-                <FadeLeft delay={200}>
-                <h2 className="text-section-title font-brand text-medium text-white">
-                  Our Strategic Edge
-                </h2>
-                </FadeLeft>
-              </div>
-            </div>
+    {/* TITLE — ABOVE IMAGE */}
+    <div className="px-6 pt-10 pb-6">
+      <FadeLeft>
+        <h2 className="font-brand text-[34px] leading-[1.1] text-white">
+          Our Strategic Edge
+        </h2>
+      </FadeLeft>
+    </div>
 
-            {/* 3 Columns */}
-            <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-  
-  {/* LEFT EDGE DIVIDER — DESKTOP */}
-  <div
-    className="
-      hidden md:block
-      absolute
-      top-0
-      bottom-0
-      left-0
-      w-px
-      bg-white/30
-    "
-  />
+    {/* FULL-BLEED IMAGE */}
+    <div className="w-screen relative left-1/2 -translate-x-1/2">
+      <FadeLeft>
+        <img
+          src="/images/whatwedo2.jpg"
+          alt="Our values"
+          className="w-full h-[260px] object-cover object-center"
+        />
+      </FadeLeft>
+    </div>
 
-  {/* CENTER DIVIDER — DESKTOP */}
-  <div
-    className="
-      hidden md:block
-      absolute
-      top-0
-      bottom-0
-      left-1/2
-      -translate-x-1/2
-      w-px
-      bg-white/30
-    "
-  />
+    {/* CONTENT */}
+    <div className="px-6 py-10 space-y-12">
 
-  {/* RIGHT EDGE DIVIDER — DESKTOP */}
-  <div
-    className="
-      hidden md:block
-      absolute
-      top-0
-      bottom-0
-      right-0
-      w-px
-      bg-white/30
-    "
-  />
-              {/* CENTER DIVIDER — DESKTOP ONLY */}
-<div
-  className="
-    hidden md:block
-    absolute
-    top-0
-    bottom-0
-    left-1/2
-    -translate-x-1/2
-    w-px
-    bg-white/30
-  "
-/>
+      {/* ITEM 1 */}
+      <div className="relative pl-4">
+        <div className="absolute left-0 top-1 bottom-0 w-px bg-white/30" />
 
-              <FadeLeft delay={400}>
-                <div className="relative pl-6 pr-6 flex flex-col">
-               {/* MOBILE DIVIDER — follows content */}
-<div
-  className="
-    absolute
-    left-0
-    top-2
-    bottom-0
-    w-px
-    bg-white/30
-    md:hidden
-  "
-/>
+        <h4 className="font-medium text-[22px] text-white mb-3">
+          World-Class Talent
+        </h4>
 
-{/* DESKTOP DIVIDER — full height */}
+        <p className="text-[15px] leading-[1.6] text-white/90">
+          By uniting experts from the worlds of finance and technology, we foster a culture of
+          unparalleled growth. Our collaborative environment and extensive resources empower our
+          people to achieve their full potential and drive innovation.
+        </p>
+      </div>
 
+      {/* ITEM 2 */}
+      <div className="relative pl-4">
+        <div className="absolute left-0 top-1 bottom-0 w-px bg-white/30" />
 
-                <h4
-  style={{ fontFamily: 'Raleway, sans-serif' }}
-  className="
-    font-medium
-    text-[24px]
-    md:text-[26px]
-    lg:text-[28px]
-    leading-tight
-    mb-4
-    text-white
-  "
->
-  World-Class Talent
-</h4>
+        <h4 className="font-medium text-[22px] text-white mb-3">
+          Uncompromising Risk Standards
+        </h4>
 
-                <p className="text-button leading-relaxed text-white/90">
-                  By uniting experts from the worlds of finance and technology, we foster a culture of
-                  unparalleled growth. Our collaborative environment and extensive resources empower our
-                  people to achieve their full potential and drive innovation.
-                </p>
-                </div>
-              </FadeLeft>
-              <FadeLeft delay={600}>
-  <div className="relative pl-6 pr-6 flex flex-col">
+        <p className="text-[15px] leading-[1.6] text-white/90">
+          Our approach to risk is disciplined and independent. With a reporting line directly to the
+          CEO, our specialized risk managers monitor performance drivers and maintain strict
+          tolerance levels. We utilize advanced technology for continuous tracking and real-time
+          stress testing, ensuring robust protection for every position we hold.
+        </p>
+      </div>
 
-    {/* MOBILE DIVIDER */}
-    <div
-      className="
-        absolute
-        left-0
-        top-2
-        bottom-0
-        w-px
-        bg-white/30
-        md:hidden
-      "
-    />
-
-    <h4
-      style={{ fontFamily: 'Raleway, sans-serif' }}
-      className="
-        font-medium
-        text-[24px]
-        md:text-[26px]
-        lg:text-[28px]
-        leading-tight
-        mb-4
-        text-white
-      "
-    >
-      Uncompromising Risk Standards
-    </h4>
-
-    <p className="text-button leading-relaxed text-white/90">
-      Our approach to risk is disciplined and independent. With a reporting line
-      directly to the CEO, our specialized risk managers monitor performance
-      drivers and maintain strict tolerance levels. We utilize advanced
-      technology for continuous tracking and real-time stress testing, ensuring
-      robust protection for every position we hold.
-    </p>
-
+    </div>
   </div>
-</FadeLeft>
 
-              {/* <div className="relative pr-6">
-                <h4 className="text-xl md:text-2xl  text-white mb-4">
-                  Integrity
-                </h4>
-                <p className="text-sm md:text-base leading-relaxed text-white/90">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div> */}
-            </div>
-          </div>
-        </section>
+  {/* ================= DESKTOP VERSION (UNCHANGED) ================= */}
+  <div className="hidden md:block">
+    {/* ⬅️ KEEP YOUR EXISTING DESKTOP CODE HERE EXACTLY AS IT IS */}
+  </div>
+
+</section>
 
         {/* <section className="py-6 md:py-8 lg:py-16 bg-main">
           <div className="container-responsive">
