@@ -49,7 +49,7 @@ export default function News() {
   ====================================================== */
   return (
     <div className="min-h-screen bg-main">
-      <Header setPageBlur={setPageBlur} />
+    {/*  <Header setPageBlur={setPageBlur} />*/}
 
 
       <main className="pt-20">
