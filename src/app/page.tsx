@@ -122,6 +122,7 @@ ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-24'}
         </div>
 
         {/* IMAGE / PLACEHOLDER */}
+        <div className="hidden md:block">
         <div
           className={`overflow-hidden transition-all duration-1000 delay-600 ${
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
@@ -143,6 +144,21 @@ ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-24'}
 </div>
         </div>
       </div>
+      </div>
+
+      {/* ================= MOBILE IMAGE ================= */}
+<div className="md:hidden bg-tertiary pt-8 overflow-hidden">
+  <div className="-mr-12 pl-6">
+    <img
+      src="/videos/lp3.jpg"
+      alt="Elite Talent"
+      className="w-full h-56 object-cover"
+    />
+  </div>
+</div>
+
+
+
     </section>
   );
 }
@@ -325,6 +341,7 @@ function AnimatedGreenSection() {
         <div className={`relative transition-all duration-1000 delay-600 ${
           isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
         }`}>
+<div className="hidden md:block">
 <div
   className="
     relative
@@ -351,6 +368,21 @@ function AnimatedGreenSection() {
 </div>
         </div>
       </div>
+      </div>
+      {/* ================= MOBILE VIDEO ================= */}
+<div className="md:hidden bg-primary pt-8 overflow-hidden">
+  <div className="-mr-12 pl-6">
+    <video
+      className="w-full h-64 object-cover"
+      src="/videos/lp2.mp4"
+      autoPlay
+      muted
+      loop
+      playsInline
+    />
+  </div>
+</div>
+
     </section>
   );
 }

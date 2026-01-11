@@ -80,6 +80,8 @@ export default function CoreValuesSection() {
      {/* HERO SECTION — DESKTOP ONLY */}
 <div className="hidden md:grid grid-cols-2 items-center gap-10 px-6 md:pl-0 md:pr-10 lg:pr-14">
 
+  
+
 
 
 

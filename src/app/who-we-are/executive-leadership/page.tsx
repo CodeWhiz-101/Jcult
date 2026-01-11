@@ -239,53 +239,64 @@ export default function LeadershipTeam() {
 <section className="bg-primary relative pb-16 md:pb-0">
   <div className="flex flex-col md:flex-row items-start">
 
-    {/* LEFT — IMAGE (SIZE UNCHANGED) */}
-    <div className="w-full md:w-1/2">
+    {/* ================= DESKTOP IMAGE ================= */}
+    <div className="hidden md:block md:w-1/2">
       <FadeLeft>
         <img
           src="/images/executiveledership2.jpg"
           alt="Leadership impact"
           className="w-full h-96 md:h-[600px] lg:h-[680px] object-cover object-center"
-
-
         />
       </FadeLeft>
     </div>
 
-    {/* RIGHT — TEXT */}
-<div className="w-full md:w-[62%] flex items-start">
-  <div className="container-responsive pt-14 md:pt-32 lg:pt-36">
-    <FadeLeft delay={200}>
-      <h2
-  className="
-    font-brand
-    mb-10 md:mb-12
-    text-[42px] md:text-[46px] lg:text-[52px]
+    {/* ================= TEXT (DESKTOP + MOBILE) ================= */}
+    <div className="w-full md:w-[62%] flex items-start">
+      <div className="container-responsive pt-14 md:pt-32 lg:pt-36">
+        <FadeLeft delay={200}>
+          <h2
+            className="
+              font-brand
+              mb-10 md:mb-12
+              text-[42px] md:text-[46px] lg:text-[52px]
+              leading-[1.12]
+            "
+          >
+            <span className="block font-medium text-white">
+              Driving Ideas Into
+            </span>
+            <span className="block font-medium text-[#65A08F]">
+              Real Impact
+            </span>
+          </h2>
 
-    leading-[1.12]
-  "
->
+          <LuxuryButton variant="white">
+            Explore What We Do
+          </LuxuryButton>
+        </FadeLeft>
+      </div>
+    </div>
 
-        <span className="block font-medium text-white">
-          Driving Ideas Into
-        </span>
-        <span className="block font-medium text-[#65A08F]">
-
-          Real Impact
-        </span>
-      </h2>
-
-      <LuxuryButton variant="white">
-        Explore What We Do
-      </LuxuryButton>
-    </FadeLeft>
-  </div>
+   {/* MOBILE IMAGE — WIDE / CITADEL STYLE */}
+<div className="md:hidden mt-10 overflow-hidden">
+  <FadeLeft>
+    <img
+      src="/images/executiveledership2.jpg"
+      alt="Leadership impact"
+      className="
+        h-[380px]
+        w-[88vw]
+        max-w-none
+        object-cover
+      "
+    />
+  </FadeLeft>
 </div>
-
 
 
   </div>
 </section>
+
 
        
 
