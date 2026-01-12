@@ -17,31 +17,36 @@ export default function Hero({
   title,
   description,
 }: HeroProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const desktopVideoRef = useRef<HTMLVideoElement>(null);
+const mobileVideoRef = useRef<HTMLVideoElement>(null);
+
   const [phase, setPhase] = useState<Phase>('fade');
 
   /* ===============================
      MASTER CINEMATIC TIMELINE
   =============================== */
-  useEffect(() => {
-    const t1 = setTimeout(() => setPhase('wipe'), 100);      // fade ends
-    const t2 = setTimeout(() => setPhase('title'), 200);    // wipe ends
-    const t3 = setTimeout(() => setPhase('box'), 600);      // title ends
-    const t4 = setTimeout(() => setPhase('boxText'), 1000); // box ends
+ useEffect(() => {
+  const t1 = setTimeout(() => setPhase('wipe'), 100);
+  const t2 = setTimeout(() => setPhase('title'), 200);
+  const t3 = setTimeout(() => setPhase('box'), 600);
+  const t4 = setTimeout(() => setPhase('boxText'), 1000);
 
-    videoRef.current?.play();
+  desktopVideoRef.current?.play();
+  mobileVideoRef.current?.play();
 
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
-      clearTimeout(t4);
-    };
-  }, []);
+  return () => {
+    clearTimeout(t1);
+    clearTimeout(t2);
+    clearTimeout(t3);
+    clearTimeout(t4);
+  };
+}, []);
 
   return (
+    <>
     <section
       className="
+      hidden md:block
         relative
         h-[480px] md:h-[530px] lg:h-[680px] xl:h-[760px]
         overflow-hidden
@@ -79,8 +84,10 @@ export default function Hero({
 
         {/* VIDEO */}
         {videoSrc && (
-          <video
-            ref={videoRef}
+          
+           <video
+  ref={desktopVideoRef}
+
             className="relative z-10 w-full h-full object-cover"
             style={{ objectPosition: 'center top' }}
             src={videoSrc}
@@ -213,5 +220,90 @@ export default function Hero({
         </div>
       </div>
     </section>
+
+   {/* ================= MOBILE HERO ================= */}
+<section className="md:hidden bg-white relative -mt-16">
+
+  {/* WHITE GUTTER WRAPPER */}
+  <div className="pl-6 pr-0">
+
+
+    {/* ===== MEDIA (VIDEO) ===== */}
+    <div className="relative h-[560px] w-full overflow-hidden">
+
+      {/* GREEN BASE */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{ background: 'var(--brand-green-gradient)' }}
+      />
+
+      {/* VIDEO */}
+      {videoSrc && (
+        <video
+  ref={mobileVideoRef}
+
+          className="absolute inset-0 z-10 w-full h-full object-cover"
+          style={{ objectPosition: 'center top' }}
+          src={videoSrc}
+          muted
+          loop
+          playsInline
+          preload="auto"
+        />
+      )}
+
+      {/* DARK OVERLAY */}
+      <div className="absolute inset-0 z-20 bg-black/25" />
+
+      {/* ===== TITLE (LEFT, INSIDE MEDIA) ===== */}
+     <div
+  className="absolute z-30 top-[72px] left-0 pl-6 max-w-[280px]"
+
+        style={{
+          opacity:
+            phase === 'title' || phase === 'box' || phase === 'boxText'
+              ? 1
+              : 0,
+          transform:
+            phase === 'title' || phase === 'box' || phase === 'boxText'
+              ? 'translateX(0)'
+              : 'translateX(-20px)',
+          transition:
+            'opacity 800ms ease, transform 800ms cubic-bezier(.22,.61,.36,1)',
+        }}
+      >
+        <h1 className="text-white font-brand font-medium text-[34px] leading-[1.08]">
+          {title}
+        </h1>
+      </div>
+
+      {/* ===== GREEN GRADIENT BOX (BOTTOM, LEFT-ALIGNED) ===== */}
+      <div className="absolute bottom-0 left-0 z-40 w-full">
+
+        {/* LEFT-ALIGNED BOX (NO CENTERING) */}
+        <div
+          className="w-[88%] ml-0"
+          style={{
+            background: 'var(--brand-green-gradient)',
+            opacity: 0.85,
+            backdropFilter: 'blur(14px)',
+            WebkitBackdropFilter: 'blur(14px)',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
+          }}
+        >
+          <div className="pt-10 pb-8 px-6">
+            <p className="text-white text-[15.5px] leading-relaxed">
+              {description}
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  </>
   );
 }

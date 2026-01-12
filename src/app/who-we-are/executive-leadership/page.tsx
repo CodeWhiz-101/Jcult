@@ -30,54 +30,90 @@ export default function LeadershipTeam() {
     <div className="min-h-screen bg-main">
       <main className="pt-20">
 
-        {/* ================= HERO ================= */}
-        <section className="relative z-10 overflow-visible mb-16 md:mb-24">
-          <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
-            <div className="container-responsive">
+       {/* ================= HERO ================= */}
+<section className="relative z-10 overflow-visible mb-16 md:mb-24">
 
-              {/* GREEN PANEL */}
-              <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
+  {/* ================= DESKTOP HERO ================= */}
+  <div className="hidden md:block bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
+    <div className="container-responsive">
 
-                {/* BREADCRUMB */}
-                <div style={{ marginBottom: '24px' }}>
-                  <PageBreadcrumb
-                    items={[
-                      { label: 'Who We Are', href: '/who-we-are' },
-                      { label: 'Leadership', href: '/who-we-are/executive-leadership' },
-                    ]}
-                  />
-                </div>
+      {/* ⛔ GREEN PANEL — DO NOT TOUCH */}
+      <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
 
-                {/* TITLE — LOAD REVEAL (SAFE) */}
-                <div style={{ overflow: 'hidden' }}>
-                  <h1
-                    style={{
-                      fontFamily: 'Raleway, sans-serif',
-                      fontWeight: 500,
-                      fontSize: '60px',
-                      lineHeight: '1.1',
-                      letterSpacing: '-0.018em',
-                      maxWidth: '860px',
-                      color: '#ffffff',
-                      WebkitFontSmoothing: 'antialiased',
-                      MozOsxFontSmoothing: 'grayscale',
+        {/* Breadcrumb */}
+        <div className="mb-6">
+          <PageBreadcrumb
+            items={[
+              { label: 'Who We Are', href: '/who-we-are' },
+              { label: 'Leadership', href: '/who-we-are/executive-leadership' },
+            ]}
+          />
+        </div>
 
-                      transform: reveal
-                        ? 'translateX(0)'
-                        : 'translateX(-120%)',
-                      opacity: reveal ? 1 : 0,
-                      transition:
-                        'transform 900ms cubic-bezier(0.22,1,0.36,1), opacity 600ms ease',
-                    }}
-                  >
-                    Executive Leadership
-                  </h1>
-                </div>
+        {/* Animated Title */}
+        <div style={{ overflow: 'hidden' }}>
+          <h1
+            style={{
+              fontFamily: 'Raleway, sans-serif',
+              fontWeight: 500,
+              fontSize: '60px',
+              lineHeight: '1.1',
+              letterSpacing: '-0.018em',
+              maxWidth: '860px',
+              color: '#ffffff',
+              WebkitFontSmoothing: 'antialiased',
+              MozOsxFontSmoothing: 'grayscale',
+              transform: reveal
+                ? 'translateX(0)'
+                : 'translateX(-120%)',
+              opacity: reveal ? 1 : 0,
+              transition:
+                'transform 900ms cubic-bezier(0.22,1,0.36,1), opacity 600ms ease',
+            }}
+          >
+            Executive Leadership
+          </h1>
+        </div>
 
-              </div>
-            </div>
-          </div>
-        </section>
+      </div>
+    </div>
+  </div>
+
+  {/* ================= MOBILE HERO ================= */}
+  <div className="md:hidden bg-white">
+    {/* Left white gutter */}
+    <div className="pl-6">
+      {/* Green box */}
+      <div className="bg-primary pt-18 pb-26 pl-6 pr-6">
+
+        {/* Breadcrumb */}
+        <div className="mb-6 text-[14px]">
+          <PageBreadcrumb
+            items={[
+              { label: 'Who We Are', href: '/who-we-are' },
+              { label: 'Leadership', href: '/who-we-are/executive-leadership' },
+            ]}
+          />
+        </div>
+
+        {/* Title */}
+        <h1
+          className="text-white font-medium tracking-tight leading-[1.12]"
+          style={{
+            fontFamily: 'Raleway, sans-serif',
+            fontSize: '36px',
+          }}
+        >
+          Executive
+          <br />
+          Leadership
+        </h1>
+
+      </div>
+    </div>
+  </div>
+
+</section>
 
         {/* ================= OVERVIEW ================= */}
 

@@ -61,57 +61,85 @@ useEffect(() => {
     <div className="min-h-screen bg-main">
       <main className="pt-[88px]">
 
-        {/* ================= HERO ================= */}
-                       <section className="relative overflow-visible">
-                         <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
-                           <div className="container-responsive">
-                       
-                             {/* ⛔ GREEN BOX — DO NOT TOUCH */}
-                             <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
-                
-                       
-                               {/* BREADCRUMB */}
-                               <div style={{ marginBottom: '24px' }}>
-                                 <PageBreadcrumb
-                                   items={[
-                                     { label: 'Career', href: '/career' },
-                                     { label: 'Open Oppurtunities', href: '/career/open-oppurtunities' },
-                                   ]}
-                                 />
-                               </div>
-                       
-                               {/* TITLE */}
-                               {/* TITLE — LOAD REVEAL */}
-<div style={{ overflow: 'hidden' }}>
-  <h1
-    style={{
-      fontFamily: 'Raleway, sans-serif',
-      fontWeight: 500,
-      fontSize: '60px',
-      lineHeight: '1.1',
-      letterSpacing: '-0.018em',
-      maxWidth: '860px',
-      color: '#ffffff',
-      WebkitFontSmoothing: 'antialiased',
-      MozOsxFontSmoothing: 'grayscale',
+       {/* ================= HERO (DESKTOP ONLY) ================= */}
+<section className="relative overflow-visible hidden md:block">
+  <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
+    <div className="container-responsive">
+      <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
 
-      transform: reveal
-        ? 'translateX(0)'
-        : 'translateX(-120%)',
-      opacity: reveal ? 1 : 0,
-      transition:
-        'transform 900ms cubic-bezier(0.22,1,0.36,1), opacity 600ms ease',
-    }}
-  >
-    Open Oppurtunities
-  </h1>
-</div>
+        <div style={{ marginBottom: '24px' }}>
+          <PageBreadcrumb
+            items={[
+              { label: 'Career', href: '/career' },
+              { label: 'Open Oppurtunities', href: '/career/open-oppurtunities' },
+            ]}
+          />
+        </div>
 
-                       
-                             </div>
-                           </div>
-                         </div>
-                       </section>
+        <div style={{ overflow: 'hidden' }}>
+          <h1
+            style={{
+              fontFamily: 'Raleway, sans-serif',
+              fontWeight: 500,
+              fontSize: '60px',
+              lineHeight: '1.1',
+              letterSpacing: '-0.018em',
+              maxWidth: '860px',
+              color: '#ffffff',
+              transform: reveal
+                ? 'translateX(0)'
+                : 'translateX(-120%)',
+              opacity: reveal ? 1 : 0,
+              transition:
+                'transform 900ms cubic-bezier(0.22,1,0.36,1), opacity 600ms ease',
+            }}
+          >
+            Open Oppurtunities
+          </h1>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ================= HERO (MOBILE ONLY) ================= */}
+<section className="md:hidden bg-white">
+  {/* LEFT WHITE GUTTER */}
+  <div className="pl-6">
+    {/* GREEN BOX */}
+    <div className="bg-primary pt-16 pb-24 pl-6 pr-6">
+
+
+
+      {/* Breadcrumb — slightly lowered */}
+      <div className="mb-6 text-[14px]">
+        <PageBreadcrumb
+          items={[
+            { label: 'Career', href: '/career' },
+            { label: 'Open Opportunities', href: '/career/open-oppurtunities' },
+          ]}
+        />
+      </div>
+
+      {/* Title — tight like Citadel */}
+      <h1
+        className="text-white font-medium tracking-tight leading-[1.12]"
+        style={{
+          fontFamily: 'Raleway, sans-serif',
+          fontSize: '36px',
+        }}
+      >
+        Open
+        <br />
+        Opportunities
+      </h1>
+
+    </div>
+  </div>
+</section>
+
+
         {/* ========== FILTERS + RESULTS ========== */}
         <section className="pb-16">
 <div className="ml-7 md:ml-10 lg:ml-12 xl:ml-14">

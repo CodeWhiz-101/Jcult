@@ -22,51 +22,86 @@ useEffect(() => {
       <main className="pt-20">
 
          {/* ================= HERO ================= */}
-               <section className="relative z-10 overflow-visible mb-16 md:mb-24">
-  <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
+<section className="relative z-10 overflow-visible mb-16 md:mb-24">
+
+  {/* ================= DESKTOP HERO ================= */}
+  <div className="hidden md:block bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
     <div className="container-responsive">
       <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
 
-        {/* BREADCRUMB */}
-        <div style={{ marginBottom: '24px' }}>
+        {/* Breadcrumb */}
+        <div className="mb-6">
           <PageBreadcrumb
             items={[
               { label: 'What We Do', href: '/what-we-do' },
-              { label: 'Asset Management', href: '/what-we-do/Asset Management' },
+              { label: 'Asset Management', href: '/what-we-do/asset-management' },
             ]}
           />
         </div>
 
-        {/* ANIMATED TITLE */}
+        {/* Animated Title */}
         <div style={{ overflow: 'hidden' }}>
-  <h1
-    style={{
-      fontFamily: 'Raleway, sans-serif',
-      fontWeight: 500,
-      fontSize: '60px',
-      lineHeight: '1.1',
-      letterSpacing: '-0.018em',
-      maxWidth: '860px',
-      color: '#ffffff',
-      WebkitFontSmoothing: 'antialiased',
-      MozOsxFontSmoothing: 'grayscale',
-
-      transform: reveal
-        ? 'translateX(0)'
-        : 'translateX(-120%)',
-      opacity: reveal ? 1 : 0,
-      transition:
-        'transform 900ms cubic-bezier(0.22,1,0.36,1), opacity 600ms ease',
-    }}
-  >
-    Asset Management
-  </h1>
-</div>
-
+          <h1
+            style={{
+              fontFamily: 'Raleway, sans-serif',
+              fontWeight: 500,
+              fontSize: '60px',
+              lineHeight: '1.1',
+              letterSpacing: '-0.018em',
+              maxWidth: '860px',
+              color: '#ffffff',
+              WebkitFontSmoothing: 'antialiased',
+              MozOsxFontSmoothing: 'grayscale',
+              transform: reveal
+                ? 'translateX(0)'
+                : 'translateX(-120%)',
+              opacity: reveal ? 1 : 0,
+              transition:
+                'transform 900ms cubic-bezier(0.22,1,0.36,1), opacity 600ms ease',
+            }}
+          >
+            Asset Management
+          </h1>
+        </div>
 
       </div>
     </div>
   </div>
+
+  {/* ================= MOBILE HERO ================= */}
+  <div className="md:hidden bg-white">
+    {/* Left white gutter */}
+    <div className="pl-6">
+      {/* Green box */}
+      <div className="bg-primary pt-18 pb-26 pl-6 pr-6">
+
+        {/* Breadcrumb */}
+        <div className="mb-6 text-[14px]">
+          <PageBreadcrumb
+            items={[
+              { label: 'What We Do', href: '/what-we-do' },
+              { label: 'Asset Management', href: '/what-we-do/asset-management' },
+            ]}
+          />
+        </div>
+
+        {/* Title */}
+        <h1
+          className="text-white font-medium tracking-tight leading-[1.12]"
+          style={{
+            fontFamily: 'Raleway, sans-serif',
+            fontSize: '36px',
+          }}
+        >
+          Asset
+          <br />
+          Management
+        </h1>
+
+      </div>
+    </div>
+  </div>
+
 </section>
 
 

@@ -55,15 +55,17 @@ useEffect(() => {
     <div className="min-h-screen w-full bg-main">
       <main className="pt-20">
 
-   {/* ================= HERO ================= */}
+  {/* ================= HERO ================= */}
 <section className="relative overflow-visible mb-16 md:mb-24">
-  <div className="bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
+
+  {/* ================= DESKTOP HERO ================= */}
+  <div className="hidden md:block bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
     <div className="container-responsive">
 
       {/* ⛔ GREEN BOX — DO NOT TOUCH */}
       <div className="pt-22 md:pt-26 lg:pt-30 pb-38 md:pb-42 lg:pb-46">
 
-        {/* BREADCRUMB — NO ANIMATION */}
+        {/* Breadcrumb */}
         <div className="mb-6">
           <PageBreadcrumb
             items={[
@@ -73,7 +75,7 @@ useEffect(() => {
           />
         </div>
 
-        {/* TITLE — LEFT → RIGHT REVEAL (EXACT LIKE InTheMedia) */}
+        {/* Animated Title */}
         <div style={{ overflow: 'hidden' }}>
           <h1
             style={{
@@ -84,7 +86,6 @@ useEffect(() => {
               letterSpacing: '-0.018em',
               maxWidth: '860px',
               color: '#ffffff',
-
               transform: reveal
                 ? 'translateX(0)'
                 : 'translateX(-120%)',
@@ -100,7 +101,42 @@ useEffect(() => {
       </div>
     </div>
   </div>
+
+  {/* ================= MOBILE HERO ================= */}
+  <div className="md:hidden bg-white">
+    {/* Left white gutter */}
+    <div className="pl-6">
+      {/* Green box */}
+      <div className="bg-primary pt-20 pb-28 pl-6 pr-6">
+
+
+        {/* Breadcrumb */}
+        <div className="mb-6 text-[14px]">
+          <PageBreadcrumb
+            items={[
+              { label: 'Who We Are', href: '/who-we-are' },
+              { label: 'Our Global Base', href: '/who-we-are/our-global-base' },
+            ]}
+          />
+        </div>
+
+        {/* Title */}
+        <h1
+          className="text-white font-medium tracking-tight leading-[1.12]"
+          style={{
+            fontFamily: 'Raleway, sans-serif',
+            fontSize: '36px',
+          }}
+        >
+          Our Global Base
+        </h1>
+
+      </div>
+    </div>
+  </div>
+
 </section>
+
 
 
 
