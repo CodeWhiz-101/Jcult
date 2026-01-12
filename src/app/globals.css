@@ -670,13 +670,15 @@ html::after {
   position: fixed;
   left: 0;
   right: 0;
+
+  /* 👇 START BELOW HEADER + DISCLAIMER */
+  top: calc(var(--disclaimer-offset) + 120px);
   bottom: 0;
-  height: 220px;
+
   pointer-events: none;
   z-index: 120;
 
-  background: rgba(10, 35, 22, 0.65);
-
+background: rgba(10, 35, 22, 0.65);
   opacity: 0;
   transition: opacity 380ms cubic-bezier(0.22, 1, 0.36, 1);
 }

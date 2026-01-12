@@ -22,6 +22,7 @@ const disclaimerRef = useRef<HTMLDivElement>(null);
 const [disclaimerHeight, setDisclaimerHeight] = useState(0);
 const hasAnimatedRef = useRef(false);
    const shouldBlurPage = isDropdownVisible && !!hoveredTab;
+const hoverLockRef = useRef(false);
 
 const primaryBaseStyle: React.CSSProperties = {
   padding: '0.7rem 1.4rem',
@@ -36,8 +37,15 @@ const primaryBaseStyle: React.CSSProperties = {
   background: 'linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))',
 };
 const closeDropdown = () => {
+  hoverLockRef.current = true;
+
   setHoveredTab(null);
   setIsDropdownVisible(false);
+
+  // unlock hover after cursor settles
+  setTimeout(() => {
+    hoverLockRef.current = false;
+  }, 300);
 };
   const pathname = usePathname();
   const isHome = pathname === '/';
@@ -86,6 +94,7 @@ useEffect(() => {
       setDisclaimerHeight(disclaimerRef.current.offsetHeight);
     }
   };
+
 
   measureDisclaimer();
   window.addEventListener('resize', measureDisclaimer);
@@ -242,11 +251,14 @@ className="
       ? 'var(--brand-green-2)' // active when no hover
       : 'var(--brand-green-1)', // default
   }}
-  onMouseEnter={() => {
-    setHoveredTab(label);
-    setIsDropdownVisible(true);
-    setDropdownKey(prev => prev + 1);
-  }}
+onMouseEnter={() => {
+  if (hoverLockRef.current) return;
+
+  setHoveredTab(label);
+  setIsDropdownVisible(true);
+  setDropdownKey(prev => prev + 1);
+}}
+
     onClick={closeDropdown}
 
 >
@@ -332,29 +344,24 @@ className="
       {/* DESKTOP DROPDOWN */}
 {isDropdownVisible && hoveredTab  && (
   <div
-  
-  className="hidden lg:block fixed left-0 right-0 z-[180]"
-  style={{
-    backgroundColor: '#F4F4F4',
-    top: isVisible
-      ? `calc(var(--disclaimer-offset) + ${HEADER_HEIGHT}px)`
-      : `-${HEADER_HEIGHT}px`,
-    minHeight: '430px',
-  }}
-
-
-
-    onMouseEnter={() => setIsDropdownVisible(true)}
+    className="hidden lg:block fixed left-0 right-0 z-[180]"
+    onClick={closeDropdown}
+    style={{
+      backgroundColor: '#F4F4F4',
+      top: isVisible
+        ? `calc(var(--disclaimer-offset) + ${HEADER_HEIGHT}px)`
+        : `-${HEADER_HEIGHT}px`,
+      minHeight: '430px',
+    }}
     onMouseLeave={() => {
       setHoveredTab(null);
-      setTimeout(() => setIsDropdownVisible(false), 500);
+      setTimeout(() => setIsDropdownVisible(false), 150);
     }}
   >
-
-        
-          {/* DROPDOWN CONTENT */}
-<div className="relative max-w-[1600px] mx-auto min-h-[430px] flex">
-
+    <div
+      className="relative max-w-[1600px] mx-auto min-h-[430px] flex"
+      onClick={(e) => e.stopPropagation()}
+    >
             {/* LEFT COLUMN */}
 <div className="w-[36%] bg-white py-12">
     <div className="pl-4 lg:pl-12 xl:pl-16 pr-12 xl:pr-16">
@@ -431,6 +438,7 @@ className="
   onMouseLeave={(e) => {
     e.currentTarget.style.color = 'var(--brand-green-1)'; // RESET
   }}
+  onClick={closeDropdown}
 >
 
   {item}
