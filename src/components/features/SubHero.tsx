@@ -292,7 +292,7 @@ const mobileVideoRef = useRef<HTMLVideoElement>(null);
           }}
         >
           <div className="pt-10 pb-8 px-6">
-            <p className="text-white text-[15.5px] leading-relaxed">
+            <p className="text-white text-[17px] leading-relaxed">
               {description}
             </p>
           </div>
