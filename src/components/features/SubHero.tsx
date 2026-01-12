@@ -229,7 +229,7 @@ const mobileVideoRef = useRef<HTMLVideoElement>(null);
 
 
     {/* ===== MEDIA (VIDEO) ===== */}
-    <div className="relative h-[560px] w-full overflow-hidden">
+    <div className="relative h-[590px] w-full overflow-hidden">
 
       {/* GREEN BASE */}
       <div
