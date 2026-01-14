@@ -246,22 +246,9 @@ mobileVideoRef.current?.play();
             'opacity 800ms ease, transform 800ms cubic-bezier(.22,.61,.36,1)',
         }}
       >
-        <h1
-  className="
-    text-white
-    font-brand
-    font-medium
-
-    text-[30px]
-    leading-[1.18]
-    tracking-[-0.015em]
-
-    max-w-[250px]
-  "
->
-  {title}
-</h1>
-
+        <h1 className="text-white font-brand font-medium text-[34px] leading-[1.08]">
+          {title}
+        </h1>
       </div>
 
       {/* ===== GREEN BOX ===== */}
