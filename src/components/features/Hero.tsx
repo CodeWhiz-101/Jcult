@@ -205,7 +205,7 @@ mobileVideoRef.current?.play();
   <div className="pl-6 pr-0">
 
     {/* ===== MEDIA ===== */}
-    <div className="relative h-[640px] w-full overflow-hidden">
+    <div className="relative h-[660px] w-full overflow-hidden">
 
       {/* GREEN BASE */}
       <div
@@ -264,7 +264,7 @@ mobileVideoRef.current?.play();
           }}
         >
           <div className="pt-10 pb-8 px-6">
-            <p className="text-white text-[18.5px] leading-relaxed">
+            <p className="text-white text-[17px] leading-relaxed">
               {description}
             </p>
           </div>
