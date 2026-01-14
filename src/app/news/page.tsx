@@ -78,18 +78,28 @@ export default function News() {
                   `}
                 >
                   <h1
-                    style={{
-                      fontFamily: 'Raleway, sans-serif',
-                      fontWeight: 500,
-                      fontSize: '68px',
-                      lineHeight: '1.1',
-                      letterSpacing: '-0.018em',
-                      maxWidth: '860px',
-                      color: '#ffffff',
-                    }}
-                  >
-                    News
-                  </h1>
+  className="
+    font-brand
+    font-medium
+    text-white
+
+    text-[38px]        /* mobile */
+    leading-[1.15]
+    tracking-[-0.015em]
+    text-left
+
+    md:text-[68px]     /* desktop */
+    md:leading-[1.1]
+    md:tracking-[-0.018em]
+    md:text-left
+
+    max-w-[260px]      /* mobile like Citadel */
+    md:max-w-[860px]
+  "
+>
+  News
+</h1>
+
                 </div>
               </div>
             </div>

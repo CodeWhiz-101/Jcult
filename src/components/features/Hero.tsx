@@ -21,7 +21,8 @@ export default function Hero({
   const pathname = usePathname();
   const isHome = pathname === '/';
 
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const desktopVideoRef = useRef<HTMLVideoElement>(null);
+const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const [phase, setPhase] = useState<Phase>('fade');
 
   /* ===============================
@@ -33,7 +34,8 @@ export default function Hero({
     const t3 = setTimeout(() => setPhase('box'), 600);    // title ends
     const t4 = setTimeout(() => setPhase('boxText'), 1000);// box ends
 
-    videoRef.current?.play();
+    desktopVideoRef.current?.play();
+mobileVideoRef.current?.play();
 
     return () => {
       clearTimeout(t1);
@@ -44,8 +46,10 @@ export default function Hero({
   }, []);
 
   return (
+    <>
+     {/* ================= DESKTOP HERO ================= */}
     <section
-      className="relative h-[480px] md:h-[530px] lg:h-[680px] xl:h-[760px]"
+      className="hidden md:block relative h-[480px] md:h-[530px] lg:h-[680px] xl:h-[760px]"
       style={{
         paddingTop: isHome ? 'var(--page-top-offset)' : '0px',
       }}
@@ -76,7 +80,7 @@ export default function Hero({
           {/* VIDEO */}
           {videoSrc && (
             <video
-              ref={videoRef}
+              ref={desktopVideoRef}
               className="relative z-10 w-full h-full object-cover"
               style={{ objectPosition: 'center top' }}
               src={videoSrc}
@@ -194,5 +198,82 @@ export default function Hero({
         </div>
       </div>
     </section>
+    {/* ================= MOBILE HERO ================= */}
+<section className="md:hidden bg-white relative -mt-16">
+
+  {/* LEFT WHITE GUTTER ONLY */}
+  <div className="pl-6 pr-0">
+
+    {/* ===== MEDIA ===== */}
+    <div className="relative h-[640px] w-full overflow-hidden">
+
+      {/* GREEN BASE */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{ background: 'var(--brand-green-gradient)' }}
+      />
+
+      {/* VIDEO */}
+      {videoSrc && (
+        <video
+          ref={mobileVideoRef}
+          className="absolute inset-0 z-10 w-full h-full object-cover"
+          style={{ objectPosition: 'center top' }}
+          src={videoSrc}
+          muted
+          loop
+          playsInline
+          preload="auto"
+        />
+      )}
+
+      {/* DARK OVERLAY */}
+      <div className="absolute inset-0 z-20 bg-black/25" />
+
+      {/* ===== TITLE ===== */}
+      <div
+        className="absolute z-30 top-[72px] left-0 pl-6 max-w-[280px]"
+        style={{
+          opacity:
+            phase === 'title' || phase === 'box' || phase === 'boxText'
+              ? 1
+              : 0,
+          transform:
+            phase === 'title' || phase === 'box' || phase === 'boxText'
+              ? 'translateX(0)'
+              : 'translateX(-20px)',
+          transition:
+            'opacity 800ms ease, transform 800ms cubic-bezier(.22,.61,.36,1)',
+        }}
+      >
+        <h1 className="text-white font-brand font-medium text-[34px] leading-[1.08]">
+          {title}
+        </h1>
+      </div>
+
+      {/* ===== GREEN BOX ===== */}
+      <div className="absolute bottom-0 left-0 z-40 w-full">
+        <div
+          className="w-[88%]"
+          style={{
+            background: 'var(--brand-green-gradient)',
+            opacity: 0.85,
+            backdropFilter: 'blur(14px)',
+            WebkitBackdropFilter: 'blur(14px)',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
+          }}
+        >
+          <div className="pt-10 pb-8 px-6">
+            <p className="text-white text-[17px] leading-relaxed">
+              {description}
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</>
   );
 }
