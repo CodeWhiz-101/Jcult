@@ -264,7 +264,7 @@ mobileVideoRef.current?.play();
           }}
         >
           <div className="pt-10 pb-8 px-6">
-            <p className="text-white text-[17px] leading-relaxed">
+            <p className="text-white text-[18.5px] leading-relaxed">
               {description}
             </p>
           </div>
