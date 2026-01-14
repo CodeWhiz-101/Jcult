@@ -246,7 +246,7 @@ mobileVideoRef.current?.play();
             'opacity 800ms ease, transform 800ms cubic-bezier(.22,.61,.36,1)',
         }}
       >
-        <h1 className="text-white font-brand font-medium text-[34px] leading-[1.08]">
+        <h1 className="text-white font-brand font-medium text-[36px] leading-[1.08]">
           {title}
         </h1>
       </div>
@@ -264,7 +264,7 @@ mobileVideoRef.current?.play();
           }}
         >
           <div className="pt-10 pb-8 px-6">
-            <p className="text-white text-[17px] leading-relaxed">
+            <p className="text-white text-[18.5px] leading-relaxed">
               {description}
             </p>
           </div>
