@@ -142,14 +142,16 @@ useEffect(() => {
 
   return (
   <>
-  <div
-    className="fixed left-0 right-0 z-[200] transition-transform duration-500"
-    style={{
-transform: isVisible
-  ? 'translateY(0)'
-  : `translateY(-${disclaimerHeight + HEADER_HEIGHT}px)`
-    }}
-  >
+<div
+  className="fixed left-0 right-0 z-[200] transition-[top] duration-500 ease-in-out"
+  style={{
+    top: isVisible
+      ? '0px'
+      : `-${disclaimerHeight + HEADER_HEIGHT}px`
+  }}
+>
+
+
     {/* DISCLAIMER */}
 {isHome && (
   <div
@@ -168,17 +170,19 @@ transform: isVisible
 )}
 
     {/* HEADER */}
-    <header
-      className="w-full transition-all duration-500"
-      style={{
-        height: `${HEADER_HEIGHT}px`,
-        backgroundColor: '#FFFFFF',
-borderBottom:
-  isScrolled && !isHome
-    ? '1px solid #E8E8E8'
-    : 'none'      }}
-      onMouseLeave={() => setHoveredTab(null)}
-    >
+<header
+  className="w-full bg-white"
+  style={{
+    height: `${HEADER_HEIGHT}px`,
+    borderBottom:
+      isScrolled && !isHome
+        ? '1px solid #E8E8E8'
+        : 'none'
+  }}
+>
+
+
+
       {/* 🔥 KEEP YOUR EXISTING HEADER CONTENT EXACTLY SAME */}
 
 
@@ -287,8 +291,8 @@ onMouseEnter={() => {
           </nav>
 
           {/* CONTACT US BUTTON */}
-   <div
-  className="flex-1 flex justify-end"
+<div
+  className="hidden lg:flex flex-1 justify-end"
   style={{
     opacity: hasLoaded ? 1 : 0,
     transform: hasLoaded ? 'translateY(0)' : 'translateY(36px)',
@@ -297,43 +301,50 @@ onMouseEnter={() => {
     transitionDelay: '320ms',
   }}
 >
-
-<Link href="/contact" className="no-underline">
-  <LuxuryButton variant="primary">
-    Contact Us
-  </LuxuryButton>
-</Link>
-
-
+  <Link href="/contact" className="no-underline">
+    <LuxuryButton variant="primary">
+      Contact Us
+    </LuxuryButton>
+  </Link>
+</div>
 
 
-          </div>
+
+
 
           {/* MOBILE MENU BUTTON */}
-          <div className="lg:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2"
-              aria-label="Toggle menu"
-            >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d={
-                    isMenuOpen
-                      ? 'M6 18L18 6M6 6l12 12'
-                      : 'M4 6h16M4 12h16M4 18h16'
-                  }
-                />
-              </svg>
-            </button>
+         <div className="flex flex-1 justify-end lg:hidden">
+<button
+  onClick={() => setIsMenuOpen(!isMenuOpen)}
+  aria-label="Toggle menu"
+  className="relative w-14 h-8 mt-5"
+>
+  {/* TOP LINE — SHORT */}
+<span
+  className={`
+    absolute left-6 top-[6px]
+    h-[3px] w-5
+    bg-[var(--brand-green-1)]
+    transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+    ${isMenuOpen ? 'translate-x-2' : 'translate-x-0'}
+  `}
+/>
+
+
+  {/* BOTTOM LINE — LONG */}
+  <span
+    className={`
+      absolute left-0 top-[14px]
+      h-[3px] w-11
+      bg-[var(--brand-green-1)]
+      transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+      ${isMenuOpen ? '-translate-x-2' : 'translate-x-0'}
+    `}
+  />
+</button>
+
+
+
           </div>
         </div>
       </div>
@@ -469,123 +480,162 @@ onMouseEnter={() => {
       )}
 
       {/* MOBILE MENU (UNCHANGED) */}
-      {isMenuOpen && (
-        <div className="lg:hidden fixed inset-0 bg-white z-[200] p-6">
-          <div className="flex justify-end mb-6">
-            <button onClick={() => setIsMenuOpen(false)}>
-              <svg
-                className="h-8 w-8"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
+    {isMenuOpen && (
+<div className="lg:hidden fixed inset-0 bg-white z-[200] flex flex-col">
 
-          <div className="space-y-6">
-            {Object.keys(tabContent).map((tab) => (
-              <div key={tab}>
-                <div className="flex justify-between items-center">
-                  <Link
-                    href={linkFor(tab)}
-                    className="text-2xl no-underline text-black"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {tab}
-                  </Link>
+       <div className="flex justify-end pt-6 pr-6">
+  <button onClick={() => setIsMenuOpen(false)}>
+    <svg
+      className="h-8 w-8"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M6 18L18 6M6 6l12 12"
+      />
+    </svg>
+  </button>
+</div>
 
-                  {/* Expand toggle */}
-                  <button
-                    onClick={() =>
-                      setMobileExpandedTabs((prev) =>
-                        prev.includes(tab)
-                          ? prev.filter((t) => t !== tab)
-                          : [...prev, tab]
-                      )
-                    }
-                  >
-                    <svg
-                      className={`h-5 w-5 transition-transform ${
-                        mobileExpandedTabs.includes(tab) ? 'rotate-180' : ''
-                      }`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </button>
-                </div>
 
-                {/* Mobile sublinks */}
-                {mobileExpandedTabs.includes(tab) && (
-                  <div className="ml-4 mt-3 space-y-2">
-                    {tabContent[tab].map((item, index) => {
-                      const slug = item.toLowerCase().replace(/\s+/g, '-');
-                      const href = `${linkFor(tab)}/${slug}`;
-                      return (
-                        <Link
-                          key={index}
-                          href={href}
-                          onClick={() => setIsMenuOpen(false)}
-                          className="block text-lg no-underline text-black"
-                        >
-                          {item}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+         {/* MOBILE MENU CONTENT */}
+<div className="flex flex-col h-full">
 
-          <div className="pt-6 border-t mt-6">
-         <Link
-  href="/contact"
-  className="
-    relative inline-flex items-center justify-center
-    px-6 py-2.5 text-sm font-medium
-    text-white no-underline
-    overflow-hidden
-    isolate
-  "
->
-  {/* GRADIENT LAYER */}
+  {/* TOP: MENU ITEMS */}
+  {/* TOP: MENU ITEMS */}
+{/* TOP: MENU ITEMS */}
+<div className="px-6">
+  {Object.keys(tabContent).map((tab) => {
+    const isOpen = mobileExpandedTabs.includes(tab);
+
+    return (
+ <div key={tab} className="-mx-6">
+  {/* HEADER ROW (ALWAYS WHITE, NEVER MOVES) */}
+  <button
+    onClick={() =>
+      setMobileExpandedTabs((prev) =>
+        prev.includes(tab)
+          ? prev.filter((t) => t !== tab)
+          : [...prev, tab]
+      )
+    }
+    className={`
+      flex items-center gap-2
+      w-full
+      px-6 py-4
+      font-raleway
+      text-[32px]
+      transition-colors duration-300
+      ${isOpen
+        ? 'text-[var(--brand-green-2)]'
+        : 'text-[var(--brand-green-1)]'}
+    `}
+  >
+    {/* TEXT + UNDERLINE */}
+ <span className="relative leading-none">
+  {tab}
   <span
-    aria-hidden
-    className="absolute inset-0"
-    style={{
-      backgroundImage:
-        'linear-gradient(90deg, var(--brand-green-1), var(--brand-green-2))',
-      width: '105%',
-      left: '-2.5%',
-      top: 0
-    }}
+    className={`
+      absolute left-0 -bottom-[2px] h-[2px] w-full
+      transition-opacity duration-300
+      ${isOpen
+        ? 'opacity-100 bg-[var(--brand-green-2)]'
+        : 'opacity-0'}
+    `}
   />
-
-  {/* TEXT */}
-  <span className="relative z-10">
-    Contact Us
-  </span>
-</Link>
-
-{/* PAGE BLUR OVERLAY */}
+</span>
 
 
-          </div>
+    {/* ARROW */}
+    <svg
+      className={`
+        h-6 w-6
+        transition-all duration-300
+        ${isOpen
+          ? 'rotate-180 text-[var(--brand-green-2)]'
+          : 'text-[var(--brand-green-1)]'}
+      `}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  </button>
+
+  {/* DROPDOWN (GREY ONLY HERE) */}
+  {isOpen && (
+    <div className="bg-[#F2F2F2] px-6 pb-6 pt-4 space-y-3">
+      {tabContent[tab].map((item, index) => {
+        const slug = item.toLowerCase().replace(/\s+/g, '-');
+        const href = `${linkFor(tab)}/${slug}`;
+        return (
+          <Link
+            key={index}
+            href={href}
+            onClick={() => setIsMenuOpen(false)}
+            className="block text-lg no-underline text-black"
+          >
+            {item}
+          </Link>
+        );
+      })}
+    </div>
+  )}
+</div>
+
+    );
+  })}
+</div>
+
+
+  {/* BOTTOM: DIVIDER + CONTACT US (CLIENT LOGIN STYLE) */}
+{/* BOTTOM: DIVIDER + CONTACT US */}
+<div className="mt-auto pt-4">
+  {/* Divider */}
+<div className="h-[1px] max-w-[380px] mx-auto bg-gray-300 opacity-70" />
+
+  {/* Contact Us */}
+  <div className="flex justify-end px-6 py-6">
+    <Link
+      href="/contact"
+      onClick={() => setIsMenuOpen(false)}
+      className="
+        relative inline-flex items-center justify-center
+        px-6 py-2.5 text-sm font-medium
+        text-white no-underline
+        overflow-hidden isolate
+      "
+    >
+      <span
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            'linear-gradient(90deg, var(--brand-green-1), var(--brand-green-2))'
+        }}
+      />
+      <span className="relative z-10">
+        Contact Us
+      </span>
+    </Link>
+  </div>
+</div>
+
+</div>
+
+
+
+
         </div>
       )}
     </header>
@@ -595,3 +645,4 @@ onMouseEnter={() => {
     </>
   );
 }
+

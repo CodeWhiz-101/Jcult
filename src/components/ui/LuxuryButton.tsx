@@ -4,7 +4,8 @@ import { useState, ButtonHTMLAttributes } from 'react';
 
 interface LuxuryButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'white' | 'gold' | 'outline';
+  variant?: 'primary' | 'white' | 'gold' | 'outline' | 'mobile-primary';
+
 }
 
 
@@ -50,6 +51,23 @@ white: {
   boxShadow: hovered
     ? 'inset 0 0 0 1px #FFFFFF' // border ONLY on hover
     : 'inset 0 0 0 0 transparent', // ✅ no border when idle
+},
+
+/* ================= MOBILE PRIMARY ================= */
+'mobile-primary': {
+  ...baseStyle,
+
+  width: '100%',
+   padding: '0.65rem 2.2rem',    // 👈 reduced height (key fix)
+  fontSize: '1rem',             // 👈 SAME size, no visual shrink
+  lineHeight: '1.2',            // 👈 removes vertical bloat
+
+  fontWeight: 500,
+  borderRadius: '0px',
+
+  color: '#FFFFFF',
+  background: 'linear-gradient(90deg,var(--brand-green-1),var(--brand-green-2))',
+  boxShadow: 'none',
 },
 
 
