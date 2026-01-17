@@ -207,30 +207,38 @@ export default function Accordion({ regions }: { regions: Region[] }) {
 
                 {/* RIGHT — IMAGE (SMALLER & CLEAN) */}
             <div className="md:col-span-5 flex justify-start md:justify-end">
-  <div
-    className="
-      relative
-      /* Set a specific width on mobile to create that right-side gap */
-      w-[300px] sm:w-[350px] md:w-[85%]
-      
-      /* Aspect ratio 3/4 makes it tall like the Dubai skyscraper pic */
-      aspect-[3/4] md:aspect-[4/3]
-      
-      overflow-hidden
-    "
-  >
+<div className="md:col-span-5 flex justify-start md:justify-end">
+ <div
+  className="
+    relative
 
+    /* MOBILE: slightly inset wide image */
+    w-[88vw]
+    mx-auto
 
+    /* MOBILE height control (wider look) */
+    aspect-[16/9]
 
+    /* TABLET */
+    sm:w-[90vw]
 
+    /* DESKTOP */
+    md:w-[85%]
+    md:aspect-[4/3]
 
-                    <Image
-                      src="/images/ourculture3.jpg"
-                      alt="city"
-                      fill
-                      className="object-cover object-center"
-                    />
-                  </div>
+    overflow-hidden
+  "
+>
+  <Image
+    src="/images/ourculture3.jpg"
+    alt="city"
+    fill
+    className="object-cover object-center"
+  />
+</div>
+
+</div>
+
                 </div>
 
               </div>

@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
-import LuxuryButton from '@/components/ui/LuxuryButton';
 
 export default function AssetManagement() {
   const [active, setActive] = useState(0);
@@ -30,8 +29,9 @@ export default function AssetManagement() {
   }, []);
 
   /* --------------------------------
-     DATA — UNCHANGED
+     DATA (UNCHANGED)
   -------------------------------- */
+ 
 
 const tabs = [
   {
@@ -118,7 +118,6 @@ const tabs = [
     ],
   },
 ];
-
   const current = tabs[active];
 
   return (
@@ -132,202 +131,89 @@ const tabs = [
         transition: 'all 900ms cubic-bezier(0.22,1,0.36,1)',
       }}
     >
-
       {/* ======================================================
-          TOP — BUTTON NAV (LUXURY BUTTON)
+          TOP — TAB BUTTONS
       ====================================================== */}
       <div className="pt-16 md:pt-20 pb-20 md:pb-24">
         <div className="container-responsive">
 
-        <div className="flex justify-center">
-          <div className="flex justify-center">
-  <div
-  className="
-    flex
-    gap-4
-    overflow-x-auto
-    whitespace-nowrap
-    md:overflow-visible
-    scrollbar-hide
-    px-4 md:px-0
-  "
->
+          {/* MOBILE: SCROLLABLE */}
+          <div className="md:hidden -mx-4">
+            <div
+              className="
+                flex
+                gap-3
+                overflow-x-auto
+                px-4
+                scrollbar-hide
+                snap-x snap-mandatory
+              "
+            >
+              {tabs.map((tab, i) => {
+                const isActive = active === i;
 
-    {tabs.map((tab, i) => {
-      const isActive = active === i;
-
-      return (
-        <button
-          key={tab.label}
-          onClick={() => {
-            setActive(i);
-            setHoveredIndex(null);
-          }}
-          className={`
-            w-[190px]
-            h-[56px]
-shrink-0
-            flex items-center justify-center
-
-            text-[15px]
-            font-medium
-            transition-all duration-200
-
-            ${
-              isActive
-                ? `
-                  bg-[var(--brand-green-2)]
-                  text-white
-                `
-                : `
-                  bg-white
-                  text-[var(--brand-green-1)]
-                  hover:bg-[#E6F2EC]
-                `
-            }
-          `}
-        >
-          {tab.label}
-        </button>
-      );
-    })}
-</div>
-  </div>
-</div>
-
-        </div>
-      </div>
-
-      {/* ======================================================
-          MAIN CONTENT
-      ====================================================== */}
-      <div
-        key={active}
-        className="
-          container-responsive
-          grid
-          grid-cols-1
-          lg:grid-cols-[1.15fr_1fr]
-          gap-24
-          pb-36
-        "
-      >
-        {/* ---------------- LEFT COLUMN ---------------- */}
-        <div>
-          <h1 className="font-brand text-[48px] md:text-[64px] leading-[1.05] text-white mb-8">
-            {current.label}
-          </h1>
-
-          <p className="max-w-[720px] text-white/85 leading-[1.75] text-[18.5px]">
-            {current.overview}
-          </p>
-        </div>
-
-        {/* ---------------- RIGHT COLUMN ---------------- */}
-        <div className="space-y-6">
-          {current.columns.map((col, index) => {
-            const isActiveItem = hoveredIndex === index;
-
-            return (
-              <div
-                key={col.title}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => setHoveredIndex(isActiveItem ? null : index)}
-                className="
-                  relative
-                  cursor-pointer
-                  border-l
-                  border-white/25
-                  pl-8
-                  py-6
-                  transition-all
-                  duration-500
-                  hover:border-white
-                "
-              >
-                {/* HEADER */}
-                <div className="flex items-center justify-between">
-                  <h3
-  style={{
-    fontFamily: 'Raleway, sans-serif',
-    transform: isActiveItem ? 'translateX(4px)' : 'translateX(0)',
-    transition: 'transform 300ms ease',
-  }}
-  className="
-    font-medium
-    text-[24px] md:text-[26px] lg:text-[28px]
-    leading-[1.12]
-    text-white
-  "
->
-  {col.title}
-</h3>
-
-
-                  {/* CIRCLE ARROW */}
-                  <div
-                    className="
+                return (
+                  <button
+                    key={tab.label}
+                    onClick={() => setActive(i)}
+                    className={`
+                      shrink-0
+                      snap-start
+                      w-[190px]
+                      h-[56px]
                       flex items-center justify-center
-                      w-10 h-10
-                      rounded-full
-                      border
-                      transition-all duration-300
-                      text-white
-                      border-white/60
-                      hover:bg-white hover:text-black
-                    "
+                      text-[15px]
+                      font-medium
+                      transition-all duration-200
+                      ${
+                        isActive
+                          ? 'bg-[var(--brand-green-2)] text-white'
+                          : 'bg-white text-[var(--brand-green-1)]'
+                      }
+                    `}
                   >
-                    <ArrowRight
-                      strokeWidth={1.25}
-                      className="w-5 h-5"
-                    />
-                  </div>
-                </div>
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
-                {/* CONTENT */}
-                <div
-                  className="overflow-hidden transition-all duration-500 ease-out"
-                  style={{
-                    maxHeight: isActiveItem ? '420px' : '0px',
-                    opacity: isActiveItem ? 1 : 0,
-                  }}
+          {/* DESKTOP: CENTERED */}
+          <div className="hidden md:flex justify-center gap-4">
+            {tabs.map((tab, i) => {
+              const isActive = active === i;
+
+              return (
+                <button
+                  key={tab.label}
+                  onClick={() => setActive(i)}
+                  className={`
+                    w-[190px]
+                    h-[56px]
+                    flex items-center justify-center
+                    text-[15px]
+                    font-medium
+                    transition-all duration-200
+                    ${
+                      isActive
+                        ? 'bg-[var(--brand-green-2)] text-white'
+                        : 'bg-white text-[var(--brand-green-1)] hover:bg-[#E6F2EC]'
+                    }
+                  `}
                 >
-                  <p className="mt-4 text-[18.5px] leading-[1.75] text-white/85">
-                    {col.text}
-                  </p>
-                </div>
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
 
-                {/* ACTIVE BAR */}
-                <span
-                  className="
-                    absolute
-                    left-[-1px]
-                    top-0
-                    h-full
-                    w-[2px]
-                    bg-white
-                    transition-transform
-                    duration-500
-                    origin-top
-                  "
-                  style={{
-                    transform: isActiveItem ? 'scaleY(1)' : 'scaleY(0)',
-                  }}
-                />
-              </div>
-            );
-          })}
         </div>
       </div>
 
       {/* ======================================================
-          BOTTOM FADE
+          MAIN CONTENT (UNCHANGED)
       ====================================================== */}
-      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-    </section>
-  );
-}
-
+   <div key={active} className=" container-responsive grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-24 pb-36 " > {/* ---------------- LEFT COLUMN ---------------- */} <div> <h1 className="font-brand text-[48px] md:text-[64px] leading-[1.05] text-white mb-8"> {current.label} </h1> <p className="max-w-[720px] text-white/85 leading-[1.75] text-[18.5px]"> {current.overview} </p> </div> {/* ---------------- RIGHT COLUMN ---------------- */} <div className="space-y-6"> {current.columns.map((col, index) => { const isActiveItem = hoveredIndex === index; return ( <div key={col.title} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)} onClick={() => setHoveredIndex(isActiveItem ? null : index)} className=" relative cursor-pointer border-l border-white/25 pl-8 py-6 transition-all duration-500 hover:border-white " > {/* HEADER */} <div className="flex items-center justify-between"> <h3 style={{ fontFamily: 'Raleway, sans-serif', transform: isActiveItem ? 'translateX(4px)' : 'translateX(0)', transition: 'transform 300ms ease', }} className=" font-medium text-[24px] md:text-[26px] lg:text-[28px] leading-[1.12] text-white " > {col.title} </h3> {/* CIRCLE ARROW */} <div className=" flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 text-white border-white/60 hover:bg-white hover:text-black " > <ArrowRight strokeWidth={1.25} className="w-5 h-5" /> </div> </div> {/* CONTENT */} <div className="overflow-hidden transition-all duration-500 ease-out" style={{ maxHeight: isActiveItem ? '420px' : '0px', opacity: isActiveItem ? 1 : 0, }} > <p className="mt-4 text-[18.5px] leading-[1.75] text-white/85"> {col.text} </p> </div> {/* ACTIVE BAR */} <span className=" absolute left-[-1px] top-0 h-full w-[2px] bg-white transition-transform duration-500 origin-top " style={{ transform: isActiveItem ? 'scaleY(1)' : 'scaleY(0)', }} /> </div> ); })} </div> </div> {/* ====================================================== BOTTOM FADE ====================================================== */} <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" /> </section> ); }
 
 

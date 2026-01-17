@@ -156,7 +156,7 @@ useEffect(() => {
 {isHome && (
   <div
     ref={disclaimerRef}
-    className="text-center text-[16px] leading-relaxed px-4 py-2 font-ttcommons"
+    className="text-center text-[16px] leading-snug px-4 py-2 font-ttcommons"
     style={{
       backgroundColor: '#F6F6F6',
       color: '#1A1A1A',
@@ -188,9 +188,10 @@ useEffect(() => {
 
       {/* TOP HEADER */}
       <div
-        className="relative max-w-[1600px] mx-auto px-4 lg:px-12 xl:px-16"
-        style={{ height: `${HEADER_HEIGHT}px` }}
-      >
+  className="relative max-w-[1600px] mx-auto px-4 py-2 lg:py-0 lg:px-12 xl:px-16"
+  style={{ height: `${HEADER_HEIGHT}px` }}
+>
+
       <div className="grid grid-cols-[auto_1fr_auto] items-center h-full">
           {/* LOGO */}
         <div
@@ -516,25 +517,30 @@ onMouseEnter={() => {
  <div key={tab} className="-mx-6">
   {/* HEADER ROW (ALWAYS WHITE, NEVER MOVES) */}
   <button
-    onClick={() =>
-      setMobileExpandedTabs((prev) =>
-        prev.includes(tab)
-          ? prev.filter((t) => t !== tab)
-          : [...prev, tab]
-      )
+  type="button"
+  onClick={() => {
+    if (mobileExpandedTabs.includes(tab)) {
+      // SECOND TAP → NAVIGATE
+      setIsMenuOpen(false);
+      window.location.href = linkFor(tab);
+    } else {
+      // FIRST TAP → OPEN DROPDOWN
+      setMobileExpandedTabs([tab]);
     }
-    className={`
-      flex items-center gap-2
-      w-full
-      px-6 py-4
-      font-raleway
-      text-[32px]
-      transition-colors duration-300
-      ${isOpen
-        ? 'text-[var(--brand-green-2)]'
-        : 'text-[var(--brand-green-1)]'}
-    `}
-  >
+  }}
+  className={`
+    flex items-center gap-2
+    w-full
+    px-6 py-4
+    font-raleway
+    text-[32px]
+    transition-colors duration-300
+    ${mobileExpandedTabs.includes(tab)
+      ? 'text-[var(--brand-green-2)]'
+      : 'text-[var(--brand-green-1)]'}
+  `}
+>
+
     {/* TEXT + UNDERLINE */}
  <span className="relative leading-none">
   {tab}
