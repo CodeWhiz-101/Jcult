@@ -126,15 +126,20 @@ export default function LeadershipTeam() {
 
   {/* ACTUAL OVERVIEW CONTENT */}
   <div
-    className="
-      relative
-      z-10
-      min-h-[50vh]
-      flex items-center
-      bg-tertiary
-      md:-mt-28 lg:-mt-36
-    "
-  >
+  className="
+    relative
+    z-10
+    min-h-[auto]
+    -mt-[24px]
+    flex items-start
+    bg-tertiary
+    md:min-h-[50vh]
+    md:flex
+    md:items-center
+    md:-mt-28 lg:-mt-36
+  "
+>
+
     <div className="container-responsive">
       <div className="flex flex-col md:flex-row items-start">
 

@@ -158,7 +158,11 @@ useEffect(() => {
       md:-mt-20 lg:-mt-28
     "
   >
-    <div className="container-responsive pt-6 md:pt-8 lg:pt-10">
+    <div className="
+  container-responsive
++ -mt-[20px] md:mt-0
+  pt-2 md:pt-8 lg:pt-10
+">
       <div className="flex flex-col md:flex-row items-start">
 
         {/* LEFT — TITLE */}
@@ -167,7 +171,7 @@ useEffect(() => {
             <h2
               className="
                 font-brand
-                mb-8
+                mb-5
                 text-[48px] md:text-[54px] lg:text-[60px]
                 leading-[1.18]
               "
