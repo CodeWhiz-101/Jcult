@@ -31,7 +31,7 @@ useEffect(() => {
       <main className="pt-20">
 
 {/* ================= HERO ================= */}
-<section className="relative mb-12 md:mb-32 overflow-visible">
+<section className="relative mb-0 md:mb-32 overflow-visible">
   <div className="relative bg-primary ml-6 md:ml-10 lg:ml-14">
 
     <div className="relative h-auto md:h-[648px] lg:h-[688px]">
@@ -153,19 +153,23 @@ useEffect(() => {
 
 
         {/* ================= INSIGHT SECTION ================= */}
-        <section className="py-6 md:py-8 lg:py-16 mb-16">
+        <section className="hidden md:block py-6 md:py-8 lg:py-16 mb-16">
+          {/* MOBILE SPACING MATCH (Citadel-style) */}
+
           <div className="container-responsive">
             <div className="flex flex-col md:flex-row items-start gap-4 md:gap-0">
 
               <div className="flex-1 mb-4 md:mb-6 lg:mb-0">
                 <FadeLeft>
-                  <h2
+               <h2
   className="
     font-brand
     text-[46px] md:text-[50px] lg:text-[56px]
     leading-[1.12]
+    mt-6 md:mt-0
   "
 >
+
   <span className="block font-medium text-[var(--brand-green-1)]">
     Insight Over
   </span>
@@ -202,12 +206,62 @@ useEffect(() => {
             </div>
           </div>
         </section>
+        {/* ================= INSIGHT SECTION — MOBILE ================= */}
+<section className="md:hidden mt-[28px] mb-14">
+
+  <div className="px-6">
+
+    {/* TITLE */}
+    <h2
+      className="
+        font-brand
+        text-[46px]
+        leading-[1.1]
+        tracking-[-0.015em]
+      "
+    >
+      <span className="block font-medium text-[var(--brand-green-1)]">
+        Insight Over
+      </span>
+      <span className="block font-medium text-[var(--brand-green-2)]">
+        Hierarchy
+      </span>
+    </h2>
+
+    {/* BODY */}
+    <div className="mt-4 space-y-4">
+      <p className="text-section-content color-grey leading-[24px]">
+        From the moment you arrive, your thinking has influence. You are invited to share your
+        ideas openly, and your contribution is valued regardless of your position or experience.
+      </p>
+
+      <p className="text-section-content color-grey leading-[24px]">
+        We encourage one another to look beyond what is familiar and to search for the next
+        breakthrough. A wide range of viewpoints strengthens our creativity and sharpens our
+        position in the industry.
+      </p>
+
+      <p className="text-section-content color-grey leading-[24px]">
+        We explore ideas through open dialogue, strengthening them through challenge and
+        improvement, always aiming to exceed prior achievements.
+      </p>
+    </div>
+
+  </div>
+</section>
+
 
         {/* ================= CORE VALUES ================= */}
         <CoreValuesSection />
+        {/* ================= HQ SECTION ================= */}
+        {/* MOBILE SPACER — keeps green intact */}
+
+
 
         {/* ================= HQ SECTION ================= */}
-        <section className="mt-12 pt-4 pb-8 md:mt-0 md:py-8 lg:py-16 container-responsive">
+        <section className="pt-4 pb-8 translate-y-[12px] md:translate-y-0 md:pt-0 md:py-8 lg:py-16 container-responsive">
+
+
           <div className="flex flex-col md:flex-row items-start">
 
             <div className="flex-1 mb-6 md:mb-0">
