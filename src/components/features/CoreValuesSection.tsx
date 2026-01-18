@@ -32,7 +32,7 @@ export default function CoreValuesSection() {
   ];
 
   return (
-    <section className="bg-primary text-white pt-[64px] pb-[56px] md:py-20 relative overflow-visible">
+    <section className="bg-primary text-white pt-[50px] pb-[56px] md:py-20 relative overflow-visible">
       {/* HERO SECTION — MOBILE ONLY */}
 <div className="md:hidden px-6 pt-0">
 
