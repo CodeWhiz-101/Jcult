@@ -205,7 +205,7 @@ mobileVideoRef.current?.play();
   <div className="pl-6 pr-0">
 
     {/* ===== MEDIA ===== */}
-    <div className="relative h-[660px] w-full overflow-hidden">
+    <div className="relative h-[677px] w-full overflow-hidden">
 
       {/* GREEN BASE */}
       <div
@@ -232,7 +232,7 @@ mobileVideoRef.current?.play();
 
       {/* ===== TITLE ===== */}
       <div
-        className="absolute z-30 top-[72px] left-0 pl-6 max-w-[280px]"
+        className="absolute z-30 top-[96px] left-0 pl-6 max-w-[280px]"
         style={{
           opacity:
             phase === 'title' || phase === 'box' || phase === 'boxText'
@@ -264,7 +264,7 @@ mobileVideoRef.current?.play();
           }}
         >
           <div className="pt-10 pb-8 px-6">
-            <p className="text-white text-[18.5px] leading-relaxed">
+            <p className="text-white text-[20.5px] leading-relaxed">
               {description}
             </p>
           </div>
