@@ -7,8 +7,17 @@ export default function AssetManagement() {
   const [active, setActive] = useState(0);
   const [entered, setEntered] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const tabButtonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const sectionRef = useRef<HTMLElement | null>(null);
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    setIsTouch(
+      typeof window !== 'undefined' &&
+      ('ontouchstart' in window || navigator.maxTouchPoints > 0)
+    );
+  }, []);
 
   /* --------------------------------
      SCROLL REVEAL (ONCE)
@@ -31,93 +40,93 @@ export default function AssetManagement() {
   /* --------------------------------
      DATA (UNCHANGED)
   -------------------------------- */
- 
 
-const tabs = [
-  {
-    label: 'Global Equities',
-    overview:
-      'Our Global Equities practice is built on deep fundamental research and a bottom-up security selection process. We believe that despite market efficiency, information asymmetry and behavioral biases create pockets of value. Our teams analyze corporate balance sheets, management quality, and industry dynamics to identify high-quality businesses trading at a discount to their intrinsic value.',
-    columns: [
-      {
-        title: 'International Markets',
-        text: 'We look beyond domestic borders to capture growth in developed economies across Europe, Asia-Pacific, and North America. By diversifying across mature markets, we mitigate single-country risk while accessing established global leaders in technology, healthcare, and industrials.',
-      },
-      {
-        title: 'Emerging Markets',
-        text: 'The next wave of global growth is driven by developing economies. Our specialized team navigates the volatility of emerging markets to identify nations and sectors undergoing structural transformation. We focus on demographic shifts, urbanization, and the rising middle class to capture high-alpha opportunities in regions that are often under-researched.',
-      },
-      {
-        title: 'Event & Sector Trades',
-        text: 'Markets often misprice securities during periods of corporate change or specific industry cycles. We utilize tactical strategies to capitalize on distinct catalysts such as mergers and acquisitions, spin-offs, regulatory shifts, and sector-specific rotation. This opportunistic approach allows us to generate returns that are uncorrelated to the broader market indices.',
-      },
-    ],
-  },
-  {
-    label: 'Global Macro',
-    overview:
-      'Our Global Macro strategy takes a top-down view of the financial world. We analyze the complex interplay between geopolitics, central bank policies, economic indicators, and global trade flows. By understanding the "big picture," we position capital to benefit from systemic trends and macroeconomic dislocations.',
-    columns: [
-      {
-        title: 'Foreign Exchange (FX)',
-        text: 'Currencies are the lifeblood of the global economy. We trade major and cross-currency pairs to capitalize on interest rate differentials, purchasing power parity, and geopolitical shifts. Our FX strategies are used both for speculative profit generation and to hedge the currency risk inherent in our global equity portfolios.',
-      },
-      {
-        title: 'Commodities',
-        text: 'We view commodities as an essential hedge against inflation and a portfolio diversifier. Our exposure spans energy (oil, natural gas) and metals (gold, silver, copper). We analyze supply chain constraints and industrial demand to forecast price movements in real assets.',
-      },
-      {
-        title: 'Equity Indices',
-        text: 'Rather than betting on single stocks, we utilize equity indices to express views on entire economies or sectors. This allows us to swiftly adjust our exposure to bullish or bearish market conditions, providing liquidity and broad market beta when macroeconomic conditions are favorable.',
-      },
-      {
-        title: 'Fixed Income',
-        text: 'We navigate the global debt markets with a focus on yield generation and capital preservation. Our mandate covers sovereign bonds, investment-grade corporate credit, and high-yield opportunities. We actively manage duration and credit risk to navigate changing interest rate environments.',
-      },
-    ],
-  },
-  {
-    label: 'Virtual Assets',
-    overview:
-      'As finance undergoes a digital revolution, we provide institutional-grade access to the digital asset ecosystem. We view blockchain not merely as a speculative vehicle, but as a transformative technology that is reshaping the transfer of value. Our approach is highly disciplined, prioritizing security, custody, and regulatory compliance.',
-    columns: [
-      {
-        title: 'Cryptocurrencies',
-        text: 'We offer exposure to established digital currencies such as Bitcoin and Ethereum, as well as select high-potential altcoins. Our analysis combines on-chain metrics with network activity data to value these assets. We focus on tokens with robust utility, strong developer communities, and long-term viability, bridging the gap between traditional finance and the decentralized web.',
-      },
-    ],
-  },
-  {
-    label: 'Real Assets',
-    overview:
-      'Tangible assets are the bedrock of wealth preservation. Our Real Assets division focuses on investments that provide intrinsic value, inflation protection, and consistent income streams. We combine local market intelligence with global capital reach to unlock value in the property sector.',
-    columns: [
-      {
-        title: 'Real Estate Advisory',
-        text: 'We provide bespoke consultancy services for clients looking to acquire, develop, or divest property. From valuation and feasibility studies to market analysis and deal structuring, we guide clients through the complex lifecycle of real estate transactions to ensure optimal outcomes.',
-      },
-      {
-        title: 'Real Estate Investments',
-        text: 'Our firm actively manages direct investments in residential, commercial, and industrial properties. We seek assets with strong cash flow potential and value-add opportunities through renovation or repositioning. Our portfolio is constructed to deliver yield and capital appreciation independent of stock market volatility.',
-      },
-    ],
-  },
-  {
-    label: 'Private Wealth',
-    overview:
-      'True wealth management extends beyond investment returns; it is about securing a legacy. Our Private Wealth division serves high-net-worth individuals and families, acting as a trusted partner in navigating the complexities of significant capital. We take a holistic view of your financial life, aligning your assets with your personal values and long-term goals.',
-    columns: [
-      {
-        title: 'Wealth Planning',
-        text: 'We build comprehensive roadmaps that cover liquidity management, retirement planning, and multi-generational wealth transfer. We work closely with tax and legal experts to ensure that your wealth is preserved efficiently, minimizing tax liabilities and ensuring that your estate plan reflects your wishes.',
-      },
-      {
-        title: 'Portfolio Structuring',
-        text: 'Every individual has a unique risk tolerance and liquidity requirement. We design bespoke investment portfolios that balance growth, income, and safety. By allocating assets across the spectrum—from liquid public markets to private equity and real estate—we create robust structures designed to weather market cycles and fund your lifestyle.',
-      },
-    ],
-  },
-];
+
+  const tabs = [
+    {
+      label: 'Global Equities',
+      overview:
+        'Our Global Equities practice is built on deep fundamental research and a bottom-up security selection process. We believe that despite market efficiency, information asymmetry and behavioral biases create pockets of value. Our teams analyze corporate balance sheets, management quality, and industry dynamics to identify high-quality businesses trading at a discount to their intrinsic value.',
+      columns: [
+        {
+          title: 'International Markets',
+          text: 'We look beyond domestic borders to capture growth in developed economies across Europe, Asia-Pacific, and North America. By diversifying across mature markets, we mitigate single-country risk while accessing established global leaders in technology, healthcare, and industrials.',
+        },
+        {
+          title: 'Emerging Markets',
+          text: 'The next wave of global growth is driven by developing economies. Our specialized team navigates the volatility of emerging markets to identify nations and sectors undergoing structural transformation. We focus on demographic shifts, urbanization, and the rising middle class to capture high-alpha opportunities in regions that are often under-researched.',
+        },
+        {
+          title: 'Event & Sector Trades',
+          text: 'Markets often misprice securities during periods of corporate change or specific industry cycles. We utilize tactical strategies to capitalize on distinct catalysts such as mergers and acquisitions, spin-offs, regulatory shifts, and sector-specific rotation. This opportunistic approach allows us to generate returns that are uncorrelated to the broader market indices.',
+        },
+      ],
+    },
+    {
+      label: 'Global Macro',
+      overview:
+        'Our Global Macro strategy takes a top-down view of the financial world. We analyze the complex interplay between geopolitics, central bank policies, economic indicators, and global trade flows. By understanding the "big picture," we position capital to benefit from systemic trends and macroeconomic dislocations.',
+      columns: [
+        {
+          title: 'Foreign Exchange (FX)',
+          text: 'Currencies are the lifeblood of the global economy. We trade major and cross-currency pairs to capitalize on interest rate differentials, purchasing power parity, and geopolitical shifts. Our FX strategies are used both for speculative profit generation and to hedge the currency risk inherent in our global equity portfolios.',
+        },
+        {
+          title: 'Commodities',
+          text: 'We view commodities as an essential hedge against inflation and a portfolio diversifier. Our exposure spans energy (oil, natural gas) and metals (gold, silver, copper). We analyze supply chain constraints and industrial demand to forecast price movements in real assets.',
+        },
+        {
+          title: 'Equity Indices',
+          text: 'Rather than betting on single stocks, we utilize equity indices to express views on entire economies or sectors. This allows us to swiftly adjust our exposure to bullish or bearish market conditions, providing liquidity and broad market beta when macroeconomic conditions are favorable.',
+        },
+        {
+          title: 'Fixed Income',
+          text: 'We navigate the global debt markets with a focus on yield generation and capital preservation. Our mandate covers sovereign bonds, investment-grade corporate credit, and high-yield opportunities. We actively manage duration and credit risk to navigate changing interest rate environments.',
+        },
+      ],
+    },
+    {
+      label: 'Virtual Assets',
+      overview:
+        'As finance undergoes a digital revolution, we provide institutional-grade access to the digital asset ecosystem. We view blockchain not merely as a speculative vehicle, but as a transformative technology that is reshaping the transfer of value. Our approach is highly disciplined, prioritizing security, custody, and regulatory compliance.',
+      columns: [
+        {
+          title: 'Cryptocurrencies',
+          text: 'We offer exposure to established digital currencies such as Bitcoin and Ethereum, as well as select high-potential altcoins. Our analysis combines on-chain metrics with network activity data to value these assets. We focus on tokens with robust utility, strong developer communities, and long-term viability, bridging the gap between traditional finance and the decentralized web.',
+        },
+      ],
+    },
+    {
+      label: 'Real Assets',
+      overview:
+        'Tangible assets are the bedrock of wealth preservation. Our Real Assets division focuses on investments that provide intrinsic value, inflation protection, and consistent income streams. We combine local market intelligence with global capital reach to unlock value in the property sector.',
+      columns: [
+        {
+          title: 'Real Estate Advisory',
+          text: 'We provide bespoke consultancy services for clients looking to acquire, develop, or divest property. From valuation and feasibility studies to market analysis and deal structuring, we guide clients through the complex lifecycle of real estate transactions to ensure optimal outcomes.',
+        },
+        {
+          title: 'Real Estate Investments',
+          text: 'Our firm actively manages direct investments in residential, commercial, and industrial properties. We seek assets with strong cash flow potential and value-add opportunities through renovation or repositioning. Our portfolio is constructed to deliver yield and capital appreciation independent of stock market volatility.',
+        },
+      ],
+    },
+    {
+      label: 'Private Wealth',
+      overview:
+        'True wealth management extends beyond investment returns; it is about securing a legacy. Our Private Wealth division serves high-net-worth individuals and families, acting as a trusted partner in navigating the complexities of significant capital. We take a holistic view of your financial life, aligning your assets with your personal values and long-term goals.',
+      columns: [
+        {
+          title: 'Wealth Planning',
+          text: 'We build comprehensive roadmaps that cover liquidity management, retirement planning, and multi-generational wealth transfer. We work closely with tax and legal experts to ensure that your wealth is preserved efficiently, minimizing tax liabilities and ensuring that your estate plan reflects your wishes.',
+        },
+        {
+          title: 'Portfolio Structuring',
+          text: 'Every individual has a unique risk tolerance and liquidity requirement. We design bespoke investment portfolios that balance growth, income, and safety. By allocating assets across the spectrum—from liquid public markets to private equity and real estate—we create robust structures designed to weather market cycles and fund your lifestyle.',
+        },
+      ],
+    },
+  ];
   const current = tabs[active];
 
   return (
@@ -154,28 +163,60 @@ const tabs = [
 
                 return (
                   <button
+                    ref={(el) => {
+                      tabButtonRefs.current[i] = el;
+                    }}
                     key={tab.label}
                     onClick={() => setActive(i)}
                     className={`
-                      shrink-0
-                      snap-start
-                      w-[190px]
-                      h-[56px]
-                      flex items-center justify-center
-                      text-[15px]
-                      font-medium
-                      transition-all duration-200
-                      ${
-                        isActive
-                          ? 'bg-[var(--brand-green-2)] text-white'
-                          : 'bg-white text-[var(--brand-green-1)]'
+    shrink-0
+    snap-start
+    w-[190px]
+    h-[56px]
+    flex items-center justify-center
+    text-[15px]
+    font-medium
+    transition-all duration-200
+    ${active === i
+                        ? 'bg-[var(--brand-green-2)] text-white'
+                        : 'bg-white text-[var(--brand-green-1)]'
                       }
-                    `}
+  `}
                   >
                     {tab.label}
                   </button>
+
                 );
               })}
+            </div>
+          </div>
+          {/* MOBILE DOT INDICATOR */}
+          {/* MOBILE DOT INDICATOR */}
+          <div className="md:hidden flex justify-center mt-4">
+            <div className="flex gap-2">
+              {tabs.map((_, i) => (
+                <span
+                  key={i}
+                  onClick={() => {
+                    setActive(i);
+
+                    const btn = tabButtonRefs.current[i];
+                    btn?.scrollIntoView({
+                      behavior: 'smooth',
+                      inline: 'center',
+                      block: 'nearest',
+                    });
+                  }}
+                  className={`
+          cursor-pointer
+          w-1.5 h-1.5 rounded-full transition-all duration-300
+          ${active === i
+                      ? 'bg-white scale-110'
+                      : 'bg-white/40 hover:bg-white/60'
+                    }
+        `}
+                />
+              ))}
             </div>
           </div>
 
@@ -195,10 +236,9 @@ const tabs = [
                     text-[15px]
                     font-medium
                     transition-all duration-200
-                    ${
-                      isActive
-                        ? 'bg-[var(--brand-green-2)] text-white'
-                        : 'bg-white text-[var(--brand-green-1)] hover:bg-[#E6F2EC]'
+                    ${isActive
+                      ? 'bg-[var(--brand-green-2)] text-white'
+                      : 'bg-white text-[var(--brand-green-1)] hover:bg-[#E6F2EC]'
                     }
                   `}
                 >
@@ -214,6 +254,47 @@ const tabs = [
       {/* ======================================================
           MAIN CONTENT (UNCHANGED)
       ====================================================== */}
-   <div key={active} className=" container-responsive grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-24 pb-36 " > {/* ---------------- LEFT COLUMN ---------------- */} <div> <h1 className="font-brand text-[48px] md:text-[64px] leading-[1.05] text-white mb-8"> {current.label} </h1> <p className="max-w-[720px] text-white/85 leading-[1.75] text-[18.5px]"> {current.overview} </p> </div> {/* ---------------- RIGHT COLUMN ---------------- */} <div className="space-y-6"> {current.columns.map((col, index) => { const isActiveItem = hoveredIndex === index; return ( <div key={col.title} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)} onClick={() => setHoveredIndex(isActiveItem ? null : index)} className=" relative cursor-pointer border-l border-white/25 pl-8 py-6 transition-all duration-500 hover:border-white " > {/* HEADER */} <div className="flex items-center justify-between"> <h3 style={{ fontFamily: 'Raleway, sans-serif', transform: isActiveItem ? 'translateX(4px)' : 'translateX(0)', transition: 'transform 300ms ease', }} className=" font-medium text-[24px] md:text-[26px] lg:text-[28px] leading-[1.12] text-white " > {col.title} </h3> {/* CIRCLE ARROW */} <div className=" flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 text-white border-white/60 hover:bg-white hover:text-black " > <ArrowRight strokeWidth={1.25} className="w-5 h-5" /> </div> </div> {/* CONTENT */} <div className="overflow-hidden transition-all duration-500 ease-out" style={{ maxHeight: isActiveItem ? '420px' : '0px', opacity: isActiveItem ? 1 : 0, }} > <p className="mt-4 text-[18.5px] leading-[1.75] text-white/85"> {col.text} </p> </div> {/* ACTIVE BAR */} <span className=" absolute left-[-1px] top-0 h-full w-[2px] bg-white transition-transform duration-500 origin-top " style={{ transform: isActiveItem ? 'scaleY(1)' : 'scaleY(0)', }} /> </div> ); })} </div> </div> {/* ====================================================== BOTTOM FADE ====================================================== */} <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" /> </section> ); }
+      <div key={active} className=" container-responsive grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-24 pb-36 " > {/* ---------------- LEFT COLUMN ---------------- */} <div> <h1 className="font-brand text-[48px] md:text-[64px] leading-[1.05] text-white mb-8"> {current.label} </h1> <p className="max-w-[720px] text-white/85 leading-[1.75] text-[18.5px]"> {current.overview} </p> </div> {/* ---------------- RIGHT COLUMN ---------------- */} <div className="space-y-6"> {current.columns.map((col, index) => {
+        const isActiveItem = hoveredIndex === index;
+        return (
+<div
+  key={col.title}
+  onMouseEnter={!isTouch ? () => setHoveredIndex(index) : undefined}
+  onMouseLeave={!isTouch ? () => setHoveredIndex(null) : undefined}
+  onClick={() =>
+    isTouch
+      ? setHoveredIndex(isActiveItem ? null : index)
+      : undefined
+  }
+        className=" relative cursor-pointer border-l border-white/25 pl-8 py-6 transition-all duration-500 hover:border-white " 
+>
+        
+        {/* HEADER */} <div className="flex items-center justify-between"> <h3 style={{ fontFamily: 'Raleway, sans-serif', transform: isActiveItem ? 'translateX(4px)' : 'translateX(0)', transition: 'transform 300ms ease', }} className=" font-medium text-[24px] md:text-[26px] lg:text-[28px] leading-[1.12] text-white " > {col.title} </h3> {/* CIRCLE ARROW */}
+<div
+  className={`
+    flex items-center justify-center
+    w-10 h-10
+    rounded-full
+    border
+    transition-all duration-300
+    ${
+      isActiveItem
+        ? 'bg-white text-black border-white'
+        : 'text-white border-white/60'
+    }
+  `}
+>
+  <ArrowRight
+    strokeWidth={1.25}
+    className={`
+      w-5 h-5
+      transition-transform duration-300
+      ${isActiveItem ? 'rotate-90' : 'rotate-0'}
+    `}
+  />
+</div>
+          </div> {/* CONTENT */} <div className="overflow-hidden transition-all duration-500 ease-out" style={{ maxHeight: isActiveItem ? '420px' : '0px', opacity: isActiveItem ? 1 : 0, }} > <p className="mt-4 text-[18.5px] leading-[1.75] text-white/85"> {col.text} </p> </div> {/* ACTIVE BAR */} <span className=" absolute left-[-1px] top-0 h-full w-[2px] bg-white transition-transform duration-500 origin-top " style={{ transform: isActiveItem ? 'scaleY(1)' : 'scaleY(0)', }} /> </div>);
+      })} </div> </div> {/* ====================================================== BOTTOM FADE ====================================================== */} <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" /> </section>);
+}
 
 

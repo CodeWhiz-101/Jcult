@@ -40,12 +40,13 @@ function AnimatedTalentSection() {
     >
       <div className="container-responsive">
         <div
-  className="
-    flex flex-col lg:flex-row items-start
-    gap-8 md:gap-16 lg:gap-55
-  "
->
-
+          className="
+            flex flex-col lg:flex-row items-start
+            mb-10 md:mb-20 lg:mb-14 xl:mb-28
+            gap-8 md:gap-16 lg:gap-55
+   /* 👈 THIS CONTROLS GAP BETWEEN LEFT & RIGHT (increase/decrease here) */
+          "
+        >
           {/* LEFT TITLE */}
       <div
     className={`transition-all
@@ -80,10 +81,10 @@ ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-24'}
      <p
   className="
     font-ttcommons font-normal
-    text-[19.5px] md:text-[16px] lg:text-[19px]
+    text-[17px] md:text-[18px] lg:text-[19px]
     leading-[1.55]
     text-[#68717A]
-    mb-6 lg:mb-4 md:mb-8
+    mb-6 lg:mb-8
     max-w-[600px]
   "
 >
@@ -98,40 +99,25 @@ ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-24'}
             </p>
 
             {/* EXACT BUTTON YOU REQUESTED */}
-            {/* DESKTOP CTA */}
-<div
-  className={`hidden md:block w-full ${
-    isVisible ? 'opacity-100' : 'opacity-0'
-  }`}
-  style={{ transitionDelay: '240ms' }}
->
+            <div
+              className={`flex ${
+                isVisible ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{ transitionDelay: '240ms' }}
+            >
+           <Link href="/career" className="no-underline">
+  <LuxuryButton
+    variant="primary"
+    className="
+      px-10 py-5
+      text-[16px] md:text-[17px] lg:text-[18px]
+    "
+  >
+    Explore Career Possibilities
+  </LuxuryButton>
+</Link>
 
-  <Link href="/career" className="no-underline">
-   <LuxuryButton
-  variant="primary"
-  className="
-    w-full max-w-[520px]
-    px-10 py-4
-    text-[16px]
-  "
->
-
-      Explore Career Possibilities
-    </LuxuryButton>
-  </Link>
-</div>
-{/* MOBILE FULL-WIDTH CTA */}
-<div className="md:hidden mt-3 ">
-  <Link href="/career" className="block no-underline">
-    <LuxuryButton
-      variant="mobile-primary"
-      className="w-full py-4 text-[15.5px]"
-    >
-      Explore Career Possibilities
-    </LuxuryButton>
-  </Link>
-</div>
-
+            </div>
           </div>
         </div>
 
@@ -563,8 +549,7 @@ talented individuals to execute their boldest, highest-conviction ideas with pre
         <AnimatedMeritocraticSection />
 
             <Stats 
-            className="mb-12 md:mb-24 lg:mb-32"
-
+            className="mb-24 lg:mb-32"
             stats={[
               {
                 number: "60%+",
