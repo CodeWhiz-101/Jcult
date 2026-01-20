@@ -7,6 +7,7 @@ import FadeLeft from '@/components/animation/FadeLeft';
 import LuxuryButton from '@/components/ui/LuxuryButton';
 import PageBreadcrumb from '@/components/ui/PageBreadcrumb';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 export default function LeadershipTeam() {
   const teamMembers = [
@@ -125,14 +126,16 @@ export default function LeadershipTeam() {
   <div className="absolute inset-x-0 top-[-120px] h-[120px] bg-tertiary md:hidden" />
 
   {/* ACTUAL OVERVIEW CONTENT */}
-  <div
+ <div
   className="
     relative
     z-10
     min-h-[auto]
     -mt-[24px]
+    pb-10
     flex items-start
     bg-tertiary
+    md:pb-0
     md:min-h-[50vh]
     md:flex
     md:items-center
@@ -140,11 +143,13 @@ export default function LeadershipTeam() {
   "
 >
 
+
     <div className="container-responsive">
       <div className="flex flex-col md:flex-row items-start">
 
         {/* LEFT — TITLE */}
-        <div className="flex-1 mb-4 md:mb-6 lg:mb-0">
+       <div className="flex-1 mb-2 md:mb-6 lg:mb-0">
+
           <FadeLeft>
             <h2
               className="
@@ -164,7 +169,7 @@ export default function LeadershipTeam() {
         </div>
 
         {/* RIGHT — PARAGRAPH */}
-        <div className="flex-1 md:pl-8 lg:pl-16 pt-6 md:pt-7">
+        <div className="flex-1 md:pl-8 lg:pl-16 pt-3 md:pt-7">
           <FadeLeft delay={200}>
             <p className="text-section-content color-grey leading-[28px]">
               Our executive leadership establishes the firm’s overarching mandate.
@@ -311,9 +316,12 @@ export default function LeadershipTeam() {
             </span>
           </h2>
 
-          <LuxuryButton variant="white">
-            Explore What We Do
-          </LuxuryButton>
+          <Link href="/what-we-do" className="no-underline">
+  <LuxuryButton variant="white">
+    Explore What We Do
+  </LuxuryButton>
+</Link>
+
         </FadeLeft>
       </div>
     </div>

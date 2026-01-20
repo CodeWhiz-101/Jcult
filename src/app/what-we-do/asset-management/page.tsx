@@ -22,7 +22,7 @@ useEffect(() => {
       <main className="pt-20">
 
          {/* ================= HERO ================= */}
-<section className="relative z-10 overflow-visible mb-16 md:mb-24">
+<section className="relative z-10 overflow-visible mb-4 md:mb-24">
 
   {/* ================= DESKTOP HERO ================= */}
   <div className="hidden md:block bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
@@ -107,67 +107,84 @@ useEffect(() => {
 
 
         {/* ================= OVERVIEW ================= */}
-      <section
-  className="
-    relative
-    z-0
-    -mt-20 md:-mt-28 lg:-mt-36
-    min-h-[50vh]
-    bg-tertiary
-  "
->
+    {/* ================= OVERVIEW ================= */}
+<section className="relative z-0">
 
- <div
+  {/* MOBILE GREY BACKDROP — SAME LOGIC AS EXECUTIVE */}
+  <div className="absolute inset-x-0 top-[-72px] h-[72px] bg-tertiary md:hidden" />
+
+  {/* ACTUAL OVERVIEW CONTENT */}
+  <div
+    className="
+      relative
+      z-10
+      min-h-[auto]
+      -mt-[24px]
+      pb-10
+      flex items-start
+      bg-tertiary
+      md:pb-0
+      md:min-h-[50vh]
+      md:flex
+      md:items-center
+      md:-mt-28 lg:-mt-36
+    "
+  >
+    {/* ⬇️ EVERYTHING YOU ALREADY HAD GOES HERE */}
+    <div
   className="
-    pt-20 md:pt-28 lg:pt-32
-    pb-16 md:pb-20 lg:pb-24
+    pt-12 md:pt-28 lg:pt-32
+    pb-8 md:pb-20 lg:pb-24
     ml-7 md:ml-10 lg:ml-12 xl:ml-14
     pr-7 md:pr-10 lg:pr-12 xl:pr-14
   "
 >
 
-    <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12">
+      <div className="flex flex-col md:flex-row items-start gap-2 md:gap-12">
 
-      {/* LEFT — TITLE */}
-      <div className="flex-1 mb-4 md:mb-6 lg:mb-0">
-        <FadeLeft>
-          <h2
-            className="
-              font-brand
-              text-[42px] md:text-[46px] lg:text-[52px]
-              leading-[1.12]
-            "
-          >
-            <span className="block font-medium text-[var(--brand-green-1)]">
-              Overview
-            </span>
-          </h2>
-        </FadeLeft>
+        {/* LEFT — TITLE */}
+        <div className="flex-1 mb-2 md:mb-6 lg:mb-0">
+          <FadeLeft>
+            <h2
+              className="
+                font-brand
+                text-[42px] md:text-[46px] lg:text-[52px]
+                leading-[1.12]
+                
+              "
+            >
+              <span className="block font-medium text-[var(--brand-green-1)]">
+                Overview
+              </span>
+            </h2>
+          </FadeLeft>
+        </div>
+
+        {/* RIGHT — CONTENT */}
+        <div className="flex-1 md:pl-8 lg:pl-16">
+          <FadeLeft delay={200}>
+            <p className="text-section-content color-grey leading-[28px] mt-1 md:mt-0">
+              We are a newly established asset management firm built on disciplined
+              insight and a structured approach to diversified portfolio management.
+              Through both Discretionary and Non Discretionary PMS services, we aim to
+              deliver well constructed strategies that reflect thorough analysis,
+              measured decision making, and alignment with each client’s objectives.
+            </p>
+          </FadeLeft>
+        </div>
+
       </div>
-
-      {/* RIGHT — CONTENT */}
-      <div className="flex-1 md:pl-8 lg:pl-16">
-        <FadeLeft delay={200}>
-          <p className="text-section-content color-grey leading-[28px]">
-            We are a newly established asset management firm built on disciplined
-            insight and a structured approach to diversified portfolio management.
-            Through both Discretionary and Non Discretionary PMS services, we aim to
-            deliver well constructed strategies that reflect thorough analysis,
-            measured decision making, and alignment with each client’s objectives.
-          </p>
-        </FadeLeft>
-      </div>
-
     </div>
   </div>
 </section>
+
 
 
         {/* ================= INVESTMENT TABS ================= */}
         <InvestmentTabs />
 
         {/* ================= CTA ================= */}
-        <section className="pt-10 pb-6 md:pt-8 md:pb-8 lg:pt-16 lg:pb-16">
+        <section className="pt-10 pb-10 md:pt-8 md:pb-8 lg:pt-16 lg:pb-16">
   <div className="flex flex-col md:flex-row">
 
     {/* IMAGE — FULL BLEED LEFT */}
