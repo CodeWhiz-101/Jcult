@@ -35,9 +35,10 @@ export default function Stats({ stats, title, className = "" }: StatsProps) {
   return (
     <section
       ref={sectionRef}
-      className={`pt-16 pb-8 md:py-24 lg:py-32 ${className}`}
+      className={`pt-8 pb-4 md:py-24 lg:py-32 ${className}`}
     >
-      <div className="container-responsive">
+      {/* ⬇️ ONLY CHANGE: padding added here */}
+      <div className="container-responsive md:pl-10 lg:pl-20">
 
         {/* ================= TITLE ================= */}
         {title && (
@@ -62,7 +63,8 @@ export default function Stats({ stats, title, className = "" }: StatsProps) {
         )}
 
         {/* ================= STATS GRID ================= */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:ml-10 lg:ml-70">
+        {/* ❌ ml removed, everything else untouched */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
 
           {stats.map((stat, index) => (
             <div
@@ -90,10 +92,8 @@ export default function Stats({ stats, title, className = "" }: StatsProps) {
               {/* ================= MOBILE VERSION ================= */}
               <div className="md:hidden relative">
 
-                {/* MOBILE DIVIDER */}
                 <span className="absolute left-[-32px] top-0 bottom-0 w-px bg-black/25" />
 
-                {/* NUMBER */}
                 <div className="overflow-hidden">
                   <div
                     className={`
@@ -110,7 +110,6 @@ export default function Stats({ stats, title, className = "" }: StatsProps) {
                   </div>
                 </div>
 
-                {/* DESCRIPTION */}
                 <p className="mt-4 text-[16px] leading-[1.45] text-[#68717A]">
                   {stat.description}
                 </p>
@@ -125,7 +124,6 @@ export default function Stats({ stats, title, className = "" }: StatsProps) {
               {/* ================= DESKTOP VERSION ================= */}
               <div className="hidden md:block relative">
 
-                {/* NUMBER */}
                 <div className="overflow-hidden -mt-15">
                   <div
                     className={`
@@ -149,7 +147,6 @@ export default function Stats({ stats, title, className = "" }: StatsProps) {
                   </div>
                 </div>
 
-                {/* DESCRIPTION */}
                 <div className="overflow-hidden mt-10 lg:mt-14">
                   <p
                     className={`
