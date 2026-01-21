@@ -206,6 +206,34 @@ mobileVideoRef.current?.play();
 
     {/* ===== MEDIA ===== */}
     <div className="relative h-[677px] w-full overflow-hidden">
+{/* ===== MOBILE GREEN WIPE (TITLE REVEAL) ===== */}
+<div
+  className="
+    absolute z-25
+    left-0
+    h-[677px]
+    w-[20px]
+    overflow-hidden
+    pointer-events-none
+  "
+>
+  <div
+    className="
+      absolute inset-0
+      transition-[clip-path]
+      duration-[700ms]
+      ease-[cubic-bezier(.22,.61,.36,1)]
+    "
+    style={{
+      background: 'var(--brand-green-gradient)',
+clipPath:
+  phase === 'fade'
+    ? 'inset(0 0 0 0)'        // fully visible
+    : 'inset(0 100% 0 0)',   // hidden from right → left
+
+    }}
+  />
+</div>
 
       {/* GREEN BASE */}
       <div
