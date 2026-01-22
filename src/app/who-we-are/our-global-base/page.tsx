@@ -56,7 +56,7 @@ useEffect(() => {
       <main className="pt-20">
 
   {/* ================= HERO ================= */}
-<section className="relative overflow-visible mb-16 md:mb-24">
+<section className="relative overflow-visible mb-0 md:mb-24">
 
   {/* ================= DESKTOP HERO ================= */}
   <div className="hidden md:block bg-primary ml-7 md:ml-10 lg:ml-12 xl:ml-14">
@@ -103,7 +103,7 @@ useEffect(() => {
   </div>
 
   {/* ================= MOBILE HERO ================= */}
-  <div className="md:hidden bg-white">
+  <div className="md:hidden bg-tertiary">
     {/* Left white gutter */}
     <div className="pl-6">
       {/* Green box */}
@@ -121,6 +121,7 @@ useEffect(() => {
         </div>
 
         {/* Title */}
+        <FadeLeft>
         <h1
           className="text-white font-medium tracking-tight leading-[1.12]"
           style={{
@@ -130,18 +131,61 @@ useEffect(() => {
         >
           Our Global Base
         </h1>
-
+</FadeLeft>
       </div>
     </div>
   </div>
 
 </section>
 
+{/* ================= OVERVIEW (MOBILE ONLY) ================= */}
+<section className="md:hidden bg-tertiary">
+
+  {/* grey overlap behind hero — controlled */}
+  <div className="h-[48px] bg-tertiary -mt-[48px]" />
+
+  <div className="px-6 pt-6 pb-4">
+
+    <FadeLeft>
+      <h2
+        className="
+          font-brand
+          text-[36px]
+          leading-[1.15]
+          mb-3
+        "
+      >
+        <span className="block font-medium text-[var(--brand-green-1)]">
+          Explore Our
+        </span>
+        <span className="block font-medium text-[var(--brand-green-2)]">
+          Headquarters
+        </span>
+      </h2>
+    </FadeLeft>
+
+    <FadeLeft delay={150}>
+      <p
+        className="
+          text-section-content
+          color-grey
+          leading-[26px]
+          mt-0
+        "
+      >
+        Our firm is rooted in a city defined by opportunity, culture,
+        and momentum, making it an outstanding place to build a career.
+      </p>
+    </FadeLeft>
+
+  </div>
+</section>
 
 
 
-{/* ================= OVERVIEW ================= */}
-<section className="relative z-0">
+{/* ================= OVERVIEW (DESKTOP ONLY) ================= */}
+<section className="relative z-0 hidden md:block">
+
 
   {/* MOBILE GREY BACKDROP — sits behind hero */}
   <div className="absolute inset-x-0 top-[-64px] h-[64px] bg-tertiary md:hidden" />
@@ -158,24 +202,26 @@ useEffect(() => {
       md:-mt-20 lg:-mt-28
     "
   >
-    <div className="
+   <div className="
   container-responsive
-+ -mt-[20px] md:mt-0
-  pt-2 md:pt-8 lg:pt-10
+  -mt-[20px] md:mt-0
+  pt-0 md:pt-8 lg:pt-10
 ">
+
       <div className="flex flex-col md:flex-row items-start">
 
         {/* LEFT — TITLE */}
         <div className="flex-1 mb-6 md:mb-0">
           <FadeLeft>
             <h2
-              className="
-                font-brand
-                mb-5
-                text-[48px] md:text-[54px] lg:text-[60px]
-                leading-[1.18]
-              "
-            >
+  className="
+    font-brand
+    mb-2 md:mb-5
+    text-[48px] md:text-[54px] lg:text-[60px]
+    leading-[1.18]
+  "
+>
+
               <span className="block font-medium text-[var(--brand-green-1)]">
                 Explore Our
               </span>
@@ -189,7 +235,7 @@ useEffect(() => {
         {/* RIGHT — COPY */}
         <div className="flex-1 md:pl-16">
           <FadeLeft delay={200}>
-            <p className="text-section-content color-grey leading-[30px]">
+            <p className="text-section-content color-grey leading-[30px] mt-0 md:mt-0">
               Our firm is rooted in a city defined by opportunity, culture,
               and momentum, making it an outstanding place to build a career.
             </p>
@@ -214,7 +260,7 @@ useEffect(() => {
         {/* ================= ADDRESS ================= */}
         <section className="py-8 md:py-16">
           <div className="container-responsive">
-            <div className="flex flex-col md:flex-row items-start">
+            <div className="flex flex-col md:flex-row items-start gap-1 md:gap-0">
 
               <div className="flex-1 mb-6 md:mb-0">
                 <FadeLeft>
