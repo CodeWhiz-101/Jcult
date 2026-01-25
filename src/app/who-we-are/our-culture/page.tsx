@@ -54,21 +54,22 @@ useEffect(() => {
 
 <div ref={sectionRef} className="mt-6 mb-10 md:mb-8 overflow-hidden">
   <h1
-    className="
-      font-brand font-medium
-      tracking-[-0.018em]
-      text-white
-      transition-[transform,opacity]
-      duration-[900ms]
-      ease-[cubic-bezier(.22,1,.36,1)]
-    "
-    style={{
-      transform: isVisible ? 'translateX(0)' : 'translateX(-120%)',
-      opacity: isVisible ? 1 : 0,
-      fontSize: window.innerWidth < 768 ? '46px' : '68px',
-      lineHeight: '1.1',
-    }}
-  >
+  className="
+    font-brand font-medium
+    tracking-[-0.018em]
+    text-white
+    transition-[transform,opacity]
+    duration-[900ms]
+    ease-[cubic-bezier(.22,1,.36,1)]
+    text-[46px] md:text-[68px]
+  "
+  style={{
+    transform: isVisible ? 'translateX(0)' : 'translateX(-120%)',
+    opacity: isVisible ? 1 : 0,
+    lineHeight: '1.1',
+  }}
+>
+
     Our Culture
   </h1>
 </div>
