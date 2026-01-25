@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container-responsive">
 
         {/* Top Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start gap-10 mb-12 xl:mb-20">
+<div className="flex flex-col md:flex-row justify-between items-start gap-10 mb-6 md:mb-12 xl:mb-20">
 
           {/* Logo */}
           <div>

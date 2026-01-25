@@ -52,45 +52,27 @@ useEffect(() => {
       ]}
     />
 
-    <div
-      ref={sectionRef}
-      className={`
-       mt-6 mb-10 md:mb-8
-    transition-all
-    duration-[1000ms]
-    ease-[cubic-bezier(.22,.61,.36,1)]
-        ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-24'}
-      `}
-    >
-      {/* MOBILE TITLE */}
-<h1
-  className="
-    block md:hidden
-    font-brand font-medium
-    text-[46px]
-    leading-[1.12]
-    tracking-[-0.015em]
-    text-white
-  "
->
-  Our Culture
-</h1>
+<div ref={sectionRef} className="mt-6 mb-10 md:mb-8 overflow-hidden">
+  <h1
+    className="
+      font-brand font-medium
+      tracking-[-0.018em]
+      text-white
+      transition-[transform,opacity]
+      duration-[900ms]
+      ease-[cubic-bezier(.22,1,.36,1)]
+    "
+    style={{
+      transform: isVisible ? 'translateX(0)' : 'translateX(-120%)',
+      opacity: isVisible ? 1 : 0,
+      fontSize: window.innerWidth < 768 ? '46px' : '68px',
+      lineHeight: '1.1',
+    }}
+  >
+    Our Culture
+  </h1>
+</div>
 
-{/* DESKTOP TITLE */}
-<h1
-  className="
-    hidden md:block
-    font-brand font-medium
-    text-[68px]
-    leading-[1.1]
-    tracking-[-0.018em]
-    text-white
-  "
->
-  Our Culture
-</h1>
-
-    </div>
   </div>
 
   {/* THIS IS THE IMPORTANT LINE */}

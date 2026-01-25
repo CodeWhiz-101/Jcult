@@ -71,20 +71,35 @@
           pb-40 md:pb-48 lg:pb-56
         "
       >
-        <div
-          className={`
-            transition-all
-            duration-[1000ms]
-            ease-[cubic-bezier(.22,.61,.36,1)]
-            ${hasAnimated
-              ? 'opacity-100 translate-x-0'
-              : 'opacity-0 -translate-x-24'}
-          `}
-        >
-          <h1 className="font-brand font-medium text-white text-[68px] leading-[1.1] tracking-[-0.018em] max-w-[860px]">
-            News
-          </h1>
-        </div>
+    <div className="overflow-hidden">
+  <h1
+    className="
+      font-brand
+      font-medium
+      text-white
+
+      text-[38px] md:text-[68px]
+      leading-[1.15] md:leading-[1.1]
+      tracking-[-0.015em] md:tracking-[-0.018em]
+      text-left
+
+      max-w-[260px] md:max-w-[860px]
+
+      transition-[transform,opacity]
+      duration-[900ms]
+      ease-[cubic-bezier(.22,1,.36,1)]
+    "
+    style={{
+      transform: hasAnimated
+        ? 'translateX(0)'
+        : 'translateX(-120%)',
+      opacity: hasAnimated ? 1 : 0,
+    }}
+  >
+    News
+  </h1>
+</div>
+
       </div>
     </div>
   </div>
@@ -179,10 +194,15 @@
                     shaping our evolving narrative.
                   </p>
 
-                  <a
-                    href="/news/featured-in"
-                    className="inline-block scale-[1.1] md:scale-[1.15]"
-                  >
+               <a
+  href="/news/featured-in"
+  className="
+    inline-block
+    scale-[1.1] md:scale-[1.15]
+    md:ml-1 lg:ml-2
+  "
+>
+
                     <LuxuryButton variant="primary">
                       View All News
                     </LuxuryButton>

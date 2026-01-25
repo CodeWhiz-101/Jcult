@@ -180,6 +180,8 @@ useEffect(() => {
         : 'none'
   }}
 >
+{/* MOBILE LOGO — TOP LEFT */}
+
 
 
 
@@ -483,6 +485,25 @@ onMouseEnter={() => {
       {/* MOBILE MENU (UNCHANGED) */}
     {isMenuOpen && (
 <div className="lg:hidden fixed inset-0 bg-white z-[200] flex flex-col">
+{/* MOBILE MENU LOGO — TOP LEFT */}
+<div className="absolute top-4 left-4 z-[210]">
+  <Link
+    href="/"
+    onClick={() => setIsMenuOpen(false)}
+    aria-label="Home"
+  >
+<Image
+  src="/Final Logos/Brand Icon/Brand Icon.svg"
+  alt="JCULT"
+  width={36}
+  height={10}
+  className="w-14 h-auto"
+  priority
+/>
+
+
+  </Link>
+</div>
 
        <div className="flex justify-end pt-6 pr-6">
   <button onClick={() => setIsMenuOpen(false)}>
@@ -504,7 +525,7 @@ onMouseEnter={() => {
 
 
          {/* MOBILE MENU CONTENT */}
-<div className="flex flex-col h-full">
+<div className="flex flex-col h-full pt-4">
 
   {/* TOP: MENU ITEMS */}
   {/* TOP: MENU ITEMS */}

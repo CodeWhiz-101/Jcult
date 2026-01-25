@@ -230,6 +230,33 @@ const mobileVideoRef = useRef<HTMLVideoElement>(null);
 
     {/* ===== MEDIA (VIDEO) ===== */}
     <div className="relative h-[677px] w-full overflow-hidden">
+{/* ===== MOBILE GREEN WIPE (TITLE REVEAL) ===== */}
+<div
+  className="
+    absolute z-25
+    left-0
+    top-0
+    h-full
+    w-[20px]
+    pointer-events-none
+  "
+>
+  <div
+    className="
+      absolute inset-0
+      transition-[clip-path]
+      duration-[700ms]
+      ease-[cubic-bezier(.22,.61,.36,1)]
+    "
+    style={{
+      background: 'var(--brand-green-2)',
+      clipPath:
+        phase === 'fade'
+          ? 'inset(0 0 0 0)'        // visible at first
+          : 'inset(0 100% 0 0)',   // hides right → left
+    }}
+  />
+</div>
 
       {/* GREEN BASE */}
       <div
