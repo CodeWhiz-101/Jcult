@@ -74,7 +74,7 @@ export default function Contact() {
         </h3>
 
         <p className="text-[17px] text-[#4B5563] mb-2">
-          jculttrader.inquiry@gmail.com
+          contact@jculttrader.com
         </p>
 
         <p className="text-[17px] text-[#4B5563]">
@@ -97,7 +97,7 @@ export default function Contact() {
         </h3>
 
         <p className="text-[17px] text-[#4B5563]">
-          jculttrader.inquiry@gmail.com
+          contact@jculttrader.com
         </p>
       </div>
     </div>

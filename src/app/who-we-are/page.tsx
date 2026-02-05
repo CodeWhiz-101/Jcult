@@ -23,7 +23,7 @@ export default function WhoWeAre() {
             "Dubai, Dubayy (AE-DU)",
             "UAE",
           ],
-          phone: "jculttrader.inquiry@gmail.com",
+          phone: "contact@jculttrader.com",
           image: "/images/dubai.JPG",
         },
       ],

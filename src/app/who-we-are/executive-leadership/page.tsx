@@ -13,7 +13,7 @@ export default function LeadershipTeam() {
   const teamMembers = [
     {
       name: 'Jeyanandh Dhivaharan',
-      title: 'Founder, CEO',
+      title: 'Founder',
       image: '/images/jeyanandh-dhuvaharan.svg',
     },
   ];
