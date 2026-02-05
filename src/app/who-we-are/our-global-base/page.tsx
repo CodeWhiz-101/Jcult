@@ -334,7 +334,7 @@ useEffect(() => {
       </p>
 
       <a
-    href="mailto:jculttrader.inquiry@gmail.com"
+    href="mailto:contact@jculttrader.com"
     className="
     group
     relative inline-block
@@ -346,7 +346,7 @@ useEffect(() => {
     hover:text-[var(--brand-green-1)]
   "
   >
-    jculttrader.inquiry@gmail.com
+    contact@jculttrader.com
 
     <span
       className="
