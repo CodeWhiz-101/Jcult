@@ -425,13 +425,18 @@ function AnimatedSection() {
  <section
   ref={sectionRef}
   className={`
-    pt-6 pb-2 md:py-24
-    bg-[#F6F6F6] 
+    pt-6 pb-2
+    md:pt-12 md:pb-14
+    bg-[#F6F6F6]
     overflow-hidden
     transition-opacity duration-1000
     ${isVisible ? 'opacity-100' : 'opacity-0'}
+
+    md:-mt-16 lg:-mt-20
   `}
 >
+
+
 
 
       <div className="container-responsive">
@@ -539,7 +544,7 @@ talented individuals to execute their boldest, highest-conviction ideas with pre
 
         <AnimatedSection />
 
-        <div className="mb-6 md:mb-24">
+        <div className="mb-6 md:mb-12">
 
   <Stats 
     stats={[
