@@ -142,19 +142,13 @@ export default function WhoWeAre() {
           </div>
         </section>
 
-        {/* ================= SECTION 3 ================= */}
-      <section className="py-6 md:py-8 lg:py-16 bg-[#ffffff] overflow-hidden">
+       {/* ================= SECTION 3 ================= */}
+<section className="py-6 md:py-8 lg:py-16 bg-[#ffffff] overflow-hidden">
   <div className="container-responsive">
     <div className="flex flex-col md:flex-row items-start">
 
-      {/* IMAGE — STICKS LEFT */}
-      <div
-        className="
-          flex-1
-          mb-6 md:mb-0
-          -ml-7 md:-ml-10 lg:-ml-12 xl:-ml-14
-        "
-      >
+      {/* IMAGE — KEEP BLEED */}
+      <div className="md:w-[48%] mb-6 md:mb-0 md:-ml-12 lg:-ml-16 xl:-ml-20">
         <FadeLeft>
           <ImageReveal
             src="/images/whoweare2.jpg"
@@ -168,8 +162,8 @@ export default function WhoWeAre() {
         </FadeLeft>
       </div>
 
-      {/* TEXT */}
-      <div className="flex-1 md:pl-8 lg:pl-16">
+      {/* TEXT — PUSHED RIGHT */}
+      <div className="md:w-[52%] md:pl-16 lg:pl-34">
         <FadeLeft delay={200}>
           <h2
             className="
@@ -211,6 +205,7 @@ export default function WhoWeAre() {
     </div>
   </div>
 </section>
+
 
 
         {/* ================= SECTION 4 ================= */}
