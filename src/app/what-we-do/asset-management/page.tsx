@@ -87,16 +87,21 @@ useEffect(() => {
 
         {/* Title */}
         <h1
-          className="text-white font-medium tracking-tight leading-[1.12]"
-          style={{
-            fontFamily: 'Raleway, sans-serif',
-            fontSize: '36px',
-          }}
-        >
-          Asset
-          <br />
-          Management
-        </h1>
+  className="
+    text-white
+    font-medium
+    tracking-tight
+    leading-[1.1]
+    whitespace-nowrap
+  "
+  style={{
+    fontFamily: 'Raleway, sans-serif',
+    fontSize: '32px',
+  }}
+>
+  Asset Management
+</h1>
+
 
       </div>
     </div>

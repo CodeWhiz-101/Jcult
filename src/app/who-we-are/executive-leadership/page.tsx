@@ -99,16 +99,21 @@ export default function LeadershipTeam() {
 
         {/* Title */}
         <h1
-          className="text-white font-medium tracking-tight leading-[1.12]"
-          style={{
-            fontFamily: 'Raleway, sans-serif',
-            fontSize: '36px',
-          }}
-        >
-          Executive
-          <br />
-          Leadership
-        </h1>
+  className="
+    text-white
+    font-medium
+    tracking-tight
+    leading-[1.1]
+    whitespace-nowrap
+  "
+  style={{
+    fontFamily: 'Raleway, sans-serif',
+    fontSize: '32px',
+  }}
+>
+  Executive Leadership
+</h1>
+
 
       </div>
     </div>
