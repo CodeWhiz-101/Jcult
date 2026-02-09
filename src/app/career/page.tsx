@@ -146,7 +146,14 @@ export default function Career() {
 
 
 <FadeUp delay={100}>
-   <section className="pt-[80px] md:pt-[120px] lg:pt-[150px] pb-6 md:pb-8 lg:pb-16">
+   <section
+  className="
+    pt-[60px]
+    pb-[60px]
+    md:pt-[120px] md:pb-8
+    lg:pt-[150px] lg:pb-16
+  "
+>
     <div className="container-responsive">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
 

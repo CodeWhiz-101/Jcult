@@ -416,7 +416,13 @@ export default function WhatWeDo() {
 </section>
 
 
-<section className="bg-white pt-10 md:pt-14 pb-16">
+<section
+  className="
+    bg-white
+    pt-12 pb-12
+    md:pt-14 md:pb-16
+  "
+>
   <div className="container-responsive">
     
     <FadeUp>
