@@ -286,7 +286,15 @@ function AnimatedGreenSection() {
   }, [isVisible]);
 
   return (
-    <section ref={sectionRef}  className="bg-primary pt-20 md:pt-16 py-12 md:py-16 lg:py-24 lg:mb-30 xl:h-[1180px]" style={{ color: '#f6f6f6' }}>
+    <section ref={sectionRef}  className="
+  bg-primary
+  pt-10 pb-12
+  md:pt-16 md:pb-16
+  lg:py-24
+  lg:mb-30
+  xl:h-[1180px]
+"
+ style={{ color: '#f6f6f6' }}>
       <div className="container-responsive">
         <div className="flex flex-col lg:flex-row items-start mb-6 md:mb-8">
          <div className="flex-2 mb-2 lg:mb-0 overflow-hidden">
@@ -329,10 +337,11 @@ function AnimatedGreenSection() {
     font-ttcommons
     text-[18px] md:text-[19px] lg:text-[20px]
     leading-[1.5]
- 
-
+    mt-4 md:mt-0
+    mb-6 md:mb-0
   "
->  Innovation is the core of our competitive advantage. We tirelessly reimagine our approach
+>
+  Innovation is the core of our competitive advantage. We tirelessly reimagine our approach
   to the markets, systematically enhancing our trading models and execution capabilities to
   generate outsized returns in an ever-changing landscape.
 </p>
@@ -425,7 +434,7 @@ function AnimatedSection() {
  <section
   ref={sectionRef}
   className={`
-    pt-6 pb-2
+    pt-6 pb-12
     md:pt-12 md:pb-14
     bg-[#F6F6F6]
     overflow-hidden

@@ -110,9 +110,14 @@ export default function Stats({ stats, title, className = "" }: StatsProps) {
                   </div>
                 </div>
 
-                <p className="mt-4 text-[16px] leading-[1.45] text-[#68717A]">
-                  {stat.description}
-                </p>
+               <p className="mt-4 text-[16px] leading-[1.45] text-[#68717A]">
+  {stat.description.split('\n').map((line, i) => (
+    <span key={i} className="block">
+      {line}
+    </span>
+  ))}
+</p>
+
 
                 {stat.subtitle && (
                   <p className="mt-2 text-[15px] text-[#68717A] leading-[1.4]">
