@@ -9,16 +9,17 @@ export default function Footer() {
 <div className="flex flex-col md:flex-row justify-between items-start gap-10 mb-6 md:mb-12 xl:mb-20">
 
           {/* Logo */}
-          <div>
-            <Image
-              src="/Final Logos/Transparent/Base Logo/Primary/Transparent Primary.svg"
-              alt="JCULT"
-              width={200}
-              height={90}
-              className="w-32 sm:w-36 lg:w-40 h-auto"
+          {/* Logo */}
+<div className="-ml-[7px]">
+  <Image
+    src="/Final Logos/Transparent/Base Logo/Primary/Transparent Primary.svg"
+    alt="JCULT"
+    width={200}
+    height={90}
+    className="w-32 sm:w-36 lg:w-40 h-auto"
+  />
+</div>
 
-            />
-          </div>
 
           {/* Navigation Links */}
           <nav className="flex flex-col gap-3 pr-12 xl:pr-16">
