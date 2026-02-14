@@ -20,16 +20,21 @@ interface NewsSectionProps {
 export default function NewsSection({ title, description, items }: NewsSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        observer.disconnect(); // 🔥 stop observing after first trigger
+      }
+    },
+    { threshold: 0.2 }
+  );
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.2 }
-    );
+  if (sectionRef.current) observer.observe(sectionRef.current);
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
+  return () => observer.disconnect();
+}, []);
 
   return (
     <section ref={sectionRef} className="py-6 md:py-8 lg:py-16">

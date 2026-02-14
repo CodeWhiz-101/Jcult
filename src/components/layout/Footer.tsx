@@ -10,7 +10,7 @@ export default function Footer() {
 
           {/* Logo */}
           {/* Logo */}
-<div className="-ml-[7px]">
+<div className="-ml-[8px]">
   <Image
     src="/Final Logos/Transparent/Base Logo/Primary/Transparent Primary.svg"
     alt="JCULT"
