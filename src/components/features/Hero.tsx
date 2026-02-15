@@ -53,9 +53,21 @@ mobileVideoRef.current?.play();
   style={{
     paddingTop: isHome ? 'var(--page-top-offset)' : '0px',
   }}
+  
 >
+  <div
+  className="
+    absolute
+    bottom-6 md:bottom-10 lg:bottom-14 xl:bottom-20
+    left-0
+    w-full
+     lg:h-[205px]   /* adjust to match box height */
+    bg-[#F6F6F6]
+    z-10
+  "
+/>
   {/* ================= VIDEO ================= */}
-  <div className="absolute top-0 left-0 right-0 bottom-[66px] md:bottom-[96px] lg:bottom-[126px] xl:bottom-[136px] overflow-hidden">
+  <div className="absolute top-0 left-0 right-0 bottom-[10px] md:bottom-[40px] lg:bottom-[70px] xl:bottom-[80px] overflow-hidden">
     <div className="absolute inset-0 ml-7 md:ml-10 lg:ml-12 xl:ml-14">
 
       {/* BASE GREEN */}
@@ -121,7 +133,7 @@ mobileVideoRef.current?.play();
       top-[68px] md:top-[76px] lg:top-[108px] xl:top-[116px]
       left-0 -mt-18
       ml-20 md:ml-23 lg:ml-25 xl:ml-27
-      max-w-[580px]
+      max-w-[600px]
 
       transition-all
       duration-[1000ms]
@@ -155,7 +167,6 @@ mobileVideoRef.current?.play();
       left-0 right-0
       ml-7 md:ml-10 lg:ml-12 xl:ml-14
       mr-9 md:mr-13 lg:mr-17
-      -translate-y-10 md:-translate-y-12 lg:-translate-y-14
     "
   >
     <div className="relative py-10 md:py-12 lg:py-14 overflow-hidden">
@@ -199,13 +210,38 @@ mobileVideoRef.current?.play();
 </section>
 
     {/* ================= MOBILE HERO ================= */}
-<section className="md:hidden bg-white relative -mt-16">
+<section className="md:hidden bg-white relative -mt-3">
+{/* MOBILE GREY STRIP BEHIND GREEN BOX */}
+<div
+  className="
+    absolute
+    bottom-0
+    left-0
+    w-full
+    h-[238px]   /* adjust to match mobile green box height */
+    bg-[#F6F6F6]
+    z-0
+  "
+/>
 
   {/* LEFT WHITE GUTTER ONLY */}
-  <div className="pl-6 pr-0">
+  <div className="pl-6 pr-0 ">
 
     {/* ===== MEDIA ===== */}
     <div className="relative h-[677px] w-full overflow-hidden">
+      {/* MOBILE INTRO FADE (match desktop) */}
+<div
+  className="
+    absolute inset-0 z-[50]
+    transition-opacity duration-[1900ms] ease-out
+    pointer-events-none
+  "
+  style={{
+    background: 'var(--brand-green-gradient)',
+    opacity: phase === 'fade' ? 1 : 0,
+  }}
+/>
+
 {/* ===== MOBILE GREEN WIPE (TITLE REVEAL) ===== */}
 <div
   className="
@@ -260,7 +296,7 @@ clipPath:
 
       {/* ===== TITLE ===== */}
       <div
-        className="absolute z-30 top-[96px] left-0 pl-6 max-w-[280px]"
+        className="absolute z-30 top-[40px] left-0 pl-6 max-w-[380px]"
         style={{
           opacity:
             phase === 'title' || phase === 'box' || phase === 'boxText'
@@ -274,7 +310,8 @@ clipPath:
             'opacity 800ms ease, transform 800ms cubic-bezier(.22,.61,.36,1)',
         }}
       >
-        <h1 className="text-white font-brand font-medium text-[36px] leading-[1.08]">
+        <h1 className="text-white font-brand font-medium 
+ text-[38px] leading-[1.2]">
           {title}
         </h1>
       </div>

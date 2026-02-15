@@ -124,10 +124,10 @@ const mobileVideoRef = useRef<HTMLVideoElement>(null);
       <div
         className="
           absolute z-30
-          top-[68px] md:top-[76px] lg:top-[108px] xl:top-[116px]
+top-[48px] md:top-[56px] lg:top-[88px] xl:top-[96px]
           left-0
           ml-20 md:ml-23 lg:ml-25 xl:ml-27
-          max-w-[300px] md:max-w-[480px] lg:max-w-[580px]
+          max-w-[350px] md:max-w-[480px] lg:max-w-[580px]
           transition-all
           duration-[1000ms]
           ease-[cubic-bezier(.22,.61,.36,1)]
@@ -159,66 +159,70 @@ const mobileVideoRef = useRef<HTMLVideoElement>(null);
       </div>
 
       {/* ================= GREEN BOX (4️⃣ + 5️⃣) ================= */}
-      <div
+    {/* ================= GREEN BOX (4️⃣ + 5️⃣) ================= */}
+<div
+  className="
+    absolute
+    bottom-6 md:bottom-10 lg:bottom-14 xl:bottom-20
+    z-60
+    left-0 right-0 z-10
+    ml-7 md:ml-10 lg:ml-12 xl:ml-14
+    mr-9 md:mr-13 lg:mr-17
+  "
+>
+  <div
+    className="
+      relative
+      pt-16 md:pt-18 lg:pt-20
+      pb-4 md:pb-6 lg:pb-8
+      overflow-hidden
+    "
+  >
+    {/* BACKGROUND LAYER (ANIMATED) */}
+    <div
+      className="
+        absolute inset-0 z-0
+        transition-transform duration-[900ms]
+        ease-[cubic-bezier(.22,.61,.36,1)]
+      "
+      style={{
+        background: 'var(--brand-green-gradient)',
+        opacity: 0.85,
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
+        boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
+        transform:
+          phase === 'box' || phase === 'boxText'
+            ? 'scaleX(1)'
+            : 'scaleX(0)',
+        transformOrigin: 'left',
+      }}
+    />
+
+    {/* TEXT LAYER (SEPARATE) */}
+    <div
+      className="container-responsive relative z-10 h-full flex items-center transition-opacity duration-[600ms]"
+      style={{
+        opacity: phase === 'boxText' ? 1 : 0,
+      }}
+    >
+      <p
         className="
-          absolute
-          bottom-6 md:bottom-10 lg:bottom-14 xl:bottom-20
-          left-0 right-0 z-10
-          ml-7 md:ml-10 lg:ml-12 xl:ml-14
-          mr-9 md:mr-13 lg:mr-17
+          font-ttcommons font-normal
+          text-white
+          max-w-[620px]
+          text-[16.5px] md:text-[17.5px] lg:text-[19.5px]
+          leading-relaxed
+          translate-y-[-18px]
+          -ml-1 md:-ml-2 lg:-ml-3
         "
       >
-        <div
-          className="
-            relative
-            pt-16 md:pt-18 lg:pt-20
-            pb-4 md:pb-6 lg:pb-8
-            overflow-hidden
-          "
-        >
-          {/* BOX SLIDE */}
-          <div
-            className="
-              absolute inset-0
-              transition-transform duration-[900ms]
-              ease-[cubic-bezier(.22,.61,.36,1)]
-            "
-            style={{
-              background: 'var(--brand-green-gradient)',
-              opacity: 0.75,
-              backdropFilter: 'blur(14px)',
-              WebkitBackdropFilter: 'blur(14px)',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
-              transform:
-                phase === 'box' || phase === 'boxText'
-                  ? 'scaleX(1)'
-                  : 'scaleX(0)',
-              transformOrigin: 'left',
-            }}
-          />
+        {description}
+      </p>
+    </div>
+  </div>
+</div>
 
-          {/* BOX TEXT */}
-          <div className="container-responsive relative z-10 h-full flex items-center">
-            <p
-              className="
-                font-ttcommons font-normal
-                text-white
-                max-w-[620px]
-                text-[16.5px] md:text-[17.5px] lg:text-[19.5px]
-                leading-relaxed
-                translate-y-[-18px]
-                -ml-1 md:-ml-2 lg:-ml-3
-                transition-opacity duration-[600ms]
-              "
-              style={{
-                opacity: phase === 'boxText' ? 1 : 0,
-              }}
-            >
-              {description}
-            </p>
-          </div>
-        </div>
-      </div>
     </section>
 
    {/* ================= MOBILE HERO ================= */}
@@ -284,7 +288,7 @@ const mobileVideoRef = useRef<HTMLVideoElement>(null);
 
       {/* ===== TITLE (LEFT, INSIDE MEDIA) ===== */}
      <div
-  className="absolute z-30 top-[72px] left-0 pl-6 max-w-[280px]"
+  className="absolute z-30 top-[72px] left-0 pl-6 max-w-[350px]"
 
         style={{
           opacity:
@@ -299,33 +303,39 @@ const mobileVideoRef = useRef<HTMLVideoElement>(null);
             'opacity 800ms ease, transform 800ms cubic-bezier(.22,.61,.36,1)',
         }}
       >
-        <h1 className="text-white font-brand font-medium text-[34px] leading-[1.08]">
+        <h1 className="text-white font-brand font-medium text-[40px] leading-[1.08]">
           {title}
         </h1>
       </div>
 
       {/* ===== GREEN GRADIENT BOX (BOTTOM, LEFT-ALIGNED) ===== */}
-      <div className="absolute bottom-0 left-0 z-40 w-full">
+     {/* ===== GREEN GRADIENT BOX (BOTTOM) ===== */}
+<div className="absolute bottom-0 left-0 z-40 w-full">
 
-        {/* LEFT-ALIGNED BOX (NO CENTERING) */}
-        <div
-          className="w-[88%] ml-0"
-          style={{
-            background: 'var(--brand-green-gradient)',
-            opacity: 0.85,
-            backdropFilter: 'blur(14px)',
-            WebkitBackdropFilter: 'blur(14px)',
-            boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
-          }}
-        >
-          <div className="pt-10 pb-8 px-6">
-            <p className="text-white text-[18.5px] leading-relaxed">
-              {description}
-            </p>
-          </div>
-        </div>
+  <div className="relative w-[88%] ml-0 overflow-hidden">
 
-      </div>
+    {/* BACKGROUND LAYER ONLY */}
+    <div
+      className="absolute inset-0 z-0"
+      style={{
+        background: 'var(--brand-green-gradient)',
+        opacity: 0.85,
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
+        boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
+      }}
+    />
+
+    {/* TEXT LAYER (COMPLETELY SEPARATE) */}
+    <div className="relative z-10 pt-10 pb-8 px-6">
+      <p className="text-white text-[18.5px] leading-relaxed">
+        {description}
+      </p>
+    </div>
+
+  </div>
+</div>
+
 
     </div>
   </div>

@@ -434,13 +434,12 @@ function AnimatedSection() {
  <section
   ref={sectionRef}
   className={`
-    pt-6 pb-12
-    md:pt-12 md:pb-14
+    pt-12 pb-20
+md:pt-20 lg:pt-24
     bg-[#F6F6F6]
     overflow-hidden
     transition-opacity duration-1000
     ${isVisible ? 'opacity-100' : 'opacity-0'}
-
     md:-mt-16 lg:-mt-20
   `}
 >
@@ -519,7 +518,8 @@ export default function Home() {
 
           <Hero 
           videoSrc="/videos/lp1.mp4"
-            title="United, we convert aspiration into strategic execution"
+            title="Together, Turning Aspiration Into Strategic Execution"
+
             description="Built on the pursuit of identifying under-recognised market opportunities and empowering
 talented individuals to execute their boldest, highest-conviction ideas with precision."
           />

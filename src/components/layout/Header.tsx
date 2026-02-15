@@ -537,52 +537,48 @@ onMouseEnter={() => {
     return (
  <div key={tab} className="-mx-6">
   {/* HEADER ROW (ALWAYS WHITE, NEVER MOVES) */}
+<div className="flex items-center  px-6 py-2">
+  
+  {/* TEXT (NAVIGATES ON SECOND CLICK) */}
   <button
-  type="button"
-  onClick={() => {
-    if (mobileExpandedTabs.includes(tab)) {
-      // SECOND TAP → NAVIGATE
-      setIsMenuOpen(false);
-      window.location.href = linkFor(tab);
-    } else {
-      // FIRST TAP → OPEN DROPDOWN
-      setMobileExpandedTabs([tab]);
-    }
-  }}
-  className={`
-    flex items-center gap-2
-    w-full
-    px-6 py-4
-    font-raleway
-    text-[32px]
-    transition-colors duration-300
-    ${mobileExpandedTabs.includes(tab)
-      ? 'text-[var(--brand-green-2)]'
-      : 'text-[var(--brand-green-1)]'}
-  `}
->
-
-    {/* TEXT + UNDERLINE */}
- <span className="relative leading-none">
-  {tab}
-  <span
+    type="button"
+    onClick={() => {
+      if (mobileExpandedTabs.includes(tab)) {
+        setIsMenuOpen(false);
+        window.location.href = linkFor(tab);
+      } else {
+        setMobileExpandedTabs([tab]);
+      }
+    }}
     className={`
-      absolute left-0 -bottom-[2px] h-[2px] w-full
-      transition-opacity duration-300
-      ${isOpen
-        ? 'opacity-100 bg-[var(--brand-green-2)]'
-        : 'opacity-0'}
+      font-raleway
+      text-[32px]
+      transition-colors duration-300
+      ${mobileExpandedTabs.includes(tab)
+        ? 'text-[var(--brand-green-2)]'
+        : 'text-[var(--brand-green-1)]'}
     `}
-  />
-</span>
+  >
+    {tab}
+  </button>
 
-
-    {/* ARROW */}
+  {/* ARROW (ONLY TOGGLES) */}
+  <button
+    type="button"
+    onClick={(e) => {
+      e.stopPropagation(); // 🚨 prevents text click
+      if (mobileExpandedTabs.includes(tab)) {
+        setMobileExpandedTabs([]);
+      } else {
+        setMobileExpandedTabs([tab]);
+      }
+    }}
+    className="ml-3"
+  >
     <svg
       className={`
-        h-6 w-6
-        transition-all duration-300
-        ${isOpen
+        h-6 w-6 transition-all duration-300
+        ${mobileExpandedTabs.includes(tab)
           ? 'rotate-180 text-[var(--brand-green-2)]'
           : 'text-[var(--brand-green-1)]'}
       `}
@@ -598,6 +594,9 @@ onMouseEnter={() => {
       />
     </svg>
   </button>
+
+</div>
+
 
   {/* DROPDOWN (GREY ONLY HERE) */}
   {isOpen && (

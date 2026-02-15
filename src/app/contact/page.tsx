@@ -14,7 +14,8 @@ export default function Contact() {
     <main className="bg-white">
 
       {/* ================= HERO ================= */}
-      <section className="relative h-[100vh] min-h-[520px] w-full overflow-hidden">
+      <section className="relative h-[60vh] min-h-[420px] md:h-[65vh] lg:h-[70vh]
+ min-h-[520px] w-full overflow-hidden mt-26 md:mt-26 lg:mt-28">
         {/* VIDEO */}
         <video
           src="/videos/lp1.mp4"
@@ -22,7 +23,7 @@ export default function Contact() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-top"
         />
 
         {/* OVERLAY */}
