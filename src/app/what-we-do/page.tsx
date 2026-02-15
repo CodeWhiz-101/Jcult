@@ -29,7 +29,7 @@ export default function WhatWeDo() {
         />
 
         {/* Small blue text left, para with border right */}
-    <section className="py-10 md:py-14 lg:py-20">
+    <section className="py-10 md:py-14 lg:py-20 bg-[#f6f6f6]">
   <div className="container-responsive">
     <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-12 md:gap-16 items-start">
 
@@ -92,7 +92,7 @@ export default function WhatWeDo() {
 
 
         {/* Title left, small para right */}
-<section className="py-6 md:py-8 lg:py-16 bg-[#f6f6f6]">
+<section className="py-6 md:py-8 lg:py-16 bg-white">
   <div className="container-responsive">
     <div className="flex flex-col md:flex-row items-start gap-12">
 
