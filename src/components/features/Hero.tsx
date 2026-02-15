@@ -63,7 +63,7 @@ mobileVideoRef.current?.play();
     w-full
      lg:h-[205px]   /* adjust to match box height */
     bg-[#F6F6F6]
-    z-10
+    -z-0
   "
 />
   {/* ================= VIDEO ================= */}
@@ -72,7 +72,7 @@ mobileVideoRef.current?.play();
 
       {/* BASE GREEN */}
       <div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-5"
         style={{ background: 'var(--brand-green-gradient)' }}
       />
 

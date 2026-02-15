@@ -2,6 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import LuxuryButton from '@/components/ui/LuxuryButton';
+import {
+  Linkedin,
+  Twitter,
+  Youtube,
+  Facebook,
+  Instagram,
+} from 'lucide-react';
 
 export default function Contact() {
   const [mounted, setMounted] = useState(false);
@@ -46,84 +53,78 @@ export default function Contact() {
       </section>
 
       {/* ================= CONTACT INFO ================= */}
-  <section className="py-28">
+{/* ================= CONTACT INFO ================= */}
+<section className="py-28">
   <div className="container-responsive">
 
-    {/* ================= TOP ROW ================= */}
-    <div className="
-      grid
-      grid-cols-1
-      md:grid-cols-2
-      gap-y-20
-      gap-x-32
-      text-center
-      items-start
-    ">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
 
-      {/* CLIENT & PARTNER */}
-      <div className="flex flex-col items-center">
-        <h3
-          className="
-            text-[30px]
-            font-brand
-            font-bold
-            text-[var(--brand-green-1)]
-            mb-6
-          "
-        >
-          Contact Number
+      {/* ================= CONTACT DETAILS ================= */}
+      <div>
+        <h3 className="text-[26px] font-brand font-bold text-[var(--brand-green-1)] mb-6">
+          Contact Details
         </h3>
 
-        <p className="text-[17px] text-[#4B5563] mb-2">
+        <p className="text-[17px] text-[#4B5563] mb-3">
           contact@jculttrader.com
         </p>
 
         <p className="text-[17px] text-[#4B5563]">
-          +1 (312) 395-3146
+          +971 54 543 8338
         </p>
       </div>
 
-      {/* COUNTERPARTY */}
-      <div className="flex flex-col items-center">
-        <h3
-          className="
-            text-[30px]
-            font-brand
-            font-bold
-            text-[var(--brand-green-1)]
-            mb-6
-          "
-        >
-          Enquiry Email
+
+      {/* ================= OFFICE ADDRESS ================= */}
+      <div>
+        <h3 className="text-[26px] font-brand font-bold text-[var(--brand-green-1)] mb-6">
+          Global Headquaters
         </h3>
 
-        <p className="text-[17px] text-[#4B5563]">
-          contact@jculttrader.com
+        <p className="text-[17px] leading-relaxed text-[#4B5563]">
+          DSO-IFZA, IFZA Properties<br />
+          Dubai Silicon Oasis<br />
+          Dubai, UAE
         </p>
       </div>
-    </div>
 
-    {/* ================= GLOBAL HQ ================= */}
-    <div className="mt-22 flex flex-col items-center text-center">
-      <h3
-        className="
-          text-[34px]
-          font-brand
-          font-bold
-          text-[var(--brand-green-1)]
-          mb-6
-        "
-      >
-        Global Headquarters
-      </h3>
 
-      <p className="text-[18px] text-[#4B5563] leading-relaxed">
-        DSO-IFZA, IFZA Properties<br />
-        Dubai Silicon Oasis<br />
-        Dubai, UAE
-      </p>
+      {/* ================= FOLLOW US ================= */}
+      <div>
+        <h3 className="text-[26px] font-brand font-bold text-[var(--brand-green-1)] mb-6">
+          Follow Us
+        </h3>
 
-  
+        <div className="flex justify-center gap-5 flex-wrap">
+
+          {[
+            { Icon: Linkedin, link: "#" },
+            { Icon: Twitter, link: "#" },
+            { Icon: Youtube, link: "#" },
+            { Icon: Facebook, link: "#" },
+            { Icon: Instagram, link: "#" },
+          ].map(({ Icon, link }, i) => (
+            <a
+              key={i}
+              href={link}
+              className="
+                w-11 h-11
+                flex items-center justify-center
+                rounded-full
+                bg-black/5
+                text-[#4B5563]
+                transition-all duration-300
+                hover:bg-[var(--brand-green-1)]
+                hover:text-white
+              "
+            >
+              <Icon size={18} />
+            </a>
+          ))}
+
+        </div>
+      </div>
+
     </div>
 
   </div>
