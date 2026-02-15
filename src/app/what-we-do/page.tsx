@@ -22,6 +22,7 @@ export default function WhatWeDo() {
         {/* Hero Section with Image */}
         <SubHero 
            videoSrc="/videos/whatwedo1.mp4"
+           imageSrc="/videos/whatwedo1.png"
           title="Capitalizing on Market Potential"
           description="Guided by a perspective that sees beyond the obvious, we illuminate opportunities hidden
                       in the deeper layers of the market and advance decisively, transforming early insights into

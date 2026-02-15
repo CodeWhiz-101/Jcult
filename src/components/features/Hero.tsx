@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import Image from "next/image";
 
 interface HeroProps {
   videoSrc?: string;
@@ -24,6 +25,7 @@ export default function Hero({
   const desktopVideoRef = useRef<HTMLVideoElement>(null);
 const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const [phase, setPhase] = useState<Phase>('fade');
+const [videoReady, setVideoReady] = useState(false);
 
   /* ===============================
      MASTER CINEMATIC TIMELINE
@@ -33,9 +35,6 @@ const mobileVideoRef = useRef<HTMLVideoElement>(null);
     const t2 = setTimeout(() => setPhase('title'), 200);  // wipe ends
     const t3 = setTimeout(() => setPhase('box'), 600);    // title ends
     const t4 = setTimeout(() => setPhase('boxText'), 1000);// box ends
-
-    desktopVideoRef.current?.play();
-mobileVideoRef.current?.play();
 
     return () => {
       clearTimeout(t1);
@@ -89,19 +88,43 @@ mobileVideoRef.current?.play();
         }}
       />
 
-      {/* VIDEO */}
-      {videoSrc && (
-        <video
-          ref={desktopVideoRef}
-          className="relative z-10 w-full h-full object-cover"
-          style={{ objectPosition: 'center top' }}
-          src={videoSrc}
-          muted
-          loop
-          playsInline
-          preload="auto"
-        />
-      )}
+ {/* ===== POSTER IMAGE ===== */}
+{imageSrc && (
+  <Image
+    src={imageSrc}
+    alt="Hero background"
+    fill
+    priority
+    sizes="100vw"
+className="absolute inset-0 object-cover z-[7]"
+    style={{ objectPosition: 'center top' }}
+  />
+)}
+
+{/* ===== VIDEO ===== */}
+{videoSrc && (
+  <video
+  ref={desktopVideoRef}
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="metadata"
+  className={`
+    absolute inset-0 z-[8] w-full h-full object-cover
+    transition-opacity duration-[1200ms]
+    ease-[cubic-bezier(.22,.61,.36,1)]
+opacity-100
+  `}
+  style={{ objectPosition: 'center top' }}
+  src={videoSrc}
+  onLoadedData={() => {
+    setTimeout(() => setVideoReady(true), 120);
+  }}
+/>
+
+)}
+
 
       {/* GREEN WIPE */}
       <div
@@ -278,18 +301,45 @@ clipPath:
       />
 
       {/* VIDEO */}
-      {videoSrc && (
-        <video
-          ref={mobileVideoRef}
-          className="absolute inset-0 z-10 w-full h-full object-cover"
-          style={{ objectPosition: 'center top' }}
-          src={videoSrc}
-          muted
-          loop
-          playsInline
-          preload="auto"
-        />
-      )}
+   {/* ===== POSTER IMAGE ===== */}
+{imageSrc && (
+  <Image
+    src={imageSrc}
+    alt="Hero background"
+    fill
+    priority
+    sizes="100vw"
+    className="absolute inset-0 object-cover z-[7]"
+
+    style={{ objectPosition: 'center top' }}
+  />
+)}
+
+
+{/* ===== VIDEO ===== */}
+{videoSrc && (
+<video
+  ref={mobileVideoRef}
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="metadata"
+  className={`
+    absolute inset-0 z-[8] w-full h-full object-cover
+    transition-opacity duration-[1200ms]
+    ease-[cubic-bezier(.22,.61,.36,1)]
+opacity-100
+  `}
+  style={{ objectPosition: 'center top' }}
+  src={videoSrc}
+  onLoadedData={() => {
+    setTimeout(() => setVideoReady(true), 120);
+  }}
+/>
+
+)}
+
 
       {/* DARK OVERLAY */}
       <div className="absolute inset-0 z-20 bg-black/25" />

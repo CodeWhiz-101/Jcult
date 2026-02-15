@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-
+import Image from 'next/image';
 interface HeroProps {
   videoSrc?: string;
   imageSrc?: string;
@@ -31,8 +31,6 @@ const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const t3 = setTimeout(() => setPhase('box'), 600);
   const t4 = setTimeout(() => setPhase('boxText'), 1000);
 
-  desktopVideoRef.current?.play();
-  mobileVideoRef.current?.play();
 
   return () => {
     clearTimeout(t1);
@@ -83,20 +81,34 @@ const mobileVideoRef = useRef<HTMLVideoElement>(null);
         />
 
         {/* VIDEO */}
-        {videoSrc && (
-          
-           <video
-  ref={desktopVideoRef}
+      {/* ===== POSTER IMAGE (Instant Layer) ===== */}
+{imageSrc && (
+  <Image
+    src={imageSrc}
+    alt="Hero background"
+    fill
+    priority
+    sizes="100vw"
+    className="absolute inset-0 object-cover z-[7]"
+    style={{ objectPosition: 'center top' }}
+  />
+)}
 
-            className="relative z-10 w-full h-full object-cover"
-            style={{ objectPosition: 'center top' }}
-            src={videoSrc}
-            muted
-            loop
-            playsInline
-            preload="auto"
-          />
-        )}
+{/* ===== VIDEO (Above Poster) ===== */}
+{videoSrc && (
+  <video
+    ref={desktopVideoRef}
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="metadata"
+    className="absolute inset-0 z-[8] w-full h-full object-cover"
+    style={{ objectPosition: 'center top' }}
+    src={videoSrc}
+  />
+)}
+
 
         {/* GREEN WIPE (2️⃣) */}
         <div
@@ -269,19 +281,34 @@ top-[48px] md:top-[56px] lg:top-[88px] xl:top-[96px]
       />
 
       {/* VIDEO */}
-      {videoSrc && (
-        <video
-  ref={mobileVideoRef}
+    {/* ===== POSTER IMAGE ===== */}
+{imageSrc && (
+  <Image
+    src={imageSrc}
+    alt="Hero background"
+    fill
+    priority
+    sizes="100vw"
+    className="absolute inset-0 object-cover z-[7]"
+    style={{ objectPosition: 'center top' }}
+  />
+)}
 
-          className="absolute inset-0 z-10 w-full h-full object-cover"
-          style={{ objectPosition: 'center top' }}
-          src={videoSrc}
-          muted
-          loop
-          playsInline
-          preload="auto"
-        />
-      )}
+{/* ===== VIDEO ===== */}
+{videoSrc && (
+  <video
+    ref={mobileVideoRef}
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="metadata"
+    className="absolute inset-0 z-[8] w-full h-full object-cover"
+    style={{ objectPosition: 'center top' }}
+    src={videoSrc}
+  />
+)}
+
 
       {/* DARK OVERLAY */}
       <div className="absolute inset-0 z-20 bg-black/25" />

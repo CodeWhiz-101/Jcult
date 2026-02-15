@@ -22,6 +22,8 @@ export default function Career() {
         
  <SubHero 
   videoSrc="/videos/career1.mp4"
+            imageSrc="/videos/career.png"
+
   title="Career"
   description="Join our team of exceptional professionals and shape the future of finance. We offer challenging opportunities and a culture of excellence."
 />

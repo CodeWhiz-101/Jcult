@@ -518,6 +518,7 @@ export default function Home() {
 
           <Hero 
           videoSrc="/videos/lp1.mp4"
+          imageSrc="/videos/lp1.png"
             title="Together, Turning Aspiration Into Strategic Execution"
 
             description="Built on the pursuit of identifying under-recognised market opportunities and empowering

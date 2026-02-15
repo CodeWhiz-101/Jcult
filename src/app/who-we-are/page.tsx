@@ -37,6 +37,7 @@ export default function WhoWeAre() {
         {/* ================= HERO ================= */}
         <SubHero
           videoSrc="/videos/whoweare1.mp4"
+          imageSrc="/videos/whoweare1.png"
           title="Who We Are"
           description="To empower our clients with expert financial guidance, innovative investment strategies, and transparent wealth management services that build lasting prosperity and financial security"
         />
