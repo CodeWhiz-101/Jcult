@@ -86,9 +86,10 @@ export default function Accordion({ regions }: { regions: Region[] }) {
     mt-10 grid grid-cols-1 md:grid-cols-12 gap-10 
     transition-all duration-300 ease-in-out
     ${
-      isOpen
-        ? "max-h-[2000px] opacity-100 translate-y-0"
-        : "max-h-0 opacity-0 translate-y-2 pointer-events-none overflow-hidden"
+     isOpen
+  ? "opacity-100 translate-y-0"
+  : "hidden"
+
     }
   `}
 >
@@ -206,41 +207,33 @@ export default function Accordion({ regions }: { regions: Region[] }) {
 
 
                 {/* RIGHT — IMAGE (SMALLER & CLEAN) */}
-            <div className="md:col-span-5 flex justify-start md:justify-end">
 <div className="md:col-span-5 flex justify-start md:justify-end">
- <div
-  className="
-    relative
+  <div
+    className="
+      relative
+     w-full
+md:w-[85%]
+mx-auto
 
-    /* MOBILE: slightly inset wide image */
-    w-[88vw]
-    mx-auto
 
-    /* MOBILE height control (wider look) */
-    aspect-[16/9]
+      h-[260px]
+      sm:h-[320px]
+      md:h-[380px]
 
-    /* TABLET */
-    sm:w-[90vw]
-
-    /* DESKTOP */
-    md:w-[85%]
-    md:aspect-[4/3]
-
-    overflow-hidden
-  "
->
+      overflow-hidden
+    "
+  >
   <Image
-    src="/images/ourculture3.jpg"
-    alt="city"
-    fill
-    className="object-cover object-center"
-  />
+  src="/images/ourculture3.jpg"
+  alt="city"
+  fill
+sizes="(max-width: 768px) 100vw, 50vw"
+  className="object-cover"
+  loading="lazy"
+/>
+
+  </div>
 </div>
-
-</div>
-
-                </div>
-
               </div>
             </div>
           );
