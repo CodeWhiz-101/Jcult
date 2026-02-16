@@ -26,6 +26,7 @@ export default function Hero({
 const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const [phase, setPhase] = useState<Phase>('fade');
 const [videoReady, setVideoReady] = useState(false);
+const [isPlaying, setIsPlaying] = useState(true);
 
   /* ===============================
      MASTER CINEMATIC TIMELINE
@@ -43,6 +44,39 @@ const [videoReady, setVideoReady] = useState(false);
       clearTimeout(t4);
     };
   }, []);
+  useEffect(() => {
+  const desktop = desktopVideoRef.current;
+  const mobile = mobileVideoRef.current;
+
+  const video = desktop || mobile;
+
+  if (video && video.readyState >= 2) {
+    setVideoReady(true);
+  }
+}, []);
+
+const togglePlayback = () => {
+  const desktop = desktopVideoRef.current;
+  const mobile = mobileVideoRef.current;
+
+  const video =
+    desktop && desktop.offsetParent !== null
+      ? desktop
+      : mobile && mobile.offsetParent !== null
+      ? mobile
+      : null;
+
+  if (!video) return;
+
+  if (video.paused) {
+    video.play();
+    setIsPlaying(true);
+  } else {
+    video.pause();
+    setIsPlaying(false);
+  }
+};
+
 
   return (
     <>
@@ -54,6 +88,31 @@ const [videoReady, setVideoReady] = useState(false);
   }}
   
 >
+<button
+  onClick={togglePlayback}
+  disabled={!videoReady}
+  className="
+    absolute top-2 right-2 z-[70]
+    w-16 h-16
+    flex items-center justify-center
+    text-white
+    transition-all duration-300
+    hover:scale-110
+    disabled:opacity-30
+  "
+>
+  {videoReady && isPlaying ? (
+    <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M6 4h4v16H6zM14 4h4v16h-4z" />
+    </svg>
+  ) : (
+    <svg className="w-7 h-7 ml-1" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M8 5v14l11-7z" />
+    </svg>
+  )}
+</button>
+
+
   <div
   className="
     absolute
@@ -118,9 +177,11 @@ opacity-100
   `}
   style={{ objectPosition: 'center top' }}
   src={videoSrc}
-  onLoadedData={() => {
-    setTimeout(() => setVideoReady(true), 120);
-  }}
+onCanPlay={() => setVideoReady(true)}
+
+    onPlay={() => setIsPlaying(true)}
+  onPause={() => setIsPlaying(false)}
+ 
 />
 
 )}
@@ -235,6 +296,32 @@ opacity-100
     {/* ================= MOBILE HERO ================= */}
 <section className="md:hidden bg-white relative -mt-3">
 {/* MOBILE GREY STRIP BEHIND GREEN BOX */}
+<button
+  onClick={togglePlayback}
+  disabled={!videoReady}
+  className="
+    absolute top-2 right-0 z-[70]
+    w-14 h-14
+    flex items-center justify-center
+    text-white
+    transition-all duration-300
+    hover:scale-110
+    disabled:opacity-30
+  "
+>
+  {videoReady && isPlaying ? (
+    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M6 4h4v16H6zM14 4h4v16h-4z" />
+    </svg>
+  ) : (
+    <svg className="w-6 h-6 ml-1" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M8 5v14l11-7z" />
+    </svg>
+  )}
+</button>
+
+
+
 <div
   className="
     absolute
@@ -333,9 +420,10 @@ opacity-100
   `}
   style={{ objectPosition: 'center top' }}
   src={videoSrc}
-  onLoadedData={() => {
-    setTimeout(() => setVideoReady(true), 120);
-  }}
+onCanPlay={() => setVideoReady(true)}
+
+    onPlay={() => setIsPlaying(true)}
+  onPause={() => setIsPlaying(false)}
 />
 
 )}
