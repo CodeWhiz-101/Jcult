@@ -30,7 +30,7 @@ export default function WhatWeDo() {
         />
 
         {/* Small blue text left, para with border right */}
-    <section className="py-10 md:py-14 lg:py-20 bg-[#f6f6f6]">
+    <section className="py-10 md:py-14 lg:py-20 bg-[#f6f6f6] relative z-10 md:-mt-14 lg:-mt-20">
   <div className="container-responsive">
     <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-12 md:gap-16 items-start">
 
