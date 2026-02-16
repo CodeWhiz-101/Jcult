@@ -16,61 +16,72 @@ export default function Disclosure() {
         </section>
 
         {/* CONTENT */}
-        <section className="pb-16 md:pb-24">
+        <section className="pb-20 md:pb-28">
           <div className="container-responsive max-w-4xl">
 
             <div
-              className="space-y-10 text-main"
+              className="space-y-12 text-main"
               style={{ fontFamily: 'Raleway, sans-serif' }}
             >
 
-              {/* 4. DISCLOSURES */}
-              <h2 className="text-2xl md:text-3xl font-semibold tracking-wide text-primary">
-                4. DISCLOSURES
-              </h2>
+              {/* 1 */}
+              <div className="space-y-5">
+                <h2 className="text-[22px] md:text-[24px] font-semibold text-primary">
+                  1. Business Status Disclosure
+                </h2>
 
-              {/* 4.1 */}
-              <div className="space-y-4">
-                <h3 className="text-xl md:text-2xl font-semibold text-primary">
-                  4.1 Business Status Disclosure
-                </h3>
-                <p className="leading-relaxed text-main/90">
-                  JCULT TRADER is currently in its establishment and development phase. 
-                  No asset management services are being offered at this time.
-                </p>
+                <ul className="space-y-3 pl-6 list-disc marker:text-[var(--brand-green-1)] text-[17px] leading-[1.75] text-main/85">
+                  <li>
+                    JCULT TRADER is currently in its establishment and development phase.
+                  </li>
+                  <li>
+                    No asset management services are being offered at this time.
+                  </li>
+                </ul>
               </div>
 
-              {/* 4.2 */}
-              <div className="space-y-4">
-                <h3 className="text-xl md:text-2xl font-semibold text-primary">
-                  4.2 Regulatory Disclosure
-                </h3>
-                <p className="leading-relaxed text-main/90">
-                  The Company is not licensed by the Securities and Commodities Authority (SCA), 
-                  the Dubai Financial Services Authority (DFSA), or any other financial regulatory body. 
-                  Any future regulated activities will be subject to obtaining appropriate approvals.
-                </p>
+              {/* 2 */}
+              <div className="space-y-5">
+                <h2 className="text-[22px] md:text-[24px] font-semibold text-primary">
+                  2. Regulatory Disclosure
+                </h2>
+
+                <ul className="space-y-3 pl-6 list-disc marker:text-[var(--brand-green-1)] text-[17px] leading-[1.75] text-main/85">
+                  <li>
+                    The Company is not licensed by the Securities and Commodities Authority (SCA),
+                    the Dubai Financial Services Authority (DFSA), or any other financial regulatory body.
+                  </li>
+                  <li>
+                    Any future regulated activities will be subject to obtaining appropriate approvals.
+                  </li>
+                </ul>
               </div>
 
-              {/* 4.3 */}
-              <div className="space-y-4">
-                <h3 className="text-xl md:text-2xl font-semibold text-primary">
-                  4.3 No Custody of Funds
-                </h3>
-                <p className="leading-relaxed text-main/90">
-                  JCULT TRADER does not accept, hold, manage, or custody client funds.
-                </p>
+              {/* 3 */}
+              <div className="space-y-5">
+                <h2 className="text-[22px] md:text-[24px] font-semibold text-primary">
+                  3. No Custody of Funds
+                </h2>
+
+                <ul className="space-y-3 pl-6 list-disc marker:text-[var(--brand-green-1)] text-[17px] leading-[1.75] text-main/85">
+                  <li>
+                    JCULT TRADER does not accept, hold, manage, or custody client funds.
+                  </li>
+                </ul>
               </div>
 
-              {/* 4.4 */}
-              <div className="space-y-4">
-                <h3 className="text-xl md:text-2xl font-semibold text-primary">
-                  4.4 Conflict of Interest Disclosure
-                </h3>
-                <p className="leading-relaxed text-main/90">
-                  As the Company is not currently providing financial services, 
-                  no client conflicts of interest exist at this stage.
-                </p>
+              {/* 4 */}
+              <div className="space-y-5">
+                <h2 className="text-[22px] md:text-[24px] font-semibold text-primary">
+                  4. Conflict of Interest Disclosure
+                </h2>
+
+                <ul className="space-y-3 pl-6 list-disc marker:text-[var(--brand-green-1)] text-[17px] leading-[1.75] text-main/85">
+                  <li>
+                    As the Company is not currently providing financial services,
+                    no client conflicts of interest exist at this stage.
+                  </li>
+                </ul>
               </div>
 
             </div>

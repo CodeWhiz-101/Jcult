@@ -2,82 +2,111 @@ export default function Privacy() {
   return (
     <div className="min-h-screen bg-main">
       <main className="pt-20">
+
+        {/* HERO */}
         <section className="bg-primary py-16 md:py-24 mb-16">
           <div className="container-responsive">
-            <h1 className="text-4xl md:text-5xl font-cormorant  text-white">
+            <h1
+              className="text-4xl md:text-5xl text-white"
+              style={{ fontFamily: 'Raleway, sans-serif' }}
+            >
               Privacy Policy
             </h1>
           </div>
         </section>
-        
-        <section className="pb-16 md:pb-24">
+
+        {/* CONTENT */}
+        <section className="pb-20 md:pb-28">
           <div className="container-responsive max-w-4xl">
-            
+
             <div
-  className="space-y-10 text-main"
-  style={{ fontFamily: 'Raleway, sans-serif' }}
->
+              className="space-y-12 text-main"
+              style={{ fontFamily: 'Raleway, sans-serif' }}
+            >
 
-  {/* Main Section Title */}
-  <h2 className="text-2xl md:text-3xl font-semibold tracking-wide text-primary">
-    1. PRIVACY POLICY
-  </h2>
+              {/* Intro Paragraph */}
+              <p className="text-[17px] leading-[1.75] text-main/85">
+                JCULT TRADER (“Company”, “we”, “our”, “us”) is incorporated in IFZA Free Zone, Dubai,
+                United Arab Emirates. This website is currently informational in nature and does not
+                collect or process personal data for commercial purposes.
+              </p>
 
-  <p className="text-lg leading-relaxed text-main/90">
-    JCULT TRADER (“Company”, “we”, “our”, “us”) is incorporated in IFZA Free Zone, Dubai, United Arab Emirates. 
-    This website is currently informational in nature and does not collect or process personal data for commercial purposes.
-  </p>
+              {/* 1 */}
+              <div className="space-y-5">
+                <h2 className="text-[22px] md:text-[24px] font-semibold text-primary">
+                  1. Information We Do Not Collect
+                </h2>
 
-  {/* 1.1 */}
-  <div className="space-y-4">
-    <h3 className="text-xl md:text-2xl font-semibold text-primary">
-      1.1 Information We Do Not Collect
-    </h3>
-    <p className="leading-relaxed text-main/90">
-      At this stage, the Company does not collect personal information through website forms, 
-      does not provide user accounts, does not process payments, and does not manage client 
-      funds through the website.
-    </p>
-  </div>
+                <ul className="space-y-3 pl-6 list-disc marker:text-[var(--brand-green-1)] text-[17px] leading-[1.75] text-main/85">
+                  <li>
+                    The Company does not collect personal information through website forms.
+                  </li>
+                  <li>
+                    We do not provide user accounts.
+                  </li>
+                  <li>
+                    We do not process payments through the website.
+                  </li>
+                  <li>
+                    We do not manage or custody client funds via this website.
+                  </li>
+                </ul>
+              </div>
 
-  {/* 1.2 */}
-  <div className="space-y-4">
-    <h3 className="text-xl md:text-2xl font-semibold text-primary">
-      1.2 Automatically Collected Information
-    </h3>
-    <p className="leading-relaxed text-main/90">
-      Basic technical information such as IP address, browser type, device information, 
-      and date/time of access may be automatically collected by hosting providers 
-      for security and functionality purposes only.
-    </p>
-  </div>
+              {/* 2 */}
+              <div className="space-y-5">
+                <h2 className="text-[22px] md:text-[24px] font-semibold text-primary">
+                  2. Automatically Collected Information
+                </h2>
 
-  {/* 1.3 */}
-  <div className="space-y-4">
-    <h3 className="text-xl md:text-2xl font-semibold text-primary">
-      1.3 Cookies
-    </h3>
-    <p className="leading-relaxed text-main/90">
-      Any cookies used are strictly for website performance and functionality. 
-      No profiling or marketing tracking is conducted.
-    </p>
-  </div>
+                <ul className="space-y-3 pl-6 list-disc marker:text-[var(--brand-green-1)] text-[17px] leading-[1.75] text-main/85">
+                  <li>
+                    Basic technical information such as IP address and browser type.
+                  </li>
+                  <li>
+                    Device information and access timestamps.
+                  </li>
+                  <li>
+                    Data automatically collected by hosting providers solely for security
+                    and operational functionality.
+                  </li>
+                </ul>
+              </div>
 
-  {/* 1.4 */}
-  <div className="space-y-4">
-    <h3 className="text-xl md:text-2xl font-semibold text-primary">
-      1.4 Future Updates
-    </h3>
-    <p className="leading-relaxed text-main/90">
-      If JCULT TRADER begins collecting personal information in the future, 
-      this Privacy Policy will be updated accordingly.
-    </p>
-  </div>
+              {/* 3 */}
+              <div className="space-y-5">
+                <h2 className="text-[22px] md:text-[24px] font-semibold text-primary">
+                  3. Cookies
+                </h2>
 
-</div>
+                <ul className="space-y-3 pl-6 list-disc marker:text-[var(--brand-green-1)] text-[17px] leading-[1.75] text-main/85">
+                  <li>
+                    Cookies used are strictly for website performance and functionality.
+                  </li>
+                  <li>
+                    No profiling or marketing tracking is conducted.
+                  </li>
+                </ul>
+              </div>
 
+              {/* 4 */}
+              <div className="space-y-5">
+                <h2 className="text-[22px] md:text-[24px] font-semibold text-primary">
+                  4. Future Updates
+                </h2>
+
+                <ul className="space-y-3 pl-6 list-disc marker:text-[var(--brand-green-1)] text-[17px] leading-[1.75] text-main/85">
+                  <li>
+                    If JCULT TRADER begins collecting personal information in the future,
+                    this Privacy Policy will be updated accordingly.
+                  </li>
+                </ul>
+              </div>
+
+            </div>
           </div>
         </section>
+
       </main>
     </div>
   );

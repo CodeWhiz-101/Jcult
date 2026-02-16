@@ -16,52 +16,67 @@ export default function Notices() {
         </section>
 
         {/* CONTENT */}
-        <section className="pb-16 md:pb-24">
+        <section className="pb-20 md:pb-28">
           <div className="container-responsive max-w-4xl">
 
             <div
-              className="space-y-10 text-main"
+              className="space-y-12 text-main"
               style={{ fontFamily: 'Raleway, sans-serif' }}
             >
 
-              {/* 3. LEGAL NOTICES */}
-              <h2 className="text-2xl md:text-3xl font-semibold tracking-wide text-primary">
-                3. LEGAL NOTICES
-              </h2>
+              {/* 1 */}
+              <div className="space-y-5">
+                <h2 className="text-[22px] md:text-[24px] font-semibold text-primary">
+                  1. Regulatory Status Notice
+                </h2>
 
-              {/* 3.1 */}
-              <div className="space-y-4">
-                <h3 className="text-xl md:text-2xl font-semibold text-primary">
-                  3.1 Regulatory Status Notice
-                </h3>
-                <p className="leading-relaxed text-main/90">
-                  JCULT TRADER is incorporated in IFZA Free Zone, Dubai. 
-                  The Company is currently in its preliminary development phase 
-                  and does not conduct regulated financial services.
-                </p>
+                <ul className="space-y-3 pl-6 list-disc marker:text-[var(--brand-green-1)] text-[17px] leading-[1.75] text-main/85">
+                  <li>
+                    JCULT TRADER is incorporated in IFZA Free Zone, Dubai.
+                  </li>
+                  <li>
+                    The Company is currently in its preliminary development phase.
+                  </li>
+                  <li>
+                    The Company does not conduct regulated financial services.
+                  </li>
+                </ul>
               </div>
 
-              {/* 3.2 */}
-              <div className="space-y-4">
-                <h3 className="text-xl md:text-2xl font-semibold text-primary">
-                  3.2 Intellectual Property Notice
-                </h3>
-                <p className="leading-relaxed text-main/90">
-                  All website content, including text, branding, and design elements, 
-                  is the property of JCULT TRADER and may not be reproduced 
-                  without prior written consent.
-                </p>
+              {/* 2 */}
+              <div className="space-y-5">
+                <h2 className="text-[22px] md:text-[24px] font-semibold text-primary">
+                  2. Intellectual Property Notice
+                </h2>
+
+                <ul className="space-y-3 pl-6 list-disc marker:text-[var(--brand-green-1)] text-[17px] leading-[1.75] text-main/85">
+                  <li>
+                    All website content, including text, branding, and design elements,
+                    is the property of JCULT TRADER.
+                  </li>
+                  <li>
+                    Content may not be reproduced without prior written consent.
+                  </li>
+                </ul>
               </div>
 
-              {/* 3.3 */}
-              <div className="space-y-4">
-                <h3 className="text-xl md:text-2xl font-semibold text-primary">
-                  3.3 Risk Notice
-                </h3>
-                <p className="leading-relaxed text-main/90">
-                  Financial markets involve high levels of risk and may not be suitable 
-                  for all individuals. The Company does not guarantee financial outcomes.
-                </p>
+              {/* 3 */}
+              <div className="space-y-5">
+                <h2 className="text-[22px] md:text-[24px] font-semibold text-primary">
+                  3. Risk Notice
+                </h2>
+
+                <ul className="space-y-3 pl-6 list-disc marker:text-[var(--brand-green-1)] text-[17px] leading-[1.75] text-main/85">
+                  <li>
+                    Financial markets involve high levels of risk.
+                  </li>
+                  <li>
+                    Such activities may not be suitable for all individuals.
+                  </li>
+                  <li>
+                    The Company does not guarantee financial outcomes.
+                  </li>
+                </ul>
               </div>
 
             </div>
