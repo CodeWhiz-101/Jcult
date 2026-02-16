@@ -13,32 +13,69 @@ export default function Privacy() {
         <section className="pb-16 md:pb-24">
           <div className="container-responsive max-w-4xl">
             
-            <div className="space-y-6 text-main">
-              <p className="text-lg leading-relaxed">
-                At JCULT TRADER, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data.
-              </p>
-              
-              <h2 className="text-2xl font-cormorant  text-primary mt-8 mb-4">
-                Information We Collect
-              </h2>
-              <p className="leading-relaxed">
-                We collect information that you provide directly to us, including name, email address, phone number, and any other information you choose to provide when you contact us or use our services.
-              </p>
-              
-              <h2 className="text-2xl font-cormorant  text-primary mt-8 mb-4">
-                How We Use Your Information
-              </h2>
-              <p className="leading-relaxed">
-                We use the information we collect to provide, maintain, and improve our services, communicate with you, and comply with legal obligations. We do not sell or share your personal information with third parties for marketing purposes.
-              </p>
-              
-              <h2 className="text-2xl font-cormorant  text-primary mt-8 mb-4">
-                Data Security
-              </h2>
-              <p className="leading-relaxed">
-                We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.
-              </p>
-            </div>
+            <div
+  className="space-y-10 text-main"
+  style={{ fontFamily: 'Raleway, sans-serif' }}
+>
+
+  {/* Main Section Title */}
+  <h2 className="text-2xl md:text-3xl font-semibold tracking-wide text-primary">
+    1. PRIVACY POLICY
+  </h2>
+
+  <p className="text-lg leading-relaxed text-main/90">
+    JCULT TRADER (“Company”, “we”, “our”, “us”) is incorporated in IFZA Free Zone, Dubai, United Arab Emirates. 
+    This website is currently informational in nature and does not collect or process personal data for commercial purposes.
+  </p>
+
+  {/* 1.1 */}
+  <div className="space-y-4">
+    <h3 className="text-xl md:text-2xl font-semibold text-primary">
+      1.1 Information We Do Not Collect
+    </h3>
+    <p className="leading-relaxed text-main/90">
+      At this stage, the Company does not collect personal information through website forms, 
+      does not provide user accounts, does not process payments, and does not manage client 
+      funds through the website.
+    </p>
+  </div>
+
+  {/* 1.2 */}
+  <div className="space-y-4">
+    <h3 className="text-xl md:text-2xl font-semibold text-primary">
+      1.2 Automatically Collected Information
+    </h3>
+    <p className="leading-relaxed text-main/90">
+      Basic technical information such as IP address, browser type, device information, 
+      and date/time of access may be automatically collected by hosting providers 
+      for security and functionality purposes only.
+    </p>
+  </div>
+
+  {/* 1.3 */}
+  <div className="space-y-4">
+    <h3 className="text-xl md:text-2xl font-semibold text-primary">
+      1.3 Cookies
+    </h3>
+    <p className="leading-relaxed text-main/90">
+      Any cookies used are strictly for website performance and functionality. 
+      No profiling or marketing tracking is conducted.
+    </p>
+  </div>
+
+  {/* 1.4 */}
+  <div className="space-y-4">
+    <h3 className="text-xl md:text-2xl font-semibold text-primary">
+      1.4 Future Updates
+    </h3>
+    <p className="leading-relaxed text-main/90">
+      If JCULT TRADER begins collecting personal information in the future, 
+      this Privacy Policy will be updated accordingly.
+    </p>
+  </div>
+
+</div>
+
           </div>
         </section>
       </main>
