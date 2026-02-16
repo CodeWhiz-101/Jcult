@@ -1,482 +1,394 @@
-'use client';
+  'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { usePathname } from 'next/navigation';
-import Image from "next/image";
+  import { useEffect, useRef, useState } from 'react';
+  import { usePathname } from 'next/navigation';
+  import Image from "next/image";
 
-interface HeroProps {
-  videoSrc?: string;
-  imageSrc?: string;
-  title: string;
-  description: string;
-}
-
-type Phase = 'fade' | 'wipe' | 'title' | 'box' | 'boxText';
-
-export default function Hero({
-  videoSrc,
-  imageSrc,
-  title,
-  description,
-}: HeroProps) {
-  const pathname = usePathname();
-  const isHome = pathname === '/';
-
-  const desktopVideoRef = useRef<HTMLVideoElement>(null);
-const mobileVideoRef = useRef<HTMLVideoElement>(null);
-  const [phase, setPhase] = useState<Phase>('fade');
-const [videoReady, setVideoReady] = useState(false);
-const [isPlaying, setIsPlaying] = useState(true);
-
-  /* ===============================
-     MASTER CINEMATIC TIMELINE
-  =============================== */
-  useEffect(() => {
-    const t1 = setTimeout(() => setPhase('wipe'), 100);     // fade ends
-    const t2 = setTimeout(() => setPhase('title'), 200);  // wipe ends
-    const t3 = setTimeout(() => setPhase('box'), 600);    // title ends
-    const t4 = setTimeout(() => setPhase('boxText'), 1000);// box ends
-
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
-      clearTimeout(t4);
-    };
-  }, []);
-  useEffect(() => {
-  const desktop = desktopVideoRef.current;
-  const mobile = mobileVideoRef.current;
-
-  const video = desktop || mobile;
-
-  if (video && video.readyState >= 2) {
-    setVideoReady(true);
+  interface HeroProps {
+    videoSrc?: string;
+    imageSrc?: string;
+    title: string;
+    description: string;
   }
-}, []);
 
-const togglePlayback = () => {
-  const desktop = desktopVideoRef.current;
-  const mobile = mobileVideoRef.current;
+  type Phase = 'fade' | 'wipe' | 'title' | 'box' | 'boxText';
 
-  const video =
-    desktop && desktop.offsetParent !== null
-      ? desktop
-      : mobile && mobile.offsetParent !== null
-      ? mobile
-      : null;
+  export default function Hero({
+    videoSrc,
+    imageSrc,
+    title,
+    description,
+  }: HeroProps) {
+    const pathname = usePathname();
+    const isHome = pathname === '/';
 
-  if (!video) return;
+    const desktopVideoRef = useRef<HTMLVideoElement>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
+    const [phase, setPhase] = useState<Phase>('fade');
+  const [videoReady, setVideoReady] = useState(false);
 
-  if (video.paused) {
-    video.play();
-    setIsPlaying(true);
-  } else {
-    video.pause();
-    setIsPlaying(false);
-  }
-};
+    /* ===============================
+      MASTER CINEMATIC TIMELINE
+    =============================== */
+    useEffect(() => {
+      const t1 = setTimeout(() => setPhase('wipe'), 100);     // fade ends
+      const t2 = setTimeout(() => setPhase('title'), 200);  // wipe ends
+      const t3 = setTimeout(() => setPhase('box'), 600);    // title ends
+      const t4 = setTimeout(() => setPhase('boxText'), 1000);// box ends
 
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+        clearTimeout(t3);
+        clearTimeout(t4);
+      };
+    }, []);
 
-  return (
-    <>
-     {/* ================= DESKTOP HERO ================= */}
-<section
-  className="hidden md:block relative h-[480px] md:h-[530px] lg:h-[680px] xl:h-[760px]"
-  style={{
-    paddingTop: isHome ? 'var(--page-top-offset)' : '0px',
-  }}
-  
->
-<button
-  onClick={togglePlayback}
-  disabled={!videoReady}
-  className="
-    absolute top-2 right-2 z-[70]
-    w-16 h-16
-    flex items-center justify-center
-    text-white
-    transition-all duration-300
-    hover:scale-110
-    disabled:opacity-30
-  "
->
-  {videoReady && isPlaying ? (
-    <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M6 4h4v16H6zM14 4h4v16h-4z" />
-    </svg>
-  ) : (
-    <svg className="w-7 h-7 ml-1" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M8 5v14l11-7z" />
-    </svg>
-  )}
-</button>
-
-
-  <div
-  className="
-    absolute
-    bottom-6 md:bottom-10 lg:bottom-14 xl:bottom-20
-    left-0
-    w-full
-     lg:h-[205px]   /* adjust to match box height */
-    bg-[#F6F6F6]
-    -z-0
-  "
-/>
-  {/* ================= VIDEO ================= */}
-  <div className="absolute top-0 left-0 right-0 bottom-[10px] md:bottom-[40px] lg:bottom-[70px] xl:bottom-[80px] overflow-hidden">
-    <div className="absolute inset-0 ml-7 md:ml-10 lg:ml-12 xl:ml-14">
-
-      {/* BASE GREEN */}
-      <div
-        className="absolute inset-0 z-5"
-        style={{ background: 'var(--brand-green-gradient)' }}
-      />
-
-      {/* INTRO FADE */}
-      <div
-        className="
-          absolute inset-0 z-[50]
-          transition-opacity duration-[1900ms] ease-out
-          pointer-events-none
-        "
-        style={{
-          background: 'var(--brand-green-gradient)',
-          opacity: phase === 'fade' ? 1 : 0,
-        }}
-      />
-
- {/* ===== POSTER IMAGE ===== */}
-{imageSrc && (
-  <Image
-    src={imageSrc}
-    alt="Hero background"
-    fill
-    priority
-    sizes="100vw"
-className="absolute inset-0 object-cover z-[7]"
-    style={{ objectPosition: 'center top' }}
-  />
-)}
-
-{/* ===== VIDEO ===== */}
-{videoSrc && (
-  <video
-  ref={desktopVideoRef}
-  autoPlay
-  muted
-  loop
-  playsInline
-  preload="metadata"
-  className={`
-    absolute inset-0 z-[8] w-full h-full object-cover
-    transition-opacity duration-[1200ms]
-    ease-[cubic-bezier(.22,.61,.36,1)]
-opacity-100
-  `}
-  style={{ objectPosition: 'center top' }}
-  src={videoSrc}
-onCanPlay={() => setVideoReady(true)}
-
-    onPlay={() => setIsPlaying(true)}
-  onPause={() => setIsPlaying(false)}
- 
-/>
-
-)}
-
-
-      {/* GREEN WIPE */}
-      <div
-        className="
-          absolute inset-0 z-40
-          will-change-[clip-path]
-          transition-[clip-path]
-          duration-[700ms]
-          ease-[cubic-bezier(.22,.61,.36,1)]
-        "
-        style={{
-          background: 'var(--brand-green-gradient)',
-          clipPath:
-            phase === 'fade' || phase === 'wipe'
-              ? 'inset(0 97% 0 0)'
-              : 'inset(0 100% 0 0)',
-        }}
-      />
-
-      {/* DARK OVERLAY */}
-      <div className="absolute inset-0 z-30 bg-black/20" />
-    </div>
-  </div>
-
-  {/* ================= TITLE ================= */}
-  <div
-    className={`
-      absolute z-30
-      top-[68px] md:top-[76px] lg:top-[108px] xl:top-[116px]
-      left-0 -mt-18
-      ml-20 md:ml-23 lg:ml-25 xl:ml-27
-      max-w-[600px]
-
-      transition-all
-      duration-[1000ms]
-      ease-[cubic-bezier(.22,.61,.36,1)]
-
-      ${
-        phase === 'title' || phase === 'box' || phase === 'boxText'
-          ? 'opacity-100 translate-x-0'
-          : 'opacity-0 -translate-x-24'
-      }
-    `}
+    return (
+      <>
+      {/* ================= DESKTOP HERO ================= */}
+  <section
+    className="hidden md:block relative h-[480px] md:h-[530px] lg:h-[680px] xl:h-[760px]"
+    style={{
+      paddingTop: isHome ? 'var(--page-top-offset)' : '0px',
+    }}
+    
   >
-    <h1
+    <div
+    className="
+      absolute
+      bottom-6 md:bottom-10 lg:bottom-14 xl:bottom-20
+      left-0
+      w-full
+      lg:h-[205px]   /* adjust to match box height */
+      bg-[#F6F6F6]
+      -z-0
+    "
+  />
+    {/* ================= VIDEO ================= */}
+    <div className="absolute top-0 left-0 right-0 bottom-[10px] md:bottom-[40px] lg:bottom-[70px] xl:bottom-[80px] overflow-hidden">
+      <div className="absolute inset-0 ml-7 md:ml-10 lg:ml-12 xl:ml-14">
+
+        {/* BASE GREEN */}
+        <div
+          className="absolute inset-0 z-5"
+          style={{ background: 'var(--brand-green-gradient)' }}
+        />
+
+        {/* INTRO FADE */}
+        <div
+          className="
+            absolute inset-0 z-[50]
+            transition-opacity duration-[1900ms] ease-out
+            pointer-events-none
+          "
+          style={{
+            background: 'var(--brand-green-gradient)',
+            opacity: phase === 'fade' ? 1 : 0,
+          }}
+        />
+
+  {/* ===== POSTER IMAGE ===== */}
+  {imageSrc && (
+    <Image
+      src={imageSrc}
+      alt="Hero background"
+      fill
+      priority
+      sizes="100vw"
+  className="absolute inset-0 object-cover z-[7]"
+      style={{ objectPosition: 'center top' }}
+    />
+  )}
+
+  {/* ===== VIDEO ===== */}
+  {videoSrc && (
+    <video
+    ref={desktopVideoRef}
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="metadata"
+    className={`
+      absolute inset-0 z-[8] w-full h-full object-cover
+      transition-opacity duration-[1200ms]
+      ease-[cubic-bezier(.22,.61,.36,1)]
+  opacity-100
+    `}
+    style={{ objectPosition: 'center top' }}
+    src={videoSrc}
+    onLoadedData={() => {
+      setTimeout(() => setVideoReady(true), 120);
+    }}
+  />
+
+  )}
+
+
+        {/* GREEN WIPE */}
+        <div
+          className="
+            absolute inset-0 z-40
+            will-change-[clip-path]
+            transition-[clip-path]
+            duration-[700ms]
+            ease-[cubic-bezier(.22,.61,.36,1)]
+          "
+          style={{
+            background: 'var(--brand-green-gradient)',
+            clipPath:
+              phase === 'fade' || phase === 'wipe'
+                ? 'inset(0 97% 0 0)'
+                : 'inset(0 100% 0 0)',
+          }}
+        />
+
+        {/* DARK OVERLAY */}
+        <div className="absolute inset-0 z-30 bg-black/20" />
+      </div>
+    </div>
+
+    {/* ================= TITLE ================= */}
+    <div
+      className={`
+        absolute z-30
+        top-[68px] md:top-[76px] lg:top-[108px] xl:top-[116px]
+        left-0 -mt-18
+        ml-20 md:ml-23 lg:ml-25 xl:ml-27
+        max-w-[600px]
+
+        transition-all
+        duration-[1000ms]
+        ease-[cubic-bezier(.22,.61,.36,1)]
+
+        ${
+          phase === 'title' || phase === 'box' || phase === 'boxText'
+            ? 'opacity-100 translate-x-0'
+            : 'opacity-0 -translate-x-24'
+        }
+      `}
+    >
+      <h1
+        className="
+          text-white font-brand font-medium
+          tracking-[-0.02em]
+          text-hero-title
+          leading-[1.08]
+          drop-shadow-lg
+        "
+      >
+        {title}
+      </h1>
+    </div>
+
+    {/* ================= GREEN BOX ================= */}
+    <div
       className="
-        text-white font-brand font-medium
-        tracking-[-0.02em]
-        text-hero-title
-        leading-[1.08]
-        drop-shadow-lg
+        absolute z-30
+        bottom-6 md:bottom-10 lg:bottom-14 xl:bottom-20
+        left-0 right-0
+        ml-7 md:ml-10 lg:ml-12 xl:ml-14
+        mr-9 md:mr-13 lg:mr-17
       "
     >
-      {title}
-    </h1>
-  </div>
+      <div className="relative py-10 md:py-12 lg:py-14 overflow-hidden">
 
-  {/* ================= GREEN BOX ================= */}
-  <div
-    className="
-      absolute z-30
-      bottom-6 md:bottom-10 lg:bottom-14 xl:bottom-20
-      left-0 right-0
-      ml-7 md:ml-10 lg:ml-12 xl:ml-14
-      mr-9 md:mr-13 lg:mr-17
-    "
-  >
-    <div className="relative py-10 md:py-12 lg:py-14 overflow-hidden">
+        {/* BOX SLIDE */}
+        <div
+          className="
+            absolute inset-0
+            transition-transform duration-[900ms]
+            ease-[cubic-bezier(.22,.61,.36,1)]
+          "
+          style={{
+            background: 'var(--brand-green-gradient)',
+            opacity: 0.75,
+            backdropFilter: 'blur(14px)',
+            transform:
+              phase === 'box' || phase === 'boxText'
+                ? 'scaleX(1)'
+                : 'scaleX(0)',
+            transformOrigin: 'left',
+          }}
+        />
 
-      {/* BOX SLIDE */}
-      <div
-        className="
-          absolute inset-0
-          transition-transform duration-[900ms]
-          ease-[cubic-bezier(.22,.61,.36,1)]
-        "
-        style={{
-          background: 'var(--brand-green-gradient)',
-          opacity: 0.75,
-          backdropFilter: 'blur(14px)',
-          transform:
-            phase === 'box' || phase === 'boxText'
-              ? 'scaleX(1)'
-              : 'scaleX(0)',
-          transformOrigin: 'left',
-        }}
-      />
+        {/* BOX TEXT */}
+        <div
+          className="
+            container-responsive relative z-10
+            transition-opacity duration-[600ms]
+          "
+          style={{
+            opacity: phase === 'boxText' ? 1 : 0,
+          }}
+        >
+          <p className="font-ttcommons text-white max-w-[620px] text-[16.5px] md:text-[17.5px] lg:text-[19.5px] leading-relaxed">
+            {description}
+          </p>
+        </div>
 
-      {/* BOX TEXT */}
-      <div
-        className="
-          container-responsive relative z-10
-          transition-opacity duration-[600ms]
-        "
-        style={{
-          opacity: phase === 'boxText' ? 1 : 0,
-        }}
-      >
-        <p className="font-ttcommons text-white max-w-[620px] text-[16.5px] md:text-[17.5px] lg:text-[19.5px] leading-relaxed">
-          {description}
-        </p>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-    {/* ================= MOBILE HERO ================= */}
-<section className="md:hidden bg-white relative -mt-3">
-{/* MOBILE GREY STRIP BEHIND GREEN BOX */}
-<button
-  onClick={togglePlayback}
-  disabled={!videoReady}
-  className="
-    absolute top-2 right-0 z-[70]
-    w-14 h-14
-    flex items-center justify-center
-    text-white
-    transition-all duration-300
-    hover:scale-110
-    disabled:opacity-30
-  "
->
-  {videoReady && isPlaying ? (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M6 4h4v16H6zM14 4h4v16h-4z" />
-    </svg>
-  ) : (
-    <svg className="w-6 h-6 ml-1" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M8 5v14l11-7z" />
-    </svg>
-  )}
-</button>
-
-
-
-<div
-  className="
-    absolute
-    bottom-0
-    left-0
-    w-full
-    h-[238px]   /* adjust to match mobile green box height */
-    bg-[#F6F6F6]
-    z-0
-  "
-/>
-
-  {/* LEFT WHITE GUTTER ONLY */}
-  <div className="pl-6 pr-0 ">
-
-    {/* ===== MEDIA ===== */}
-    <div className="relative h-[677px] w-full overflow-hidden">
-      {/* MOBILE INTRO FADE (match desktop) */}
-<div
-  className="
-    absolute inset-0 z-[50]
-    transition-opacity duration-[1900ms] ease-out
-    pointer-events-none
-  "
-  style={{
-    background: 'var(--brand-green-gradient)',
-    opacity: phase === 'fade' ? 1 : 0,
-  }}
-/>
-
-{/* ===== MOBILE GREEN WIPE (TITLE REVEAL) ===== */}
-<div
-  className="
-    absolute z-25
-    left-0
-    h-[677px]
-    w-[20px]
-    overflow-hidden
-    pointer-events-none
-  "
->
+      {/* ================= MOBILE HERO ================= */}
+  <section className="md:hidden bg-white relative -mt-3">
+  {/* MOBILE GREY STRIP BEHIND GREEN BOX */}
   <div
     className="
-      absolute inset-0
-      transition-[clip-path]
-      duration-[700ms]
-      ease-[cubic-bezier(.22,.61,.36,1)]
+      absolute
+      bottom-0
+      left-0
+      w-full
+      h-[238px]   /* adjust to match mobile green box height */
+      bg-[#F6F6F6]
+      z-0
+    "
+  />
+
+    {/* LEFT WHITE GUTTER ONLY */}
+    <div className="pl-6 pr-0 ">
+
+      {/* ===== MEDIA ===== */}
+      <div className="relative h-[677px] w-full overflow-hidden">
+        {/* MOBILE INTRO FADE (match desktop) */}
+  <div
+    className="
+      absolute inset-0 z-[50]
+      transition-opacity duration-[1900ms] ease-out
+      pointer-events-none
     "
     style={{
       background: 'var(--brand-green-gradient)',
-clipPath:
-  phase === 'fade'
-    ? 'inset(0 0 0 0)'        // fully visible
-    : 'inset(0 100% 0 0)',   // hidden from right → left
-
+      opacity: phase === 'fade' ? 1 : 0,
     }}
   />
-</div>
 
-      {/* GREEN BASE */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{ background: 'var(--brand-green-gradient)' }}
-      />
+  {/* ===== MOBILE GREEN WIPE (TITLE REVEAL) ===== */}
+  <div
+    className="
+      absolute z-25
+      left-0
+      h-[677px]
+      w-[20px]
+      overflow-hidden
+      pointer-events-none
+    "
+  >
+    <div
+      className="
+        absolute inset-0
+        transition-[clip-path]
+        duration-[700ms]
+        ease-[cubic-bezier(.22,.61,.36,1)]
+      "
+      style={{
+        background: 'var(--brand-green-gradient)',
+  clipPath:
+    phase === 'fade'
+      ? 'inset(0 0 0 0)'        // fully visible
+      : 'inset(0 100% 0 0)',   // hidden from right → left
 
-      {/* VIDEO */}
-   {/* ===== POSTER IMAGE ===== */}
-{imageSrc && (
-  <Image
-    src={imageSrc}
-    alt="Hero background"
-    fill
-    priority
-    sizes="100vw"
-    className="absolute inset-0 object-cover z-[7]"
+      }}
+    />
+  </div>
 
-    style={{ objectPosition: 'center top' }}
-  />
-)}
-
-
-{/* ===== VIDEO ===== */}
-{videoSrc && (
-<video
-  ref={mobileVideoRef}
-  autoPlay
-  muted
-  loop
-  playsInline
-  preload="metadata"
-  className={`
-    absolute inset-0 z-[8] w-full h-full object-cover
-    transition-opacity duration-[1200ms]
-    ease-[cubic-bezier(.22,.61,.36,1)]
-opacity-100
-  `}
-  style={{ objectPosition: 'center top' }}
-  src={videoSrc}
-onCanPlay={() => setVideoReady(true)}
-
-    onPlay={() => setIsPlaying(true)}
-  onPause={() => setIsPlaying(false)}
-/>
-
-)}
-
-
-      {/* DARK OVERLAY */}
-      <div className="absolute inset-0 z-20 bg-black/25" />
-
-      {/* ===== TITLE ===== */}
-      <div
-        className="absolute z-30 top-[40px] left-0 pl-6 max-w-[380px]"
-        style={{
-          opacity:
-            phase === 'title' || phase === 'box' || phase === 'boxText'
-              ? 1
-              : 0,
-          transform:
-            phase === 'title' || phase === 'box' || phase === 'boxText'
-              ? 'translateX(0)'
-              : 'translateX(-20px)',
-          transition:
-            'opacity 800ms ease, transform 800ms cubic-bezier(.22,.61,.36,1)',
-        }}
-      >
-        <h1 className="text-white font-brand font-medium 
- text-[38px] leading-[1.2]">
-          {title}
-        </h1>
-      </div>
-
-      {/* ===== GREEN BOX ===== */}
-      <div className="absolute bottom-0 left-0 z-40 w-full">
+        {/* GREEN BASE */}
         <div
-          className="w-[88%]"
+          className="absolute inset-0 z-0"
+          style={{ background: 'var(--brand-green-gradient)' }}
+        />
+
+        {/* VIDEO */}
+    {/* ===== POSTER IMAGE ===== */}
+  {imageSrc && (
+    <Image
+      src={imageSrc}
+      alt="Hero background"
+      fill
+      priority
+      sizes="100vw"
+      className="absolute inset-0 object-cover z-[7]"
+
+      style={{ objectPosition: 'center top' }}
+    />
+  )}
+
+
+  {/* ===== VIDEO ===== */}
+  {videoSrc && (
+  <video
+    ref={mobileVideoRef}
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="metadata"
+    className={`
+      absolute inset-0 z-[8] w-full h-full object-cover
+      transition-opacity duration-[1200ms]
+      ease-[cubic-bezier(.22,.61,.36,1)]
+  opacity-100
+    `}
+    style={{ objectPosition: 'center top' }}
+    src={videoSrc}
+    onLoadedData={() => {
+      setTimeout(() => setVideoReady(true), 120);
+    }}
+  />
+
+  )}
+
+
+        {/* DARK OVERLAY */}
+        <div className="absolute inset-0 z-20 bg-black/25" />
+
+        {/* ===== TITLE ===== */}
+        <div
+          className="absolute z-30 top-[40px] left-0 pl-6 max-w-[380px]"
           style={{
-            background: 'var(--brand-green-gradient)',
-            opacity: 0.85,
-            backdropFilter: 'blur(14px)',
-            WebkitBackdropFilter: 'blur(14px)',
-            boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
+            opacity:
+              phase === 'title' || phase === 'box' || phase === 'boxText'
+                ? 1
+                : 0,
+            transform:
+              phase === 'title' || phase === 'box' || phase === 'boxText'
+                ? 'translateX(0)'
+                : 'translateX(-20px)',
+            transition:
+              'opacity 800ms ease, transform 800ms cubic-bezier(.22,.61,.36,1)',
           }}
         >
-          <div className="pt-10 pb-8 px-6">
-            <p className="text-white text-[20.5px] leading-relaxed">
-              {description}
-            </p>
+          <h1 className="text-white font-brand font-medium 
+  text-[38px] leading-[1.2]">
+            {title}
+          </h1>
+        </div>
+
+        {/* ===== GREEN BOX ===== */}
+        <div className="absolute bottom-0 left-0 z-40 w-full">
+          <div
+            className="w-[88%]"
+            style={{
+              background: 'var(--brand-green-gradient)',
+              opacity: 0.85,
+              backdropFilter: 'blur(14px)',
+              WebkitBackdropFilter: 'blur(14px)',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
+            }}
+          >
+            <div className="pt-10 pb-8 px-6">
+              <p className="text-white text-[20.5px] leading-relaxed">
+                {description}
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
+      </div>
     </div>
-  </div>
-</section>
-</>
-  );
-}
+  </section>
+  </>
+    );
+  }
